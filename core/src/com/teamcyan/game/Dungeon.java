@@ -1,6 +1,7 @@
 package com.teamcyan.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Input;              //for user input
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -32,7 +33,7 @@ public class Dungeon extends ApplicationAdapter {
         circleX += xSpeed *  Gdx.graphics.getDeltaTime();
         circleY += ySpeed *  Gdx.graphics.getDeltaTime();
 
-		if(circleX < 0 || circleX > Gdx.graphics.getWidth()){
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
 			xSpeed *= -1;
 		}
 
