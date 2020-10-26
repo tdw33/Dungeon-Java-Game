@@ -32,8 +32,6 @@ public class Dungeon extends ApplicationAdapter {
         for (int i = 0; i<10;i++)
         {
             me = new Square();
-            me.xSpeed *= i;
-            me.ySpeed *= i;
             me.create();
             list.add(me);
         }
