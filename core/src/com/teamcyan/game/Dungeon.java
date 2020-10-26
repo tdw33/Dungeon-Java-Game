@@ -8,10 +8,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import java.util.Vector;
+
 public class Dungeon extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
     ShapeRenderer shapeRenderer;
+    Square me;
+    Vector <Square> list = new Vector <Square>();
 
     float circleX = 200;
 	float circleY = 100;
@@ -25,6 +29,14 @@ public class Dungeon extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
         shapeRenderer = new ShapeRenderer();
+        for (int i = 0; i<10;i++)
+        {
+            me = new Square();
+            me.xSpeed *= i;
+            me.ySpeed *= i;
+            me.create();
+            list.add(me);
+        }
 	}
 
 	@Override
@@ -33,21 +45,13 @@ public class Dungeon extends ApplicationAdapter {
         circleX += xSpeed *  Gdx.graphics.getDeltaTime();
         circleY += ySpeed *  Gdx.graphics.getDeltaTime();
 
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-			xSpeed *= -1;
-		}
-
-		if(circleY < 0 || circleY > Gdx.graphics.getHeight()){
-			ySpeed *= -1;
-		}
-
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-		shapeRenderer.setColor(0, 1, 0, 1);
-        shapeRenderer.circle(circleX, circleY, 75);
-		shapeRenderer.end();
+        for (int i = 0; i<10;i++) {
+            list.get(i).render();
+        }
+
 	}
 	
 	@Override
