@@ -39,6 +39,13 @@
 ### Game updates
 ![](./gifs/movement.gif)
 
+- Pebble back-story
+	- Pebble is helping you because it is maltreated by his fellow rocks due to the fact the it is a small rock
+	- Pebble could be an imagination of your confused mind (like Wilson)
+
+- Game names?
+	- 
+
 ## Next Sprint 
 
 - General continue on current work 
@@ -47,6 +54,15 @@
 - start writing tests
 - Get some menu screens
 - decide on artwork style 
-- decide on soundscape?
+- decide on soundscape
 
-![Example of image](./imgs/sprites/example1.jpg)
+## Art Style Proposals Conversation
+![ ](./imgs/sprites/blocks_2_Sprite.png)
+
+![ ](./imgs/sprites/blocks_3_sprite.png)
+
+![ ](./imgs/sprites/blocks_Sprite.png)
+
+![ ](./imgs/sprites/example1.jpg)
+
+![ ](./imgs/sprites/example_game_blocks.png.png)
