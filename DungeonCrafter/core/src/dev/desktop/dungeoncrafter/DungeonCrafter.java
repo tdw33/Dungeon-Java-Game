@@ -2,6 +2,7 @@ package dev.desktop.dungeoncrafter;
 
 import Screens.MainGameScreen;
 
+import Screens.MainMenuScreen;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -21,7 +22,7 @@ public class DungeonCrafter extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		this.setScreen(new MainGameScreen(this));
+		this.setScreen(new MainMenuScreen(this));
 	}
 
 	@Override
