@@ -1,9 +1,8 @@
-package dev.desktop.dungeoncrafter.desktop;
-
+package dev.teamcyan.dungeoncrafter.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
-import dev.desktop.dungeoncrafter.DungeonCrafter;
+import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
