@@ -1,4 +1,4 @@
-package Screens;
+package dev.teamcyan.dungeoncrafter.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
