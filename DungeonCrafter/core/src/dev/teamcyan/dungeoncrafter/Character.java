@@ -1,4 +1,4 @@
-package com.teamcyan.game;
+package dev.teamcyan.dungeoncrafter;
 
 public abstract class Character{
     private String name = "Character Name";

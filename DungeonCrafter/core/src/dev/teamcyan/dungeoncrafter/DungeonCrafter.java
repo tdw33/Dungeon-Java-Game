@@ -1,4 +1,4 @@
-package dev.desktop.dungeoncrafter;
+package dev.teamcyan.dungeoncrafter;
 
 import Screens.MainGameScreen;
 

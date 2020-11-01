@@ -1,4 +1,4 @@
-package com.teamcyan.game;
+package dev.teamcyan.dungeoncrafter;
 
 public class Pos {
     private float x;

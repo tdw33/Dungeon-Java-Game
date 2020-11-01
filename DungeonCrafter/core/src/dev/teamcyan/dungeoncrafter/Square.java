@@ -1,4 +1,4 @@
-package com.teamcyan.game;
+package dev.teamcyan.dungeoncrafter;
 
 import java.util.Random;
 import com.badlogic.gdx.ApplicationAdapter;

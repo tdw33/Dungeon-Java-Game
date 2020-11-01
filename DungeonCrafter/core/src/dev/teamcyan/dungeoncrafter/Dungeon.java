@@ -1,4 +1,4 @@
-package com.teamcyan.game;
+package dev.teamcyan.dungeoncrafter;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Input;              //for user input
