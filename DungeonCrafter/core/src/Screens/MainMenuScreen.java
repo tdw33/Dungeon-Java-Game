@@ -85,7 +85,9 @@ public class MainMenuScreen implements Screen {
                 < LOAD_BUTTON_Y + LOAD_BUTTON_HEIGHT &&  DungeonCrafter.HEIGHT - Gdx.input.getY() > LOAD_BUTTON_Y) {
             game.batch.draw(loadButtonActive,
                     play_x,LOAD_BUTTON_Y, LOAD_BUTTON_WIDTH, LOAD_BUTTON_HEIGHT);
-
+            if(Gdx.input.isTouched()){
+                this.dispose();
+                game.setScreen(new MainGameScreen(game));}
 
         } else {
             game.batch.draw(loadButtonInactive,
