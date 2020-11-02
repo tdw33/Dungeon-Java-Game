@@ -7,11 +7,21 @@ public class GMap{
   private int sizeHorizontal;
   private int sizeVertical;
   private String seed;
-  private gMap Vector<Vector<GameElement>>;
+  private List<List<GameElement>> gMap = new ArrayList<List<GameElement>>();
 
   public GameElement getGEAtPos(Pos position){
-    //returns 
-    return this.gMap.at
+    return this.gMap[position.getX()][position.getY()];
+  }
 
 
+  destroyGEAtPos(Pos):
+
++ getMapSize(): Integer
+
++ setMapSize(): Integer
+
++ getPlayer():Pos
+
++ mapInit(Seed):Map
+  public 
 }

@@ -1,21 +1,23 @@
-/package dev.teamcyan.dungeoncrafter.classes;
+package dev.teamcyan.dungeoncrafter.classes;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import java.util.*;
 import dev.teamcyan.dungeoncrafter.classes.*;
 
 public class GameElement {
+
   private String uid;
   private Pos position;
-  private bool visible;
-  private integer health;
+  private boolean visible;
+  private int health;
   private Sprite sprite;
-  private bool collision;
+  private boolean collision;
+  private GEType getype;
 
-  public void render(){
-    // method for rendering
+  public void init(){
+    // method for initialising
   }
 
-  public void render()
-  {
+  public void render(){
     // method for rendering
   }
 
