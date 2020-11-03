@@ -4,13 +4,13 @@ import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 
 public class GameModel {
     private GMap map;
-    private Square player;
     private boolean active = false;
+    private GEPlayer player;
 
     //Start a new game.
     public void startNewGame(DungeonCrafter controller) {
         this.map = new GMap();//GalaxyFactory.get().make();
-        this.player = new Square();// new Player(new ObjectIntMap<>(), galaxy.getStations().get("Homeworld"), galaxy.getStations().get("Homeworld"));
+        this.player = new GEPlayer();// new Player(new ObjectIntMap<>(), galaxy.getStations().get("Homeworld"), galaxy.getStations().get("Homeworld"));
         //this.player.getQuests().add(new QuestFactory().make("INTRO_QUEST", controller, this));
         this.active = true;
     }
@@ -18,7 +18,7 @@ public class GameModel {
     public void dispose() { }
 
     // === Getters / Setters === //
-    public Square getPlayer() {
+    public GEPlayer getPlayer() {
         return player;
     }
 

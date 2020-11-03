@@ -1,7 +1,9 @@
 package dev.teamcyan.dungeoncrafter.screens;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.kotcrab.vis.ui.widget.*;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
@@ -11,6 +13,10 @@ public class InventoryScreen extends BaseScreen{
     private VisImage imgItem;
     private VisTextArea txtDescription;
     private VisTextButton btnBack;
+    boolean movingRight = false;
+    boolean movingLeft = false;
+    boolean movingUp = false;
+    boolean movingDown = false;
 
     public InventoryScreen(DungeonCrafter parent, GameModel model) {
         super(parent, model);
@@ -80,7 +86,71 @@ public class InventoryScreen extends BaseScreen{
     }
 
     private void updateSelection(String selected) {
-        imgItem.setDrawable(controller.getManagedTexture(selected));
+        imgItem.setDrawable(new TextureRegionDrawable(controller.getAtlasRegion(selected)));
         txtDescription.setText(selected);
+    }
+
+    @Override
+    public boolean keyDown(int keycode) {
+        if(keycode == Input.Keys.LEFT) {
+            movingLeft = true;
+        }
+        if(keycode == Input.Keys.RIGHT) {
+            movingRight = true;
+        }
+        if(keycode == Input.Keys.UP) {
+            movingUp = true;
+        }
+        if(keycode == Input.Keys.DOWN) {
+            movingDown = true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean keyUp(int keycode) {
+        if(keycode == Input.Keys.RIGHT)
+            movingRight = false;
+
+        if(keycode == Input.Keys.LEFT)
+            movingLeft = false;
+
+        if(keycode == Input.Keys.UP)
+            movingUp = false;
+
+        if(keycode == Input.Keys.DOWN)
+            movingDown = false;
+
+        return false;
+    }
+
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
     }
 }

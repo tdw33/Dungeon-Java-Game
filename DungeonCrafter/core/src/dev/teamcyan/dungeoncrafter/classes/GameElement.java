@@ -7,7 +7,7 @@ public class GameElement {
   protected Pos position;
   protected boolean visible;
   protected int health;
-  protected Sprite sprite;
+  protected String spriteName;
   protected boolean collision;
   protected GEType getype;
 
@@ -38,6 +38,10 @@ public class GameElement {
 
   public void die()
   {
+  }
+
+  public String getSpriteName() {
+    return this.spriteName;
   }
 
   public Pos getPosition() {

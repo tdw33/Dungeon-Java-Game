@@ -1,5 +1,6 @@
 package dev.teamcyan.dungeoncrafter.screens;
 
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
@@ -9,7 +10,7 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 
-public abstract class BaseScreen implements Screen {
+public abstract class BaseScreen implements Screen, InputProcessor {
     protected DungeonCrafter controller;
     protected GameModel model;
     protected Stage ui;
@@ -29,6 +30,7 @@ public abstract class BaseScreen implements Screen {
         // Map the controller
         InputMultiplexer input = new InputMultiplexer();
         input.addProcessor(ui);
+        Gdx.input.setInputProcessor(this);
 
         // Screen-specific initialization
         init();

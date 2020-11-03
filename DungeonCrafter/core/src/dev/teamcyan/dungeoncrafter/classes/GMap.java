@@ -8,6 +8,7 @@ public class GMap{
   private int sizeVertical;
   private String seed;
   private GameElement[][] gMap = {};
+  private String mapName;
   private GEPlayer player;
 
   public GMap (int x, int y)
@@ -22,13 +23,14 @@ public class GMap{
     //default initialiser
     setMapSize(100,100);
     placePlayer();
+    mapName = "tile/TileMap.tmx";
   }
 
   private void placePlayer()
   {
     player = new GEPlayer();
-    player.setX(this.sizeVertical/2);
-    player.setY(this.sizeHorizontal/2);
+    //player.setX(this.sizeVertical/2);
+    //player.setY(this.sizeHorizontal/2);
   }
 
   public GameElement getGEAtPos(Pos position)
@@ -59,6 +61,10 @@ public class GMap{
 
   public Pos getPlayer(){
     return player.getPosition();
+  }
+
+  public String getMapName(){
+    return mapName;
   }
 
   /*
