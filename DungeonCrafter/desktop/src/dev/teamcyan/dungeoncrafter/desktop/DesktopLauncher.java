@@ -27,7 +27,7 @@ public class DesktopLauncher {
 		sets.paddingX = 1; //space out images in atlas to help with texture bleeding
 		sets.paddingY = 1;
 		sets.edgePadding = true;
-		TexturePacker.process(sets, "raw_textures", "./", "textures"); //pack the textures
+		//TexturePacker.process(sets, "raw_textures", "./", "textures"); //pack the textures
 
 
 

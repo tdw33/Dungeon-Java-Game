@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
+import dev.teamcyan.dungeoncrafter.classes.GMap;
 
 public class MainGameScreen implements Screen, InputProcessor {
 
@@ -22,9 +23,12 @@ public class MainGameScreen implements Screen, InputProcessor {
 
 
     DungeonCrafter game;
+    GMap model;
 
-    public MainGameScreen(DungeonCrafter game) {
+    public MainGameScreen(DungeonCrafter game, GMap model) {
+
         this.game = game;
+        this.model = model;
     }
 
     @Override
@@ -60,7 +64,7 @@ public class MainGameScreen implements Screen, InputProcessor {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         game.batch.begin();
-        game.batch.draw(sprite, sprite.getX(), sprite.getY(), 100,100); // this will be diffrent when you have nummbers at end eg player_1, player_2
+        game.batch.draw(sprite, sprite.getX(), sprite.getY(), sprite.getWidth(),sprite.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
         game.batch.end();
     }
 

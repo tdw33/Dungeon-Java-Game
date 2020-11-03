@@ -7,8 +7,8 @@ public class GMap{
   private int sizeHorizontal;
   private int sizeVertical;
   private String seed;
-  private List<List<GameElement>> gMap = new ArrayList<List<GameElement>>();
-  private GEPlayer;
+  private GameElement[][] gMap = {};
+  private GEPlayer player;
 
   public GMap (int x, int y)
   {
@@ -24,11 +24,11 @@ public class GMap{
     placePlayer();
   }
 
-  private placePlayer()
+  private void placePlayer()
   {
-    GEPlayer = new GEPlayer();
-    GEPlayer.setX(this.sizeVertical/2);
-    GEPlayer.setY(this.sizeHorizontal/2);
+    player = new GEPlayer();
+    player.setX(this.sizeVertical/2);
+    player.setY(this.sizeHorizontal/2);
   }
 
   public GameElement getGEAtPos(Pos position)
@@ -57,8 +57,11 @@ public class GMap{
     this.sizeHorizontal = x;
   }
 
-+ getPlayer():Pos
+  public Pos getPlayer(){
+    return player.getPosition();
+  }
 
+  /*
 + mapInit(Seed):Map
-  public 
+  public */
 }

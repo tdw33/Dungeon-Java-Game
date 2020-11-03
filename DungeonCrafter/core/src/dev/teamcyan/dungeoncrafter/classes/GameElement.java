@@ -39,4 +39,8 @@ public class GameElement {
   public void die()
   {
   }
+
+  public Pos getPosition() {
+    return this.position;
+  }
 }

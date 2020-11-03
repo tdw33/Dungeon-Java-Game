@@ -70,4 +70,68 @@ public class MapTestScreen implements Screen, InputProcessor {
         atlas.dispose();
     }
 
+    @Override
+    public boolean keyDown(int keycode) {
+        if(keycode == Input.Keys.LEFT) {
+            movingLeft = true;
+        }
+        if(keycode == Input.Keys.RIGHT) {
+            movingRight = true;
+        }
+        if(keycode == Input.Keys.UP) {
+            movingUp = true;
+        }
+        if(keycode == Input.Keys.DOWN) {
+            movingDown = true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean keyUp(int keycode) {
+        if(keycode == Input.Keys.RIGHT)
+            movingRight = false;
+
+        if(keycode == Input.Keys.LEFT)
+            movingLeft = false;
+
+        if(keycode == Input.Keys.UP)
+            movingUp = false;
+
+        if(keycode == Input.Keys.DOWN)
+            movingDown = false;
+
+        return false;
+    }
+
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
+    }
+
 }
