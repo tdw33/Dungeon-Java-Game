@@ -14,10 +14,8 @@ public class DungeonCrafter extends Game {
 
 	public SpriteBatch batch;
 
-
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
 		this.setScreen(new MainGameScreen(this));
 	}
 
