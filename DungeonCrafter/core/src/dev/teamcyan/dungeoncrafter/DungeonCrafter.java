@@ -16,6 +16,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import sun.applet.Main;
 
 public class DungeonCrafter extends Game {
 
@@ -41,7 +42,7 @@ public class DungeonCrafter extends Game {
 		this.setDebugOn(true);
 		this.model = new GameModel();
 		loadScreens();
-		this.changeScreen(InventoryScreen.class);
+		this.changeScreen(MainGameScreen.class);
 		//batch = new SpriteBatch();
 		//this.setScreen(new MainGameScreen(this, new GMap(this.WIDTH, this.HEIGHT)));
 	}
@@ -102,6 +103,7 @@ public class DungeonCrafter extends Game {
 
 	public void loadScreens() {
 		screens.put(InventoryScreen.class, new InventoryScreen(this, model));
+		screens.put(MainGameScreen.class, new MainGameScreen(this, model));
 	}
 	/*@Override
 	public void render () {

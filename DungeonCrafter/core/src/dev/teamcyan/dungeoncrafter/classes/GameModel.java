@@ -22,7 +22,7 @@ public class GameModel {
         return player;
     }
 
-    public GMap getGalaxy() {
+    public GMap getMap() {
         return map;
     }
 
