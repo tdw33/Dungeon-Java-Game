@@ -9,7 +9,7 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
 
-		config.title = "Working?";
+		config.title = "Dungeon Crafter";
 		config.width = DungeonCrafter.WIDTH;
 		config.height = DungeonCrafter.HEIGHT;
 		config.resizable = true;
