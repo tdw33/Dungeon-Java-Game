@@ -10,3 +10,7 @@ Week 1 User Stories
 Week 2 User Stories (After the first customer meeting)
 7. As a player, I want to have more than one path to get to the end point or more than one way to solve a problem.
 8. As a player, I want to be able to recover my character's health.
+
+3rd customer meeting
+9. As a player, I want to see details of the story 
+    break down into episodes: what the outcomes of the episodes are, what additional character capabilities come along with it
