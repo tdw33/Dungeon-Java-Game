@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import dev.desktop.dungeoncrafter.DungeonCrafter;
+import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 
 public class MainGameScreen implements Screen, InputProcessor {
 

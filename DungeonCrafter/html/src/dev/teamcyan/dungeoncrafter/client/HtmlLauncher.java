@@ -1,9 +1,9 @@
-package dev.desktop.dungeoncrafter.client;
+package dev.teamcyan.dungeoncrafter.client;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
-import dev.desktop.dungeoncrafter.DungeonCrafter;
+import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 
 public class HtmlLauncher extends GwtApplication {
 

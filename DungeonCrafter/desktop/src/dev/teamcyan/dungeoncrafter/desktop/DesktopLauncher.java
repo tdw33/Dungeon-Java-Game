@@ -1,9 +1,9 @@
-package dev.desktop.dungeoncrafter.desktop;
+package dev.teamcyan.dungeoncrafter.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
-import dev.desktop.dungeoncrafter.DungeonCrafter;
+import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
@@ -28,7 +28,7 @@ public class DesktopLauncher {
 		sets.paddingX = 1; //space out images in atlas to help with texture bleeding
 		sets.paddingY = 1;
 		sets.edgePadding = true;
-		TexturePacker.process(sets, "raw_textures", "./", "textures"); //pack the textures
+		//TexturePacker.process(sets, "raw_textures", "./", "textures"); //pack the textures
 
 
 
