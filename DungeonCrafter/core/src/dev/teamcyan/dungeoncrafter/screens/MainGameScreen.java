@@ -25,8 +25,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.maps.*;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
 import com.badlogic.gdx.math.Vector3 ;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import java.util.ArrayList;
 
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
@@ -46,6 +47,10 @@ public class MainGameScreen extends BaseScreen {
     private int mapPixelWidth;
     private int mapPixelHeight;
     private OrthographicCamera camera;
+
+    BitmapFont font;
+    ArrayList<String> keyInfo;
+    String mouseInfo;
 
 
     DungeonCrafter game;
@@ -108,6 +113,10 @@ public class MainGameScreen extends BaseScreen {
         model.getPlayer().setY(mapPixelHeight/2);
         sprite.setPosition(model.getPlayer().getPosition().getX(),model.getPlayer().getPosition().getY());
 
+        font = new BitmapFont();//Gdx.files.internal("data/digib.fnt"),Gdx.files.internal("data/digib.png"), false);;
+        keyInfo = new ArrayList<String>();
+        mouseInfo = "";
+
     }
 
     @Override
@@ -165,9 +174,17 @@ public class MainGameScreen extends BaseScreen {
             batch.draw(s, s.getX(), s.getY(), s.getWidth(),s.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
         }*/
         batch.draw(sprite, sprite.getX(), sprite.getY(), sprite.getWidth()*3,sprite.getHeight()*3); // this will be diffrent when you have nummbers at end eg player_1, player_2
+        font.setColor(1,1,1,1);   //Brown is an underated Colour
+        font.draw(batch, mouseInfo, sprite.getX(), sprite.getY()+150);
+        font.draw(batch, "Mouse XY:", sprite.getX(), sprite.getY()+170);
+        font.draw(batch, "Keys active:", sprite.getX(), sprite.getY()+200);
+        for(int i = 0; i < keyInfo.size(); i++)
+        {
+            font.draw(batch, keyInfo.get(i), sprite.getX()+80+(i*10), sprite.getY()+200);
+        }
+        //font.draw(game.batch, keyInfo, 50, DungeonCrafter.HEIGHT-30);
         batch.end();
         camera.update();
-
 
     }
 
@@ -203,6 +220,8 @@ public class MainGameScreen extends BaseScreen {
     @Override
     public boolean keyDown(int keycode) {
 
+        keyInfo.add(String.valueOf((char) (keycode + 68)));
+
         if(keycode == Input.Keys.LEFT) {
             movingLeft = true;
         }
@@ -226,8 +245,11 @@ public class MainGameScreen extends BaseScreen {
 
     @Override
     public boolean keyUp(int keycode) {
-        if(keycode == Input.Keys.RIGHT)
+        keyInfo.remove((keyInfo.indexOf(String.valueOf((char) (keycode + 68)))));
+        System.out.println((char) (keycode + 68));
+        if(keycode == Input.Keys.RIGHT) {
             movingRight = false;
+        }
 
         if(keycode == Input.Keys.LEFT)
             movingLeft = false;
@@ -255,6 +277,10 @@ public class MainGameScreen extends BaseScreen {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        System.out.println("x = " + screenX);
+        System.out.println("y = " + screenY);
+        sprite.setCenterX(screenX);
+        sprite.setCenterY(DungeonCrafter.HEIGHT - screenY);
         return false;
     }
 
@@ -270,6 +296,7 @@ public class MainGameScreen extends BaseScreen {
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
+        mouseInfo = "X = " + String.valueOf(screenX) + "\nY = " + String.valueOf(screenY);
         return false;
     }
 
