@@ -1,22 +1,18 @@
 package dev.teamcyan.dungeoncrafter;
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.ObjectMap;
-import com.kotcrab.vis.ui.VisUI;
-import dev.teamcyan.dungeoncrafter.classes.GMap;
-import dev.teamcyan.dungeoncrafter.classes.GameModel;
-import dev.teamcyan.dungeoncrafter.screens.BaseScreen;
-import dev.teamcyan.dungeoncrafter.screens.InventoryScreen;
-import dev.teamcyan.dungeoncrafter.screens.MainGameScreen;
+
 import com.badlogic.gdx.*;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.ObjectMap;
+import com.kotcrab.vis.ui.VisUI;
+import dev.teamcyan.dungeoncrafter.classes.GameModel;
+import dev.teamcyan.dungeoncrafter.screens.*;
 import sun.applet.Main;
 
 public class DungeonCrafter extends Game {
@@ -83,7 +79,7 @@ public class DungeonCrafter extends Game {
 	//	  Create a new game, starting with the story screen
 	public void newGame() {
 		model.startNewGame(this);
-		this.changeScreen(MainGameScreen.class);
+		this.changeScreen(MainMenuScreen.class);
 	}
 
 	// === Debug Logic === //
@@ -105,6 +101,8 @@ public class DungeonCrafter extends Game {
 	public void loadScreens() {
 		screens.put(InventoryScreen.class, new InventoryScreen(this, model));
 		screens.put(MainGameScreen.class, new MainGameScreen(this, model));
+		screens.put(MainMenuScreen.class, new MainMenuScreen(this, model));
+		screens.put(SettingsScreen.class, new SettingsScreen(this, model));
 	}
 	/*@Override
 	public void render () {
