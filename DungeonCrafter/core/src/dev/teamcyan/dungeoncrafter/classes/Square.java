@@ -1,5 +1,6 @@
-package dev.teamcyan.dungeoncrafter;
+package dev.teamcyan.dungeoncrafter.classes;
 
+import java.awt.*;
 import java.util.Random;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Input;              //for user input
@@ -9,11 +10,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-public class Square extends Character{
+public class Square extends GameElement{
     ShapeRenderer square;
 
-    public void create()
-    {
+    public Square() {
         square = new ShapeRenderer();
     }
 

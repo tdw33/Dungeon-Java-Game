@@ -528,20 +528,6 @@ tile/water
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
-  index: 7
-tile/water
-  rotate: false
-  xy: 356, 72
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 12
-tile/water
-  rotate: false
-  xy: 356, 72
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
   index: 8
 tile/water
   rotate: false
@@ -549,7 +535,7 @@ tile/water
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
-  index: 13
+  index: 7
 tile/water
   rotate: false
   xy: 356, 72
@@ -571,6 +557,20 @@ tile/water
   orig: 16, 16
   offset: 0, 0
   index: 6
+tile/water
+  rotate: false
+  xy: 356, 72
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 12
+tile/water
+  rotate: false
+  xy: 356, 72
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 13
 tile/water
   rotate: false
   xy: 356, 72
