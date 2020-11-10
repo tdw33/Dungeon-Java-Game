@@ -77,7 +77,6 @@ public class MainGameScreen extends BaseScreen {
         int tilePixelHeight = prop.get("tileheight", Integer.class);
         mapPixelWidth = mapWidth * tilePixelWidth;
         mapPixelHeight = mapHeight * tilePixelHeight;
-
         /*
         //map = new TiledMap();
         TiledMapTileLayer.Cell cell;

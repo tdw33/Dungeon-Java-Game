@@ -2,6 +2,7 @@ package dev.teamcyan.dungeoncrafter;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,7 +14,7 @@ import com.badlogic.gdx.utils.ObjectMap;
 import com.kotcrab.vis.ui.VisUI;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 import dev.teamcyan.dungeoncrafter.screens.*;
-import sun.applet.Main;
+import dev.teamcyan.dungeoncrafter.classes.AudioManager;
 
 public class DungeonCrafter extends Game {
 
@@ -21,6 +22,7 @@ public class DungeonCrafter extends Game {
 	public static final int HEIGHT = 720;
 
 	public SpriteBatch batch;
+	public AudioManager audioManager;
 
 	private GameModel model;
 	private boolean debugMode = true;
@@ -30,6 +32,9 @@ public class DungeonCrafter extends Game {
 	@Override
 	public void create () {
 		VisUI.load();
+
+		// Initialise the audio manager
+		audioManager = new AudioManager();
 
 		// Initialize the asset manager
 		assetManager = new AssetManager();
@@ -96,6 +101,9 @@ public class DungeonCrafter extends Game {
 	public void changeScreen(Class<? extends BaseScreen> key) {
 		this.setScreen(screens.get(key));
 		//handle(new GameEvent("SCREEN_CHANGE").set("SCREEN", screens.get(key)));
+		if(key.getName() != "dev.teamcyan.dungeoncrafter.screens.MainMenuScreen") {
+			audioManager.fadeMusic(audioManager.menuSound);
+		}
 	}
 
 	public void loadScreens() {
@@ -104,6 +112,7 @@ public class DungeonCrafter extends Game {
 		screens.put(MainMenuScreen.class, new MainMenuScreen(this, model));
 		screens.put(SettingsScreen.class, new SettingsScreen(this, model));
 	}
+
 	/*@Override
 	public void render () {
 		super.render();
