@@ -105,9 +105,8 @@ public class MainGameScreen extends BaseScreen {
 
         mapRenderer = new OrthogonalTiledMapRenderer(map);
         camera = new OrthographicCamera();
-        camera.zoom = (float) 5.0;
+        camera.zoom = (float) 1.0;
 
-        System.out.println(mapPixelWidth);
         sprite = new Sprite(controller.getAtlasRegion(model.getPlayer().getSpriteName()));
         model.getPlayer().setX(mapPixelWidth/2);
         model.getPlayer().setY(mapPixelHeight/2);
@@ -126,6 +125,22 @@ public class MainGameScreen extends BaseScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("Tile Layer 1");
+
+        // apply gravity, when no floor
+        double newPredictedYPosition = model.getPlayer().getFallVelocity()+Gdx.graphics.getDeltaTime()*controller.GRAVITY;
+
+        TiledMapTileLayer.Cell gcellLeftCorner = layer.getCell((int) (sprite.getX() / layer.getTileWidth()), (int) ((sprite.getY()-newPredictedYPosition) / layer.getTileHeight()));
+        TiledMapTileLayer.Cell gcellRightCorner = layer.getCell((int) (((sprite.getX()-1)+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()-newPredictedYPosition) / layer.getTileHeight()));
+        TiledMapTileLayer.Cell gcellCenter = layer.getCell((int) ((sprite.getX()+(sprite.getWidth()/2)) / layer.getTileWidth()), (int) ((sprite.getY()-newPredictedYPosition) / layer.getTileHeight()));
+        if (gcellLeftCorner == null && gcellRightCorner == null && gcellCenter == null) {
+            model.getPlayer().setFallVelocity(newPredictedYPosition);
+            double displacement = model.getPlayer().getFallVelocity();
+            model.getPlayer().setY(model.getPlayer().getPosition().getY()-(int)displacement);
+            camera.translate(0,-(int)displacement,0);
+
+        } else {
+            model.getPlayer().setFallVelocity(0);
+        }
 
         if(movingRight) {
             TiledMapTileLayer.Cell cellBottomCorner = layer.getCell((int) ((sprite.getX()+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()) / layer.getTileHeight()));

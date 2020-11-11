@@ -19,6 +19,7 @@ public class DungeonCrafter extends Game {
 
 	public static final int WIDTH = 720;
 	public static final int HEIGHT = 720;
+	public static final double GRAVITY = 9.81;
 
 	public SpriteBatch batch;
 
