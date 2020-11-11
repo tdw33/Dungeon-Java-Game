@@ -3,14 +3,14 @@ package dev.teamcyan.dungeoncrafter.classes;
 public class GEPlayer extends GameElement 
 {
   String playerTextureName;
-  double fallVelocity;
+  Velocity velocity;
 
   public GEPlayer ()
   {
     this.getype = GEType.PLAYER;
     this.spriteName = "tile/wall";
     this.position = new Pos(0,0);
-    this.fallVelocity = 0.0;
+    this.velocity = new Velocity(0,0);
 
   }
 
@@ -24,11 +24,8 @@ public class GEPlayer extends GameElement
     this.position.setY(y);
   }
 
-  public double getFallVelocity() {
-    return this.fallVelocity;
+  public Velocity getVelocity() {
+    return this.velocity;
   }
 
-  public void setFallVelocity(double y) {
-    this.fallVelocity = y;
-  }
 }

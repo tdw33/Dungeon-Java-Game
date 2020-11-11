@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Null;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
+import dev.teamcyan.dungeoncrafter.classes.GEPlayer;
 import dev.teamcyan.dungeoncrafter.classes.GMap;
 import com.badlogic.gdx.maps.objects.TextureMapObject;
 import com.badlogic.gdx.maps.tiled.*;
@@ -118,16 +119,24 @@ public class MainGameScreen extends BaseScreen {
 
     }
 
-    @Override
-    public void draw(float delta) {
-
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("Tile Layer 1");
-
+    public void setPosition(GEPlayer player, TiledMapTileLayer layer) {
         // apply gravity, when no floor
-        double newPredictedYPosition = model.getPlayer().getFallVelocity()+Gdx.graphics.getDeltaTime()*controller.GRAVITY;
+        float delta = Gdx.graphics.getDeltaTime();
+        double newXVelocity;
+
+        if (movingLeft == movingRight) {
+            if (model.getPlayer().getVelocity().getX() > 0) {
+                newXVelocity = delta * controller.RESISTANCE * model.getPlayer().getVelocity().getX();
+            } else {
+                newXVelocity = delta * controller.RESISTANCE * -1 * model.getPlayer().getVelocity().getX();
+            }
+        } else if (movingLeft) {
+            newXVelocity = delta * controller.RESISTANCE * -1 * model.getPlayer().getVelocity().getX();
+        } else {
+            newXVelocity = delta * controller.RESISTANCE * model.getPlayer().getVelocity().getX();
+        }
+
+        double newYVelocity = delta * controller.GRAVITY * model.getPlayer().getVelocity().getY();
 
         TiledMapTileLayer.Cell gcellLeftCorner = layer.getCell((int) (sprite.getX() / layer.getTileWidth()), (int) ((sprite.getY()-newPredictedYPosition) / layer.getTileHeight()));
         TiledMapTileLayer.Cell gcellRightCorner = layer.getCell((int) (((sprite.getX()-1)+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()-newPredictedYPosition) / layer.getTileHeight()));
@@ -142,17 +151,18 @@ public class MainGameScreen extends BaseScreen {
             model.getPlayer().setFallVelocity(0);
         }
 
-        if(movingRight) {
-            TiledMapTileLayer.Cell cellBottomCorner = layer.getCell((int) ((sprite.getX()+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()) / layer.getTileHeight()));
-            TiledMapTileLayer.Cell cellTopCorner = layer.getCell((int) ((sprite.getX()+sprite.getWidth()) / layer.getTileWidth()), (int) (((sprite.getY()-1)+sprite.getHeight()) / layer.getTileHeight()));
-            TiledMapTileLayer.Cell cellCenter = layer.getCell((int) ((sprite.getX()+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()+(sprite.getHeight()/2)) / layer.getTileHeight()));
-            if (cellBottomCorner == null && cellTopCorner == null && cellCenter == null) {
+        if(newXVelocity > 0) {
+            TiledMapTileLayer.Cell bottomLeft = layer.getCell((int) ((model.getPlayer().getPosition().getX() + newXVelocity + sprite.getWidth()) / layer.getTileWidth()), ((model.getPlayer().getPosition().getY()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell topLeft = layer.getCell((int) ((model.getPlayer().getPosition().getX() + newXVelocity + sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY() + sprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell centerLeft = layer.getCell((int) ((model.getPlayer().getPosition().getX() + newXVelocity + sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY() + sprite.getHeight()/2) / layer.getTileHeight()));
+            if (bottomLeft == null && topLeft == null && centerLeft == null) {
+
                 model.getPlayer().setX(model.getPlayer().getPosition().getX()+1);
                 camera.translate(1,0,0);
             }
 
         }
-        if(movingLeft) {
+        if(newXVelocity < 0) {
             TiledMapTileLayer.Cell cellBottomCorner = layer.getCell((int) ((sprite.getX()-1) / layer.getTileWidth()), (int) (sprite.getY() / layer.getTileHeight()));
             TiledMapTileLayer.Cell cellTopCorner = layer.getCell((int) ((sprite.getX()-1) / layer.getTileWidth()), (int) (((sprite.getY()-1)+sprite.getHeight()) / layer.getTileHeight()));
             TiledMapTileLayer.Cell cellCenter = layer.getCell((int) ((sprite.getX()-1) / layer.getTileWidth()), (int) ((sprite.getY()+(sprite.getHeight()/2)) / layer.getTileHeight()));
@@ -170,15 +180,20 @@ public class MainGameScreen extends BaseScreen {
                 camera.translate(0, 1, 0);
             }
         }
-        if(movingDown) {
-            TiledMapTileLayer.Cell cellLeftCorner = layer.getCell((int) (sprite.getX() / layer.getTileWidth()), (int) ((sprite.getY()-1) / layer.getTileHeight()));
-            TiledMapTileLayer.Cell cellRightCorner = layer.getCell((int) (((sprite.getX()-1)+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()-1) / layer.getTileHeight()));
-            TiledMapTileLayer.Cell cellCenter = layer.getCell((int) ((sprite.getX()+(sprite.getWidth()/2)) / layer.getTileWidth()), (int) ((sprite.getY()-1) / layer.getTileHeight()));
-            if (cellLeftCorner == null && cellRightCorner == null && cellCenter == null) {
-                model.getPlayer().setY(model.getPlayer().getPosition().getY()-1);
-                camera.translate(0, -1, 0);
-            }
-        }
+
+    }
+
+    @Override
+    public void draw(float delta) {
+
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("Tile Layer 1");
+
+        setPosition(model.getPlayer(), layer);
+
+
         if(zoomIn) {
             camera.zoom -= 0.1;
         }
