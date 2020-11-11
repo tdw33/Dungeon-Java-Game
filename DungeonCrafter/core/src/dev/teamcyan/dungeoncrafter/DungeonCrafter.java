@@ -2,10 +2,8 @@ package dev.teamcyan.dungeoncrafter;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -13,41 +11,42 @@ import com.badlogic.gdx.utils.ObjectMap;
 import com.kotcrab.vis.ui.VisUI;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 import dev.teamcyan.dungeoncrafter.screens.*;
-import sun.applet.Main;
 
 public class DungeonCrafter extends Game {
+
+	public SpriteBatch batch;
+	private GameModel model;
+	private AssetManager assetManager;
 
 	public static final int WIDTH = 720;
 	public static final int HEIGHT = 720;
 
-	public SpriteBatch batch;
-
-	private GameModel model;
 	private boolean debugMode = true;
-	private AssetManager assetManager;
 	private ObjectMap<Class<? extends BaseScreen>, BaseScreen> screens = new ObjectMap<>();
 
-	@Override
-	public void create () {
-		VisUI.load();
-
-		// Initialize the asset manager
+   public void init_asset_manager()
+   {
+     /* Init asset manager */
 		assetManager = new AssetManager();
 		assetManager.load("textures.atlas", TextureAtlas.class);
 		assetManager.finishLoading();
+   }
 
+	@Override
+	public void create () 
+   {
 		this.setDebugOn(true);
 		this.model = new GameModel();
+		VisUI.load();
+      init_asset_manager();
 		loadScreens();
 		newGame();
-		//batch = new SpriteBatch();
-		//this.setScreen(new MainGameScreen(this, new GMap(this.WIDTH, this.HEIGHT)));
 	}
 
 	@Override
-	public void dispose () {
-		// Dispose of the view
-		setScreen(null);
+	public void dispose () 
+   {
+		setScreen(null); // Dispose of the view
 		for (ObjectMap.Entry<Class<? extends BaseScreen>,BaseScreen> var : screens)
 		{
 			var.value.dispose();
@@ -60,20 +59,33 @@ public class DungeonCrafter extends Game {
 	}
 
 	/**
-	 * Convenience method to safely load textures. If the texture isn't found, a blank one is created and the error is logged.
+    * Convenience method to safely load textures. If the texture isn't found, a
+    * blank one is created and the error is logged.
 	 * @param textureName The name of the image that is being looked up.
 	 * @return
 	 */
+
 	public TextureAtlas.AtlasRegion getAtlasRegion(String textureName) {
-		try {
-			return assetManager.get("textures.atlas", TextureAtlas.class).findRegion(textureName);
-		} catch(Exception e) {
-			Gdx.app.error(getClass().getCanonicalName(), "Couldn't get managed texture.", e);
+		try 
+      {
+			return assetManager.get("textures.atlas", TextureAtlas.class)
+           .findRegion(textureName);
+		} 
+      catch(Exception e) 
+      {
+			Gdx.app.error(
+             getClass()
+             .getCanonicalName(), "Couldn't get managed texture.", e);
 			return getEmptyAtlasRegion();
 		}
 	}
+
 	public TextureAtlas.AtlasRegion getEmptyAtlasRegion() {
-		return new TextureAtlas.AtlasRegion(new TextureRegion(new Texture(new Pixmap(1,1, Pixmap.Format.RGBA8888))));
+		return new TextureAtlas
+        .AtlasRegion(
+            new TextureRegion(
+              new Texture(
+                new Pixmap(1,1, Pixmap.Format.RGBA8888))));
 	}
 
 	//	  Create a new game, starting with the story screen
@@ -104,9 +116,5 @@ public class DungeonCrafter extends Game {
 		screens.put(MainMenuScreen.class, new MainMenuScreen(this, model));
 		screens.put(SettingsScreen.class, new SettingsScreen(this, model));
 	}
-	/*@Override
-	public void render () {
-		super.render();
-	}*/
 
 }
