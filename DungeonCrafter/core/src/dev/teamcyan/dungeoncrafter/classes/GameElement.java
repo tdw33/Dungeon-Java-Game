@@ -11,11 +11,13 @@ public class GameElement {
   protected boolean collision;
   protected GEType getype;
 
-  public void init(){
+  public void init()
+  {
     // method for initialising
   }
 
-  public void render(){
+  public void render()
+  {
     // method for rendering
   }
 
