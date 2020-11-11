@@ -125,57 +125,58 @@ public class MainGameScreen extends BaseScreen {
         double newXVelocity;
 
         if (movingLeft == movingRight) {
-            if (model.getPlayer().getVelocity().getX() > 0) {
-                newXVelocity = delta * controller.RESISTANCE * model.getPlayer().getVelocity().getX();
-            } else {
-                newXVelocity = delta * controller.RESISTANCE * -1 * model.getPlayer().getVelocity().getX();
-            }
-        } else if (movingLeft) {
-            newXVelocity = delta * controller.RESISTANCE * -1 * model.getPlayer().getVelocity().getX();
+            newXVelocity = model.getPlayer().getVelocity().getX() * controller.RESISTANCE;
+            newXVelocity = newXVelocity > -0.000000001 && newXVelocity < 0.000000001 ? 0 : newXVelocity;
+        } else if (movingRight) {
+            newXVelocity = model.getPlayer().getVelocity().getX() + controller.ACCELERATION * delta;// delta * controller.RESISTANCE * -1 + ;
         } else {
-            newXVelocity = delta * controller.RESISTANCE * model.getPlayer().getVelocity().getX();
+            newXVelocity = model.getPlayer().getVelocity().getX() - controller.ACCELERATION * delta;// delta * controller.RESISTANCE * -1 + ;
         }
 
-        double newYVelocity = delta * controller.GRAVITY * model.getPlayer().getVelocity().getY();
-
-        TiledMapTileLayer.Cell gcellLeftCorner = layer.getCell((int) (sprite.getX() / layer.getTileWidth()), (int) ((sprite.getY()-newPredictedYPosition) / layer.getTileHeight()));
-        TiledMapTileLayer.Cell gcellRightCorner = layer.getCell((int) (((sprite.getX()-1)+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()-newPredictedYPosition) / layer.getTileHeight()));
-        TiledMapTileLayer.Cell gcellCenter = layer.getCell((int) ((sprite.getX()+(sprite.getWidth()/2)) / layer.getTileWidth()), (int) ((sprite.getY()-newPredictedYPosition) / layer.getTileHeight()));
-        if (gcellLeftCorner == null && gcellRightCorner == null && gcellCenter == null) {
-            model.getPlayer().setFallVelocity(newPredictedYPosition);
-            double displacement = model.getPlayer().getFallVelocity();
-            model.getPlayer().setY(model.getPlayer().getPosition().getY()-(int)displacement);
-            camera.translate(0,-(int)displacement,0);
-
-        } else {
-            model.getPlayer().setFallVelocity(0);
-        }
+        double newXPosition = model.getPlayer().getPosition().getX() + newXVelocity;
 
         if(newXVelocity > 0) {
-            TiledMapTileLayer.Cell bottomLeft = layer.getCell((int) ((model.getPlayer().getPosition().getX() + newXVelocity + sprite.getWidth()) / layer.getTileWidth()), ((model.getPlayer().getPosition().getY()) / layer.getTileHeight()));
-            TiledMapTileLayer.Cell topLeft = layer.getCell((int) ((model.getPlayer().getPosition().getX() + newXVelocity + sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY() + sprite.getHeight()) / layer.getTileHeight()));
-            TiledMapTileLayer.Cell centerLeft = layer.getCell((int) ((model.getPlayer().getPosition().getX() + newXVelocity + sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY() + sprite.getHeight()/2) / layer.getTileHeight()));
-            if (bottomLeft == null && topLeft == null && centerLeft == null) {
-
-                model.getPlayer().setX(model.getPlayer().getPosition().getX()+1);
-                camera.translate(1,0,0);
+            TiledMapTileLayer.Cell topRight = layer.getCell((int) ((newXPosition + sprite.getWidth()) / layer.getTileWidth()), (int) Math.floor((model.getPlayer().getPosition().getY() + sprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell bottomRight = layer.getCell((int)((newXPosition + sprite.getWidth()) / layer.getTileWidth()), (int) Math.ceil(model.getPlayer().getPosition().getY() / layer.getTileHeight()));
+            if (bottomRight == null && topRight == null) {
+                model.getPlayer().getVelocity().setX(newXVelocity);
+                model.getPlayer().getPosition().setX((int)Math.ceil(newXPosition));
+                camera.translate((int)Math.ceil(newXVelocity),0,0);
+            } else {
+                model.getPlayer().getVelocity().setX(0.0);
             }
 
-        }
-        if(newXVelocity < 0) {
-            TiledMapTileLayer.Cell cellBottomCorner = layer.getCell((int) ((sprite.getX()-1) / layer.getTileWidth()), (int) (sprite.getY() / layer.getTileHeight()));
-            TiledMapTileLayer.Cell cellTopCorner = layer.getCell((int) ((sprite.getX()-1) / layer.getTileWidth()), (int) (((sprite.getY()-1)+sprite.getHeight()) / layer.getTileHeight()));
-            TiledMapTileLayer.Cell cellCenter = layer.getCell((int) ((sprite.getX()-1) / layer.getTileWidth()), (int) ((sprite.getY()+(sprite.getHeight()/2)) / layer.getTileHeight()));
-            if (cellBottomCorner == null && cellTopCorner == null && cellCenter == null) {
-                model.getPlayer().setX(model.getPlayer().getPosition().getX()-1);
-                camera.translate(-1, 0, 0);
+        } else if (newXVelocity < 0) {
+            TiledMapTileLayer.Cell topLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.floor((model.getPlayer().getPosition().getY() + sprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell bottomLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.ceil(model.getPlayer().getPosition().getY() / layer.getTileHeight()));
+            if (bottomLeft == null && topLeft == null) {
+                model.getPlayer().getVelocity().setX(newXVelocity);
+                model.getPlayer().getPosition().setX((int)Math.floor(newXPosition));
+                camera.translate((int)Math.floor(newXVelocity),0,0);
+            } else {
+                model.getPlayer().getVelocity().setX(0.0);
             }
         }
+
+        double newYVelocity = model.getPlayer().getVelocity().getY() + delta * controller.GRAVITY;
+
+        double newYPosition = model.getPlayer().getPosition().getY() - Math.floor(newYVelocity);
+        TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.floor(model.getPlayer().getPosition().getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+        TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((model.getPlayer().getPosition().getX()+sprite.getWidth()-1) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+        if (leftBottom == null && rightBottom == null) {
+            model.getPlayer().getVelocity().setY(newYVelocity);
+            model.getPlayer().setY((int)newYPosition);
+            camera.translate(0,-(int)newYVelocity,0);
+
+        } else {
+            model.getPlayer().getVelocity().setY(0);
+        }
+
+
         if(movingUp) {
             TiledMapTileLayer.Cell cellLeftCorner = layer.getCell((int) (sprite.getX() / layer.getTileWidth()), (int) ((sprite.getY()+sprite.getHeight()) / layer.getTileHeight()));
             TiledMapTileLayer.Cell cellRightCorner = layer.getCell((int) (((sprite.getX()-1)+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()+sprite.getHeight()) / layer.getTileHeight()));
-            TiledMapTileLayer.Cell cellCenter = layer.getCell((int) ((sprite.getX()+(sprite.getWidth()/2)) / layer.getTileWidth()), (int) ((sprite.getY()+sprite.getHeight()) / layer.getTileHeight()));
-            if (cellLeftCorner == null && cellRightCorner == null && cellCenter == null) {
+            if (cellLeftCorner == null && cellRightCorner == null) {
                 model.getPlayer().setY(model.getPlayer().getPosition().getY()+1);
                 camera.translate(0, 1, 0);
             }
@@ -189,10 +190,6 @@ public class MainGameScreen extends BaseScreen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("Tile Layer 1");
-
-        setPosition(model.getPlayer(), layer);
-
 
         if(zoomIn) {
             camera.zoom -= 0.1;
@@ -201,8 +198,9 @@ public class MainGameScreen extends BaseScreen {
             camera.zoom += 0.1;
         }
 
+        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("Tile Layer 1");
+        setPosition(model.getPlayer(), layer);
         sprite.setPosition(model.getPlayer().getPosition().getX(), model.getPlayer().getPosition().getY());
-
         mapRenderer.setView(camera);
         mapRenderer.render();
         batch.setProjectionMatrix(camera.combined);
@@ -284,7 +282,7 @@ public class MainGameScreen extends BaseScreen {
     @Override
     public boolean keyUp(int keycode) {
         keyInfo.remove((keyInfo.indexOf(String.valueOf((char) (keycode + 68)))));
-        System.out.println((char) (keycode + 68));
+        //System.out.println((char) (keycode + 68));
         if(keycode == Input.Keys.RIGHT) {
             movingRight = false;
         }

@@ -21,7 +21,8 @@ public class DungeonCrafter extends Game {
 	public static final int WIDTH = 720;
 	public static final int HEIGHT = 720;
 	public static final double GRAVITY = 9.81;
-	public static final double RESISTANCE = -5.0;
+	public static final double RESISTANCE = 0.2;
+	public static final double ACCELERATION = 5.0;
 
 	private boolean debugMode = true;
 	private ObjectMap<Class<? extends BaseScreen>, BaseScreen> screens = new ObjectMap<>();
