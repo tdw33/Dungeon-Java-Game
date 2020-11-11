@@ -128,32 +128,40 @@ public class MainGameScreen extends BaseScreen {
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("Tile Layer 1");
 
         if(movingRight) {
-            TiledMapTileLayer.Cell cell = layer.getCell((int) ((sprite.getX()+5+(sprite.getWidth()*2)) / layer.getTileWidth()), (int) ((sprite.getY()) / layer.getTileHeight()));
-            if (cell == null) {
-                model.getPlayer().setX(model.getPlayer().getPosition().getX()+5);
-                camera.translate(5,0,0);
+            TiledMapTileLayer.Cell cellBottomCorner = layer.getCell((int) ((sprite.getX()+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell cellTopCorner = layer.getCell((int) ((sprite.getX()+sprite.getWidth()) / layer.getTileWidth()), (int) (((sprite.getY()-1)+sprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell cellCenter = layer.getCell((int) ((sprite.getX()+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()+(sprite.getHeight()/2)) / layer.getTileHeight()));
+            if (cellBottomCorner == null && cellTopCorner == null && cellCenter == null) {
+                model.getPlayer().setX(model.getPlayer().getPosition().getX()+1);
+                camera.translate(1,0,0);
             }
 
         }
         if(movingLeft) {
-            TiledMapTileLayer.Cell cell = layer.getCell((int) ((sprite.getX()-5-(sprite.getWidth()*2)) / layer.getTileWidth()), (int) ((sprite.getY()) / layer.getTileHeight()));
-            if (cell == null) {
-                model.getPlayer().setX(model.getPlayer().getPosition().getX()-5);
-                camera.translate(-5, 0, 0);
+            TiledMapTileLayer.Cell cellBottomCorner = layer.getCell((int) ((sprite.getX()-1) / layer.getTileWidth()), (int) (sprite.getY() / layer.getTileHeight()));
+            TiledMapTileLayer.Cell cellTopCorner = layer.getCell((int) ((sprite.getX()-1) / layer.getTileWidth()), (int) (((sprite.getY()-1)+sprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell cellCenter = layer.getCell((int) ((sprite.getX()-1) / layer.getTileWidth()), (int) ((sprite.getY()+(sprite.getHeight()/2)) / layer.getTileHeight()));
+            if (cellBottomCorner == null && cellTopCorner == null && cellCenter == null) {
+                model.getPlayer().setX(model.getPlayer().getPosition().getX()-1);
+                camera.translate(-1, 0, 0);
             }
         }
         if(movingUp) {
-            TiledMapTileLayer.Cell cell = layer.getCell((int) (sprite.getX() / layer.getTileWidth()), (int) ((sprite.getY()+5+(sprite.getHeight()*2)) / layer.getTileHeight()));
-            if (cell == null) {
-                model.getPlayer().setY(model.getPlayer().getPosition().getY()+5);
-                camera.translate(0, 5, 0);
+            TiledMapTileLayer.Cell cellLeftCorner = layer.getCell((int) (sprite.getX() / layer.getTileWidth()), (int) ((sprite.getY()+sprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell cellRightCorner = layer.getCell((int) (((sprite.getX()-1)+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()+sprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell cellCenter = layer.getCell((int) ((sprite.getX()+(sprite.getWidth()/2)) / layer.getTileWidth()), (int) ((sprite.getY()+sprite.getHeight()) / layer.getTileHeight()));
+            if (cellLeftCorner == null && cellRightCorner == null && cellCenter == null) {
+                model.getPlayer().setY(model.getPlayer().getPosition().getY()+1);
+                camera.translate(0, 1, 0);
             }
         }
         if(movingDown) {
-            TiledMapTileLayer.Cell cell = layer.getCell((int) (sprite.getX() / layer.getTileWidth()), (int) ((sprite.getY()-5-(sprite.getHeight()*2)) / layer.getTileHeight()));
-            if (cell == null) {
-                model.getPlayer().setY(model.getPlayer().getPosition().getY()-5);
-                camera.translate(0, -5, 0);
+            TiledMapTileLayer.Cell cellLeftCorner = layer.getCell((int) (sprite.getX() / layer.getTileWidth()), (int) ((sprite.getY()-1) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell cellRightCorner = layer.getCell((int) (((sprite.getX()-1)+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()-1) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell cellCenter = layer.getCell((int) ((sprite.getX()+(sprite.getWidth()/2)) / layer.getTileWidth()), (int) ((sprite.getY()-1) / layer.getTileHeight()));
+            if (cellLeftCorner == null && cellRightCorner == null && cellCenter == null) {
+                model.getPlayer().setY(model.getPlayer().getPosition().getY()-1);
+                camera.translate(0, -1, 0);
             }
         }
         if(zoomIn) {
@@ -173,7 +181,7 @@ public class MainGameScreen extends BaseScreen {
         /*for (Sprite s : q) {
             batch.draw(s, s.getX(), s.getY(), s.getWidth(),s.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
         }*/
-        batch.draw(sprite, sprite.getX(), sprite.getY(), sprite.getWidth()*3,sprite.getHeight()*3); // this will be diffrent when you have nummbers at end eg player_1, player_2
+        batch.draw(sprite, sprite.getX(), sprite.getY(), sprite.getWidth(),sprite.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
         font.setColor(1,1,1,1);   //Brown is an underated Colour
         font.draw(batch, mouseInfo, sprite.getX(), sprite.getY()+150);
         font.draw(batch, "Mouse XY:", sprite.getX(), sprite.getY()+170);
