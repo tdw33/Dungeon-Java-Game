@@ -18,8 +18,6 @@ import dev.teamcyan.dungeoncrafter.classes.AudioManager;
 
 public class DungeonCrafter extends Game {
 
-	public SpriteBatch batch;
-	private GameModel model;
 	private AssetManager assetManager;
 
 	public static final int WIDTH = 720;
@@ -34,14 +32,9 @@ public class DungeonCrafter extends Game {
 	private boolean debugMode = true;
 	private ObjectMap<Class<? extends BaseScreen>, BaseScreen> screens = new ObjectMap<>();
 
-	@Override
-	public void create () {
-		VisUI.load();
 
-		// Initialise the audio manager
-		audioManager = new AudioManager();
 
-		// Initialize the asset manager
+	// Initialize the asset manager
    public void init_asset_manager()
    {
      /* Init asset manager */
@@ -56,6 +49,8 @@ public class DungeonCrafter extends Game {
 		this.setDebugOn(true);
 		this.model = new GameModel();
 		VisUI.load();
+	   // Initialise the audio manager
+	   audioManager = new AudioManager();
       init_asset_manager();
 		loadScreens();
 		newGame();
