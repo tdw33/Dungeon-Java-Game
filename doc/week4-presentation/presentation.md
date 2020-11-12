@@ -12,6 +12,7 @@
 # Updates
 
 - collision & gravity
+ ![ ](../week4-presentation/GravityAndCollision.gif)
 
 
 
