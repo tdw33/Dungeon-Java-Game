@@ -1,9 +1,21 @@
 package dev.teamcyan.dungeoncrafter.classes;
 import java.util.*;
 import dev.teamcyan.dungeoncrafter.classes.GameElement;
+import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.*;
+import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-public class GMap{
 
+public class GMap extends GameElement{
   private int sizeHorizontal;
   private int sizeVertical;
   private String seed;
@@ -24,6 +36,19 @@ public class GMap{
     setMapSize(100,100);
     placePlayer();
     mapName = "tile/TileMap.tmx";
+  }
+
+  private void blankMap()
+  {
+  //  TiledMapTileLayer layer = (TiledMapTileLayer)map.getLayers().get("some_layer_name");
+  //  Cell cell = new Cell();
+  //  TiledMapTileSet tileSet = map.getTileSets().getTileSet("tileset_name");
+  //  cell.setTile(tileSet.getTile(42)); /* or some other id, identifying the tile */
+  //  layer.setCell(32, 64, cell); // 32 and 64 being x and y coordinates
+  //  for (int i=0;i<100;i++)
+  //    for (int j=0;j<100;j++)
+  //      Cell cell = new Cell();
+
   }
 
   private void placePlayer()
