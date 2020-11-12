@@ -51,5 +51,7 @@
 
 # Future
 
-- carry on 
+- interactive sounds 
+- block interaction (digging | placing) 
+- inventory 
 
