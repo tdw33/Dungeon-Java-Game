@@ -1,9 +1,9 @@
 # Presentation 3
 
 ## Team Cyan
-
-- 06 October 2020
-
+|		|		|		|
+|-|-|-|
+|	13	|	November	|	2020	|
 # From previous presentation
 
  ![ ](../week3-presentation/gifs/InitialGameRecording.gif)
@@ -13,32 +13,32 @@
 
 - collision & gravity
 
-
-
 - walking animation
+
+- map interaction and boss fight map 
+
+- storyline and game name 
+
+- sounds and in-game music 
+
+- menu backround image 
 
 
 
 # Future
 
-1) Physics 
-
-- falling 
-- jumping 
-- projectile
-- collision 
 
 2) Mining
 
 - destroying blocks
+
 - some blocks fall 
+
 - some blocks give you items
 
 3) Crafting
 
 - creating items
-
----
 
 (Maybe)
 
