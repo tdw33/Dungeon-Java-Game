@@ -54,4 +54,5 @@
 - interactive sounds 
 - block interaction (digging | placing) 
 - inventory 
+- add more animations (mine | jump)
 
