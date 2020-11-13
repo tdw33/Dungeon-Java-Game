@@ -14,3 +14,7 @@ Week 2 User Stories (After the first customer meeting)
 3rd customer meeting 
 - As a player, I want to see details of the story 
     break down into episodes: what the outcomes of the episodes are, what additional character capabilities come along with it
+
+4th customer meeting
+- As a player, I want to have a feature that makes gravity connected with difficulty levels (e.g. gravity changes and becomes harder to play in some areas)
+- As a player, I want to have defensive measures for my character
