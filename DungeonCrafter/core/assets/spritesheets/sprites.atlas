@@ -1,0 +1,2112 @@
+
+sprites.png
+size: 512,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+badlogic
+  rotate: false
+  xy: 2, 2
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+
+sprites2.png
+size: 2048,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+menu_buttons/back_active
+  rotate: false
+  xy: 1162, 2
+  size: 103, 69
+  orig: 103, 69
+  offset: 0, 0
+  index: -1
+menu_buttons/back_inactive
+  rotate: false
+  xy: 1267, 2
+  size: 103, 69
+  orig: 103, 69
+  offset: 0, 0
+  index: -1
+menu_buttons/exit_active
+  rotate: false
+  xy: 1372, 2
+  size: 86, 69
+  orig: 86, 69
+  offset: 0, 0
+  index: -1
+menu_buttons/exit_inactive
+  rotate: false
+  xy: 1460, 2
+  size: 86, 69
+  orig: 86, 69
+  offset: 0, 0
+  index: -1
+menu_buttons/load_game_active
+  rotate: false
+  xy: 2, 2
+  size: 204, 69
+  orig: 204, 69
+  offset: 0, 0
+  index: -1
+menu_buttons/load_game_inactive
+  rotate: false
+  xy: 208, 2
+  size: 204, 69
+  orig: 204, 69
+  offset: 0, 0
+  index: -1
+menu_buttons/new_game_active
+  rotate: false
+  xy: 414, 2
+  size: 194, 69
+  orig: 194, 69
+  offset: 0, 0
+  index: -1
+menu_buttons/new_game_inactive
+  rotate: false
+  xy: 610, 2
+  size: 194, 69
+  orig: 194, 69
+  offset: 0, 0
+  index: -1
+menu_buttons/settings_active
+  rotate: false
+  xy: 806, 2
+  size: 176, 69
+  orig: 176, 69
+  offset: 0, 0
+  index: -1
+menu_buttons/settings_inactive
+  rotate: false
+  xy: 984, 2
+  size: 176, 69
+  orig: 176, 69
+  offset: 0, 0
+  index: -1
+
+sprites3.png
+size: 256,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+raw_textures/effect/particle
+  rotate: false
+  xy: 2, 8
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/effect/particle
+  rotate: false
+  xy: 20, 8
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/effect/particle
+  rotate: false
+  xy: 38, 8
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+raw_textures/effect/particle
+  rotate: false
+  xy: 56, 8
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+raw_textures/effect/particle
+  rotate: false
+  xy: 74, 8
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 5
+raw_textures/effect/particle
+  rotate: false
+  xy: 92, 8
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 6
+raw_textures/effect/redtrans
+  rotate: false
+  xy: 2, 5
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+raw_textures/effect/small_particle
+  rotate: false
+  xy: 110, 8
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/effect/small_particle
+  rotate: false
+  xy: 128, 8
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/effect/small_particle
+  rotate: false
+  xy: 146, 8
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+raw_textures/effect/white
+  rotate: false
+  xy: 164, 23
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+raw_textures/effect/whitetrans
+  rotate: false
+  xy: 2, 2
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+
+sprites4.png
+size: 256,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+raw_textures/eye/blink
+  rotate: false
+  xy: 2, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/eye/blink
+  rotate: false
+  xy: 20, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/eye/blink
+  rotate: false
+  xy: 38, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+raw_textures/eye/blink
+  rotate: false
+  xy: 56, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+raw_textures/eye/blink
+  rotate: false
+  xy: 74, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 5
+raw_textures/eye/standing
+  rotate: false
+  xy: 92, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/eye/standing
+  rotate: false
+  xy: 110, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/eye/standing
+  rotate: false
+  xy: 128, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+raw_textures/eye/standing
+  rotate: false
+  xy: 146, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+raw_textures/eye/standing
+  rotate: false
+  xy: 164, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 5
+raw_textures/eye/standing
+  rotate: false
+  xy: 182, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 6
+raw_textures/eye/standing
+  rotate: false
+  xy: 200, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 7
+raw_textures/eye/standing
+  rotate: false
+  xy: 218, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 8
+raw_textures/eye/standing
+  rotate: false
+  xy: 236, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 9
+
+sprites5.png
+size: 64,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+raw_textures/item/pebble
+  rotate: false
+  xy: 2, 2
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+raw_textures/item/projectile
+  rotate: false
+  xy: 38, 12
+  size: 6, 6
+  orig: 6, 6
+  offset: 0, 0
+  index: -1
+raw_textures/item/rock
+  rotate: false
+  xy: 2, 12
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+raw_textures/item/slime
+  rotate: false
+  xy: 38, 20
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+raw_textures/item/slingshot
+  rotate: false
+  xy: 12, 2
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+raw_textures/item/stick
+  rotate: false
+  xy: 48, 20
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+raw_textures/item/tree
+  rotate: false
+  xy: 20, 12
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+
+sprites6.png
+size: 64,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+raw_textures/player/attack
+  rotate: false
+  xy: 2, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/player/attack
+  rotate: false
+  xy: 2, 92
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/player/standing
+  rotate: false
+  xy: 2, 92
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/player/attack
+  rotate: false
+  xy: 20, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+raw_textures/player/left
+  rotate: false
+  xy: 2, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/player/left
+  rotate: false
+  xy: 20, 92
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/player/left
+  rotate: false
+  xy: 38, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+raw_textures/player/right
+  rotate: false
+  xy: 2, 56
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/player/right
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/player/right
+  rotate: false
+  xy: 38, 92
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+raw_textures/player/standing
+  rotate: false
+  xy: 2, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/player/swim_left
+  rotate: false
+  xy: 20, 56
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/player/swim_left
+  rotate: false
+  xy: 38, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/player/swim_left
+  rotate: false
+  xy: 2, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+raw_textures/player/swim_right
+  rotate: false
+  xy: 2, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/player/swim_right
+  rotate: false
+  xy: 20, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/player/swim_right
+  rotate: false
+  xy: 38, 56
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+
+sprites7.png
+size: 256,32
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+raw_textures/slime/left
+  rotate: false
+  xy: 2, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/slime/left
+  rotate: false
+  xy: 20, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/slime/left
+  rotate: false
+  xy: 20, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+raw_textures/slime/left
+  rotate: false
+  xy: 38, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+raw_textures/slime/left
+  rotate: false
+  xy: 56, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 5
+raw_textures/slime/left
+  rotate: false
+  xy: 74, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 6
+raw_textures/slime/left
+  rotate: false
+  xy: 74, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 8
+raw_textures/slime/left
+  rotate: false
+  xy: 92, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 7
+raw_textures/slime/right
+  rotate: false
+  xy: 110, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/slime/right
+  rotate: false
+  xy: 128, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/slime/right
+  rotate: false
+  xy: 128, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+raw_textures/slime/right
+  rotate: false
+  xy: 146, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+raw_textures/slime/right
+  rotate: false
+  xy: 164, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 5
+raw_textures/slime/right
+  rotate: false
+  xy: 182, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 6
+raw_textures/slime/right
+  rotate: false
+  xy: 182, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 8
+raw_textures/slime/right
+  rotate: false
+  xy: 200, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 7
+
+sprites8.png
+size: 64,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+raw_textures/tile/grass
+  rotate: false
+  xy: 2, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+raw_textures/tile/grass_b
+  rotate: false
+  xy: 2, 92
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+raw_textures/tile/grass_decorated
+  rotate: false
+  xy: 20, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+raw_textures/tile/grass_l
+  rotate: false
+  xy: 2, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+raw_textures/tile/grass_r
+  rotate: false
+  xy: 20, 92
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+raw_textures/tile/grass_t
+  rotate: false
+  xy: 38, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+raw_textures/tile/wall
+  rotate: false
+  xy: 2, 56
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 8
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 9
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 7
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 12
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 11
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 13
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 6
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 10
+raw_textures/tile/water
+  rotate: false
+  xy: 38, 92
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/tile/water
+  rotate: false
+  xy: 2, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 56
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+raw_textures/tile/water
+  rotate: false
+  xy: 38, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 5
+raw_textures/tile/water_t
+  rotate: false
+  xy: 2, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+raw_textures/tile/water_t
+  rotate: false
+  xy: 2, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 4
+raw_textures/tile/water_t
+  rotate: false
+  xy: 2, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+raw_textures/tile/water_t
+  rotate: false
+  xy: 2, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+raw_textures/tile/water_t
+  rotate: false
+  xy: 20, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 5
+raw_textures/tile/water_t
+  rotate: false
+  xy: 20, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 6
+
+sprites9.png
+size: 256,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+raw_textures/ui/button
+  rotate: false
+  xy: 2, 2
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+raw_textures/ui/button_down
+  rotate: false
+  xy: 129, 99
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+raw_textures/ui/heart
+  rotate: false
+  xy: 155, 115
+  size: 9, 8
+  orig: 9, 8
+  offset: 0, 0
+  index: -1
+raw_textures/ui/inventory_slot
+  rotate: false
+  xy: 28, 2
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+raw_textures/ui/special_slot
+  rotate: false
+  xy: 129, 73
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+raw_textures/ui/window_bg
+  rotate: false
+  xy: 2, 28
+  size: 125, 95
+  orig: 125, 95
+  offset: 0, 0
+  index: -1
+
+sprites10.png
+size: 512,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/buckets/bucket
+  rotate: false
+  xy: 2, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/buckets/bucket_lava
+  rotate: false
+  xy: 132, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/buckets/bucket_water
+  rotate: false
+  xy: 262, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+
+sprites11.png
+size: 1024,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/character/charactersheets
+  rotate: false
+  xy: 2, 2
+  size: 832, 1344
+  orig: 832, 1344
+  offset: 0, 0
+  index: -1
+
+sprites12.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/fence/default_fence_acacia_wood
+  rotate: false
+  xy: 2, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/fence/default_fence_aspen_wood
+  rotate: false
+  xy: 132, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/fence/default_fence_junglewood
+  rotate: false
+  xy: 262, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/fence/default_fence_pine_wood
+  rotate: false
+  xy: 392, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/fence/default_fence_wood
+  rotate: false
+  xy: 522, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+
+sprites13.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/food/default_apple
+  rotate: false
+  xy: 2, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/food/farming_bread
+  rotate: false
+  xy: 912, 132
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/food/farming_straw
+  rotate: false
+  xy: 2, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/food/farming_wheat
+  rotate: false
+  xy: 132, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 1
+sprites/food/farming_wheat
+  rotate: false
+  xy: 262, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 2
+sprites/food/farming_wheat
+  rotate: false
+  xy: 392, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 3
+sprites/food/farming_wheat
+  rotate: false
+  xy: 522, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 4
+sprites/food/farming_wheat
+  rotate: false
+  xy: 652, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 5
+sprites/food/farming_wheat
+  rotate: false
+  xy: 782, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: 6
+sprites/food/farming_wheat
+  rotate: false
+  xy: 68, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/food/farming_wheat_seed
+  rotate: false
+  xy: 134, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+
+sprites14.png
+size: 512,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/liquid/default_lava
+  rotate: false
+  xy: 2, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/liquid/default_lava_flowing_animated
+  rotate: false
+  xy: 2, 132
+  size: 128, 1024
+  orig: 128, 1024
+  offset: 0, 0
+  index: -1
+sprites/liquid/default_lava_source_animated
+  rotate: false
+  xy: 2, 132
+  size: 128, 1024
+  orig: 128, 1024
+  offset: 0, 0
+  index: -1
+sprites/liquid/default_river_water
+  rotate: false
+  xy: 262, 1028
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/liquid/default_river_water_flowing_animated
+  rotate: false
+  xy: 132, 132
+  size: 128, 1024
+  orig: 128, 1024
+  offset: 0, 0
+  index: -1
+sprites/liquid/default_river_water_source_animated
+  rotate: false
+  xy: 132, 132
+  size: 128, 1024
+  orig: 128, 1024
+  offset: 0, 0
+  index: -1
+
+sprites15.png
+size: 1024,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/misc/beds_bed
+  rotate: false
+  xy: 2, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/misc/bones_front
+  rotate: false
+  xy: 156, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/carts_cart_side
+  rotate: false
+  xy: 462, 326
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/default_book
+  rotate: false
+  xy: 416, 130
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/misc/default_bookshelf
+  rotate: false
+  xy: 592, 326
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/default_chest_lock
+  rotate: false
+  xy: 722, 326
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/default_furnace_fire_bg
+  rotate: false
+  xy: 68, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/misc/default_furnace_fire_fg
+  rotate: false
+  xy: 482, 130
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/misc/default_furnace_front
+  rotate: false
+  xy: 852, 326
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/default_glass
+  rotate: false
+  xy: 308, 196
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/default_key
+  rotate: false
+  xy: 134, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/misc/default_key_skeleton
+  rotate: false
+  xy: 548, 130
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/misc/default_sign
+  rotate: false
+  xy: 438, 196
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/default_stick
+  rotate: false
+  xy: 568, 196
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/default_torch_on_floor
+  rotate: false
+  xy: 698, 196
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/doors_door_obsidian_glass
+  rotate: false
+  xy: 2, 198
+  size: 304, 256
+  orig: 304, 256
+  offset: 0, 0
+  index: -1
+sprites/misc/doors_door_steel
+  rotate: false
+  xy: 2, 68
+  size: 152, 128
+  orig: 152, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/doors_door_wood
+  rotate: false
+  xy: 308, 326
+  size: 152, 128
+  orig: 152, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/doors_wood
+  rotate: false
+  xy: 958, 196
+  size: 64, 128
+  orig: 64, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/heart
+  rotate: false
+  xy: 828, 196
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/moon
+  rotate: false
+  xy: 286, 66
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/misc/unknown_object
+  rotate: false
+  xy: 200, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/misc/vessels_glass_bottle
+  rotate: false
+  xy: 614, 130
+  size: 60, 64
+  orig: 60, 64
+  offset: 0, 0
+  index: -1
+
+sprites16.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/otherPrecious/default_mineral_coal
+  rotate: false
+  xy: 2, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/otherPrecious/default_mineral_copper
+  rotate: false
+  xy: 132, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/otherPrecious/default_mineral_diamond
+  rotate: false
+  xy: 262, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/otherPrecious/default_mineral_gold
+  rotate: false
+  xy: 392, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/otherPrecious/default_mineral_iron
+  rotate: false
+  xy: 522, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/otherPrecious/default_mineral_mese
+  rotate: false
+  xy: 652, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+
+sprites17.png
+size: 64,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/pebble/attack
+  rotate: false
+  xy: 2, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+sprites/pebble/attack
+  rotate: false
+  xy: 2, 92
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+sprites/pebble/standing
+  rotate: false
+  xy: 2, 92
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+sprites/pebble/attack
+  rotate: false
+  xy: 20, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+sprites/pebble/left
+  rotate: false
+  xy: 2, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+sprites/pebble/left
+  rotate: false
+  xy: 20, 92
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+sprites/pebble/left
+  rotate: false
+  xy: 38, 110
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+sprites/pebble/right
+  rotate: false
+  xy: 2, 56
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+sprites/pebble/right
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+sprites/pebble/right
+  rotate: false
+  xy: 38, 92
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+sprites/pebble/standing
+  rotate: false
+  xy: 2, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+sprites/pebble/swim_left
+  rotate: false
+  xy: 20, 56
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+sprites/pebble/swim_left
+  rotate: false
+  xy: 38, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+sprites/pebble/swim_left
+  rotate: false
+  xy: 2, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+sprites/pebble/swim_right
+  rotate: false
+  xy: 2, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+sprites/pebble/swim_right
+  rotate: false
+  xy: 20, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+sprites/pebble/swim_right
+  rotate: false
+  xy: 38, 56
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+
+sprites18.png
+size: 2048,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/plant/default_acacia_leaves
+  rotate: false
+  xy: 2, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/plant/default_acacia_sapling
+  rotate: false
+  xy: 132, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/plant/default_aspen_leaves
+  rotate: false
+  xy: 262, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/plant/default_aspen_sapling
+  rotate: false
+  xy: 392, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/plant/default_dry_grass
+  rotate: false
+  xy: 522, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/plant/default_dry_grass
+  rotate: false
+  xy: 2, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+sprites/plant/default_grass
+  rotate: false
+  xy: 652, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/plant/default_grass
+  rotate: false
+  xy: 1042, 132
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 1
+sprites/plant/default_grass
+  rotate: false
+  xy: 68, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 2
+sprites/plant/default_grass
+  rotate: false
+  xy: 1108, 132
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 3
+sprites/plant/default_grass
+  rotate: false
+  xy: 134, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 4
+sprites/plant/default_grass
+  rotate: false
+  xy: 1174, 132
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: 5
+sprites/plant/default_grass_side
+  rotate: false
+  xy: 782, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/plant/default_leaves
+  rotate: false
+  xy: 912, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/plant/flowers_mushroom_brown
+  rotate: false
+  xy: 200, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+
+sprites19.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/precious/default_bronze_block
+  rotate: false
+  xy: 2, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/precious/default_bronze_ingot
+  rotate: false
+  xy: 2, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/precious/default_coal_block
+  rotate: false
+  xy: 132, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/precious/default_coal_lump
+  rotate: false
+  xy: 912, 132
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/precious/default_copper_block
+  rotate: false
+  xy: 262, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/precious/default_copper_ingot
+  rotate: false
+  xy: 68, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/precious/default_diamond
+  rotate: false
+  xy: 134, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/precious/default_diamond_block
+  rotate: false
+  xy: 392, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/precious/default_flint
+  rotate: false
+  xy: 200, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/precious/default_gold_block
+  rotate: false
+  xy: 522, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/precious/default_gold_ingot
+  rotate: false
+  xy: 266, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/precious/default_mese_block
+  rotate: false
+  xy: 652, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/precious/default_mese_crystal
+  rotate: false
+  xy: 332, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/precious/default_obsidian_shard
+  rotate: false
+  xy: 398, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/precious/default_steel_block
+  rotate: false
+  xy: 782, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/precious/default_steel_ingot
+  rotate: false
+  xy: 464, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+
+sprites20.png
+size: 2048,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/recipe/default_ladder
+  rotate: false
+  xy: 2, 262
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_ladder_steel
+  rotate: false
+  xy: 2, 132
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_ladder_wood
+  rotate: false
+  xy: 132, 262
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_bronzeaxe
+  rotate: false
+  xy: 2, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_bronzepick
+  rotate: false
+  xy: 132, 132
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_bronzeshovel
+  rotate: false
+  xy: 262, 262
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_bronzesword
+  rotate: false
+  xy: 132, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_diamondaxe
+  rotate: false
+  xy: 262, 132
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_diamondpick
+  rotate: false
+  xy: 392, 262
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_diamondshovel
+  rotate: false
+  xy: 262, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_diamondsword
+  rotate: false
+  xy: 392, 132
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_meseaxe
+  rotate: false
+  xy: 522, 262
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_mesepick
+  rotate: false
+  xy: 392, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_meseshovel
+  rotate: false
+  xy: 522, 132
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_mesesword
+  rotate: false
+  xy: 652, 262
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_steelaxe
+  rotate: false
+  xy: 522, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_steelpick
+  rotate: false
+  xy: 652, 132
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_steelshovel
+  rotate: false
+  xy: 782, 262
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_steelsword
+  rotate: false
+  xy: 652, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_stoneaxe
+  rotate: false
+  xy: 782, 132
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_stonepick
+  rotate: false
+  xy: 912, 262
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_stoneshovel
+  rotate: false
+  xy: 782, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_stonesword
+  rotate: false
+  xy: 912, 132
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_woodaxe
+  rotate: false
+  xy: 1042, 262
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_woodpick
+  rotate: false
+  xy: 912, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_woodshovel
+  rotate: false
+  xy: 1042, 132
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/default_tool_woodsword
+  rotate: false
+  xy: 1172, 262
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/farming_tool_bronzehoe
+  rotate: false
+  xy: 1042, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/farming_tool_diamondhoe
+  rotate: false
+  xy: 1172, 132
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/farming_tool_mesehoe
+  rotate: false
+  xy: 1302, 262
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/recipe/farming_tool_steelhoe
+  rotate: false
+  xy: 1172, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+
+sprites21.png
+size: 2048,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/rocks/default_brick
+  rotate: false
+  xy: 2, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_clay
+  rotate: false
+  xy: 132, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_clay_brick
+  rotate: false
+  xy: 2, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_cobble
+  rotate: false
+  xy: 262, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_desert_cobble
+  rotate: false
+  xy: 392, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_desert_sand
+  rotate: false
+  xy: 522, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_desert_sandstone
+  rotate: false
+  xy: 652, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_desert_sandstone_brick
+  rotate: false
+  xy: 782, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_desert_stone
+  rotate: false
+  xy: 912, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_dirt
+  rotate: false
+  xy: 1042, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_gravel
+  rotate: false
+  xy: 1172, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_mossycobble
+  rotate: false
+  xy: 1302, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_obsidian
+  rotate: false
+  xy: 1432, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_stone
+  rotate: false
+  xy: 1562, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_stone_block
+  rotate: false
+  xy: 1692, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/rocks/default_stone_brick
+  rotate: false
+  xy: 1822, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+
+sprites22.png
+size: 1024,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/TNT/tnt_blast
+  rotate: false
+  xy: 912, 390
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_boom
+  rotate: false
+  xy: 2, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_bottom
+  rotate: false
+  xy: 652, 326
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_gunpowder_burning_crossing_animated
+  rotate: false
+  xy: 2, 198
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_gunpowder_burning_curved_animated
+  rotate: false
+  xy: 132, 198
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_gunpowder_burning_straight_animated
+  rotate: false
+  xy: 262, 198
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_gunpowder_burning_t_junction_animated
+  rotate: false
+  xy: 392, 198
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_gunpowder_crossing
+  rotate: false
+  xy: 132, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_gunpowder_curved
+  rotate: false
+  xy: 782, 326
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_gunpowder_inventory
+  rotate: false
+  xy: 2, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_gunpowder_straight
+  rotate: false
+  xy: 262, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_gunpowder_t_junction
+  rotate: false
+  xy: 392, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_side
+  rotate: false
+  xy: 522, 68
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_smoke
+  rotate: false
+  xy: 652, 196
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_top
+  rotate: false
+  xy: 782, 196
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_top_burning
+  rotate: false
+  xy: 652, 66
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/TNT/tnt_top_burning_animated
+  rotate: false
+  xy: 522, 198
+  size: 128, 256
+  orig: 128, 256
+  offset: 0, 0
+  index: -1
+
+sprites23.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/woods/default_acacia_tree
+  rotate: false
+  xy: 2, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/woods/default_acacia_wood
+  rotate: false
+  xy: 132, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/woods/default_aspen_wood
+  rotate: false
+  xy: 262, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/woods/default_pine_tree
+  rotate: false
+  xy: 392, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/woods/default_tree
+  rotate: false
+  xy: 522, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+sprites/woods/default_wood
+  rotate: false
+  xy: 652, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1

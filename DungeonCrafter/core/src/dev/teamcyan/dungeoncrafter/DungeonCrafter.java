@@ -31,7 +31,7 @@ public class DungeonCrafter extends Game {
    {
      /* Init asset manager */
 		assetManager = new AssetManager();
-		assetManager.load("textures.atlas", TextureAtlas.class);
+		assetManager.load("spritesheets/sprites.atlas", TextureAtlas.class);
 		assetManager.finishLoading();
    }
 
@@ -71,7 +71,7 @@ public class DungeonCrafter extends Game {
 	public TextureAtlas.AtlasRegion getAtlasRegion(String textureName) {
 		try 
       {
-			return assetManager.get("textures.atlas", TextureAtlas.class)
+			return assetManager.get("spritesheets/sprites.atlas", TextureAtlas.class)
            .findRegion(textureName);
 		} 
       catch(Exception e) 

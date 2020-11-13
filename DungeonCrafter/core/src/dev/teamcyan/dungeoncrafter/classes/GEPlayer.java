@@ -8,7 +8,7 @@ public class GEPlayer extends GameElement
   public GEPlayer ()
   {
     this.getype = GEType.PLAYER;
-    this.spriteName = "tile/wall";
+    this.spriteName = "raw_textures/tile/wall";
     this.position = new Pos(0,0);
     this.velocity = new Velocity(0,0);
 
