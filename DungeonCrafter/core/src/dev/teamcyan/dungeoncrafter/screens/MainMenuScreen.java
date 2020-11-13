@@ -24,8 +24,6 @@ public class MainMenuScreen extends BaseScreen {
     private static final int EXIT_BUTTON_HEIGHT = 50;
     private static final int EXIT_BUTTON_Y = 200;
 
-
-
     DungeonCrafter game;
     SpriteBatch batch = new SpriteBatch();
 
@@ -56,7 +54,8 @@ public class MainMenuScreen extends BaseScreen {
 
     @Override
     public void init() {
-
+        super.controller.audioManager.startMusic(super.controller.audioManager.menuSound);
+        //super.controller.audioManager.testPrint();
     }
 
     @Override
@@ -150,7 +149,6 @@ public class MainMenuScreen extends BaseScreen {
 
     @Override
     public void dispose() {
-
     }
 
     @Override

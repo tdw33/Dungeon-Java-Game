@@ -2,6 +2,8 @@ package dev.teamcyan.dungeoncrafter;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,19 +13,28 @@ import com.badlogic.gdx.utils.ObjectMap;
 import com.kotcrab.vis.ui.VisUI;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 import dev.teamcyan.dungeoncrafter.screens.*;
+import dev.teamcyan.dungeoncrafter.classes.AudioManager;
+
 
 public class DungeonCrafter extends Game {
 
-	public SpriteBatch batch;
-	private GameModel model;
 	private AssetManager assetManager;
 
 	public static final int WIDTH = 720;
 	public static final int HEIGHT = 720;
+	public static final double GRAVITY = 9.81;
+	public static final double RESISTANCE = 0.2;
+	public static final double ACCELERATION = 5.0;
+	public SpriteBatch batch;
+	public AudioManager audioManager;
 
+	private GameModel model;
 	private boolean debugMode = true;
 	private ObjectMap<Class<? extends BaseScreen>, BaseScreen> screens = new ObjectMap<>();
 
+
+
+	// Initialize the asset manager
    public void init_asset_manager()
    {
      /* Init asset manager */
@@ -38,6 +49,8 @@ public class DungeonCrafter extends Game {
 		this.setDebugOn(true);
 		this.model = new GameModel();
 		VisUI.load();
+	   // Initialise the audio manager
+	   audioManager = new AudioManager();
       init_asset_manager();
 		loadScreens();
 		newGame();
@@ -108,6 +121,9 @@ public class DungeonCrafter extends Game {
 	public void changeScreen(Class<? extends BaseScreen> key) {
 		this.setScreen(screens.get(key));
 		//handle(new GameEvent("SCREEN_CHANGE").set("SCREEN", screens.get(key)));
+		if(key.getName() != "dev.teamcyan.dungeoncrafter.screens.MainMenuScreen") {
+			audioManager.fadeMusic(audioManager.menuSound);
+		}
 	}
 
 	public void loadScreens() {
@@ -116,5 +132,8 @@ public class DungeonCrafter extends Game {
 		screens.put(MainMenuScreen.class, new MainMenuScreen(this, model));
 		screens.put(SettingsScreen.class, new SettingsScreen(this, model));
 	}
-
+	/*@Override
+	public void render () {
+		super.render();
+	}*/
 }
