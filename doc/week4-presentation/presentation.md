@@ -45,13 +45,7 @@
 - menu backround image 
 
 
-![ ](../week4-presentation/gifs/01.png)
-
-![ ](../week4-presentation/gifs/05.png)
-
-![ ](../week4-presentation/gifs/06.png)
-
-![ ](../week4-presentation/gifs/07.png)
+![ ](../week4-presentation/gifs/main menu background.png)
 
 
 - Documentation 
