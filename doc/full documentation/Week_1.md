@@ -1,4 +1,4 @@
-# Week 0
+# Week 1
 
 
 
@@ -67,11 +67,32 @@ Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu, Tom 
 
 ## backlog
 
-**This could be a artefact from the wiki page but probably best to make a new one**
+**Product backlog:**
 
-**artefact of the new sprint backlog**
+- Find cross platform library
+- Understand GitHub for version control
+- Java research
+- Game development research 
 
+- Generation of block map (side on view)
+- The blocks of the map can be interacted with by the player
+- A player is spawned on the map
+- The player can interact with the blocks (destroy and create)
+- The player can collect these resources in an inventory 
+- The players resources can be used to craft items (pickaxe, sword, and light)
+- The crafted tools will break over time
+- The player will have a sidekick (bot) which will either help or race against the player
+- There will be a timer shown to the player on the screen which runs down as they go through the game
+- There will be tasks to complete in order for the player to escape
+- The player can go through a door and the screen will change to top down view 
+- In the top down view, the player will fight bosses
 
+**sprint backlog**
+
+- Find cross platofrm library
+- Understand GitHub for version control
+- Java research 
+- Game development research 
 
 ## Exception handling
 
@@ -103,8 +124,10 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 | US_01 | 1       | 1        | **AS A**   Player  **I WANT**   to be able to  play a dungeon game on different platforms  **SO THAT**   I have choices  for playing the game |
 | US_02 | 1       | 4        | **AS A**   Player  **I WANT**   to have a bot  that that will play for me  **SO THAT**   It can help me  with playing through the game |
 | US_03 | 1       | 5        | **AS A**   Player  **I WANT**   to be able to compete  with a bot  **SO THAT**   I can have a goal  when playing |
-| US_04 | 1       | 2        | **AS A**   **Player**  **I WANT**   to be able to  see my progress  **SO THAT**   So that I know  if I am doing well at the game as I play |
-| US_05 | 1       | 3        | **AS A**   Player  **I WANT**   to have different  choices between games modes  **SO THAT**   I have new scenarios  to play |
+| US_04 | 1       | 6        | **AS A**   **Player**  **I WANT**   to be able to  see my progress  **SO THAT**   So that I know  if I am doing well at the game as I play |
+| US_05 | 1       | 7        | **AS A**   Player  **I WANT**   to have different  choices between games modes  **SO THAT**   I have new scenarios  to play |
+| US_06 | 1       | 2        | **AS A** Player **I WANT** to interact with the blocks on the map **SO THAT** I can gather resources, place resources, and make new paths |
+| US_07 | 1       | 3        | **AS A** Player **I WANT** to use resources to craft items **SO THAT** I can use them throughout the game to make tasks easier |
 
 
 
@@ -114,9 +137,11 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------- |
 | US_01         | Run code on different systems and see if code compiles       |                                                              | NO        |
 | US_02         | A bot character is generated on the game screen  The bot aids the user with text aids | The bot will have to be able to follow the player around the map, meaning it will need similar movement animations to the main character | NO        |
-| US_03         |                                                              |                                                              | NO        |
+| US_03         | Monitor to see d the bot is attempting task within the game  |                                                              | NO        |
 | US_04         | There is a visual queue on the screen that will track specific progression. | There are multiple types of progress – elevation, time ore collection | NO        |
 | US_05         | Within the menu screen the player sets the game mode and the characteristics of the game change | These characteristics could be unlimited health, unlimited resources and no enemies | NO        |
+| US_06         | The player can destroy a block and it disappears from the game screen. This block will then show up with in the inventory | From the inventory screen there are multiple options the player can take which require use cases and user stories | NO        |
+| US_07         | There is an option to craft items from the inventory screen. If the player has the required resources, they can craft the item and the resources are taken from their inventory | You can implement many ways to show what can be crafted with the resources provided. | NO        |
 
 
 
@@ -166,6 +191,130 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 
 
 
+##### UC_02
+
+**Use case**: Player destroys a block on the map
+
+**Author**: TW
+
+**Date**: 16/11/2020
+
+**Modification date**: 16/11/202
+
+**Purpose**: A major part of the game is allowing the user to interact with the map and change it. This means destroying the generated blocks and picking it up as a resource. 
+
+**Overview**: First the player will decide they want to destroy a certain block in the game. Then they will attack the block until it is destroyed. The block will not be shown on the map and the player will add that block to their inventory.
+
+**Cross reference:** US_06, US_04
+
+**Actors:** player
+
+**Precondition:** 
+
+- There must be a block to destroy 
+- The player must have an object that can cause damage to the block (fist, pickaxe, sword)
+
+**Normal flow of events:** 
+
+| Actor actions                                       | System actions                                          |
+| --------------------------------------------------- | ------------------------------------------------------- |
+| 1. The player will begin to attack the block (mine) | 2. The map generated block will take damage             |
+| 3. The player will keep attacking the player        | 4. The map generated takes damage until it reaches zero |
+| 7. Player can then repeat cycle with new blocks     | 5. The block will disappear                             |
+|                                                     | 6. The block type will appear in the players’ inventory |
+
+**Alternative flow of events:**
+
+- The player destroys a block they are standing on. This will mean they will fall when it is destroyed until they encounter another block. They still gather the resource 
+
+**Exceptional flow of events:**
+
+- The player will stop attacking the block halfway, meaning the block is left with half health. 
+
+
+
+##### UC_03
+
+**Use case**: Player places a block on the map
+
+**Author**: TW
+
+**Date**: 16/11/2020
+
+**Modification date**: 16/11/202
+
+**Purpose**: A major part of the game is allowing the user to interact with the map and change it. This means placing blocks onto the map and taking it out of the players’ inventory 
+
+**Overview**:  First the player will decide they want to place a certain block. Then the game will check of they have the resource to place. If they have, a block will appear on the game in the postion they wanted to place
+
+**Cross reference:** US_06
+
+**Actors:** player
+
+**Precondition:** 
+
+-  There must be a map block to place the new one on  
+
+-  The player must have the desired block to place within their inventory
+
+**Normal flow of events:** 
+
+| Actor actions                                                | System actions                                               |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1. The player will enter the inventory                       | 4. The map notes the request to place a block on an existing block |
+| 2. The player must have the desired block to place within their inventory | 5. The map generates the new block on the existing block     |
+| 3. The player attempts to place the block on the map         | 6. The block type will be taken from the players’ inventory  |
+| 7. Player can then repeat cycle with new blocks              |                                                              |
+
+**Alternative flow of events:**
+
+There are none
+
+**Exceptional flow of events:**
+
+- The player does not have any of the block type in their inventory, meaning no block will be placed
+
+
+
+##### UC_04
+
+**Use case**: Player crafts an item from the inventory
+
+**Author**: TW
+
+**Date**: 16/11/2020
+
+**Modification date**: 16/11/202
+
+**Purpose**: As the player gathers resources in the game, they will be able to create items such as a pickaxe. They will use these items to interact with enemies and the map.  
+
+**Overview**:  First the player will decide they want to craft a certain item. Then the gaem will check they have the required resources for the item. If so, the item is crafted and the resources are taken from the players inventory. The item is also added to the inventory.
+
+**Cross reference:**  US_07
+
+**Actors:** player
+
+**Precondition:** 
+
+-  There must be the correct amount of resources to craft the item
+
+**Normal flow of events:** 
+
+| Actor actions                                                | System actions                                               |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1. The player will go to the inventory screen                | 3. The game will show what items can be crafted and what cannot |
+| 2. The player will go to the craft menu                      | 5. The game will generate the item for the player and add it to their inventory |
+| 4. The player will choose an item which they have resources for | 6. The resources required for the item will be taken form the players overall resources |
+| 7. Player can then equip the item                            |                                                              |
+
+**Alternative flow of events:**
+
+There are none
+
+**Exceptional flow of events:**
+
+- The player will attempt to craft an item where they do not have the resources. A message will be displayed stating insufficient resources
+
 ### Tests
 
 No tests this week
@@ -174,7 +323,12 @@ No tests this week
 
 ### Software design Documentation
 
-Need to look at CRC
+At this stage, no thought has been given into the software design and classes as the mining game has not been confirmed. 
+
+
 
 ### User interface design
 
+- There will be a starting menu screen with the game setting and the start function 
+- Once in the game there will be character that can move and interact with the whole map
+- When the player had successfully completed the game they will be sent back to the starting menu screen
