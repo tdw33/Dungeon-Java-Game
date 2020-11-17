@@ -33,11 +33,10 @@ public class MainGameScreen extends BaseScreen {
     private int mapPixelWidth;
     private int mapPixelHeight;
     private OrthographicCamera camera;
-    private TextureRegion[] charFrames;
-    private static int CHAR_PIXEL_WIDTH = 64;
-    private static int CHAR_PIXEL_HEIGHT = 64;
-    private int index = 0;
-    private Texture spriteSheet;
+    private final static int CHAR_PIXEL_WIDTH = 64;
+    private final static int CHAR_PIXEL_HEIGHT = 64;
+    private Texture basicSpriteSheet;
+    private Texture enemySpriteSheet;
     private enum State {RUNNINGL, RUNNINGR, JUMPING, STANDING, FALLING };
     private State currentState;
     private State previousState;
@@ -46,9 +45,11 @@ public class MainGameScreen extends BaseScreen {
     private Animation<TextureRegion> charRunR;
     private TextureRegion charStand;
     private TextureRegion charJump;
-    private TextureRegion region;
+    private TextureRegion mainRegion;
+    private TextureRegion enemyRegion;
+    private Animation<TextureRegion> enemyShoot;
     private float stateTimer = 0;
-    private float deltaTime = Gdx.graphics.getDeltaTime();
+   
 
 
 
@@ -202,29 +203,34 @@ public class MainGameScreen extends BaseScreen {
         currentState = State.STANDING;
         previousState = State.STANDING;
 
-        charFrames = new TextureRegion[274];
+
         Array<TextureRegion> frames = new Array<TextureRegion>();
-        spriteSheet = new Texture("sprites/character/charactersheet.png");
+        basicSpriteSheet = new Texture("sprites/mainCharacter/characterPickaxe.png");
+        enemySpriteSheet = new Texture("sprites/enemy/enemyArcher.png");
 
 
 
-        charStand = new TextureRegion(spriteSheet, 0, 640, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
-        charJump = new TextureRegion(spriteSheet, 64, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
-        charFall = new TextureRegion(spriteSheet, 128, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+        charStand = new TextureRegion(basicSpriteSheet, 0, 640, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+        charJump = new TextureRegion(basicSpriteSheet, 64, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+        charFall = new TextureRegion(basicSpriteSheet, 128, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
         for (int i = 0; i < 9; i++) {
-                frames.add(new TextureRegion(spriteSheet, i*64, 704, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT));
+                frames.add(new TextureRegion(basicSpriteSheet, i*64, 704, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT));
             }
 
         charRunR = new Animation(0.15f, frames);
         frames.clear();
         for (int i = 0; i < 9; i++) {
-            frames.add(new TextureRegion(spriteSheet, i*64, 576, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT));
+            frames.add(new TextureRegion(basicSpriteSheet, i*64, 576, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT));
         }
         charRunL = new Animation(0.15f, frames);
         frames.clear();
-        region = getFrame();
-
-
+        mainRegion = getMainFrame();
+        for (int i = 0; i < 13; i++) {
+            frames.add(new TextureRegion(enemySpriteSheet, i*64, 1088, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT));
+        }
+        enemyShoot = new Animation(0.5f, frames);
+        frames.clear();
+        enemyRegion = getEnemyFrame();
 
 
 
@@ -246,8 +252,8 @@ public class MainGameScreen extends BaseScreen {
         /*for (Sprite s : q) {
             batch.draw(s, s.getX(), s.getY(), s.getWidth(),s.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
         }*/
-        batch.draw(region, sprite.getX(), sprite.getY(), sprite.getWidth(),sprite.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
-        batch.draw(charFall, 1750, 700, 64, 64);
+        batch.draw(mainRegion, sprite.getX(), sprite.getY(), sprite.getWidth(),sprite.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
+        batch.draw(enemyRegion, 1750, 700, 64, 64);
         font.setColor(1,1,1,1);   //Brown is an underated Colour
         font.draw(batch, mouseInfo, sprite.getX(), sprite.getY()+150);
         font.draw(batch, "Mouse XY:", sprite.getX(), sprite.getY()+170);
@@ -391,30 +397,34 @@ public class MainGameScreen extends BaseScreen {
         } else return State.STANDING;
     }
 
-    public TextureRegion getFrame(){
+    public TextureRegion getMainFrame(){
         currentState = getState();
         stateTimer += Gdx.graphics.getDeltaTime();
 
-        TextureRegion region;
+        TextureRegion mainRegion;
         if (currentState == State.RUNNINGL ){
-            region = charRunL.getKeyFrame(stateTimer, true);;
+            mainRegion = charRunL.getKeyFrame(stateTimer, true);;
         } else if (currentState == State.RUNNINGR){
-            region = charRunR.getKeyFrame(stateTimer, true);
+            mainRegion = charRunR.getKeyFrame(stateTimer, true);
         } else if (currentState == State.JUMPING){
-            region = charJump;
+            mainRegion = charJump;
         } else if (currentState == State.FALLING) {
-            region = charFall;
+            mainRegion = charFall;
         } else {
-            region = charStand;
+            mainRegion = charStand;
         }
 
 
 
         previousState = currentState;
-        return region;
+        return mainRegion;
 
     }
 
+    public TextureRegion getEnemyFrame() {
+        stateTimer += Gdx.graphics.getDeltaTime();
+        enemyRegion = enemyShoot.getKeyFrame(stateTimer, true);
 
-
+        return enemyRegion;
+    }
 }

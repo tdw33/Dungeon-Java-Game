@@ -2096,48 +2096,20 @@ sprites/buckets/bucket_water
   index: -1
 
 sprites12.png
-size: 1024,2048
+size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-sprites/character/1standing
-  rotate: false
-  xy: 45, 64
-  size: 38, 54
-  orig: 38, 54
-  offset: 0, 0
-  index: -1
-sprites/character/2standing
-  rotate: false
-  xy: 836, 1355
-  size: 38, 53
-  orig: 38, 53
-  offset: 0, 0
-  index: -1
-sprites/character/3standing
-  rotate: false
-  xy: 2, 58
-  size: 41, 60
-  orig: 41, 60
-  offset: 0, 0
-  index: -1
-sprites/character/4standing
-  rotate: false
-  xy: 836, 1410
-  size: 41, 54
-  orig: 41, 54
-  offset: 0, 0
-  index: -1
-sprites/character/5standing
+sprites/enemy/boss
   rotate: false
   xy: 2, 2
-  size: 41, 54
-  orig: 41, 54
+  size: 832, 1344
+  orig: 832, 1344
   offset: 0, 0
   index: -1
-sprites/character/charactersheets
+sprites/enemy/enemyArcher
   rotate: false
-  xy: 2, 120
+  xy: 836, 2
   size: 832, 1344
   orig: 832, 1344
   offset: 0, 0
@@ -2316,6 +2288,39 @@ sprites/liquid/default_river_water_source_animated
   index: -1
 
 sprites16.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/mainCharacter/characterPickaxe
+  rotate: false
+  xy: 2, 2
+  size: 832, 1344
+  orig: 832, 1344
+  offset: 0, 0
+  index: -1
+sprites/mainCharacter/goldCharacterPickaxe
+  rotate: false
+  xy: 836, 2
+  size: 832, 1344
+  orig: 832, 1344
+  offset: 0, 0
+  index: -1
+
+sprites17.png
+size: 1024,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+sprites/mainCharacter/steelCharacterPickaxe
+  rotate: false
+  xy: 2, 2
+  size: 832, 1344
+  orig: 832, 1344
+  offset: 0, 0
+  index: -1
+
+sprites18.png
 size: 1024,512
 format: RGBA8888
 filter: Nearest,Nearest
@@ -2482,7 +2487,7 @@ sprites/misc/vessels_glass_bottle
   offset: 0, 0
   index: -1
 
-sprites17.png
+sprites19.png
 size: 1024,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -2530,132 +2535,139 @@ sprites/otherPrecious/default_mineral_mese
   offset: 0, 0
   index: -1
 
-sprites18.png
-size: 64,128
+sprites20.png
+size: 1024,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 sprites/pebble/attack
-  rotate: false
-  xy: 2, 110
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 1
-sprites/pebble/attack
-  rotate: false
-  xy: 2, 92
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 2
-sprites/pebble/standing
-  rotate: false
-  xy: 2, 92
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 2
-sprites/pebble/attack
-  rotate: false
-  xy: 20, 110
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 3
-sprites/pebble/left
-  rotate: false
-  xy: 2, 74
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 1
-sprites/pebble/left
-  rotate: false
-  xy: 20, 92
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 2
-sprites/pebble/left
-  rotate: false
-  xy: 38, 110
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 3
-sprites/pebble/right
   rotate: false
   xy: 2, 56
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 1
-sprites/pebble/right
+sprites/pebble/attack
   rotate: false
-  xy: 20, 74
+  xy: 836, 1402
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 2
-sprites/pebble/right
+sprites/pebble/standing
   rotate: false
-  xy: 38, 92
+  xy: 836, 1402
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
-  index: 3
-sprites/pebble/standing
+  index: 2
+sprites/pebble/attack
   rotate: false
   xy: 2, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
-  index: 1
-sprites/pebble/swim_left
+  index: 3
+sprites/pebble/left
   rotate: false
   xy: 20, 56
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 1
-sprites/pebble/swim_left
+sprites/pebble/left
   rotate: false
-  xy: 38, 74
+  xy: 836, 1384
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 2
-sprites/pebble/swim_left
+sprites/pebble/left
+  rotate: false
+  xy: 854, 1402
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+sprites/pebble/pebble
+  rotate: false
+  xy: 2, 74
+  size: 832, 1344
+  orig: 832, 1344
+  offset: 0, 0
+  index: -1
+sprites/pebble/right
   rotate: false
   xy: 2, 20
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
-  index: 3
-sprites/pebble/swim_right
-  rotate: false
-  xy: 2, 2
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
   index: 1
-sprites/pebble/swim_right
+sprites/pebble/right
   rotate: false
   xy: 20, 38
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 2
-sprites/pebble/swim_right
+sprites/pebble/right
   rotate: false
   xy: 38, 56
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: 3
+sprites/pebble/standing
+  rotate: false
+  xy: 836, 1366
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+sprites/pebble/swim_left
+  rotate: false
+  xy: 854, 1384
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+sprites/pebble/swim_left
+  rotate: false
+  xy: 872, 1402
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+sprites/pebble/swim_left
+  rotate: false
+  xy: 2, 2
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
+sprites/pebble/swim_right
+  rotate: false
+  xy: 20, 20
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 1
+sprites/pebble/swim_right
+  rotate: false
+  xy: 38, 38
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 2
+sprites/pebble/swim_right
+  rotate: false
+  xy: 56, 56
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 3
 
-sprites19.png
+sprites21.png
 size: 2048,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -2766,7 +2778,7 @@ sprites/plant/flowers_mushroom_brown
   offset: 0, 0
   index: -1
 
-sprites20.png
+sprites22.png
 size: 1024,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -2884,7 +2896,7 @@ sprites/precious/default_steel_ingot
   offset: 0, 0
   index: -1
 
-sprites21.png
+sprites23.png
 size: 2048,512
 format: RGBA8888
 filter: Nearest,Nearest
@@ -3107,7 +3119,7 @@ sprites/recipe/farming_tool_steelhoe
   offset: 0, 0
   index: -1
 
-sprites22.png
+sprites24.png
 size: 2048,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -3225,7 +3237,7 @@ sprites/rocks/default_stone_brick
   offset: 0, 0
   index: -1
 
-sprites23.png
+sprites25.png
 size: 1024,512
 format: RGBA8888
 filter: Nearest,Nearest
@@ -3350,7 +3362,7 @@ sprites/TNT/tnt_top_burning_animated
   offset: 0, 0
   index: -1
 
-sprites24.png
+sprites26.png
 size: 1024,256
 format: RGBA8888
 filter: Nearest,Nearest
