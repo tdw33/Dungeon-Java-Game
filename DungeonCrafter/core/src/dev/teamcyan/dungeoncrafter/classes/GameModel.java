@@ -8,6 +8,7 @@ public class GameModel {
     private boolean active = false;
     private GEPlayer player;
     private GEPebble pebble;
+    private GEEnemy enemy;
 
     private final String MAPNAME = "tile/TileMap.tmx";
     private OrthographicCamera camera;
@@ -24,8 +25,9 @@ public class GameModel {
     public void startNewGame(DungeonCrafter controller) 
     {
         this.map = new GMap(MAPNAME);
-        this.player = new GEPlayer(controller.getAtlasRegion("tile/wall"));
-        this.pebble = new GEPebble(controller.getAtlasRegion("player/standing"));
+        this.player = new GEPlayer();
+        this.pebble = new GEPebble(controller.getAtlasRegion("raw_textures/player/standing"));
+        this.enemy = new GEEnemy();
         this.active = true;
         camera = new OrthographicCamera();
     }
@@ -48,6 +50,10 @@ public class GameModel {
     }
     public GEPebble getPebble() {
         return pebble;
+    }
+
+    public GEEnemy getEnemy() {
+        return enemy;
     }
 
 
