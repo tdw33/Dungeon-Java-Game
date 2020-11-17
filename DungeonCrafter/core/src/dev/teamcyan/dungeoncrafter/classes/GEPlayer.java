@@ -5,11 +5,11 @@ public class GEPlayer extends GameElement
   String playerTextureName;
   Velocity velocity;
 
-  public GEPlayer ()
+  public GEPlayer (String spriteName, Pos position)
   {
     this.getype = GEType.PLAYER;
-    this.spriteName = "tile/wall";
-    this.position = new Pos(0,0);
+    this.spriteName = spriteName;
+    this.position = position;
     this.velocity = new Velocity(0,0);
 
   }

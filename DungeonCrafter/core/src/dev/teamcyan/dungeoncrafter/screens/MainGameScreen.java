@@ -32,6 +32,7 @@ import java.util.ArrayList;
 
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
+import dev.teamcyan.dungeoncrafter.classes.Pos;
 
 public class MainGameScreen extends BaseScreen {
     SpriteBatch batch = new SpriteBatch();
@@ -41,7 +42,8 @@ public class MainGameScreen extends BaseScreen {
     boolean movingDown = false;
     boolean zoomIn = false;
     boolean zoomOut = false;
-    Sprite sprite;
+    Sprite playerSprite;
+    Sprite pebbleSprite;
     List <Sprite> q = new ArrayList<>();
     private OrthogonalTiledMapRenderer mapRenderer;
     private TiledMap map;
@@ -107,10 +109,15 @@ public class MainGameScreen extends BaseScreen {
         camera = new OrthographicCamera();
         camera.zoom = (float) 1.0;
 
-        sprite = new Sprite(controller.getAtlasRegion(model.getPlayer().getSpriteName()));
+        playerSprite = new Sprite(controller.getAtlasRegion(model.getPlayer().getSpriteName()));
         model.getPlayer().setX(mapPixelWidth/2);
         model.getPlayer().setY(mapPixelHeight/2);
-        sprite.setPosition(model.getPlayer().getPosition().getX(),model.getPlayer().getPosition().getY());
+        playerSprite.setPosition(model.getPlayer().getPosition().getX(),model.getPlayer().getPosition().getY());
+
+        pebbleSprite = new Sprite(controller.getAtlasRegion(model.getPebble().getSpriteName()));
+        model.getPebble().setX(mapPixelWidth/2);
+        model.getPebble().setY(mapPixelHeight/2);
+        pebbleSprite.setPosition(model.getPebble().getPosition().getX(),model.getPebble().getPosition().getY());
 
         font = new BitmapFont();//Gdx.files.internal("data/digib.fnt"),Gdx.files.internal("data/digib.png"), false);;
         keyInfo = new ArrayList<String>();
@@ -118,12 +125,15 @@ public class MainGameScreen extends BaseScreen {
 
     }
 
-    public void setPosition(GEPlayer player, TiledMapTileLayer layer) {
+    public void setPlayerPosition(GEPlayer player, TiledMapTileLayer layer) {
         // apply gravity, when no floor
         float delta = Gdx.graphics.getDeltaTime();
         double newXVelocity;
 
-        if (movingLeft == movingRight) {
+        // prevent player from accelerating in X direction when falling
+        if (player.getVelocity().getY() > 1) {
+            newXVelocity = player.getVelocity().getX();
+        } else if (movingLeft == movingRight) {
             newXVelocity = model.getPlayer().getVelocity().getX() * controller.RESISTANCE;
             newXVelocity = newXVelocity > -0.000000001 && newXVelocity < 0.000000001 ? 0 : newXVelocity;
         } else if (movingRight) {
@@ -135,8 +145,8 @@ public class MainGameScreen extends BaseScreen {
         double newXPosition = model.getPlayer().getPosition().getX() + newXVelocity;
 
         if(newXVelocity > 0) {
-            TiledMapTileLayer.Cell topRight = layer.getCell((int) ((newXPosition + sprite.getWidth()) / layer.getTileWidth()), (int) Math.floor((model.getPlayer().getPosition().getY() + sprite.getHeight()) / layer.getTileHeight()));
-            TiledMapTileLayer.Cell bottomRight = layer.getCell((int)((newXPosition + sprite.getWidth()) / layer.getTileWidth()), (int) Math.ceil(model.getPlayer().getPosition().getY() / layer.getTileHeight()));
+            TiledMapTileLayer.Cell topRight = layer.getCell((int) ((newXPosition + playerSprite.getWidth()) / layer.getTileWidth()), (int) Math.floor((model.getPlayer().getPosition().getY() + playerSprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell bottomRight = layer.getCell((int)((newXPosition + playerSprite.getWidth()) / layer.getTileWidth()), (int) Math.ceil(model.getPlayer().getPosition().getY() / layer.getTileHeight()));
             if (bottomRight == null && topRight == null) {
                 model.getPlayer().getVelocity().setX(newXVelocity);
                 model.getPlayer().getPosition().setX((int)Math.ceil(newXPosition));
@@ -146,7 +156,7 @@ public class MainGameScreen extends BaseScreen {
             }
 
         } else if (newXVelocity < 0) {
-            TiledMapTileLayer.Cell topLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.floor((model.getPlayer().getPosition().getY() + sprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell topLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.floor((model.getPlayer().getPosition().getY() + playerSprite.getHeight()) / layer.getTileHeight()));
             TiledMapTileLayer.Cell bottomLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.ceil(model.getPlayer().getPosition().getY() / layer.getTileHeight()));
             if (bottomLeft == null && topLeft == null) {
                 model.getPlayer().getVelocity().setX(newXVelocity);
@@ -157,30 +167,87 @@ public class MainGameScreen extends BaseScreen {
             }
         }
 
+        // apply gravity
         double newYVelocity = model.getPlayer().getVelocity().getY() + delta * controller.GRAVITY;
-
         double newYPosition = model.getPlayer().getPosition().getY() - Math.floor(newYVelocity);
         TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.floor(model.getPlayer().getPosition().getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
-        TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((model.getPlayer().getPosition().getX()+sprite.getWidth()-1) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+        TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((model.getPlayer().getPosition().getX()+playerSprite.getWidth()-1) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
         if (leftBottom == null && rightBottom == null) {
             model.getPlayer().getVelocity().setY(newYVelocity);
             model.getPlayer().setY((int)newYPosition);
             camera.translate(0,-(int)newYVelocity,0);
-
         } else {
-            model.getPlayer().getVelocity().setY(0);
+            model.getPlayer().getVelocity().setY(0.0);
         }
 
 
         if(movingUp) {
-            TiledMapTileLayer.Cell cellLeftCorner = layer.getCell((int) (sprite.getX() / layer.getTileWidth()), (int) ((sprite.getY()+sprite.getHeight()) / layer.getTileHeight()));
-            TiledMapTileLayer.Cell cellRightCorner = layer.getCell((int) (((sprite.getX()-1)+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()+sprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell cellLeftCorner = layer.getCell((int) (playerSprite.getX() / layer.getTileWidth()), (int) ((playerSprite.getY()+playerSprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell cellRightCorner = layer.getCell((int) (((playerSprite.getX()-1)+playerSprite.getWidth()) / layer.getTileWidth()), (int) ((playerSprite.getY()+playerSprite.getHeight()) / layer.getTileHeight()));
             if (cellLeftCorner == null && cellRightCorner == null) {
                 model.getPlayer().setY(model.getPlayer().getPosition().getY()+1);
                 camera.translate(0, 1, 0);
             }
         }
 
+    }
+
+    public void setPebblePosition(GEPlayer pebble, TiledMapTileLayer layer) {
+        // apply gravity, when no floor
+        float delta = Gdx.graphics.getDeltaTime();
+        double newXVelocity;
+
+        Pos playerPosition = this.model.getPlayer().getPosition();
+        double distance = Math.sqrt(Math.pow((playerPosition.getX() - pebble.getPosition().getX()), 2) + Math.pow((playerPosition.getY() - pebble.getPosition().getY()), 2));
+        if (distance > 80) {
+            if (pebble.getVelocity().getY() > 1) {
+                newXVelocity = pebble.getVelocity().getX();
+            } else if (playerPosition.getX() > pebble.getPosition().getX()) {
+                newXVelocity = pebble.getVelocity().getX() + controller.ACCELERATION * delta;// delta * controller.RESISTANCE * -1 + ;
+            } else {
+                newXVelocity = pebble.getVelocity().getX() - controller.ACCELERATION * delta;// delta * controller.RESISTANCE * -1 + ;
+            }
+        } else {
+            newXVelocity = pebble.getVelocity().getX() * controller.RESISTANCE;
+            newXVelocity = newXVelocity > -0.000000001 && newXVelocity < 0.000000001 ? 0 : newXVelocity;
+        }
+
+        double newXPosition = pebble.getPosition().getX() + newXVelocity;
+
+        if(newXVelocity > 0) {
+            TiledMapTileLayer.Cell topRight = layer.getCell((int) ((newXPosition + pebbleSprite.getWidth()) / layer.getTileWidth()), (int) Math.floor((pebble.getPosition().getY() + pebbleSprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell bottomRight = layer.getCell((int)((newXPosition + pebbleSprite.getWidth()) / layer.getTileWidth()), (int) Math.ceil(pebble.getPosition().getY() / layer.getTileHeight()));
+            if (bottomRight == null && topRight == null) {
+                model.getPebble().getVelocity().setX(newXVelocity);
+                model.getPebble().getPosition().setX((int)Math.ceil(newXPosition));
+            } else {
+                model.getPebble().getVelocity().setX(0.0);
+            }
+
+        } else if (newXVelocity < 0) {
+            TiledMapTileLayer.Cell topLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.floor((pebble.getPosition().getY() + pebbleSprite.getHeight()) / layer.getTileHeight()));
+            TiledMapTileLayer.Cell bottomLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.ceil(pebble.getPosition().getY() / layer.getTileHeight()));
+            if (bottomLeft == null && topLeft == null) {
+                model.getPebble().getVelocity().setX(newXVelocity);
+                model.getPebble().getPosition().setX((int)Math.floor(newXPosition));
+            } else {
+                model.getPebble().getVelocity().setX(0.0);
+            }
+        }
+
+
+        double newYVelocity = model.getPebble().getVelocity().getY() + delta * controller.GRAVITY;
+
+        double newYPosition = model.getPebble().getPosition().getY() - Math.floor(newYVelocity);
+        TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.floor(model.getPebble().getPosition().getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+        TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((model.getPebble().getPosition().getX()+pebbleSprite.getWidth()-1) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+        if (leftBottom == null && rightBottom == null) {
+            model.getPebble().getVelocity().setY(newYVelocity);
+            model.getPebble().setY((int)newYPosition);
+
+        } else {
+            model.getPebble().getVelocity().setY(0);
+        }
     }
 
     @Override
@@ -198,8 +265,11 @@ public class MainGameScreen extends BaseScreen {
         }
 
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("Tile Layer 1");
-        setPosition(model.getPlayer(), layer);
-        sprite.setPosition(model.getPlayer().getPosition().getX(), model.getPlayer().getPosition().getY());
+        setPlayerPosition(model.getPlayer(), layer);
+        playerSprite.setPosition(model.getPlayer().getPosition().getX(), model.getPlayer().getPosition().getY());
+        setPebblePosition(model.getPebble(), layer);
+        pebbleSprite.setPosition(model.getPebble().getPosition().getX(), model.getPebble().getPosition().getY());
+
         mapRenderer.setView(camera);
         mapRenderer.render();
         batch.setProjectionMatrix(camera.combined);
@@ -208,14 +278,15 @@ public class MainGameScreen extends BaseScreen {
         /*for (Sprite s : q) {
             batch.draw(s, s.getX(), s.getY(), s.getWidth(),s.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
         }*/
-        batch.draw(sprite, sprite.getX(), sprite.getY(), sprite.getWidth(),sprite.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
+        batch.draw(playerSprite, playerSprite.getX(), playerSprite.getY(), playerSprite.getWidth(),playerSprite.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
+        batch.draw(pebbleSprite, pebbleSprite.getX(), pebbleSprite.getY(), pebbleSprite.getWidth(),pebbleSprite.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
         font.setColor(1,1,1,1);   //Brown is an underated Colour
-        font.draw(batch, mouseInfo, sprite.getX(), sprite.getY()+150);
-        font.draw(batch, "Mouse XY:", sprite.getX(), sprite.getY()+170);
-        font.draw(batch, "Keys active:", sprite.getX(), sprite.getY()+200);
+        font.draw(batch, mouseInfo, playerSprite.getX(), playerSprite.getY()+150);
+        font.draw(batch, "Mouse XY:", playerSprite.getX(), playerSprite.getY()+170);
+        font.draw(batch, "Keys active:", playerSprite.getX(), playerSprite.getY()+200);
         for(int i = 0; i < keyInfo.size(); i++)
         {
-            font.draw(batch, keyInfo.get(i), sprite.getX()+80+(i*10), sprite.getY()+200);
+            font.draw(batch, keyInfo.get(i), playerSprite.getX()+80+(i*10), playerSprite.getY()+200);
         }
         //font.draw(game.batch, keyInfo, 50, DungeonCrafter.HEIGHT-30);
         batch.end();
@@ -314,8 +385,8 @@ public class MainGameScreen extends BaseScreen {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         System.out.println("x = " + screenX);
         System.out.println("y = " + screenY);
-        sprite.setCenterX(screenX);
-        sprite.setCenterY(DungeonCrafter.HEIGHT - screenY);
+        playerSprite.setCenterX(screenX);
+        playerSprite.setCenterY(DungeonCrafter.HEIGHT - screenY);
         return false;
     }
 

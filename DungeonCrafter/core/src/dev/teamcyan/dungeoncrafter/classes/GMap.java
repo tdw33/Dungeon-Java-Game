@@ -53,7 +53,7 @@ public class GMap extends GameElement{
 
   private void placePlayer()
   {
-    player = new GEPlayer();
+    //player = new GEPlayer();
     //player.setX(this.sizeVertical/2);
     //player.setY(this.sizeHorizontal/2);
   }
