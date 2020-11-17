@@ -162,7 +162,7 @@ public class MainGameScreen extends BaseScreen {
             model.getCamera().zoom += 0.1;
         }
 
-        TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("Tile Layer 1");
+        TiledMapTileLayer layer = (TiledMapTileLayer) model.getMap().getTiledMap().getLayers().get("Tile Layer 1");
         setPosition(model.getPlayer(), layer);
         sprite.setPosition(model.getPlayer().getPosition().getX(), model.getPlayer().getPosition().getY());
         model.getMap().getMapRenderer().setView(model.getCamera());
