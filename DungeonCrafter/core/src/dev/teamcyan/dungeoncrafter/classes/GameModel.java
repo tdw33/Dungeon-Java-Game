@@ -26,7 +26,7 @@ public class GameModel {
     {
         this.map = new GMap(MAPNAME);
         this.player = new GEPlayer();
-        this.pebble = new GEPebble(controller.getAtlasRegion("raw_textures/player/standing"));
+        this.pebble = new GEPebble();
         this.enemy = new GEEnemy();
         this.active = true;
         camera = new OrthographicCamera();

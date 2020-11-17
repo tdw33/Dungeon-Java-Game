@@ -65,11 +65,15 @@ public class MainGameScreen extends BaseScreen {
 
         // load the map
         this.model.setCameraZoom(1f);
-        System.out.println(model.getPlayer().getPosition().getX());
-        System.out.println(model.getMap().getMapPixelWidth());
+
         model.getPlayer().getPosition().setX(model.getMap().getMapPixelWidth()/2);
         model.getPlayer().getPosition().setY(model.getMap().getMapPixelHeight()/2);
-        model.getPebble().getSprite().setPosition(model.getMap().getMapPixelWidth()/2+10,model.getMap().getMapPixelHeight()/2+10);
+
+        model.getPebble().getPosition().setX(model.getMap().getMapPixelWidth()/2+10);
+        model.getPebble().getPosition().setY(model.getMap().getMapPixelHeight()/2+10);
+
+        model.getEnemy().getPosition().setX(model.getMap().getMapPixelWidth()/2+20);
+        model.getEnemy().getPosition().setY(model.getMap().getMapPixelHeight()/2+20);
 
         font = new BitmapFont();
         keyInfo = new ArrayList<String>();
@@ -98,14 +102,21 @@ public class MainGameScreen extends BaseScreen {
                                     .getLayers()
                                     .get("Tile Layer 1");
 
+        model.getPlayer().setRegion(controller.keyListener);
+
         model.getCamera().translate(
                 (model.getPlayer().getPosition().getX() - model.getPlayer().setX(
                         layer, movingLeft, movingRight)) * (-1),
                 (model.getPlayer().getPosition().getY() - model.getPlayer().setY(
                         layer, movingUp, movingDown)) * (-1), 0);
 
+        model.getPebble().setRegion();
         model.getPebble().setX(layer, model.getPlayer().getPosition());
         model.getPebble().setY(layer);
+
+        model.getEnemy().setRegion();
+        model.getEnemy().setX(layer, model.getPlayer().getPosition());
+        model.getEnemy().setY(layer);
 
         model.getMap().getMapRenderer().setView(model.getCamera());
         model.getMap().getMapRenderer().render();
@@ -129,26 +140,26 @@ public class MainGameScreen extends BaseScreen {
 
         GEPlayer player = model.getPlayer();
         batch.draw(
-            player.getRegion(), 
+            player.getRegion(),
             player.getPosition().getX(), 
             player.getPosition().getY(), 
             player.getRegion().getRegionWidth(), 
             player.getRegion().getRegionHeight()); 
 
-        Sprite pebble = model.getPebble().getSprite();
-        batch.draw(pebble, pebble.getX(), pebble.getY(), pebble.getWidth(),pebble.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
+        GEPebble pebble = model.getPebble();
+        batch.draw(pebble.getRegion(), pebble.getPosition().getX(), pebble.getPosition().getY(), pebble.getRegion().getRegionWidth(),pebble.getRegion().getRegionHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
 
         GEEnemy enemy = model.getEnemy();
-        batch.draw(enemy.getRegion(), 1750, 700, 64, 64);
+        batch.draw(enemy.getRegion(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getRegion().getRegionWidth(), enemy.getRegion().getRegionHeight());
 
         font.setColor(1,1,1,1);   //Brown is an underated Colour
         font.draw(batch, mouseInfo, player.getPosition().getX(), player.getPosition().getY()+150);
         font.draw(batch, "Mouse XY:", player.getPosition().getX(), player.getPosition().getY()+170);
         font.draw(batch, "Keys active:", player.getPosition().getX(), player.getPosition().getY()+200);
-        for(int i = 0; i < keyInfo.size(); i++)
+        /*for(int i = 0; i < keyInfo.size(); i++)
         {
             font.draw(batch, super.controller.keyListener.activeKeys.get(i), player.getPosition().getX()+80+(i*10), player.getPosition().getY()+200);
-        }
+        }*/
         batch.end();
         model.getCamera().update();
 
@@ -269,17 +280,6 @@ public class MainGameScreen extends BaseScreen {
     @Override
     public boolean scrolled(int amount) {
         return false;
-    }
-    public GameElement.State getState(){
-        if(movingLeft && !movingUp && !movingDown){
-            return GameElement.State.RUNNINGL;
-        } else if (movingRight && !movingUp && !movingDown){
-            return GameElement.State.RUNNINGR;
-        //} else if(movingUp || movingDown && previousState == GameElement.State.JUMPING){
-        //    return GameElement.State.JUMPING;
-        } else if(movingDown) {
-            return GameElement.State.FALLING;
-        } else return GameElement.State.STANDING;
     }
 
 }

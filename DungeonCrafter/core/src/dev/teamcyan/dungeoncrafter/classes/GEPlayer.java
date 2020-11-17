@@ -1,6 +1,7 @@
 package dev.teamcyan.dungeoncrafter.classes;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -20,6 +21,9 @@ public class GEPlayer extends GameElement
   private Animation<TextureRegion> charRunR;
   private TextureRegion charStand;
   private TextureRegion charJump;
+  public float stateTimer = 0;
+  public State currentState;
+  public State previousState;
 
   public GEPlayer () {
     this.getype = GEType.PLAYER;
@@ -107,7 +111,6 @@ public class GEPlayer extends GameElement
     if (leftBottom == null && rightBottom == null) {
       this.velocity.setY(newYVelocity);
       this.position.setY((int)newYPosition);
-      System.out.println(this.position.getX());
 
     } else {
       this.velocity.setY(0);
@@ -125,8 +128,31 @@ public class GEPlayer extends GameElement
     return this.position.getY();
   }
 
-  public TextureRegion getRegion(){
-    //currentState = getState();
+  public void setRegion(KeyListener keyListener) {
+
+    if(keyListener.activeKeys.contains(Input.Keys.LEFT) &&
+       !keyListener.activeKeys.contains(Input.Keys.UP) &&
+       !keyListener.activeKeys.contains(Input.Keys.DOWN)){
+
+      this.currentState = GameElement.State.RUNNINGL;
+    } else if (keyListener.activeKeys.contains(Input.Keys.RIGHT) &&
+            !keyListener.activeKeys.contains(Input.Keys.UP) &&
+            !keyListener.activeKeys.contains(Input.Keys.DOWN)){
+
+      this.currentState = GameElement.State.RUNNINGR;
+    } else if(keyListener.activeKeys.contains(Input.Keys.UP) ||
+            keyListener.activeKeys.contains(Input.Keys.DOWN) &&
+            this.previousState == GameElement.State.JUMPING){
+
+      this.currentState = GameElement.State.JUMPING;
+    } else if(keyListener.activeKeys.contains(Input.Keys.DOWN)) {
+
+      this.currentState = GameElement.State.FALLING;
+    } else {
+
+      this.currentState = GameElement.State.STANDING;
+    }
+
     stateTimer += Gdx.graphics.getDeltaTime();
 
     if (this.currentState == State.RUNNINGL ){
@@ -142,8 +168,10 @@ public class GEPlayer extends GameElement
     }
 
     previousState = currentState;
-    return region;
+  }
 
+  public TextureRegion getRegion(){
+    return this.region;
   }
 
 }

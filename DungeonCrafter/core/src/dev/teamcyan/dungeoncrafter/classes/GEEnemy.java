@@ -1,6 +1,7 @@
 package dev.teamcyan.dungeoncrafter.classes;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -11,16 +12,24 @@ import com.badlogic.gdx.utils.Array;
 
 public class GEEnemy extends GameElement
 {
+    public static final float ACCELERATION = (float) 2.0;
 
     Velocity velocity;
     private TextureRegion region;
     private Animation<TextureRegion> enemyShoot;
     private Texture enemySpriteSheet;
+    public float stateTimer = 0;
+    public State currentState;
+    public State previousState;
 
     public GEEnemy ()
     {
         this.getype = GEType.PLAYER;
         this.velocity = new Velocity(0,0);
+        this.position = new Pos(0,0);
+        this.currentState = State.STANDING;
+        this.previousState = State.STANDING;
+
         this.enemySpriteSheet = new Texture("sprites/enemy/enemyArcher.png");
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
@@ -30,6 +39,7 @@ public class GEEnemy extends GameElement
         this.enemyShoot = new Animation(0.5f, frames);
         this.region = enemyShoot.getKeyFrame(stateTimer, true);
         frames.clear();
+
     }
 
     public float setX(TiledMapTileLayer layer, Pos playerPosition) {
@@ -40,7 +50,7 @@ public class GEEnemy extends GameElement
         double distance = Math.sqrt(Math.pow((playerPosition.getX() - this.position.getX()), 2) + Math.pow((playerPosition.getY() - this.position.getY()), 2));
         if (this.velocity.getY() > 1) {
             newXVelocity = this.velocity.getX();
-        } else if (distance > 80) {
+        } else if (distance > 300) {
             if (playerPosition.getX() > this.position.getX()) {
                 newXVelocity = this.velocity.getX() + this.ACCELERATION * delta;
             } else {
@@ -96,10 +106,40 @@ public class GEEnemy extends GameElement
         return this.position.getY();
     }
 
-    public TextureRegion getRegion() {
-        stateTimer += Gdx.graphics.getDeltaTime();
-        region = enemyShoot.getKeyFrame(stateTimer, true);
+    public void setRegion() {
 
+        if (this.velocity.getY() >1) {
+            this.currentState = GameElement.State.JUMPING;
+        } else if(this.velocity.getY() < -1) {
+            this.currentState = GameElement.State.FALLING;
+        } else if (this.velocity.getX() < -1) {
+            this.currentState = GameElement.State.RUNNINGL;
+        } else if (this.velocity.getX() > 1) {
+            this.currentState = GameElement.State.RUNNINGR;
+        } else {
+            this.currentState = GameElement.State.STANDING;
+        }
+
+        stateTimer += Gdx.graphics.getDeltaTime();
+
+        /*if (this.currentState == State.RUNNINGL ){
+            region = charRunL.getKeyFrame(stateTimer, true);;
+        } else if (this.currentState == State.RUNNINGR){
+            region = charRunR.getKeyFrame(stateTimer, true);
+        } else if (this.currentState == State.JUMPING){
+            region = charJump;
+        } else if (this.currentState == State.FALLING) {
+            region = charFall;
+        } else {
+            region = charStand;
+        }*/
+
+        previousState = currentState;
+
+        region = enemyShoot.getKeyFrame(stateTimer, true);
+    }
+
+    public TextureRegion getRegion() {
         return region;
     }
 

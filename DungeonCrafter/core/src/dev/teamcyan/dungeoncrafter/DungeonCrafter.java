@@ -56,9 +56,9 @@ public class DungeonCrafter extends Game {
 
 	   // Initialise the key listener
 	   keyListener = new KeyListener();
-      init_asset_manager();
-		loadScreens();
-		newGame();
+	   init_asset_manager();
+	   loadScreens();
+	   newGame();
 	}
 
 	@Override
