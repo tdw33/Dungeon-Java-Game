@@ -1,4 +1,4 @@
-# Presentation 3
+# Presentation 4
 
 ## Team Cyan
 |		|		|		|
@@ -44,6 +44,15 @@
 
 - menu backround image 
 
+
+![ ](../week4-presentation/gifs/01.png)
+
+![ ](../week4-presentation/gifs/05.png)
+
+![ ](../week4-presentation/gifs/06.png)
+
+![ ](../week4-presentation/gifs/07.png)
+
 - Documentation 
 
 
@@ -54,4 +63,5 @@
 - interactive sounds 
 - block interaction (digging | placing) 
 - inventory 
+- add more animations (mine | jump)
 
