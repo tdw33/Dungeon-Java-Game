@@ -13,6 +13,7 @@ public class GameElement {
   public final static int CHAR_PIXEL_WIDTH = 64;
   public final static int CHAR_PIXEL_HEIGHT = 64;
   public enum State {RUNNINGL, RUNNINGR, JUMPING, STANDING, FALLING };
+
   public State currentState;
   public State previousState;
 
@@ -66,5 +67,11 @@ public class GameElement {
     return this.position;
   }
 
+  public State getCurrentState() {
+    return currentState;
+  }
 
+  public State getPreviousState() {
+    return previousState;
+  }
 }

@@ -16,15 +16,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.utils.Array;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
-import dev.teamcyan.dungeoncrafter.classes.GEPlayer;
+import dev.teamcyan.dungeoncrafter.classes.*;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.*;
-
-import dev.teamcyan.dungeoncrafter.classes.GameElement;
-import dev.teamcyan.dungeoncrafter.classes.GameModel;
-import dev.teamcyan.dungeoncrafter.classes.Pos;
 
 public class MainGameScreen extends BaseScreen {
 
@@ -65,9 +61,10 @@ public class MainGameScreen extends BaseScreen {
 
         // load the map
         this.model.setCameraZoom(1f);
-
-        model.getPlayer().getRegion().setRegionX(model.getMap().getMapPixelWidth()/2);
-        model.getPlayer().getRegion().setRegionY(model.getMap().getMapPixelHeight()/2);
+        System.out.println(model.getPlayer().getPosition().getX());
+        System.out.println(model.getMap().getMapPixelWidth());
+        model.getPlayer().getPosition().setX(model.getMap().getMapPixelWidth()/2);
+        model.getPlayer().getPosition().setY(model.getMap().getMapPixelHeight()/2);
         model.getPebble().getSprite().setPosition(model.getMap().getMapPixelWidth()/2+10,model.getMap().getMapPixelHeight()/2+10);
 
         font = new BitmapFont();
@@ -81,6 +78,7 @@ public class MainGameScreen extends BaseScreen {
     public void draw(float delta) {
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
+
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         if(zoomIn) {
@@ -93,9 +91,9 @@ public class MainGameScreen extends BaseScreen {
         TiledMapTileLayer layer = (TiledMapTileLayer) model.getMap().getTiledMap().getLayers().get("Tile Layer 1");
 
         model.getCamera().translate(
-                (model.getPlayer().getRegion().getRegionX() - model.getPlayer().setX(
+                (model.getPlayer().getPosition().getX() - model.getPlayer().setX(
                         layer, movingLeft, movingRight)) * (-1),
-                (model.getPlayer().getRegion().getRegionY() - model.getPlayer().setY(
+                (model.getPlayer().getPosition().getY() - model.getPlayer().setY(
                         layer, movingUp, movingDown)) * (-1),
                 0);
 
@@ -112,20 +110,22 @@ public class MainGameScreen extends BaseScreen {
             batch.draw(s, s.getX(), s.getY(), s.getWidth(),s.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
         }*/
 
-        TextureRegion player = model.getPlayer().getRegion();
-        batch.draw(player, player.getRegionX(), player.getRegionY(), player.getRegionWidth(), player.getRegionHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
+        GEPlayer player = model.getPlayer();
+        batch.draw(player.getRegion(), player.getPosition().getX(), player.getPosition().getY(), player.getRegion().getRegionWidth(), player.getRegion().getRegionHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
+
         Sprite pebble = model.getPebble().getSprite();
         batch.draw(pebble, pebble.getX(), pebble.getY(), pebble.getWidth(),pebble.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
-        TextureRegion enemy = model.getEnemy().getRegion();
-        batch.draw(enemy, 1750, 700, 64, 64);
+
+        GEEnemy enemy = model.getEnemy();
+        batch.draw(enemy.getRegion(), 1750, 700, 64, 64);
 
         font.setColor(1,1,1,1);   //Brown is an underated Colour
-        font.draw(batch, mouseInfo, player.getRegionX(), player.getRegionY()+150);
-        font.draw(batch, "Mouse XY:", player.getRegionX(), player.getRegionY()+170);
-        font.draw(batch, "Keys active:", player.getRegionX(), player.getRegionY()+200);
+        font.draw(batch, mouseInfo, player.getPosition().getX(), player.getPosition().getY()+150);
+        font.draw(batch, "Mouse XY:", player.getPosition().getX(), player.getPosition().getY()+170);
+        font.draw(batch, "Keys active:", player.getPosition().getX(), player.getPosition().getY()+200);
         for(int i = 0; i < keyInfo.size(); i++)
         {
-            font.draw(batch, keyInfo.get(i), player.getRegionX()+80+(i*10), player.getRegionY()+200);
+            font.draw(batch, keyInfo.get(i), player.getPosition().getX()+80+(i*10), player.getPosition().getY()+200);
         }
         //font.draw(game.batch, keyInfo, 50, DungeonCrafter.HEIGHT-30);
         batch.end();
@@ -256,8 +256,8 @@ public class MainGameScreen extends BaseScreen {
             return GameElement.State.RUNNINGL;
         } else if (movingRight && !movingUp && !movingDown){
             return GameElement.State.RUNNINGR;
-        } else if(movingUp || movingDown && previousState == GameElement.State.JUMPING){
-            return GameElement.State.JUMPING;
+        //} else if(movingUp || movingDown && previousState == GameElement.State.JUMPING){
+        //    return GameElement.State.JUMPING;
         } else if(movingDown) {
             return GameElement.State.FALLING;
         } else return GameElement.State.STANDING;

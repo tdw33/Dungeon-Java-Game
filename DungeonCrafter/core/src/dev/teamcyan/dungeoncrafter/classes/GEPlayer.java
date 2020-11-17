@@ -24,7 +24,7 @@ public class GEPlayer extends GameElement
   public GEPlayer () {
     this.getype = GEType.PLAYER;
     this.velocity = new Velocity(0, 0);
-
+    this.position = new Pos(0,0);
     this.basicSpriteSheet = new Texture("sprites/mainCharacter/characterPickaxe.png");
     this.currentState = State.STANDING;
     this.previousState = State.STANDING;
@@ -53,9 +53,6 @@ public class GEPlayer extends GameElement
       this.spriteName = spriteName;
   }
 
-  public Pos getPosition() {
-      return new Pos(this.region.getRegionX(), this.region.getRegionY());
-  }
 
   public float setX(TiledMapTileLayer layer, boolean movingLeft, boolean movingRight) {
     float delta = Gdx.graphics.getDeltaTime();
@@ -71,29 +68,29 @@ public class GEPlayer extends GameElement
       newXVelocity = this.velocity.getX() - this.ACCELERATION * delta;
     }
 
-    float newXPosition = this.region.getRegionX() + newXVelocity;
+    float newXPosition = this.position.getX() + newXVelocity;
 
     if(newXVelocity > 0) {
-      TiledMapTileLayer.Cell topRight = layer.getCell((int) ((newXPosition + this.region.getRegionWidth()) / layer.getTileWidth()), (int) Math.floor((this.region.getRegionY() + this.region.getRegionHeight()) / layer.getTileHeight()));
-      TiledMapTileLayer.Cell bottomRight = layer.getCell((int)((newXPosition + this.region.getRegionWidth()) / layer.getTileWidth()), (int) Math.ceil(this.region.getRegionY() / layer.getTileHeight()));
+      TiledMapTileLayer.Cell topRight = layer.getCell((int) ((newXPosition + this.region.getRegionWidth()) / layer.getTileWidth()), (int) Math.floor((this.position.getY() + this.region.getRegionHeight()) / layer.getTileHeight()));
+      TiledMapTileLayer.Cell bottomRight = layer.getCell((int)((newXPosition + this.region.getRegionWidth()) / layer.getTileWidth()), (int) Math.ceil(this.position.getY() / layer.getTileHeight()));
       if (bottomRight == null && topRight == null) {
         this.velocity.setX(newXVelocity);
-        this.region.setRegionX((int)newXPosition);
+        this.position.setX((int)newXPosition);
       } else {
         this.velocity.setX((float)0.0);
       }
 
     } else if (newXVelocity < 0) {
-      TiledMapTileLayer.Cell topLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.floor((this.region.getRegionY() + this.region.getRegionHeight()) / layer.getTileHeight()));
-      TiledMapTileLayer.Cell bottomLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.ceil(this.region.getRegionY() / layer.getTileHeight()));
+      TiledMapTileLayer.Cell topLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.floor((this.position.getY() + this.region.getRegionHeight()) / layer.getTileHeight()));
+      TiledMapTileLayer.Cell bottomLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.ceil(this.position.getY() / layer.getTileHeight()));
       if (bottomLeft == null && topLeft == null) {
         this.velocity.setX(newXVelocity);
-        this.region.setRegionX((int)newXPosition);
+        this.position.setX((int)newXPosition);
       } else {
         this.velocity.setX((float)0.0);
       }
     }
-    return this.region.getRegionX();
+    return this.position.getX();
 
   }
 
@@ -104,39 +101,41 @@ public class GEPlayer extends GameElement
 
     float newYVelocity = this.velocity.getY() + delta * this.GRAVITY;
 
-    float newYPosition = this.region.getRegionY() - newYVelocity;// - Math.floor(newYVelocity);
-    TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.floor(this.region.getRegionX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
-    TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((this.region.getRegionX()+this.region.getRegionWidth()-1) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+    float newYPosition = this.position.getY() - newYVelocity;// - Math.floor(newYVelocity);
+    TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.floor(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+    TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-1) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
     if (leftBottom == null && rightBottom == null) {
       this.velocity.setY(newYVelocity);
-      this.region.setRegionY((int)newYPosition);
+      this.position.setY((int)newYPosition);
+      System.out.println(this.position.getX());
+
     } else {
       this.velocity.setY(0);
     }
 
 
     if(movingUp) {
-      TiledMapTileLayer.Cell cellLeftCorner = layer.getCell((int) (this.region.getRegionX() / layer.getTileWidth()), (int) ((this.region.getRegionY()+this.region.getRegionHeight()) / layer.getTileHeight()));
-      TiledMapTileLayer.Cell cellRightCorner = layer.getCell((int) (((this.region.getRegionX()-1)+this.region.getRegionWidth()) / layer.getTileWidth()), (int) ((this.region.getRegionY()+this.region.getRegionHeight()) / layer.getTileHeight()));
+      TiledMapTileLayer.Cell cellLeftCorner = layer.getCell((int) (this.position.getX() / layer.getTileWidth()), (int) ((this.position.getY()+this.region.getRegionHeight()) / layer.getTileHeight()));
+      TiledMapTileLayer.Cell cellRightCorner = layer.getCell((int) (((this.position.getX()-1)+this.region.getRegionWidth()) / layer.getTileWidth()), (int) ((this.position.getY()+this.region.getRegionHeight()) / layer.getTileHeight()));
       if (cellLeftCorner == null && cellRightCorner == null) {
-        this.region.setRegionY(this.region.getRegionY()+1);
+        this.position.setY(this.position.getY()+1);
       }
     }
 
-    return this.region.getRegionY();
+    return this.position.getY();
   }
 
   public TextureRegion getRegion(){
-    currentState = getState();
+    //currentState = getState();
     stateTimer += Gdx.graphics.getDeltaTime();
 
-    if (currentState == State.RUNNINGL ){
+    if (this.currentState == State.RUNNINGL ){
       region = charRunL.getKeyFrame(stateTimer, true);;
-    } else if (currentState == State.RUNNINGR){
+    } else if (this.currentState == State.RUNNINGR){
       region = charRunR.getKeyFrame(stateTimer, true);
-    } else if (currentState == State.JUMPING){
+    } else if (this.currentState == State.JUMPING){
       region = charJump;
-    } else if (currentState == State.FALLING) {
+    } else if (this.currentState == State.FALLING) {
       region = charFall;
     } else {
       region = charStand;
