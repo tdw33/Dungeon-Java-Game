@@ -1,7 +1,6 @@
 package dev.teamcyan.dungeoncrafter.screens;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
@@ -38,6 +37,7 @@ public class MainGameScreen extends BaseScreen {
 
 
 
+    Matrix4 uiMatrix;
     private BitmapFont font;
     private ArrayList<String> keyInfo;
     private String mouseInfo;
@@ -114,11 +114,9 @@ public class MainGameScreen extends BaseScreen {
 
         batch.begin();
 
-        /*
         if(uiMatrix == null){
             uiMatrix = model.getCamera().combined.cpy();
         }
-        */
 
 
         float existingZoom = model.getCamera().zoom;
