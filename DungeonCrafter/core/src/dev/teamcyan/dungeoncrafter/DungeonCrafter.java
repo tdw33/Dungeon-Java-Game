@@ -14,6 +14,7 @@ import com.kotcrab.vis.ui.VisUI;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 import dev.teamcyan.dungeoncrafter.screens.*;
 import dev.teamcyan.dungeoncrafter.classes.AudioManager;
+import dev.teamcyan.dungeoncrafter.classes.KeyListener;
 
 
 public class DungeonCrafter extends Game {
@@ -25,6 +26,7 @@ public class DungeonCrafter extends Game {
 
 	public SpriteBatch batch;
 	public AudioManager audioManager;
+	public KeyListener keyListener;
 
 	private GameModel model;
 	private boolean debugMode = true;
@@ -51,6 +53,9 @@ public class DungeonCrafter extends Game {
       
 	   // Initialise the audio manager
 	   audioManager = new AudioManager();
+
+	   // Initialise the key listener
+	   keyListener = new KeyListener();
       init_asset_manager();
 		loadScreens();
 		newGame();

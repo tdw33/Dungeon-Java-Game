@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -11,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.Null;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
@@ -25,6 +28,7 @@ import com.badlogic.gdx.maps.*;
 public class MainGameScreen extends BaseScreen {
 
     SpriteBatch batch = new SpriteBatch();
+    SpriteBatch hud = new SpriteBatch();
     boolean movingRight = false;
     boolean movingLeft = false;
     boolean movingUp = false;
@@ -88,14 +92,17 @@ public class MainGameScreen extends BaseScreen {
             model.getCamera().zoom += 0.1;
         }
 
-        TiledMapTileLayer layer = (TiledMapTileLayer) model.getMap().getTiledMap().getLayers().get("Tile Layer 1");
+        TiledMapTileLayer layer = (TiledMapTileLayer)model
+                                    .getMap()
+                                    .getTiledMap()
+                                    .getLayers()
+                                    .get("Tile Layer 1");
 
         model.getCamera().translate(
                 (model.getPlayer().getPosition().getX() - model.getPlayer().setX(
                         layer, movingLeft, movingRight)) * (-1),
                 (model.getPlayer().getPosition().getY() - model.getPlayer().setY(
-                        layer, movingUp, movingDown)) * (-1),
-                0);
+                        layer, movingUp, movingDown)) * (-1), 0);
 
         model.getPebble().setX(layer, model.getPlayer().getPosition());
         model.getPebble().setY(layer);
@@ -106,12 +113,29 @@ public class MainGameScreen extends BaseScreen {
 
 
         batch.begin();
-        /*for (Sprite s : q) {
-            batch.draw(s, s.getX(), s.getY(), s.getWidth(),s.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
-        }*/
+
+        /*
+        if(uiMatrix == null){
+            uiMatrix = model.getCamera().combined.cpy();
+        }
+        */
+
+
+        float existingZoom = model.getCamera().zoom;
+        //hud.setProjectionMatrix(camera.combined);
+        model.getCamera().zoom = 1f;
+        model.getCamera().update();
+
+        //batch.setProjectionMatrix(uiMatrix);
+        font.setColor(1,1,1,1);
 
         GEPlayer player = model.getPlayer();
-        batch.draw(player.getRegion(), player.getPosition().getX(), player.getPosition().getY(), player.getRegion().getRegionWidth(), player.getRegion().getRegionHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
+        batch.draw(
+            player.getRegion(), 
+            player.getPosition().getX(), 
+            player.getPosition().getY(), 
+            player.getRegion().getRegionWidth(), 
+            player.getRegion().getRegionHeight()); 
 
         Sprite pebble = model.getPebble().getSprite();
         batch.draw(pebble, pebble.getX(), pebble.getY(), pebble.getWidth(),pebble.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
@@ -125,9 +149,8 @@ public class MainGameScreen extends BaseScreen {
         font.draw(batch, "Keys active:", player.getPosition().getX(), player.getPosition().getY()+200);
         for(int i = 0; i < keyInfo.size(); i++)
         {
-            font.draw(batch, keyInfo.get(i), player.getPosition().getX()+80+(i*10), player.getPosition().getY()+200);
+            font.draw(batch, super.controller.keyListener.activeKeys.get(i), player.getPosition().getX()+80+(i*10), player.getPosition().getY()+200);
         }
-        //font.draw(game.batch, keyInfo, 50, DungeonCrafter.HEIGHT-30);
         batch.end();
         model.getCamera().update();
 
@@ -159,13 +182,13 @@ public class MainGameScreen extends BaseScreen {
     @Override
     public void dispose() {
         batch.dispose();
+        hud.dispose();
         model.getMap().getTiledMap().dispose();
     }
 
     @Override
     public boolean keyDown(int keycode) {
-
-        keyInfo.add(String.valueOf((char) (keycode + 68)));
+        super.controller.keyListener.keyDownListener(keycode);
 
         if(keycode == Input.Keys.LEFT) {
             movingLeft = true;
@@ -190,11 +213,10 @@ public class MainGameScreen extends BaseScreen {
 
     @Override
     public boolean keyUp(int keycode) {
-        keyInfo.remove((keyInfo.indexOf(String.valueOf((char) (keycode + 68)))));
-        //System.out.println((char) (keycode + 68));
-        if(keycode == Input.Keys.RIGHT) {
+        super.controller.keyListener.keyUpListener(keycode);
+
+        if(keycode == Input.Keys.RIGHT)
             movingRight = false;
-        }
 
         if(keycode == Input.Keys.LEFT)
             movingLeft = false;
@@ -205,12 +227,11 @@ public class MainGameScreen extends BaseScreen {
         if(keycode == Input.Keys.DOWN)
             movingDown = false;
 
-        if(keycode == Input.Keys.I) {
+        if(keycode == Input.Keys.I)
             zoomIn = false;
-        }
-        if(keycode == Input.Keys.O) {
+
+        if(keycode == Input.Keys.O)
             zoomOut = false;
-        }
 
         return false;
     }
@@ -243,7 +264,7 @@ public class MainGameScreen extends BaseScreen {
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        mouseInfo = "X = " + String.valueOf(screenX) + "\nY = " + String.valueOf(screenY);
+        super.controller.keyListener.mouseMoved(screenX, screenY);
         return false;
     }
 
