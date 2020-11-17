@@ -3,6 +3,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class GameElement {
 
+  public static final float GRAVITY = (float) 9.81;
+  public static final float RESISTANCE = (float) 0.2;
+  public static final float ACCELERATION = (float) 5.0;
+
   protected String uid;
   protected Pos position;
   protected boolean visible;

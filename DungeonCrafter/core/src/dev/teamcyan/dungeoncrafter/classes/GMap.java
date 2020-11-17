@@ -81,6 +81,13 @@ public class GMap extends GameElement{
     return this.mapRenderer;
   }
 
+  public int getMapPixelWidth() {
+    return mapPixelWidth;
+  }
+
+  public int getMapPixelHeight() {
+    return mapPixelHeight;
+  }
 
   /*
 + mapInit(Seed):Map

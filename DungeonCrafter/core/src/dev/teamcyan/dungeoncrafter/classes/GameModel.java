@@ -10,14 +10,11 @@ public class GameModel {
     private final String MAPNAME = "tile/TileMap.tmx";
     private OrthographicCamera camera;
 
-    public OrthographicCamera getCamera()
-    {
+    public OrthographicCamera getCamera() {
       return this.camera;
     }
 
-    public void setCameraZoom(float factor)
-    {
-
+    public void setCameraZoom(float factor) {
       this.camera.zoom = factor;
     }
 
@@ -25,7 +22,7 @@ public class GameModel {
     public void startNewGame(DungeonCrafter controller) 
     {
         this.map = new GMap(MAPNAME);
-        this.player = new GEPlayer();
+        this.player = new GEPlayer(controller.getAtlasRegion("tile/wall"));
         this.active = true;
         camera = new OrthographicCamera();
     }
