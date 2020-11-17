@@ -1,17 +1,31 @@
 package dev.teamcyan.dungeoncrafter.classes;
 
-public class GEPlayer extends GameElement 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import dev.teamcyan.dungeoncrafter.screens.MainGameScreen;
+
+
+
+public class GEPlayer extends GameElement
 {
+
+  int num = 0;
   String playerTextureName;
   Velocity velocity;
 
   public GEPlayer ()
   {
     this.getype = GEType.PLAYER;
-    this.spriteName = "raw_textures/tile/wall";
     this.position = new Pos(0,0);
     this.velocity = new Velocity(0,0);
+    this.spriteName = "animationFrames/tile003";
+    }
 
+
+
+
+  public void setName(String spriteName){
+    this.spriteName = spriteName;
   }
 
   public void setX(int x)
@@ -27,5 +41,6 @@ public class GEPlayer extends GameElement
   public Velocity getVelocity() {
     return this.velocity;
   }
+
 
 }

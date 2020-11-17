@@ -13,6 +13,1258 @@ badlogic
   index: -1
 
 sprites2.png
+size: 2048,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+animationFrames/tile000
+  rotate: false
+  xy: 2, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile001
+  rotate: false
+  xy: 2, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile002
+  rotate: false
+  xy: 68, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile003
+  rotate: false
+  xy: 2, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile006
+  rotate: false
+  xy: 2, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile004
+  rotate: false
+  xy: 68, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile005
+  rotate: false
+  xy: 134, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile013
+  rotate: false
+  xy: 2, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile014
+  rotate: false
+  xy: 68, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile015
+  rotate: false
+  xy: 134, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile016
+  rotate: false
+  xy: 200, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile017
+  rotate: false
+  xy: 2, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile018
+  rotate: false
+  xy: 68, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile019
+  rotate: false
+  xy: 134, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile026
+  rotate: false
+  xy: 200, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile027
+  rotate: false
+  xy: 266, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile028
+  rotate: false
+  xy: 2, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile029
+  rotate: false
+  xy: 68, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile030
+  rotate: false
+  xy: 134, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile031
+  rotate: false
+  xy: 200, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile032
+  rotate: false
+  xy: 266, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile039
+  rotate: false
+  xy: 332, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile040
+  rotate: false
+  xy: 2, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile041
+  rotate: false
+  xy: 68, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile042
+  rotate: false
+  xy: 134, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile043
+  rotate: false
+  xy: 200, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile044
+  rotate: false
+  xy: 266, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile045
+  rotate: false
+  xy: 332, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile052
+  rotate: false
+  xy: 398, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile053
+  rotate: false
+  xy: 68, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile054
+  rotate: false
+  xy: 134, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile055
+  rotate: false
+  xy: 200, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile056
+  rotate: false
+  xy: 266, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile057
+  rotate: false
+  xy: 332, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile058
+  rotate: false
+  xy: 398, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile059
+  rotate: false
+  xy: 464, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile065
+  rotate: false
+  xy: 134, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile066
+  rotate: false
+  xy: 200, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile067
+  rotate: false
+  xy: 266, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile068
+  rotate: false
+  xy: 332, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile069
+  rotate: false
+  xy: 398, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile070
+  rotate: false
+  xy: 464, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile071
+  rotate: false
+  xy: 530, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile072
+  rotate: false
+  xy: 200, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile078
+  rotate: false
+  xy: 266, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile079
+  rotate: false
+  xy: 332, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile080
+  rotate: false
+  xy: 398, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile081
+  rotate: false
+  xy: 464, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile082
+  rotate: false
+  xy: 530, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile083
+  rotate: false
+  xy: 596, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile084
+  rotate: false
+  xy: 266, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile085
+  rotate: false
+  xy: 332, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile091
+  rotate: false
+  xy: 398, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile092
+  rotate: false
+  xy: 464, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile093
+  rotate: false
+  xy: 530, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile094
+  rotate: false
+  xy: 596, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile095
+  rotate: false
+  xy: 662, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile096
+  rotate: false
+  xy: 332, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile097
+  rotate: false
+  xy: 398, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile098
+  rotate: false
+  xy: 464, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile104
+  rotate: false
+  xy: 530, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile105
+  rotate: false
+  xy: 596, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile106
+  rotate: false
+  xy: 662, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile107
+  rotate: false
+  xy: 728, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile108
+  rotate: false
+  xy: 398, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile109
+  rotate: false
+  xy: 464, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile110
+  rotate: false
+  xy: 530, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile111
+  rotate: false
+  xy: 596, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile112
+  rotate: false
+  xy: 662, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile117
+  rotate: false
+  xy: 728, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile118
+  rotate: false
+  xy: 794, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile119
+  rotate: false
+  xy: 464, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile120
+  rotate: false
+  xy: 530, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile121
+  rotate: false
+  xy: 596, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile122
+  rotate: false
+  xy: 662, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile123
+  rotate: false
+  xy: 728, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile124
+  rotate: false
+  xy: 794, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile125
+  rotate: false
+  xy: 860, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile130
+  rotate: false
+  xy: 530, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile131
+  rotate: false
+  xy: 596, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile132
+  rotate: false
+  xy: 662, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile133
+  rotate: false
+  xy: 728, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile134
+  rotate: false
+  xy: 794, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile135
+  rotate: false
+  xy: 860, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile136
+  rotate: false
+  xy: 926, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile137
+  rotate: false
+  xy: 596, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile138
+  rotate: false
+  xy: 662, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile143
+  rotate: false
+  xy: 728, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile144
+  rotate: false
+  xy: 794, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile145
+  rotate: false
+  xy: 860, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile146
+  rotate: false
+  xy: 926, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile147
+  rotate: false
+  xy: 992, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile148
+  rotate: false
+  xy: 662, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile149
+  rotate: false
+  xy: 728, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile150
+  rotate: false
+  xy: 794, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile151
+  rotate: false
+  xy: 860, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile156
+  rotate: false
+  xy: 926, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile157
+  rotate: false
+  xy: 992, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile158
+  rotate: false
+  xy: 1058, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile159
+  rotate: false
+  xy: 728, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile160
+  rotate: false
+  xy: 794, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile161
+  rotate: false
+  xy: 860, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile169
+  rotate: false
+  xy: 926, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile170
+  rotate: false
+  xy: 992, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile171
+  rotate: false
+  xy: 1058, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile172
+  rotate: false
+  xy: 1124, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile173
+  rotate: false
+  xy: 794, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile174
+  rotate: false
+  xy: 860, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile182
+  rotate: false
+  xy: 926, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile183
+  rotate: false
+  xy: 992, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile184
+  rotate: false
+  xy: 1058, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile185
+  rotate: false
+  xy: 1124, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile186
+  rotate: false
+  xy: 1190, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile187
+  rotate: false
+  xy: 860, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile195
+  rotate: false
+  xy: 926, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile196
+  rotate: false
+  xy: 992, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile197
+  rotate: false
+  xy: 1058, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile198
+  rotate: false
+  xy: 1124, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile199
+  rotate: false
+  xy: 1190, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile200
+  rotate: false
+  xy: 1256, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile208
+  rotate: false
+  xy: 926, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile209
+  rotate: false
+  xy: 992, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile210
+  rotate: false
+  xy: 1058, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile211
+  rotate: false
+  xy: 1124, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile212
+  rotate: false
+  xy: 1190, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile213
+  rotate: false
+  xy: 1256, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile214
+  rotate: false
+  xy: 1322, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile215
+  rotate: false
+  xy: 992, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile216
+  rotate: false
+  xy: 1058, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile217
+  rotate: false
+  xy: 1124, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile218
+  rotate: false
+  xy: 1190, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile219
+  rotate: false
+  xy: 1256, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile220
+  rotate: false
+  xy: 1322, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile221
+  rotate: false
+  xy: 1388, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile222
+  rotate: false
+  xy: 1058, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile223
+  rotate: false
+  xy: 1124, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile224
+  rotate: false
+  xy: 1190, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile225
+  rotate: false
+  xy: 1256, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile226
+  rotate: false
+  xy: 1322, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile227
+  rotate: false
+  xy: 1388, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile228
+  rotate: false
+  xy: 1454, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile229
+  rotate: false
+  xy: 1124, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile230
+  rotate: false
+  xy: 1190, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile231
+  rotate: false
+  xy: 1256, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile232
+  rotate: false
+  xy: 1322, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile233
+  rotate: false
+  xy: 1388, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile234
+  rotate: false
+  xy: 1454, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile235
+  rotate: false
+  xy: 1520, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile236
+  rotate: false
+  xy: 1190, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile237
+  rotate: false
+  xy: 1256, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile238
+  rotate: false
+  xy: 1322, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile239
+  rotate: false
+  xy: 1388, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile240
+  rotate: false
+  xy: 1454, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile241
+  rotate: false
+  xy: 1520, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile242
+  rotate: false
+  xy: 1586, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile243
+  rotate: false
+  xy: 1256, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile244
+  rotate: false
+  xy: 1322, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile245
+  rotate: false
+  xy: 1388, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile246
+  rotate: false
+  xy: 1454, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile247
+  rotate: false
+  xy: 1520, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile248
+  rotate: false
+  xy: 1586, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile249
+  rotate: false
+  xy: 1652, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile250
+  rotate: false
+  xy: 1322, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile251
+  rotate: false
+  xy: 1388, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile252
+  rotate: false
+  xy: 1454, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile253
+  rotate: false
+  xy: 1520, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile254
+  rotate: false
+  xy: 1586, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile255
+  rotate: false
+  xy: 1652, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile256
+  rotate: false
+  xy: 1718, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile257
+  rotate: false
+  xy: 1388, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile258
+  rotate: false
+  xy: 1454, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile259
+  rotate: false
+  xy: 1520, 134
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile260
+  rotate: false
+  xy: 1586, 200
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile261
+  rotate: false
+  xy: 1652, 266
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile262
+  rotate: false
+  xy: 1718, 332
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile263
+  rotate: false
+  xy: 1784, 398
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile264
+  rotate: false
+  xy: 1454, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+animationFrames/tile265
+  rotate: false
+  xy: 1520, 68
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+
+sprites3.png
 size: 2048,128
 format: RGBA8888
 filter: Nearest,Nearest
@@ -88,7 +1340,7 @@ menu_buttons/settings_inactive
   offset: 0, 0
   index: -1
 
-sprites3.png
+sprites4.png
 size: 256,32
 format: RGBA8888
 filter: Nearest,Nearest
@@ -178,7 +1430,7 @@ raw_textures/effect/whitetrans
   offset: 0, 0
   index: -1
 
-sprites4.png
+sprites5.png
 size: 256,32
 format: RGBA8888
 filter: Nearest,Nearest
@@ -282,7 +1534,7 @@ raw_textures/eye/standing
   offset: 0, 0
   index: 9
 
-sprites5.png
+sprites6.png
 size: 64,32
 format: RGBA8888
 filter: Nearest,Nearest
@@ -337,7 +1589,7 @@ raw_textures/item/tree
   offset: 0, 0
   index: -1
 
-sprites6.png
+sprites7.png
 size: 64,128
 format: RGBA8888
 filter: Nearest,Nearest
@@ -462,7 +1714,7 @@ raw_textures/player/swim_right
   offset: 0, 0
   index: 3
 
-sprites7.png
+sprites8.png
 size: 256,32
 format: RGBA8888
 filter: Nearest,Nearest
@@ -580,7 +1832,7 @@ raw_textures/slime/right
   offset: 0, 0
   index: 7
 
-sprites8.png
+sprites9.png
 size: 64,128
 format: RGBA8888
 filter: Nearest,Nearest
@@ -647,28 +1899,7 @@ raw_textures/tile/water
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
-  index: 8
-raw_textures/tile/water
-  rotate: false
-  xy: 20, 74
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 9
-raw_textures/tile/water
-  rotate: false
-  xy: 20, 74
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 7
-raw_textures/tile/water
-  rotate: false
-  xy: 20, 74
-  size: 16, 16
-  orig: 16, 16
-  offset: 0, 0
-  index: 12
+  index: 13
 raw_textures/tile/water
   rotate: false
   xy: 20, 74
@@ -682,7 +1913,14 @@ raw_textures/tile/water
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
-  index: 13
+  index: 10
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 8
 raw_textures/tile/water
   rotate: false
   xy: 20, 74
@@ -696,7 +1934,21 @@ raw_textures/tile/water
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
-  index: 10
+  index: 9
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 12
+raw_textures/tile/water
+  rotate: false
+  xy: 20, 74
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: 7
 raw_textures/tile/water
   rotate: false
   xy: 38, 92
@@ -768,7 +2020,7 @@ raw_textures/tile/water_t
   offset: 0, 0
   index: 6
 
-sprites9.png
+sprites10.png
 size: 256,128
 format: RGBA8888
 filter: Nearest,Nearest
@@ -816,7 +2068,7 @@ raw_textures/ui/window_bg
   offset: 0, 0
   index: -1
 
-sprites10.png
+sprites11.png
 size: 512,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -843,20 +2095,55 @@ sprites/buckets/bucket_water
   offset: 0, 0
   index: -1
 
-sprites11.png
+sprites12.png
 size: 1024,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-sprites/character/charactersheets
+sprites/character/1standing
+  rotate: false
+  xy: 45, 64
+  size: 38, 54
+  orig: 38, 54
+  offset: 0, 0
+  index: -1
+sprites/character/2standing
+  rotate: false
+  xy: 836, 1355
+  size: 38, 53
+  orig: 38, 53
+  offset: 0, 0
+  index: -1
+sprites/character/3standing
+  rotate: false
+  xy: 2, 58
+  size: 41, 60
+  orig: 41, 60
+  offset: 0, 0
+  index: -1
+sprites/character/4standing
+  rotate: false
+  xy: 836, 1410
+  size: 41, 54
+  orig: 41, 54
+  offset: 0, 0
+  index: -1
+sprites/character/5standing
   rotate: false
   xy: 2, 2
+  size: 41, 54
+  orig: 41, 54
+  offset: 0, 0
+  index: -1
+sprites/character/charactersheets
+  rotate: false
+  xy: 2, 120
   size: 832, 1344
   orig: 832, 1344
   offset: 0, 0
   index: -1
 
-sprites12.png
+sprites13.png
 size: 1024,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -897,7 +2184,7 @@ sprites/fence/default_fence_wood
   offset: 0, 0
   index: -1
 
-sprites13.png
+sprites14.png
 size: 1024,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -980,7 +2267,7 @@ sprites/food/farming_wheat_seed
   offset: 0, 0
   index: -1
 
-sprites14.png
+sprites15.png
 size: 512,2048
 format: RGBA8888
 filter: Nearest,Nearest
@@ -1028,7 +2315,7 @@ sprites/liquid/default_river_water_source_animated
   offset: 0, 0
   index: -1
 
-sprites15.png
+sprites16.png
 size: 1024,512
 format: RGBA8888
 filter: Nearest,Nearest
@@ -1195,7 +2482,7 @@ sprites/misc/vessels_glass_bottle
   offset: 0, 0
   index: -1
 
-sprites16.png
+sprites17.png
 size: 1024,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -1243,7 +2530,7 @@ sprites/otherPrecious/default_mineral_mese
   offset: 0, 0
   index: -1
 
-sprites17.png
+sprites18.png
 size: 64,128
 format: RGBA8888
 filter: Nearest,Nearest
@@ -1368,7 +2655,7 @@ sprites/pebble/swim_right
   offset: 0, 0
   index: 3
 
-sprites18.png
+sprites19.png
 size: 2048,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -1479,7 +2766,7 @@ sprites/plant/flowers_mushroom_brown
   offset: 0, 0
   index: -1
 
-sprites19.png
+sprites20.png
 size: 1024,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -1597,7 +2884,7 @@ sprites/precious/default_steel_ingot
   offset: 0, 0
   index: -1
 
-sprites20.png
+sprites21.png
 size: 2048,512
 format: RGBA8888
 filter: Nearest,Nearest
@@ -1820,7 +3107,7 @@ sprites/recipe/farming_tool_steelhoe
   offset: 0, 0
   index: -1
 
-sprites21.png
+sprites22.png
 size: 2048,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -1938,7 +3225,7 @@ sprites/rocks/default_stone_brick
   offset: 0, 0
   index: -1
 
-sprites22.png
+sprites23.png
 size: 1024,512
 format: RGBA8888
 filter: Nearest,Nearest
@@ -2063,7 +3350,7 @@ sprites/TNT/tnt_top_burning_animated
   offset: 0, 0
   index: -1
 
-sprites23.png
+sprites24.png
 size: 1024,256
 format: RGBA8888
 filter: Nearest,Nearest
