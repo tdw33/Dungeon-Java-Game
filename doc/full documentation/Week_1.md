@@ -131,13 +131,13 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 
 
 
-### User tests
+### User stories tests
 
 | User story ID | Test                                                         | Comments                                                     | completed |
 | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------- |
 | US_01         | Run code on different systems and see if code compiles       |                                                              | NO        |
 | US_02         | A bot character is generated on the game screen  The bot aids the user with text aids | The bot will have to be able to follow the player around the map, meaning it will need similar movement animations to the main character | NO        |
-| US_03         | Monitor to see d the bot is attempting task within the game  |                                                              | NO        |
+| US_03         | Monitor to see if the bot is attempting task within the game |                                                              | NO        |
 | US_04         | There is a visual queue on the screen that will track specific progression. | There are multiple types of progress – elevation, time ore collection | NO        |
 | US_05         | Within the menu screen the player sets the game mode and the characteristics of the game change | These characteristics could be unlimited health, unlimited resources and no enemies | NO        |
 | US_06         | The player can destroy a block and it disappears from the game screen. This block will then show up with in the inventory | From the inventory screen there are multiple options the player can take which require use cases and user stories | NO        |
@@ -315,7 +315,7 @@ There are none
 
 - The player will attempt to craft an item where they do not have the resources. A message will be displayed stating insufficient resources
 
-### Tests
+###  Use cases Tests
 
 No tests this week
 
@@ -329,6 +329,11 @@ At this stage, no thought has been given into the software design and classes as
 
 ### User interface design
 
-- There will be a starting menu screen with the game setting and the start function 
-- Once in the game there will be character that can move and interact with the whole map
-- When the player had successfully completed the game they will be sent back to the starting menu screen
+| Design implement                                             | Version |
+| ------------------------------------------------------------ | ------- |
+| There will be a starting menu screen with the game setting and the start function | 1       |
+| Once in the game there will be character that can move and interact with the whole map | 1       |
+| When the player had successfully completed the game they will be sent back to the starting menu screen | 1       |
+
+
+
