@@ -34,32 +34,33 @@ import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 
 public class MainGameScreen extends BaseScreen {
-    SpriteBatch batch = new SpriteBatch();
-    boolean movingRight = false;
-    boolean movingLeft = false;
-    boolean movingUp = false;
-    boolean movingDown = false;
-    boolean zoomIn = false;
-    boolean zoomOut = false;
-    Sprite sprite;
-    List <Sprite> q = new ArrayList<>();
-    private OrthogonalTiledMapRenderer mapRenderer;
+    private SpriteBatch batch = new SpriteBatch();
+    private boolean movingRight = false;
+    private boolean movingLeft = false;
+    private boolean movingUp = false;
+    private boolean movingDown = false;
+    private boolean zoomIn = false;
+    private boolean zoomOut = false;
+    private Sprite sprite;
+    private List <Sprite> q = new ArrayList<>();
     private TiledMap map;
     private int mapPixelWidth;
     private int mapPixelHeight;
-    private OrthographicCamera camera;
 
-    BitmapFont font;
-    ArrayList<String> keyInfo;
-    String mouseInfo;
+    private BitmapFont font;
+    private ArrayList<String> keyInfo;
+    private String mouseInfo;
 
+    private DungeonCrafter game;
+    private GameModel model;
 
-    DungeonCrafter game;
-    GameModel model;
-
-    public MainGameScreen(DungeonCrafter parent, GameModel model) {
+    public MainGameScreen(DungeonCrafter parent, GameModel model) 
+    {
+        /**
+         * Constructor - 
+         * Inherit the game and the model fron the parent class
+         */
         super(parent, model);
-
         this.game = parent;
         this.model = model;
     }
@@ -68,51 +69,15 @@ public class MainGameScreen extends BaseScreen {
     public void init() {
 
         // load the map
-        TmxMapLoader loader = new TmxMapLoader();
-        map = loader.load(model.getMap().getMapName());
-        // load map properties to store map dimensions
-        MapProperties prop = map.getProperties();
-        int mapWidth = prop.get("width", Integer.class);
-        int mapHeight = prop.get("height", Integer.class);
-        int tilePixelWidth = prop.get("tilewidth", Integer.class);
-        int tilePixelHeight = prop.get("tileheight", Integer.class);
-        mapPixelWidth = mapWidth * tilePixelWidth;
-        mapPixelHeight = mapHeight * tilePixelHeight;
-        /*
-        //map = new TiledMap();
-        TiledMapTileLayer.Cell cell;
-        MapLayers layers = map.getLayers();
-
-
-        TiledMapTileLayer layer = new TiledMapTileLayer(100, 100, 64, 64);
-        //for (int x = 0; x < 15; x++) {
-        //  for (int y = 0; y < 10; y++) {
-          cell = layer.getCell(0, 0);
-          //cell.setTile(new StaticTiledMapTile(atlas.findRegion("tile/wall")));
-        // }
-        //}
-        layers.add(layer);
-        /*for (int i = 0 ; i<5;i++)
-        {
-          sprite = new Sprite(atlas.findRegion("tile/wall"));
-          sprite.setScale(5000.9f);
-          sprite.setPosition(i*100,0);
-          q.add(sprite);
-        }
-        //Vector3 vector = new Vector3(1,1,1);
-        //camera.position(vector);
-        */
-
-        mapRenderer = new OrthogonalTiledMapRenderer(map);
-        camera = new OrthographicCamera();
-        camera.zoom = (float) 1.0;
+        this.model.setCameraZoom(1f);
 
         sprite = new Sprite(controller.getAtlasRegion(model.getPlayer().getSpriteName()));
+
         model.getPlayer().setX(mapPixelWidth/2);
         model.getPlayer().setY(mapPixelHeight/2);
         sprite.setPosition(model.getPlayer().getPosition().getX(),model.getPlayer().getPosition().getY());
 
-        font = new BitmapFont();//Gdx.files.internal("data/digib.fnt"),Gdx.files.internal("data/digib.png"), false);;
+        font = new BitmapFont();
         keyInfo = new ArrayList<String>();
         mouseInfo = "";
 
@@ -140,7 +105,7 @@ public class MainGameScreen extends BaseScreen {
             if (bottomRight == null && topRight == null) {
                 model.getPlayer().getVelocity().setX(newXVelocity);
                 model.getPlayer().getPosition().setX((int)Math.ceil(newXPosition));
-                camera.translate((int)Math.ceil(newXVelocity),0,0);
+                model.getCamera().translate((int)Math.ceil(newXVelocity),0,0);
             } else {
                 model.getPlayer().getVelocity().setX(0.0);
             }
@@ -151,7 +116,7 @@ public class MainGameScreen extends BaseScreen {
             if (bottomLeft == null && topLeft == null) {
                 model.getPlayer().getVelocity().setX(newXVelocity);
                 model.getPlayer().getPosition().setX((int)Math.floor(newXPosition));
-                camera.translate((int)Math.floor(newXVelocity),0,0);
+                model.getCamera().translate((int)Math.floor(newXVelocity),0,0);
             } else {
                 model.getPlayer().getVelocity().setX(0.0);
             }
@@ -165,7 +130,7 @@ public class MainGameScreen extends BaseScreen {
         if (leftBottom == null && rightBottom == null) {
             model.getPlayer().getVelocity().setY(newYVelocity);
             model.getPlayer().setY((int)newYPosition);
-            camera.translate(0,-(int)newYVelocity,0);
+            model.getCamera().translate(0,-(int)newYVelocity,0);
 
         } else {
             model.getPlayer().getVelocity().setY(0);
@@ -177,7 +142,7 @@ public class MainGameScreen extends BaseScreen {
             TiledMapTileLayer.Cell cellRightCorner = layer.getCell((int) (((sprite.getX()-1)+sprite.getWidth()) / layer.getTileWidth()), (int) ((sprite.getY()+sprite.getHeight()) / layer.getTileHeight()));
             if (cellLeftCorner == null && cellRightCorner == null) {
                 model.getPlayer().setY(model.getPlayer().getPosition().getY()+1);
-                camera.translate(0, 1, 0);
+                model.getCamera().translate(0, 1, 0);
             }
         }
 
@@ -191,18 +156,18 @@ public class MainGameScreen extends BaseScreen {
 
 
         if(zoomIn) {
-            camera.zoom -= 0.1;
+            model.getCamera().zoom -= 0.1;
         }
         if(zoomOut) {
-            camera.zoom += 0.1;
+            model.getCamera().zoom += 0.1;
         }
 
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("Tile Layer 1");
         setPosition(model.getPlayer(), layer);
         sprite.setPosition(model.getPlayer().getPosition().getX(), model.getPlayer().getPosition().getY());
-        mapRenderer.setView(camera);
-        mapRenderer.render();
-        batch.setProjectionMatrix(camera.combined);
+        model.getMap().getMapRenderer().setView(model.getCamera());
+        model.getMap().getMapRenderer().render();
+        batch.setProjectionMatrix(model.getCamera().combined);
 
         batch.begin();
         /*for (Sprite s : q) {
@@ -219,16 +184,16 @@ public class MainGameScreen extends BaseScreen {
         }
         //font.draw(game.batch, keyInfo, 50, DungeonCrafter.HEIGHT-30);
         batch.end();
-        camera.update();
+        model.getCamera().update();
 
     }
 
     @Override
     public void resize(int width, int height) {
-      camera.viewportWidth = width;
-      camera.viewportHeight = height;
-      camera.position.set(mapPixelWidth/2f, mapPixelHeight/2f, 0); //by default camera position on (0,0,0)
-      camera.update();
+      model.getCamera().viewportWidth = width;
+      model.getCamera().viewportHeight = height;
+      model.getCamera().position.set(mapPixelWidth/2f, mapPixelHeight/2f, 0); //by default model.getCamera() position on (0,0,0)
+      model.getCamera().update();
     }
 
     @Override

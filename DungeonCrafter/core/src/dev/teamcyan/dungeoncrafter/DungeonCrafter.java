@@ -34,10 +34,11 @@ public class DungeonCrafter extends Game {
 
 
 
-	// Initialize the asset manager
    public void init_asset_manager()
    {
-     /* Init asset manager */
+     /** 
+      * Init asset manager 
+      */
 		assetManager = new AssetManager();
 		assetManager.load("textures.atlas", TextureAtlas.class);
 		assetManager.finishLoading();
@@ -49,6 +50,7 @@ public class DungeonCrafter extends Game {
 		this.setDebugOn(true);
 		this.model = new GameModel();
 		VisUI.load();
+      
 	   // Initialise the audio manager
 	   audioManager = new AudioManager();
       init_asset_manager();
@@ -111,6 +113,7 @@ public class DungeonCrafter extends Game {
 	public boolean isDebugOn() {
 		return debugMode;
 	}
+
 	public DungeonCrafter setDebugOn(boolean on) {
 		this.debugMode = on;
 		Gdx.app.setLogLevel(on ? Application.LOG_DEBUG : Application.LOG_INFO);
@@ -136,4 +139,5 @@ public class DungeonCrafter extends Game {
 	public void render () {
 		super.render();
 	}*/
+
 }
