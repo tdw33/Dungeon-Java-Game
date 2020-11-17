@@ -4,33 +4,18 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.utils.Null;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.utils.Array;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GEPlayer;
-import dev.teamcyan.dungeoncrafter.classes.GMap;
-import com.badlogic.gdx.maps.objects.TextureMapObject;
 import com.badlogic.gdx.maps.tiled.*;
-import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.MapLayer;
-import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.badlogic.gdx.maps.*;
-import com.badlogic.gdx.graphics.g2d.*;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Vector3 ;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import java.util.ArrayList;
 
-import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 
 public class MainGameScreen extends BaseScreen {
@@ -48,6 +33,24 @@ public class MainGameScreen extends BaseScreen {
     private int mapPixelWidth;
     private int mapPixelHeight;
     private OrthographicCamera camera;
+    private TextureRegion[] charFrames;
+    private static int CHAR_PIXEL_WIDTH = 64;
+    private static int CHAR_PIXEL_HEIGHT = 64;
+    private int index = 0;
+    private Texture spriteSheet;
+    private enum State {RUNNINGL, RUNNINGR, JUMPING, STANDING, FALLING };
+    private State currentState;
+    private State previousState;
+    private Animation<TextureRegion> charRunL;
+    private TextureRegion charFall;
+    private Animation<TextureRegion> charRunR;
+    private TextureRegion charStand;
+    private TextureRegion charJump;
+    private TextureRegion region;
+    private float stateTimer = 0;
+    private float deltaTime = Gdx.graphics.getDeltaTime();
+
+
 
     BitmapFont font;
     ArrayList<String> keyInfo;
@@ -57,12 +60,17 @@ public class MainGameScreen extends BaseScreen {
     DungeonCrafter game;
     GameModel model;
 
+
+
     public MainGameScreen(DungeonCrafter parent, GameModel model) {
         super(parent, model);
 
         this.game = parent;
         this.model = model;
+
     }
+
+
 
     @Override
     public void init() {
@@ -190,6 +198,36 @@ public class MainGameScreen extends BaseScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
+
+        currentState = State.STANDING;
+        previousState = State.STANDING;
+
+        charFrames = new TextureRegion[274];
+        Array<TextureRegion> frames = new Array<TextureRegion>();
+        spriteSheet = new Texture("sprites/character/charactersheet.png");
+
+
+
+        charStand = new TextureRegion(spriteSheet, 0, 640, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+        charJump = new TextureRegion(spriteSheet, 64, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+        charFall = new TextureRegion(spriteSheet, 128, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+        for (int i = 0; i < 9; i++) {
+                frames.add(new TextureRegion(spriteSheet, i*64, 704, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT));
+            }
+
+        charRunR = new Animation(0.15f, frames);
+        frames.clear();
+        for (int i = 0; i < 9; i++) {
+            frames.add(new TextureRegion(spriteSheet, i*64, 576, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT));
+        }
+        charRunL = new Animation(0.15f, frames);
+        frames.clear();
+        region = getFrame();
+
+
+
+
+
         if(zoomIn) {
             camera.zoom -= 0.1;
         }
@@ -208,7 +246,8 @@ public class MainGameScreen extends BaseScreen {
         /*for (Sprite s : q) {
             batch.draw(s, s.getX(), s.getY(), s.getWidth(),s.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
         }*/
-        batch.draw(sprite, sprite.getX(), sprite.getY(), sprite.getWidth(),sprite.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
+        batch.draw(region, sprite.getX(), sprite.getY(), sprite.getWidth(),sprite.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
+        batch.draw(charFall, 1750, 700, 64, 64);
         font.setColor(1,1,1,1);   //Brown is an underated Colour
         font.draw(batch, mouseInfo, sprite.getX(), sprite.getY()+150);
         font.draw(batch, "Mouse XY:", sprite.getX(), sprite.getY()+170);
@@ -339,5 +378,43 @@ public class MainGameScreen extends BaseScreen {
     public boolean scrolled(int amount) {
         return false;
     }
+
+    public State getState(){
+        if(movingLeft && !movingUp && !movingDown){
+            return State.RUNNINGL;
+        } else if (movingRight && !movingUp && !movingDown){
+            return State.RUNNINGR;
+        } else if(movingUp || movingDown && previousState == State.JUMPING){
+            return State.JUMPING;
+        } else if(movingDown) {
+            return State.FALLING;
+        } else return State.STANDING;
+    }
+
+    public TextureRegion getFrame(){
+        currentState = getState();
+        stateTimer += Gdx.graphics.getDeltaTime();
+
+        TextureRegion region;
+        if (currentState == State.RUNNINGL ){
+            region = charRunL.getKeyFrame(stateTimer, true);;
+        } else if (currentState == State.RUNNINGR){
+            region = charRunR.getKeyFrame(stateTimer, true);
+        } else if (currentState == State.JUMPING){
+            region = charJump;
+        } else if (currentState == State.FALLING) {
+            region = charFall;
+        } else {
+            region = charStand;
+        }
+
+
+
+        previousState = currentState;
+        return region;
+
+    }
+
+
 
 }
