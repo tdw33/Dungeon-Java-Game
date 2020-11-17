@@ -78,6 +78,13 @@ Following the sprint review we created the presentation for the customer meeting
 - FInd a common naming system
 - Design classes and create a UML diagram
 
+**Completed:**
+
+- Find cross platofrm library
+- Research on how GitHub version control works 
+- Java research 
+- Game development research 
+
 
 
 ## Exceptoinal handling 
