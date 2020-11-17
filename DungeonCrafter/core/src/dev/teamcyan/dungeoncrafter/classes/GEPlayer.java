@@ -22,6 +22,10 @@ public class GEPlayer extends GameElement
     return sprite;
   }
 
+  public Pos getPosition() {
+    return new Pos(this.sprite.getX(), this.sprite.getY());
+  }
+
   public float setX(TiledMapTileLayer layer, boolean movingLeft, boolean movingRight) {
     float delta = Gdx.graphics.getDeltaTime();
     float newXVelocity;

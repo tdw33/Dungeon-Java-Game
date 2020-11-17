@@ -33,8 +33,10 @@ import java.util.ArrayList;
 
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
+import dev.teamcyan.dungeoncrafter.classes.Pos;
 
 public class MainGameScreen extends BaseScreen {
+
     private SpriteBatch batch = new SpriteBatch();
     private boolean movingRight = false;
     private boolean movingLeft = false;
@@ -56,6 +58,7 @@ public class MainGameScreen extends BaseScreen {
          * Constructor - 
          * Inherit the game and the model fron the parent class
          */
+
         super(parent, model);
         this.game = parent;
         this.model = model;
@@ -67,16 +70,15 @@ public class MainGameScreen extends BaseScreen {
         // load the map
         this.model.setCameraZoom(1f);
 
-
-        //model.getPlayer().setX(model.getMap().getMapPixelWidth()/2);
-        //model.getPlayer().setY(model.getMap().getMapPixelHeight()/2);
         model.getPlayer().getSprite().setPosition(model.getMap().getMapPixelWidth()/2,model.getMap().getMapPixelHeight()/2);
+        model.getPebble().getSprite().setPosition(model.getMap().getMapPixelWidth()/2+10,model.getMap().getMapPixelHeight()/2+10);
 
         font = new BitmapFont();
         keyInfo = new ArrayList<String>();
         mouseInfo = "";
 
     }
+
 
     @Override
     public void draw(float delta) {
@@ -96,28 +98,35 @@ public class MainGameScreen extends BaseScreen {
 
         model.getCamera().translate(
                 (model.getPlayer().getSprite().getX() - model.getPlayer().setX(
-                        layer, movingLeft, movingRight)) * (-2),
+                        layer, movingLeft, movingRight)) * (-1),
                 (model.getPlayer().getSprite().getY() - model.getPlayer().setY(
-                        layer, movingUp, movingDown)) * (-2),
+                        layer, movingUp, movingDown)) * (-1),
                 0);
+
+        model.getPebble().setX(layer, model.getPlayer().getPosition());
+        model.getPebble().setY(layer);
 
         model.getMap().getMapRenderer().setView(model.getCamera());
         model.getMap().getMapRenderer().render();
         batch.setProjectionMatrix(model.getCamera().combined);
 
+
         batch.begin();
         /*for (Sprite s : q) {
             batch.draw(s, s.getX(), s.getY(), s.getWidth(),s.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
         }*/
+
         Sprite player = model.getPlayer().getSprite();
         batch.draw(player, player.getX(), player.getY(), player.getWidth(), player.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
+        Sprite pebble = model.getPebble().getSprite();
+        batch.draw(pebble, pebble.getX(), pebble.getY(), pebble.getWidth(),pebble.getHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
         font.setColor(1,1,1,1);   //Brown is an underated Colour
-        font.draw(batch, mouseInfo, model.getPlayer().getSprite().getX(), model.getPlayer().getSprite().getY()+150);
-        font.draw(batch, "Mouse XY:", model.getPlayer().getSprite().getX(), model.getPlayer().getSprite().getY()+170);
-        font.draw(batch, "Keys active:", model.getPlayer().getSprite().getX(), model.getPlayer().getSprite().getY()+200);
+        font.draw(batch, mouseInfo, player.getX(), player.getY()+150);
+        font.draw(batch, "Mouse XY:", player.getX(), player.getY()+170);
+        font.draw(batch, "Keys active:", player.getX(), player.getY()+200);
         for(int i = 0; i < keyInfo.size(); i++)
         {
-            font.draw(batch, keyInfo.get(i), model.getPlayer().getSprite().getX()+80+(i*10), model.getPlayer().getSprite().getY()+200);
+            font.draw(batch, keyInfo.get(i), player.getX()+80+(i*10), player.getY()+200);
         }
         //font.draw(game.batch, keyInfo, 50, DungeonCrafter.HEIGHT-30);
         batch.end();
@@ -216,8 +225,10 @@ public class MainGameScreen extends BaseScreen {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         System.out.println("x = " + screenX);
         System.out.println("y = " + screenY);
+
         model.getPlayer().getSprite().setCenterX(screenX);
         model.getPlayer().getSprite().setCenterY(DungeonCrafter.HEIGHT - screenY);
+
         return false;
     }
 
