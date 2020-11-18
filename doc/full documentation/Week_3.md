@@ -61,7 +61,6 @@ Many members had course deadlines this week so the team had to balance between k
 ## product contents
 
 ### Customer interview
-- I want to be able to control the character’s movements
 - I think Pebble helping more when sanity level drops is an interesting idea
 - I prefer the art style that is high-resolution
 - It will be good to explore a range of different backgrounds as the game progresses  
@@ -70,90 +69,51 @@ The customer suggested having a way to interact with the game by controlling the
 
 ### User stories
 
-| ID    | Version | Priority | Story                                                        |
-| ----- | ------- | -------- | ------------------------------------------------------------ |
-| US_01 | 1       | 1        | **AS A**   Player  **I WANT**   to be able to control the character **SO THAT** the process can be more interactive |
-| US_02 | 1       | 4        | **AS A**   Player  **I WANT**   to have Pebble (the bot) help me more when sanity level increases **SO THAT** the game will not be too difficult |
-| US_03 | 1       | 2        | **AS A**   Player  **I WANT**   to see a high-resolution game style **SO THAT** the background, items and characters seem clearer |
-| US_04 | 1       | 3        | **AS A**   Player  **I WANT**   to be able to explore a range of different backgrounds **SO THAT** the game is more playable |
+| ID    | Version      | Priority     | Story                                                        |
+| ----- | ------------ | ------------ | ------------------------------------------------------------ |
+| US_01 | 2            | 1            | **AS A**   Player  **I WANT**   to be able to  play a dungeon game on different platforms web platforms **SO THAT**   I have choices  for playing the game |
+| US_02 | 2            | 4            | **AS A**   Player  **I WANT**   to have a bot  that that will play for me  **SO THAT**   It can help me  with playing through the game by offering adivce |
+| US_03 | **Deleting** | **Deleting** | **AS A**   Player  **I WANT**   to be able to compete  with a bot  **SO THAT**   I can have a goal  when playing |
+| US_04 | 1            | 5            | **AS A**   **Player**  **I WANT**   to be able to  see my progress  **SO THAT**  I know  if I am doing well at the game as I play |
+| US_05 | 2            | 7            | **AS A**   Player  **I WANT**   to have different  choices between games modes and diffrent paths to the end in each game mode **SO THAT**   I have new scenarios  to play |
+| US_06 | 1            | 2            | **AS A** Player **I WANT** to interact with the blocks on the map **SO THAT** I can gather resources, place resources, and make new paths |
+| US_07 | 1            | 3            | **AS A** Player **I WANT** to use resources to craft items **SO THAT** I can use them throughout the game to make tasks easier |
+| US_08 | 1            | 6            | **AS A** player **I WANT** to be able to regenerate health **SO THAT** I can survive longer |
+| US_09 | 1       | 9        | **AS A**   Player  **I WANT**   to see a high-resolution game style **SO THAT** the background, items and characters seem clearer |
+| US_10 | 1       | 8        | **AS A**   Player  **I WANT**   to be able to explore a range of different backgrounds **SO THAT** the game is more playable |
 
 
 
-### User tests
+### User story testing
 
 | User story ID | Test                                                         | Comments                                                     | completed |
 | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------- |
-| US_01         | A block that represents the character can be controlled by user input by pressing a key       | When the player presses arrow keys, the block will move accordingly  | YES        |
-| US_02         | Pebble gives more instructions and provides more material when main character’s sanity level drops | Pebble will need to respond to the sanity state of the player and different amount of help are given based on sanity level | NO        |
-| US_03         | Add sprites into the game |  The sprites need to be suitable in terms of the theme of the game and overall art style | NO        |
-| US_04         | Add sprites, generate different types of ground and environment texture | The player should be able to go to different places with various environment such as river, woods, stone road | NO        |
+| US_01         | Run code on different systems and see if code compiles       | Web based sytems on Windows, Mac and Linux                   | YES       |
+| US_02         | A bot character is generated on the game screen  The bot aids the user with text aids | The bot will have to be able to follow the player around the map, meaning it will need similar movement animations to the main character | NO        |
+| US_04         | There is a visual queue on the screen that will track specific progression. | There are multiple types of progress – elevation, time ore collection | NO        |
+| US_05         | Within the menu screen the player sets the game mode and the characteristics of the game change | These characteristics could be unlimited health, unlimited resources and no enemies | NO        |
+| US_06         | The player can destroy a block and it disappears from the game screen. This block will then show up within the inventory | From the inventory screen there are multiple options the player can take which require use cases and user stories | NO        |
+| US_07         | There is an option to craft items from the inventory screen. If the player has the required resources, they can craft the item and the resources are taken from their inventory | You can implement many ways to show what can be crafted with the resources provided. | NO        |
+| US_08         | Have the player take damage, from then the health will decrease and then it regenerates once they stop taking damage |                                                              | NO        |
+| US_09         | Add sprites into the game |  The sprites need to be suitable in terms of the theme of the game and overall art style | NO        |
+| US_10         | Add sprites, generate different types of ground and environment texture | The player should be able to go to different places with various environment such as river, woods, stone road | NO        |
 
 ### Use cases
 
-#### UC_01
-
-**Use case**: Player controls the movement of the character  
-**Author**: TJ  
-**Date**: 11/14/2020  
-**Modification date**: 11/14/2020  
-**Purpose**: the player can control the character to move up, down, left and right  
-**Overview**: The player will press arrow keys and the block (the character) will move accordingly.  
-**Cross reference**: US_01  
-**Actors**: player  
-
-**Precondition**:
-- The system must be able to show the player’s current position
-- The player needs to have a way of giving input (e.g. key press)
-- The input needs to be interpreted by the system
-- The system needs to respond by showing the updated position
-
-**Normal flow of event**:
-
-| Actor actions                                  | System actions                                               |
-| ---------------------------------------------- | ------------------------------------------------------------ |
-| 1. The player will press a key       | 2. The system will interpret the input                  |
-| 4. The player will keep giving input based on visual feedback and goals | 3. The system will update and show the player’s current position                         |
-
-**Alternative flow of events:**
+#### **Exisitng Use cases:**
+| Use case ID | Use case description                     | Tested |
+| ----------- | ---------------------------------------- | ------ |
+| UC_01       | Player starts game on different systems  | NO     |
+| UC_02       | Player destroys a block on the map       | NO     |
+| UC_03       | Player places a block on the map         | NO     |
+| UC_04       | Player crafts an item from the inventory | NO     |
+| UC_05       | Player controls the movement of the character  | YES     |
+| UC_06       | As the players sanity goes up his sidekick will offer advice | NO     |
 
 
-**Exceptional flow of events:**
-- The system not able to interpret player’s input
-- The system does not update or show the player’s position in time
+#### **New Use cases:**  
 
-
-
-#### UC_02
-
-**Use case**: Pebble helps more when the character’s sanity level drops  
-**Author**: TJ  
-**Date**: 11/14/2020  
-**Modification date**: 11/14/2020  
-**Purpose**: have Pebble react to the sanity state of the character  
-**Overview**: After sanity level drops, Pebble helps more by talking more and giving more materials needed.  
-**Cross reference**: US_02 
-**Actors**: player  
-
-**Precondition**:
-- The system should have a way for Pebble to detect the character’s sanity level
-- Pebble needs to respond by helping more
-
-**Normal flow of event**:
-
-| Actor actions                                  | System actions                                               |
-| ---------------------------------------------- | ------------------------------------------------------------ |
-| 1. The character’s sanity level drops       | 2. The system will detect the change                  |
-| 4. The player will make use of the items | 3. Pebble will give more items to the character and give more instructions                       |
-
-**Alternative flow of events:**
-
-
-**Exceptional flow of events:**
-- The system not able to detect a change to sanity level
-- The system has detected the sanity change but no responses from Pebble
-
-
-#### UC_03
+#### UC_07
 
 **Use case**: have high-resolution items, characters and environment  
 **Author**: TJ  
@@ -161,7 +121,7 @@ The customer suggested having a way to interact with the game by controlling the
 **Modification date**: 11/15/2020  
 **Purpose**: make the game more visually appealing and make the elements clearer  
 **Overview**: The player will open the game and see the scenes, characters and items as high-resolution.  
-**Cross reference**: US_03  
+**Cross reference**: US_09  
 **Actors**: player  
 
 **Precondition**:
@@ -180,7 +140,7 @@ The customer suggested having a way to interact with the game by controlling the
 - Some elements cannot be seen on the map
 - The elements appear blurry
 
-#### UC_04
+#### UC_08
 
 **Use case**: Play in different environments  
 **Author**: TJ  
@@ -188,7 +148,7 @@ The customer suggested having a way to interact with the game by controlling the
 **Modification date**: 11/15/2020  
 **Purpose**: Provide the player with various scenes to play in  
 **Overview**: The player controls character to walk around the map and different sections of the map shows different environments  
-**Cross reference**: US_04  
+**Cross reference**: US_10    
 **Actors**: player  
 
 **Precondition**:
@@ -202,16 +162,28 @@ The customer suggested having a way to interact with the game by controlling the
 | 3. Character interacts with the environment                 |                                              |
 
 **Alternative flow of events:**
-
+- There are none
 **Exceptional flow of events:**
 - The player not able to enter certain parts of the map
 - The environment is shown in a blurry or confusing manner
 
 
 
-### Tests
+## Use cases testing
+- [ ] **UC_01**
+- [ ] **UC_02**
+- [ ] **UC_03**
+- [ ] **UC_04**
+- [ ] **UC_05**
+- [ ] **UC_06**
 
-No tests this week
+- [ ] **UC_07**
+- The player will open up the game
+- The player will see the main character
+- The player will see blocks that can be destroyed/mined and can tell what they are and differentiate between types of blocks/materials
+
+- [ ] **UC_08**
+- The player will enter different sections of the map which contain various environment such as sand, water, stone, woods
 
 
 
@@ -253,7 +225,16 @@ Class: Environment (see UC_04)
 
 
 ### User interface design
-- At the start of the game, a main menu is needed in order to perform some functions such as start a new game, load game, change settings and exit the game. 
-- The player should be able to control the main character to move around and explore areas by pressing keys. 
-- There should be background music played at the menu screen and during the game. Background music can change along with the character’s state such as sanity levels and become more intense during events like a boss fight. Sounds should be triggered when certain actions are performed (e.g. menu click, fight, mining) 
-- Gravity needs to be implemented when the character is moving up and down to have more realistic physical movements
+
+| Design implement                                             | Version |
+| ------------------------------------------------------------ | ------- |
+| There will be a starting menu screen with the game settings, load game, continue and new game | 2       |
+| In the settings tab there will be choices for audio, visuals, and controls | 1       |
+| There should be background music played at the menu screen and during the game. Background music can change along with the character’s state such as sanity levels and become more intense during events like a boss fight | 1       |
+| Sounds should be triggered when certain actions are performed (e.g. menu click, fight, mining) | 1       |
+| Once in the game there will be character that can move and interact with the whole map | 1       |
+| The player can go to an in game menu with save game and acheivements | 1       |
+| The player can access an inventory screen which has options for equipment | 1       |
+| In the equipment tab there will be options for view, craft, and delete | 1       |
+| When the player had successfully completed the game they will be sent to the credits and the starting screen | 2       |
+
