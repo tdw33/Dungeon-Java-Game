@@ -1,31 +1,31 @@
 package dev.teamcyan.dungeoncrafter.classes;
 
 public class Pos {
-    private int x;
-    private int y;
+    private float x;
+    private float y;
 
-    public Pos (int x, int  y)
+    public Pos (float x, float  y)
     {
         this.x=x;
         this.y=y;
     }
 
-    public void setX(int x)
+    public void setX(float x)
     {
         this.x=x;
     }
 
-    public void setY(int  y)
+    public void setY(float  y)
     {
         this.y=y;
     }
 
-    public int  getY()
+    public float  getY()
     {
        return this.y; 
     }
 
-    public int getX()
+    public float getX()
     {
        return this.x; 
     }

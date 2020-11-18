@@ -1,31 +1,31 @@
 package dev.teamcyan.dungeoncrafter.classes;
 
 public class Velocity {
-    private double x;
-    private double y;
+    private float x;
+    private float y;
 
-    public Velocity (double x, double  y)
+    public Velocity (float x, float  y)
     {
         this.x=x;
         this.y=y;
     }
 
-    public void setX(double x)
+    public void setX(float x)
     {
         this.x=x;
     }
 
-    public void setY(double  y)
+    public void setY(float  y)
     {
         this.y=y;
     }
 
-    public double getY()
+    public float getY()
     {
         return this.y;
     }
 
-    public double getX()
+    public float getX()
     {
         return this.x;
     }

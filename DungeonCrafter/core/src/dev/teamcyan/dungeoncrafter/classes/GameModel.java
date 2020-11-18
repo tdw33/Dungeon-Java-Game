@@ -1,32 +1,65 @@
 package dev.teamcyan.dungeoncrafter.classes;
 
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class GameModel {
     private GMap map;
     private boolean active = false;
     private GEPlayer player;
+    private GEPebble pebble;
+    private GEEnemy enemy;
 
-    //Start a new game.
-    public void startNewGame(DungeonCrafter controller) {
-        this.map = new GMap();//GalaxyFactory.get().make();
-        this.player = new GEPlayer();// new Player(new ObjectIntMap<>(), galaxy.getStations().get("Homeworld"), galaxy.getStations().get("Homeworld"));
-        //this.player.getQuests().add(new QuestFactory().make("INTRO_QUEST", controller, this));
-        this.active = true;
+    private final String MAPNAME = "tile/TileMap.tmx";
+    private OrthographicCamera camera;
+
+    public OrthographicCamera getCamera() {
+      return this.camera;
     }
 
-    public void dispose() { }
+    public void setCameraZoom(float factor) {
+      this.camera.zoom = factor;
+    }
 
-    // === Getters / Setters === //
-    public GEPlayer getPlayer() {
-        return player;
+    //Start a new game.
+    public void startNewGame(DungeonCrafter controller) 
+    {
+        this.map = new GMap(MAPNAME);
+        this.player = new GEPlayer();
+        this.pebble = new GEPebble();
+        this.enemy = new GEEnemy();
+        this.active = true;
+        camera = new OrthographicCamera();
+    }
+
+    public void dispose() 
+    { 
+      /*
+        this.map.dispose();
+        this.player.dispose();
+        */
+    }
+
+    public GEPlayer getPlayer() 
+    {
+        return this.player;
     }
 
     public GMap getMap() {
-        return map;
+        return this.map;
+    }
+    public GEPebble getPebble() {
+        return pebble;
     }
 
-    public boolean isActive() {
-        return active;
+    public GEEnemy getEnemy() {
+        return enemy;
+    }
+
+
+
+    public boolean isActive() 
+    {
+        return this.active;
     }
 }

@@ -14,6 +14,7 @@ import com.kotcrab.vis.ui.VisUI;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 import dev.teamcyan.dungeoncrafter.screens.*;
 import dev.teamcyan.dungeoncrafter.classes.AudioManager;
+import dev.teamcyan.dungeoncrafter.classes.KeyListener;
 
 
 public class DungeonCrafter extends Game {
@@ -22,11 +23,10 @@ public class DungeonCrafter extends Game {
 
 	public static final int WIDTH = 720;
 	public static final int HEIGHT = 720;
-	public static final double GRAVITY = 9.81;
-	public static final double RESISTANCE = 0.2;
-	public static final double ACCELERATION = 5.0;
+
 	public SpriteBatch batch;
 	public AudioManager audioManager;
+	public KeyListener keyListener;
 
 	private GameModel model;
 	private boolean debugMode = true;
@@ -34,12 +34,13 @@ public class DungeonCrafter extends Game {
 
 
 
-	// Initialize the asset manager
    public void init_asset_manager()
    {
-     /* Init asset manager */
+     /** 
+      * Init asset manager 
+      */
 		assetManager = new AssetManager();
-		assetManager.load("textures.atlas", TextureAtlas.class);
+		assetManager.load("spritesheets/sprites.atlas", TextureAtlas.class);
 		assetManager.finishLoading();
    }
 
@@ -49,11 +50,15 @@ public class DungeonCrafter extends Game {
 		this.setDebugOn(true);
 		this.model = new GameModel();
 		VisUI.load();
+      
 	   // Initialise the audio manager
 	   audioManager = new AudioManager();
-      init_asset_manager();
-		loadScreens();
-		newGame();
+
+	   // Initialise the key listener
+	   keyListener = new KeyListener();
+	   init_asset_manager();
+	   loadScreens();
+	   newGame();
 	}
 
 	@Override
@@ -81,7 +86,7 @@ public class DungeonCrafter extends Game {
 	public TextureAtlas.AtlasRegion getAtlasRegion(String textureName) {
 		try 
       {
-			return assetManager.get("textures.atlas", TextureAtlas.class)
+			return assetManager.get("spritesheets/sprites.atlas", TextureAtlas.class)
            .findRegion(textureName);
 		} 
       catch(Exception e) 
@@ -111,6 +116,7 @@ public class DungeonCrafter extends Game {
 	public boolean isDebugOn() {
 		return debugMode;
 	}
+
 	public DungeonCrafter setDebugOn(boolean on) {
 		this.debugMode = on;
 		Gdx.app.setLogLevel(on ? Application.LOG_DEBUG : Application.LOG_INFO);
@@ -136,4 +142,5 @@ public class DungeonCrafter extends Game {
 	public void render () {
 		super.render();
 	}*/
+
 }

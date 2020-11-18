@@ -1,66 +1,68 @@
 package dev.teamcyan.dungeoncrafter.classes;
-import java.util.*;
-import dev.teamcyan.dungeoncrafter.classes.GameElement;
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.utils.Null;
+import dev.teamcyan.dungeoncrafter.DungeonCrafter;
+import dev.teamcyan.dungeoncrafter.classes.GEPlayer;
+import dev.teamcyan.dungeoncrafter.classes.GMap;
+import com.badlogic.gdx.maps.objects.TextureMapObject;
 import com.badlogic.gdx.maps.tiled.*;
-import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.scenes.scene2d.ui.Cell;
+import com.badlogic.gdx.maps.*;
+import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector3 ;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import java.util.ArrayList;
 
 
 public class GMap extends GameElement{
-  private int sizeHorizontal;
-  private int sizeVertical;
-  private String seed;
-  private GameElement[][] gMap = {};
+  
+  private TiledMap map;
+  private int mapWidth;
+  private int mapHeight;
+  private int tilePixelWidth;
+  private int tilePixelHeight;
+
+  private int mapPixelWidth ;
+  private int mapPixelHeight ;
+
+  //private String seed;
   private String mapName;
-  private GEPlayer player;
+  private OrthogonalTiledMapRenderer mapRenderer;
 
-  public GMap (int x, int y)
+  public GMap(String mapName)
   {
-    //initialiser
-    setMapSize(x,y);
-    placePlayer();
+    // load the map
+    TmxMapLoader loader = new TmxMapLoader();
+    map = loader.load(mapName);
+    
+    // surface the map properties
+    MapProperties prop = map.getProperties();
+    this.mapWidth = prop.get("width", Integer.class);
+    this.mapHeight = prop.get("height", Integer.class);
+    this.tilePixelWidth = prop.get("tilewidth", Integer.class);
+    this.tilePixelHeight = prop.get("tileheight", Integer.class);
+    this.mapPixelWidth = mapWidth * tilePixelWidth;
+    this.mapPixelHeight = mapHeight * tilePixelHeight;
+    this.mapRenderer = new OrthogonalTiledMapRenderer(map);
   }
 
-  public GMap()
-  {
-    //default initialiser
-    setMapSize(100,100);
-    placePlayer();
-    mapName = "tile/TileMap.tmx";
-  }
 
-  private void blankMap()
+  public void getGEAtPos(Pos position)
   {
-  //  TiledMapTileLayer layer = (TiledMapTileLayer)map.getLayers().get("some_layer_name");
-  //  Cell cell = new Cell();
-  //  TiledMapTileSet tileSet = map.getTileSets().getTileSet("tileset_name");
-  //  cell.setTile(tileSet.getTile(42)); /* or some other id, identifying the tile */
-  //  layer.setCell(32, 64, cell); // 32 and 64 being x and y coordinates
-  //  for (int i=0;i<100;i++)
-  //    for (int j=0;j<100;j++)
-  //      Cell cell = new Cell();
-
-  }
-
-  private void placePlayer()
-  {
-    player = new GEPlayer();
-    //player.setX(this.sizeVertical/2);
-    //player.setY(this.sizeHorizontal/2);
-  }
-
-  public GameElement getGEAtPos(Pos position)
-  {
-    return this.gMap[position.getY()][position.getX()];
   }
 
 
@@ -68,28 +70,23 @@ public class GMap extends GameElement{
   {
   }
 
-  public int getMapSizeVert()
+  public TiledMap getTiledMap()
   {
-    return this.sizeVertical;
+    return this.map;
   }
 
-  public int getMapSizeHoriz()
+
+  public OrthogonalTiledMapRenderer getMapRenderer()
   {
-    return this.sizeHorizontal;
+    return this.mapRenderer;
   }
 
-  private void setMapSize(int x, int y)
-  {
-    this.sizeVertical = y;
-    this.sizeHorizontal = x;
+  public int getMapPixelWidth() {
+    return mapPixelWidth;
   }
 
-  public Pos getPlayer(){
-    return player.getPosition();
-  }
-
-  public String getMapName(){
-    return mapName;
+  public int getMapPixelHeight() {
+    return mapPixelHeight;
   }
 
   /*

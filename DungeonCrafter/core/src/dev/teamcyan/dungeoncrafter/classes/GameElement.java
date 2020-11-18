@@ -1,7 +1,18 @@
 package dev.teamcyan.dungeoncrafter.classes;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class GameElement {
+
+  public static final float GRAVITY = (float) 9.81;
+  public static final float RESISTANCE = (float) 0.2;
+  public static final float ACCELERATION = (float) 5.0;
+
+  public final static int CHAR_PIXEL_WIDTH = 64;
+  public final static int CHAR_PIXEL_HEIGHT = 64;
+  public enum State {RUNNINGL, RUNNINGR, JUMPING, STANDING, FALLING };
 
   protected String uid;
   protected Pos position;
@@ -49,4 +60,5 @@ public class GameElement {
   public Pos getPosition() {
     return this.position;
   }
+
 }
