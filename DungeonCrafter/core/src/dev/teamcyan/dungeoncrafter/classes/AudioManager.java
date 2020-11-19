@@ -10,31 +10,45 @@ import java.util.ArrayList;
 
 public class AudioManager {
     public Music menuSound;
+    public Music breakStone;
+    public Music tick;
     long menuSoundID;
-    ArrayList<Long> activeAudio;
-    ArrayList<String> allAudio;
+    ArrayList<Long> activeAudio = new ArrayList<>();
+    ArrayList<String> playingAudio = new ArrayList<>();
 
     public AudioManager (){
         this.menuSound = Gdx.audio.newMusic(Gdx.files.internal("sounds/sound1.mp3"));
+        this.breakStone = Gdx.audio.newMusic(Gdx.files.internal("sounds/harddig.ogg"));
+        this.tick = Gdx.audio.newMusic(Gdx.files.internal("sounds/tick.wav"));
     }
 
 
     public long startAudio(Sound toPlay){
+        if(playingAudio.contains(toPlay.toString())){
+            return 0;
+        }
         long soundID = toPlay.play();
         activeAudio.add(soundID);
+        playingAudio.add(toPlay.toString());
         return soundID;
     }
 
+    public void startMusicStr(String toPlay){
+        if(toPlay == "tick")
+            tick.play();
+    }
 
     public void startMusic(Music toPlay){
-        toPlay.play();
+        if(!toPlay.isPlaying())
+            toPlay.play();
+    }
+
+    public void stopMusic(Music toStop){
+        toStop.stop();
     }
 
     public void testPrint(){
         System.out.println("Testing function is running");
-    }
-    public void stopMusic(Music toStop){
-        toStop.stop();
     }
 
 
@@ -42,7 +56,6 @@ public class AudioManager {
         toStop.stop(audioID);
         activeAudio.remove(activeAudio.indexOf(audioID));
     }
-
 
     // Fade Music
     public void fadeMusic(final Music toFade) {
@@ -55,22 +68,4 @@ public class AudioManager {
             }
         }, 0, (float)0.01, 100);
     }
-        //toFade.setVolume((float) 0.1);
-        /*
-        float newVolume;
-        for (int i = 0; i < 100; i++) {
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException ex) {
-                Thread.currentThread().interrupt();
-            }
-            toFade.setVolume((float)((100-i) / (float)100));
-            newVolume = (100-i) / (float)100;
-            System.out.println(newVolume);
-        }
-        */
-
-
-
-
     }
