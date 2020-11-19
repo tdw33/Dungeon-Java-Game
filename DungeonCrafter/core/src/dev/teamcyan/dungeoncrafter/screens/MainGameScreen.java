@@ -17,12 +17,13 @@ import com.badlogic.gdx.utils.Null;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.utils.Array;
-import dev.teamcyan.dungeoncrafter.DungeonCrafter;
-import dev.teamcyan.dungeoncrafter.classes.*;
 import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.*;
+import dev.teamcyan.dungeoncrafter.DungeonCrafter;
+import dev.teamcyan.dungeoncrafter.classes.*;
+import dev.teamcyan.dungeoncrafter.classes.Pos;
 
 public class MainGameScreen extends BaseScreen {
 
@@ -34,6 +35,8 @@ public class MainGameScreen extends BaseScreen {
     boolean movingDown = false;
     boolean zoomIn = false;
     boolean zoomOut = false;
+    boolean keyD = false;
+    boolean keyA = false;
 
 
 
@@ -42,29 +45,25 @@ public class MainGameScreen extends BaseScreen {
     private ArrayList<String> keyInfo;
     private String mouseInfo;
 
-    private DungeonCrafter game;
     private GameModel model;
 
-    public MainGameScreen(DungeonCrafter parent, GameModel model) 
-    {
-        /**
-         * Constructor - 
-         * Inherit the game and the model fron the parent class
-         */
-
+  /**
+   * Constructor - 
+   * Inherit the game and the model fron the parent class
+   */
+    public MainGameScreen(DungeonCrafter parent, GameModel model) {
         super(parent, model);
-        this.game = parent;
         this.model = model;
-
     }
 
 
-
+    /**
+     *Initialise the Game Menu Screen
+     * */
     @Override
     public void init() {
 
-        // load the map
-        this.model.setCameraZoom(1f);
+        this.model.setCameraZoom(0.5f);
 
         model.getPlayer().getPosition().setX(model.getMap().getMapPixelWidth()/2);
         model.getPlayer().getPosition().setY(model.getMap().getMapPixelHeight()/2);
@@ -86,21 +85,32 @@ public class MainGameScreen extends BaseScreen {
     public void draw(float delta) {
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
-
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         if(zoomIn) {
-            model.getCamera().zoom -= 0.1;
+            model.getCamera().zoom -= DungeonCrafter.ZOOM_FACTOR;
         }
         if(zoomOut) {
-            model.getCamera().zoom += 0.1;
+            model.getCamera().zoom += DungeonCrafter.ZOOM_FACTOR;
+        }
+        if(keyD) {
+            System.out.println("D");
+            model.getMap().interactBlock(new Pos(
+                  model.getPlayer().getPosition().getX(),
+                  model.getPlayer().getPosition().getY()));
+        }
+        if(keyA) {
+            System.out.println("D");
+            model.getMap().digBlock(new Pos(
+                  model.getPlayer().getPosition().getX(),
+                  model.getPlayer().getPosition().getY()));
         }
 
         TiledMapTileLayer layer = (TiledMapTileLayer)model
-                                    .getMap()
-                                    .getTiledMap()
-                                    .getLayers()
-                                    .get("Tile Layer 1");
+                                .getMap()
+                                .getTiledMap()
+                                .getLayers()
+                                .get("Tile Layer 1");
 
         model.getPlayer().setRegion(controller.keyListener);
 
@@ -122,7 +132,6 @@ public class MainGameScreen extends BaseScreen {
         model.getMap().getMapRenderer().render();
         batch.setProjectionMatrix(model.getCamera().combined);
 
-
         batch.begin();
 
         if(uiMatrix == null){
@@ -130,12 +139,8 @@ public class MainGameScreen extends BaseScreen {
         }
 
 
-        float existingZoom = model.getCamera().zoom;
-        //hud.setProjectionMatrix(camera.combined);
-        model.getCamera().zoom = 1f;
         model.getCamera().update();
 
-        //batch.setProjectionMatrix(uiMatrix);
         font.setColor(1,1,1,1);
 
         GEPlayer player = model.getPlayer();
@@ -199,9 +204,9 @@ public class MainGameScreen extends BaseScreen {
     public boolean keyDown(int keycode) {
         super.controller.keyListener.keyDownListener(keycode);
 
-        if(keycode == Input.Keys.LEFT) {
+        if(keycode == Input.Keys.LEFT) 
             movingLeft = true;
-        }
+        
         if(keycode == Input.Keys.RIGHT) {
             movingRight = true;
         }
@@ -217,6 +222,12 @@ public class MainGameScreen extends BaseScreen {
         if(keycode == Input.Keys.O) {
             zoomOut = true;
         }
+        if(keycode == Input.Keys.D)
+            keyD = true;
+
+        if(keycode == Input.Keys.A) 
+            keyA = true;
+
         return false;
     }
 
@@ -242,6 +253,12 @@ public class MainGameScreen extends BaseScreen {
         if(keycode == Input.Keys.O)
             zoomOut = false;
 
+        if(keycode == Input.Keys.D) 
+            keyD = false;
+
+        if(keycode == Input.Keys.A) 
+            keyA = false;
+
         return false;
     }
 
@@ -255,6 +272,7 @@ public class MainGameScreen extends BaseScreen {
         System.out.println("x = " + screenX);
         System.out.println("y = " + screenY);
 
+        Pos pos = new Pos(screenX, screenY);
         model.getPlayer().getRegion().setRegionX(screenX);
         model.getPlayer().getRegion().setRegionY(DungeonCrafter.HEIGHT - screenY);
 

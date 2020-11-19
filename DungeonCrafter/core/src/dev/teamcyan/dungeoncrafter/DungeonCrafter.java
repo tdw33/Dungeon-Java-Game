@@ -23,6 +23,7 @@ public class DungeonCrafter extends Game {
 
 	public static final int WIDTH = 720;
 	public static final int HEIGHT = 720;
+	public static final float ZOOM_FACTOR = 0.1f;
 
 	public SpriteBatch batch;
 	public AudioManager audioManager;
