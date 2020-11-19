@@ -61,7 +61,7 @@ public class GEPlayer extends GameElement
   public float setX(TiledMapTileLayer layer, boolean movingLeft, boolean movingRight) {
     float delta = Gdx.graphics.getDeltaTime();
     float newXVelocity;
-    if (this.velocity.getY() > 1) {
+    if (this.velocity.getY() < -1) {
       newXVelocity = this.velocity.getX();
     } else if (movingLeft == movingRight) {
       newXVelocity = this.velocity.getX() * this.RESISTANCE;

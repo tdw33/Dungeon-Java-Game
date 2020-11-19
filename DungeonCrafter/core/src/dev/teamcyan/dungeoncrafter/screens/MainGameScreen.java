@@ -152,6 +152,12 @@ public class MainGameScreen extends BaseScreen {
         GEEnemy enemy = model.getEnemy();
         batch.draw(enemy.getRegion(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getRegion().getRegionWidth(), enemy.getRegion().getRegionHeight());
 
+        List<GEProjectile> projectiles = enemy.getProjectiles(layer, player.getPosition());
+        for (GEProjectile t : projectiles) {
+            batch.draw(t.getRegion(), t.getPosition().getX(), t.getPosition().getY(), t.getRegion().getRegionWidth(), t.getRegion().getRegionHeight());
+        }
+
+
         font.setColor(1,1,1,1);   //Brown is an underated Colour
         font.draw(batch, mouseInfo, player.getPosition().getX(), player.getPosition().getY()+150);
         font.draw(batch, "Mouse XY:", player.getPosition().getX(), player.getPosition().getY()+170);

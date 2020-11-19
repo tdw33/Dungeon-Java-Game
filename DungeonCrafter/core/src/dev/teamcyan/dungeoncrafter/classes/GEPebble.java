@@ -60,7 +60,7 @@ public class GEPebble extends GameElement
         float newXVelocity;
 
         double distance = Math.sqrt(Math.pow((playerPosition.getX() - this.position.getX()), 2) + Math.pow((playerPosition.getY() - this.position.getY()), 2));
-        if (this.velocity.getY() > 1) {
+        if (this.velocity.getY() < -1) {
             newXVelocity = this.velocity.getX();
         } else if (distance > 80) {
             if (playerPosition.getX() > this.position.getX()) {
@@ -121,11 +121,9 @@ public class GEPebble extends GameElement
     public void setRegion() {
         if (this.velocity.getY() >1) {
             this.currentState = GameElement.State.JUMPING;
-            System.out.println("JUmp");
 
         } else if(this.velocity.getY() < -1) {
             this.currentState = GameElement.State.FALLING;
-            System.out.println("fall");
 
         } else if (this.velocity.getX() < -1) {
             this.currentState = GameElement.State.RUNNINGL;
