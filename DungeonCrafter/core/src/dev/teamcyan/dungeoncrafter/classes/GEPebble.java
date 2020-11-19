@@ -30,13 +30,13 @@ public class GEPebble extends GameElement
         this.getype = GEType.PLAYER;
         this.velocity = new Velocity(0,0);
         this.position = new Pos(0,0);
-        this.basicSpriteSheet = new Texture("sprites/mainCharacter/characterPickaxe.png");
+        this.basicSpriteSheet = new Texture("sprites/pebble/pebble.png");
         this.currentState = State.STANDING;
         this.previousState = State.STANDING;
 
         this.charStand = new TextureRegion(basicSpriteSheet, 0, 640, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
         this.charJump = new TextureRegion(basicSpriteSheet, 64, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
-        this.charFall = new TextureRegion(basicSpriteSheet, 128, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+        this.charFall = new TextureRegion(basicSpriteSheet, 0, 640, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
 
         this.region = charStand;
 
@@ -120,11 +120,9 @@ public class GEPebble extends GameElement
 
     public void setRegion() {
         if (this.velocity.getY() >1) {
-            this.currentState = GameElement.State.JUMPING;
-
-        } else if(this.velocity.getY() < -1) {
             this.currentState = GameElement.State.FALLING;
-
+        } else if(this.velocity.getY() < -1) {
+            this.currentState = GameElement.State.JUMPING;
         } else if (this.velocity.getX() < -1) {
             this.currentState = GameElement.State.RUNNINGL;
         } else if (this.velocity.getX() > 1) {
@@ -142,7 +140,7 @@ public class GEPebble extends GameElement
         } else if (this.currentState == State.JUMPING){
             region = charJump;
         } else if (this.currentState == State.FALLING) {
-            region = charFall;
+            region = charStand;
         } else {
             region = charStand;
         }

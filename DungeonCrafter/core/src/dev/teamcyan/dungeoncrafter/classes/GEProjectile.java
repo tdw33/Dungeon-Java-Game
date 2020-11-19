@@ -9,71 +9,45 @@ import com.badlogic.gdx.utils.Array;
 
 public class GEProjectile extends GameElement {
     Velocity velocity;
-    private TextureRegion region;
-    private TextureRegion charStand;
-    private Texture enemySpriteSheet;
+    private Texture texture;
+    private double angle;
 
     public GEProjectile (Pos position, Pos destination)
     {
         this.getype = GEType.DEFAULT;
-        this.position = new Pos(position.getX(), position.getY());
-        this.velocity = new Velocity(destination.getX() > position.getX() ? 1 : -1, destination.getY() > position.getY() ? 1 : -1);
+        this.position = new Pos(position.getX(), position.getY()+30);
 
-        this.enemySpriteSheet = new Texture("sprites/enemy/enemyArcher.png");
-        this.charStand = new TextureRegion(enemySpriteSheet, 0, 640, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+        this.velocity = new Velocity(destination.getX() - position.getX(), destination.getY() - position.getY());
+        //this.velocity = new Velocity(0, 10);
+        double magnitude = Math.sqrt(Math.pow(velocity.getX(),2) + Math.pow(velocity.getY(), 2));
+        this.velocity = new Velocity((float)(velocity.getX()/magnitude), (float)(velocity.getY()/magnitude));
+        Velocity spriteDirection = new Velocity(-1.0f,0.0f);
+        this.angle = Math.atan2(spriteDirection.getX()* velocity.getY()-spriteDirection.getY()* velocity.getX(),spriteDirection.getX()* velocity.getX()+ spriteDirection.getY()* velocity.getY());
+        this.velocity = new Velocity(this.velocity.getX()*4, this.velocity.getY()*4);
+        this.texture = new Texture("sprites/enemy/arrow.png");
 
-        this.region = charStand;
     }
 
-    public float setX(TiledMapTileLayer layer) {
-        // apply gravity, when no floor
-        float delta = Gdx.graphics.getDeltaTime();
-        float newXVelocity = this.velocity.getX();
-
-        double newXPosition = this.position.getX() + newXVelocity;
-
-        if(newXVelocity > 0) {
-            TiledMapTileLayer.Cell topRight = layer.getCell((int) ((newXPosition + this.region.getRegionWidth()) / layer.getTileWidth()), (int) Math.floor((this.position.getY() + this.region.getRegionHeight()) / layer.getTileHeight()));
-            TiledMapTileLayer.Cell bottomRight = layer.getCell((int)((newXPosition + this.region.getRegionWidth()) / layer.getTileWidth()), (int) Math.ceil(this.position.getY() / layer.getTileHeight()));
-            if (bottomRight == null && topRight == null) {
-                this.velocity.setX(newXVelocity);
-                this.position.setX((int)Math.ceil(newXPosition));
-            } else {
-                this.velocity.setX((float)0.0);
-            }
-
-        } else if (newXVelocity < 0) {
-            TiledMapTileLayer.Cell topLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.floor((this.position.getY() + this.region.getRegionHeight()) / layer.getTileHeight()));
-            TiledMapTileLayer.Cell bottomLeft = layer.getCell((int) Math.floor(newXPosition / layer.getTileWidth()), (int) Math.ceil(this.position.getY() / layer.getTileHeight()));
-            if (bottomLeft == null && topLeft == null) {
-                this.velocity.setX(newXVelocity);
-                this.position.setX((int)Math.floor(newXPosition));
-            } else {
-                this.position.setX((float)0.0);
-            }
-        }
-        return this.position.getX();
-    }
-
-    public float setY(TiledMapTileLayer layer) {
-
+    public boolean setPosition(TiledMapTileLayer layer) {
         // apply gravity, when no floor
         float delta = Gdx.graphics.getDeltaTime();
 
-        float newYVelocity = this.velocity.getY();// + delta * this.GRAVITY;
+        double newXPosition = this.position.getX() + this.velocity.getX();
+        double newYPosition = this.position.getY() + this.velocity.getY();
 
-        double newYPosition = this.position.getY() + newYVelocity;
-        TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.floor(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
-        TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-1) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
-        if (leftBottom == null && rightBottom == null) {
-            this.velocity.setY(newYVelocity);
-            this.position.setY((int)newYPosition);
+        TiledMapTileLayer.Cell tipCell = null;
+        tipCell = layer.getCell((int) ((this.position.getX()) / layer.getTileWidth()), (int) ((this.position.getY()) / layer.getTileHeight()));
 
+        if (tipCell == null) {
+            this.position.setX((float)newXPosition);
+            this.position.setY((float)newYPosition);
+            return true;
         } else {
-            this.velocity.setY(0);
+            return false;
         }
-        return this.position.getY();
     }
+
+
 
     /*public void setRegion() {
         if (this.velocity.getY() >1) {
@@ -109,7 +83,11 @@ public class GEProjectile extends GameElement {
         previousState = currentState;
     }*/
 
-    public TextureRegion getRegion(){
-        return this.region;
+    public Texture getTexture(){
+        return this.texture;
+    }
+
+    public double getAngle() {
+        return this.angle * 180/3.1415;
     }
 }

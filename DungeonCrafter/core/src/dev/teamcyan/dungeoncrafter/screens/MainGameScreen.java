@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -159,7 +160,7 @@ public class MainGameScreen extends BaseScreen {
 
         List<GEProjectile> projectiles = enemy.getProjectiles(layer, player.getPosition());
         for (GEProjectile t : projectiles) {
-            batch.draw(t.getRegion(), t.getPosition().getX(), t.getPosition().getY(), t.getRegion().getRegionWidth(), t.getRegion().getRegionHeight());
+            batch.draw(t.getTexture(), t.getPosition().getX(), t.getPosition().getY(), 16, 2, t.getTexture().getWidth(), t.getTexture().getHeight(), 1, 1, (float) t.getAngle(), 0, 0, 35, 5, false, false);
         }
 
 

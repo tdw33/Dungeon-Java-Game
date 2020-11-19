@@ -150,15 +150,19 @@ public class GEEnemy extends GameElement
 
     public List<GEProjectile> getProjectiles(TiledMapTileLayer layer, Pos playerPosition) {
         this.projectileTimer += Gdx.graphics.getDeltaTime();
-        if (this.projectileTimer > 10) {
+        if (this.projectileTimer > 3) {
             projectiles.add(new GEProjectile(this.position, playerPosition));
             this.projectileTimer = 0;
         }
 
+        List<GEProjectile> projectilesToRemove = new ArrayList<GEProjectile>();
         for (GEProjectile proj : this.projectiles) {
-            proj.setX(layer);
-            proj.setY(layer);
+
+            if (!proj.setPosition(layer)) {
+                projectilesToRemove.add(proj);
+            }
         }
+        this.projectiles.removeAll(projectilesToRemove);
 
         return this.projectiles;
     }
