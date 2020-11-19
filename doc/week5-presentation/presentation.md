@@ -12,26 +12,51 @@
 
 - walking animation
 
- ![ ](../week4-presentation/gifs/walking.gif)
+![ ](../week4-presentation/gifs/walking.gif)
 
 
-- map interaction and boss fight map Curent status
-
+- map interaction and boss fight map 
 
 # Curent Status 
-
-
-
- ![ ](./gifs/board.png)
+![ ](./imgs/project.png)
 
 
 
 # Updates
 
 - Documentation
-- Refactoring  
-- Implemented 
-- Digging and placing
 
+![ ](./imgs/docweek5.png)
+
+- Major Refactoring  and restructuring into classes 
+
+  
+
+- Animation added to characters
+
+![ ](./imgs/animations.gif)
+
+- Implemented enemy
+
+
+
+- Implemented Digging and map interaction 
+
+  
+
+![ ](./imgs/dignplace.gif)
+
+- Implemented arrow projectiles 
+
+
+
+- Updated Menu Screen 
+
+![ ](./imgs/menuscreen.png)
+
+- - Countdown Timer & HUD
 
 # Future
+
+- 
+- 
