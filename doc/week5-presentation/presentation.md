@@ -50,7 +50,7 @@
 
 - Implemented arrow projectiles 
 
-
+![ ](./imgs/arrow.gif)
 
 - Updated Menu Screen 
 
