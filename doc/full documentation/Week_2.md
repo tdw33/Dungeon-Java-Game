@@ -8,17 +8,17 @@
 
 ## Weekly overview 
 
-With the customer happy with our initial game idea for a Minecraft dungeon mix game, we were able to start planning out the game and wrote some basic code. This meant the product backlog was filled out with initial ideas that we had, and the initial game architecture was looked at: menu system and game function. To achieve this planned architecture we used Miro board, which was also used to sort out the class UML. This was also based on our product backlog. The week had 3 meetings: costumer debrief with sprint plan; game architecture; and sprint review with presentation creation. For the coding side everyone was assigned to generate a basic square that could move left, right, up, and down. 
+With the customer happy with our initial game idea for a Minecraft inspired dungeon game, we were able to start planning out the game and wrote some basic code. This meant the product backlog continued to be filled out withideas that we had, and the initial game architecture was looked at: menu system and game function. To achieve this planned architecture we used Miro board, which was also used to sort out the class UML. This was also based on our product backlog, but we did not use CRC cards which could of made the process simpler. The week had 3 meetings: customer debrief with sprint plan; game architecture; and sprint review with presentation creation. For the coding side everyone was assigned to generate a basic square that could move left, right, up, and down.
 
 **Artifact of the miro board for game architecture and classes**
 
-The Scrum technique was continued for this week with the Scrum master and product lead roles being switched around, so each member of the group can experience them. In between these first and last meeting we had daily stand-ups that were carried out on Microsoft team. From the last sprint we made sure to tag the team within the post, so everyone will get a notification and remider to post.
+The Scrum technique was continued for this week with the Scrum master and product lead roles being switched around, so each member of the group can experience them. In between these first and last meeting we had daily stand-ups that were carried out on Microsoft teams. From the last sprint we made sure to tag the team within the post, so everyone will get a notification and remider to post.
 
 **Artifact daily stand up** 
 
-This sprint was conducted in much the same way as the last one as we thought it was generating good results in the last sprint. The only problem was we still assigned everybody the coding task which is not efficient. However, there were 3 different systems (mac, windows linux) and the task would help in getting people comfortable with libGDX.
+This sprint was conducted in much the same way as the last one as we thought it was generating good results in the last sprint. The only problem was we still assigned everybody the coding task which is not efficient. However, there were 3 different systems (mac, windows Linux) used my different members of the team and the task would help in getting people comfortable with libGDX. Heading into the next sprint we will make sure to spread the tasks more efficiently so that a grater progression of the game can be achieved. 
 
-
+We assigned the sprint tasks from looking at the product backlog and the existing user stories we had. Since US_01 was a great priorty we assigned everbody to coding the character with movement as explained before. 
 
 ## Meeting minutes
 
@@ -38,13 +38,13 @@ In this meeting we used our thoughts on classes to generate the architecture of 
 
 **Have and artifact of the menu and game design**
 
-In the next part we designed an UML off the initial idea for class system as shown below as well as our product backlog. Everything will stem from the Game element, as our map is fully interactive. This means each block will in theory die when the player destroys it. like and enemy and main character. 
+In the next part we designed an UML off the initial idea for the class system as shown below as well as our product backlog. Everything will stem from the Game element, as our map is fully interactive. This means each block will in theory die when the player destroys it. like and enemy and main character.  The process of designing this UML diagram did not use CRC cards as we were not aware of that. Instead we all interacted with the miro board and discussed our ideas until we had the classes maped out. This was proablaly not as effcient as using CRC cards
 
 **The artifact of the UML diagram** 
 
 
 
-## Sprint review and presentation creation
+### Sprint review and presentation creation
 
 From this second sprint we were all able to generate a basic character and have basic movement using libGdx and Java. The naming class we established and an initial UML borard was generated. All of these can be seen below. No one had any major problems, so the sprint was considered successful.
 
@@ -57,6 +57,10 @@ Following the sprint review we created the presentation for the customer meeting
 ## Backlog
 
 **Product backlog:** 
+
+- Create a character (square) and give it basic movement (up, down, left, right)
+- Find a common naming system 
+- Design classes and create a UML diagram
 
 - Generation of block map (side on view)
 - The blocks of the map can be interacted with by the player
@@ -138,18 +142,175 @@ We showed the progress of our game development. This was the UML diagram and gam
 
 ## Use cases
 
-#### **Exisitng Use cases:**
+##### UC_01
 
-| Use case ID | Use case description                     | Tested |
-| ----------- | ---------------------------------------- | ------ |
-| UC_01       | Player starts game on different systems  | NO     |
-| UC_02       | Player destroys a block on the map       | NO     |
-| UC_03       | Player places a block on the map         | NO     |
-| UC_04       | Player crafts an item from the inventory | NO     |
+**Use case**: Player starts game on different systems
+
+**Author**: TW
+
+**Date**: 11/11/2020
+
+**Modification date**: 11/11/202
+
+**Purpose**: the game can run and be played on different systems
+
+**Overview**: Frist the player will boot up their system (windows, mac or linux) and then open the game. If the code can compile and run on the system, the game starting screen will appear on a window else alternative: the code fails to run, and a system error will appear on their screen.
+
+**Cross reference:** US_01
+
+**Actors:** player
+
+**Precondition:** 
+
+- The system must have all the game components downloaded and ready to run
+- There must be a screen to show the game on 
+- Post condition: the system will access the code and run it
+- The game is shown on the screen for the player to interact with 
+
+**Normal flow of event:** 
+
+| Actor actions                                  | System actions                                               |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| 1. The player will start up their system       | 2. the system will boot up and show desktop                  |
+| 3. The player will click and run the game file | 4. System will start to run the code                         |
+| 6. Player then interacts with the game         | 5. If the code can be run the game window will pop up on the players system |
+
+**Alternative flow of events:**
+
+- The code cannot run, the system will show an error message
+
+**Exceptional flow of events:**
+
+- The players system will not boot up
+- The game window will pop up but the player cannot interact with it and the player will then close the game window
 
 
 
-#### **New use cases:**
+##### UC_02
+
+**Use case**: Player destroys a block on the map
+
+**Author**: TW
+
+**Date**: 16/11/2020
+
+**Modification date**: 16/11/202
+
+**Purpose**: A major part of the game is allowing the user to interact with the map and change it. This means destroying the generated blocks and picking it up as a resource. 
+
+**Overview**: First the player will decide they want to destroy a certain block in the game. Then they will attack the block until it is destroyed. The block will not be shown on the map and the player will add that block to their inventory.
+
+**Cross reference:** US_06, US_04
+
+**Actors:** player
+
+**Precondition:** 
+
+- There must be a block to destroy 
+- The player must have an object that can cause damage to the block (fist, pickaxe, sword)
+
+**Normal flow of events:** 
+
+| Actor actions                                       | System actions                                          |
+| --------------------------------------------------- | ------------------------------------------------------- |
+| 1. The player will begin to attack the block (mine) | 2. The map generated block will take damage             |
+| 3. The player will keep attacking the player        | 4. The map generated takes damage until it reaches zero |
+| 7. Player can then repeat cycle with new blocks     | 5. The block will disappear                             |
+|                                                     | 6. The block type will appear in the players’ inventory |
+
+**Alternative flow of events:**
+
+- The player destroys a block they are standing on. This will mean they will fall when it is destroyed until they encounter another block. They still gather the resource 
+
+**Exceptional flow of events:**
+
+- The player will stop attacking the block halfway, meaning the block is left with half health. 
+
+
+
+##### UC_03
+
+**Use case**: Player places a block on the map
+
+**Author**: TW
+
+**Date**: 16/11/2020
+
+**Modification date**: 16/11/202
+
+**Purpose**: A major part of the game is allowing the user to interact with the map and change it. This means placing blocks onto the map and taking it out of the players’ inventory 
+
+**Overview**:  First the player will decide they want to place a certain block. Then the game will check of they have the resource to place. If they have, a block will appear on the game in the postion they wanted to place
+
+**Cross reference:** US_06
+
+**Actors:** player
+
+**Precondition:** 
+
+-  There must be a map block to place the new one on  
+
+-  The player must have the desired block to place within their inventory
+
+**Normal flow of events:** 
+
+| Actor actions                                                | System actions                                               |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1. The player will enter the inventory                       | 4. The map notes the request to place a block on an existing block |
+| 2. The player must have the desired block to place within their inventory | 5. The map generates the new block on the existing block     |
+| 3. The player attempts to place the block on the map         | 6. The block type will be taken from the players’ inventory  |
+| 7. Player can then repeat cycle with new blocks              |                                                              |
+
+**Alternative flow of events:**
+
+There are none
+
+**Exceptional flow of events:**
+
+- The player does not have any of the block type in their inventory, meaning no block will be placed
+
+
+
+##### UC_04
+
+**Use case**: Player crafts an item from the inventory
+
+**Author**: TW
+
+**Date**: 16/11/2020
+
+**Modification date**: 16/11/202
+
+**Purpose**: As the player gathers resources in the game, they will be able to create items such as a pickaxe. They will use these items to interact with enemies and the map.  
+
+**Overview**:  First the player will decide they want to craft a certain item. Then the gaem will check they have the required resources for the item. If so, the item is crafted and the resources are taken from the players inventory. The item is also added to the inventory.
+
+**Cross reference:**  US_07
+
+**Actors:** player
+
+**Precondition:** 
+
+-  There must be the correct amount of resources to craft the item
+
+**Normal flow of events:** 
+
+| Actor actions                                                | System actions                                               |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1. The player will go to the inventory screen                | 3. The game will show what items can be crafted and what cannot |
+| 2. The player will go to the craft menu                      | 5. The game will generate the item for the player and add it to their inventory |
+| 4. The player will choose an item which they have resources for | 6. The resources required for the item will be taken form the players overall resources |
+| 7. Player can then equip the item                            |                                                              |
+
+**Alternative flow of events:**
+
+There are none
+
+**Exceptional flow of events:**
+
+- The player will attempt to craft an item where they do not have the resources. A message will be displayed stating insufficient resources
+
+
 
 **UC_05**
 

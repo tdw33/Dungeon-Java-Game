@@ -16,7 +16,7 @@ Since the Scrum approach was chosen to be used in this project, we assigned a pr
 
 **Artifact of the project on GitHub**
 
-From this initial sprint, we were able to analyse the use of teams for daily stand-up posts. This approach was great for dealing with multiple time zones as we had members in China, and clearly outlined what everyone had done, struggled with, and what they are working on. However, it did not notify everyone until the group was tagged in the post. This resulted in members missing the first stand-ups. So, heading forward the Scrum master will tag the team in the initial post.
+From this initial sprint, we were able to analyse the use of teams for daily stand-up posts. This approach was great for dealing with multiple time zones as we had members in China, and clearly outlined what everyone had done, struggled with, and what they are working on. However, it did not notify everyone until the group was tagged in the post. This resulted in members missing the first couple of stand-ups. So, heading forward the Scrum master will tag the team in the initial post.
 
 
 
@@ -58,7 +58,7 @@ Minutes:
 Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo
 
 - From the assigned sprint tasks we were able to complete many of them for different individuals. 
-- As many were understanding concept tasks, not all could be considered done. E.G GitHub some team members were still not comfortable with the it
+- As many were understanding concept tasks, not all could be considered done. E.G for GitHub, some team members were still not comfortable with it.
 - We created a presentation for the customer meeting next week. This contained our original idea for the game for the customer to decide if it fills the starting criteria to develop from.
 
 **Have artifact showing part of the presentation**
@@ -115,7 +115,7 @@ In this week we had no customer meeting but instead the customer debrief:
 
 
 
-This was vague meaning we had plenty of choice of where we wanted to go with the game. One key part was the game being able to be played on multiple devices. This made Java a good choice for game development as it can be used for android gaming. The use of a bot in our mining dungeon game has multiple possibilities such as: can mine for the player, hold items for the player, provide hints and tips, and fight for the player. In order to track progress, we could implement a progress bar, time limit, kill number, equipment gained (precious ores). The game can have multiple ways of how it can change the difficulty. We can include achievement system, creative or survival mode, altitude challenge, mining challenge and adjust time constraint.
+This was vague meaning we had plenty of choice of where we wanted to go with the game. One key part was the game being able to be played on multiple devices. This made Java a good choice for game development as it can be used for android gaming. The use of a bot in our mining dungeon game had multiple possibilities such as: mining for the player, hold items for the player, provide hints and tips, and fight for the player. In order to track progress, we could implement a progress bar, time limit, kill number, equipment gained (precious ores). The game can have multiple ways of how it can change the difficulty. We can include achievement system, creative or survival mode, altitude challenge, mining challenge and adjust time constraint.
 
 ### User stories
 
@@ -126,7 +126,7 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 | US_03 | 1       | 5        | **AS A**   Player  **I WANT**   to be able to compete  with a bot  **SO THAT**   I can have a goal  when playing |
 | US_04 | 1       | 6        | **AS A**   **Player**  **I WANT**   to be able to  see my progress  **SO THAT**   So that I know  if I am doing well at the game as I play |
 | US_05 | 1       | 7        | **AS A**   Player  **I WANT**   to have different  choices between games modes  **SO THAT**   I have new scenarios  to play |
-| US_06 | 1       | 2        | **AS A** Player **I WANT** to interact with the blocks on the map **SO THAT** I can gather resources, place resources, and make new paths |
+| US_06 | 1       | 2        | **AS A** Player **I WANT** to move around and interact with the blocks on the map **SO THAT** I can gather resources, place resources, and make new paths |
 | US_07 | 1       | 3        | **AS A** Player **I WANT** to use resources to craft items **SO THAT** I can use them throughout the game to make tasks easier |
 
 
@@ -147,187 +147,23 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 
 ### Use cases
 
-##### UC_01
-
-**Use case**: Player starts game on different systems
-
-**Author**: TW
-
-**Date**: 11/11/2020
-
-**Modification date**: 11/11/202
-
-**Purpose**: the game can run and be played on different systems
-
-**Overview**: Frist the player will boot up their system (windows, mac or linux) and then open the game. If the code can compile and run on the system, the game starting screen will appear on a window else alternative: the code fails to run, and a system error will appear on their screen.
-
-**Cross reference:** US_01
-
-**Actors:** player
-
-**Precondition:** 
-
-- The system must have all the game components downloaded and ready to run
-- There must be a screen to show the game on 
-- Post condition: the system will access the code and run it
-- The game is shown on the screen for the player to interact with 
-
-**Normal flow of event:** 
-
-| Actor actions                                  | System actions                                               |
-| ---------------------------------------------- | ------------------------------------------------------------ |
-| 1. The player will start up their system       | 2. the system will boot up and show desktop                  |
-| 3. The player will click and run the game file | 4. System will start to run the code                         |
-| 6. Player then interacts with the game         | 5. If the code can be run the game window will pop up on the players system |
-
-**Alternative flow of events:**
-
-- The code cannot run, the system will show an error message
-
-**Exceptional flow of events:**
-
-- The players system will not boot up
-- The game window will pop up but the player cannot interact with it and the player will then close the game window
-
-
-
-##### UC_02
-
-**Use case**: Player destroys a block on the map
-
-**Author**: TW
-
-**Date**: 16/11/2020
-
-**Modification date**: 16/11/202
-
-**Purpose**: A major part of the game is allowing the user to interact with the map and change it. This means destroying the generated blocks and picking it up as a resource. 
-
-**Overview**: First the player will decide they want to destroy a certain block in the game. Then they will attack the block until it is destroyed. The block will not be shown on the map and the player will add that block to their inventory.
-
-**Cross reference:** US_06, US_04
-
-**Actors:** player
-
-**Precondition:** 
-
-- There must be a block to destroy 
-- The player must have an object that can cause damage to the block (fist, pickaxe, sword)
-
-**Normal flow of events:** 
-
-| Actor actions                                       | System actions                                          |
-| --------------------------------------------------- | ------------------------------------------------------- |
-| 1. The player will begin to attack the block (mine) | 2. The map generated block will take damage             |
-| 3. The player will keep attacking the player        | 4. The map generated takes damage until it reaches zero |
-| 7. Player can then repeat cycle with new blocks     | 5. The block will disappear                             |
-|                                                     | 6. The block type will appear in the players’ inventory |
-
-**Alternative flow of events:**
-
-- The player destroys a block they are standing on. This will mean they will fall when it is destroyed until they encounter another block. They still gather the resource 
-
-**Exceptional flow of events:**
-
-- The player will stop attacking the block halfway, meaning the block is left with half health. 
-
-
-
-##### UC_03
-
-**Use case**: Player places a block on the map
-
-**Author**: TW
-
-**Date**: 16/11/2020
-
-**Modification date**: 16/11/202
-
-**Purpose**: A major part of the game is allowing the user to interact with the map and change it. This means placing blocks onto the map and taking it out of the players’ inventory 
-
-**Overview**:  First the player will decide they want to place a certain block. Then the game will check of they have the resource to place. If they have, a block will appear on the game in the postion they wanted to place
-
-**Cross reference:** US_06
-
-**Actors:** player
-
-**Precondition:** 
-
--  There must be a map block to place the new one on  
-
--  The player must have the desired block to place within their inventory
-
-**Normal flow of events:** 
-
-| Actor actions                                                | System actions                                               |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1. The player will enter the inventory                       | 4. The map notes the request to place a block on an existing block |
-| 2. The player must have the desired block to place within their inventory | 5. The map generates the new block on the existing block     |
-| 3. The player attempts to place the block on the map         | 6. The block type will be taken from the players’ inventory  |
-| 7. Player can then repeat cycle with new blocks              |                                                              |
-
-**Alternative flow of events:**
-
-There are none
-
-**Exceptional flow of events:**
-
-- The player does not have any of the block type in their inventory, meaning no block will be placed
-
-
-
-##### UC_04
-
-**Use case**: Player crafts an item from the inventory
-
-**Author**: TW
-
-**Date**: 16/11/2020
-
-**Modification date**: 16/11/202
-
-**Purpose**: As the player gathers resources in the game, they will be able to create items such as a pickaxe. They will use these items to interact with enemies and the map.  
-
-**Overview**:  First the player will decide they want to craft a certain item. Then the gaem will check they have the required resources for the item. If so, the item is crafted and the resources are taken from the players inventory. The item is also added to the inventory.
-
-**Cross reference:**  US_07
-
-**Actors:** player
-
-**Precondition:** 
-
--  There must be the correct amount of resources to craft the item
-
-**Normal flow of events:** 
-
-| Actor actions                                                | System actions                                               |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1. The player will go to the inventory screen                | 3. The game will show what items can be crafted and what cannot |
-| 2. The player will go to the craft menu                      | 5. The game will generate the item for the player and add it to their inventory |
-| 4. The player will choose an item which they have resources for | 6. The resources required for the item will be taken form the players overall resources |
-| 7. Player can then equip the item                            |                                                              |
-
-**Alternative flow of events:**
-
-There are none
-
-**Exceptional flow of events:**
-
-- The player will attempt to craft an item where they do not have the resources. A message will be displayed stating insufficient resources
+At this stage of the process we had not considered to implement use cases in our developement aproach. This was due to us not having our game idea confirmed by the customer, as well as not being aware of the process since the lecture material was not release yet. Instead we had user stories as shown in the user story section, which is a similar to a less dressed version of the use cases. 
 
 ###  Use cases Tests
 
-No tests this week
+As we had no use case there were no test to conduct. 
 
 
 
 ### Software design Documentation
 
-At this stage, no thought has been given into the software design and classes as the mining game has not been confirmed. 
+At this stage, no thought has been given into the software design and classes as the mining game has not been confirmed by the customer. 
 
 
 
 ### User interface design
+
+This is a bare baisic framwork of how the potential game will look like to the user. 
 
 | Design implement                                             | Version |
 | ------------------------------------------------------------ | ------- |
