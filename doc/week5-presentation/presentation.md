@@ -1,24 +1,12 @@
-# Presentation 4
+# Presentation 5
 
 ## Team Cyan
 |		|		|		|
 |-|-|-|
-|	13	|	November	|	2020	|
+|	19	|	November	|	2020	|
 # From previous presentation
 
-
- ![ ](../week3-presentation/gifs/InitialGameRecording.gif)
-
-# Curent status
-
- ![ ](./gifs/board.png)
-
-
-# Updates
-
-
 - collision & gravity
-
 
 ![ ](../week4-presentation/GravityAndCollision.gif)
 
@@ -27,41 +15,23 @@
  ![ ](../week4-presentation/gifs/walking.gif)
 
 
-- map interaction and boss fight map 
-
-  
-
- ![ ](../week4-presentation/gifs/map.gif)
+- map interaction and boss fight map Curent status
 
 
-- storyline and game name 
+# Curent Status 
 
 
-![ ](../week4-presentation/gifs/story.png)
+
+ ![ ](./gifs/board.png)
 
 
-- sounds and in-game music 
 
-- menu backround image 
+# Updates
 
+- Documentation
+- Refactoring  
+- Implemented 
+- Digging and placing
 
-![ ](../week4-presentation/gifs/01.png)
-
-![ ](../week4-presentation/gifs/05.png)
-
-![ ](../week4-presentation/gifs/06.png)
-
-![ ](../week4-presentation/gifs/07.png)
-
-- Documentation 
-
-
-![ ](../week4-presentation/gifs/docu.png)
 
 # Future
-
-- interactive sounds 
-- block interaction (digging | placing) 
-- inventory 
-- add more animations (mine | jump)
-
