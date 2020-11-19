@@ -48,6 +48,10 @@
 
 ![ ](./imgs/dignplace.gif)
 
+- Countdown timer and time dependent zoom
+
+![ ](./imgs/timer.gif)
+
 - Implemented arrow projectiles 
 
 ![ ](./imgs/arrow.gif)
@@ -56,7 +60,6 @@
 
 ![ ](./imgs/menuscreen.png)
 
-- Countdown Timer & HUD
 
 # Future
 
