@@ -30,7 +30,9 @@
 
 - Major Refactoring  and restructuring into classes 
 
-  
+![ ](./imgs/tree.png)
+
+
 
 - Animation added to characters
 
@@ -54,9 +56,11 @@
 
 ![ ](./imgs/menuscreen.png)
 
-- - Countdown Timer & HUD
+- Countdown Timer & HUD
 
 # Future
 
-- 
-- 
+- Inventory
+- Projectiles
+- Sprite updating with armor
+- Map blocks with properties
