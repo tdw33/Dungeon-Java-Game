@@ -85,7 +85,7 @@ public class GEEnemy extends GameElement
                 this.velocity.setX(newXVelocity);
                 this.position.setX((int)Math.floor(newXPosition));
             } else {
-                this.position.setX(0);
+                this.velocity.setX(0);
             }
         }
         return this.position.getX();

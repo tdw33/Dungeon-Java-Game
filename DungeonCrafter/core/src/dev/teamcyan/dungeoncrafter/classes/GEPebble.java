@@ -92,7 +92,7 @@ public class GEPebble extends GameElement
                 this.velocity.setX(newXVelocity);
                 this.position.setX((int)Math.floor(newXPosition));
             } else {
-                this.position.setX((float)0.0);
+                this.velocity.setX((float)0.0);
             }
         }
         return this.position.getX();
