@@ -22,9 +22,11 @@ import com.badlogic.gdx.maps.tiled.*;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.*;
+import com.badlogic.gdx.utils.Timer;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.*;
 import dev.teamcyan.dungeoncrafter.classes.Pos;
+import sun.rmi.rmic.Main;
 
 public class MainGameScreen extends BaseScreen {
 
@@ -43,9 +45,11 @@ public class MainGameScreen extends BaseScreen {
 
     Matrix4 uiMatrix;
     private BitmapFont font;
+    private BitmapFont timerFont;
     private ArrayList<String> keyInfo;
     private String mouseInfo;
-
+    private float timeLeft;
+    private float totTime;
     private GameModel model;
 
   /**
@@ -76,8 +80,25 @@ public class MainGameScreen extends BaseScreen {
         model.getEnemy().getPosition().setY(model.getMap().getMapPixelHeight()/2+20);
 
         font = new BitmapFont();
+        timerFont = new BitmapFont();
         keyInfo = new ArrayList<String>();
         mouseInfo = "";
+        timeLeft = 60;
+        totTime = 60;
+
+        // Create countdown variable for overlay
+        Timer timer=new Timer();
+        timer.scheduleTask(new Timer.Task() {
+            @Override
+            public void run() {
+                timeLeft = timeLeft - (float)0.1;
+                // Attempting to add interactive audio - need to fix audio buffer error
+                //if(timeLeft < 0.9 * totTime){
+                //    MainGameScreen.super.controller.audioManager.startMusicStr(
+                //            "tick");
+                //}
+            }
+        }, 0, (float)0.1, (int)totTime*10);
 
     }
 
@@ -88,17 +109,29 @@ public class MainGameScreen extends BaseScreen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        model.getCamera().zoom = (1 - ((totTime - timeLeft)/(totTime*10)));
+        // Cap max and min zoom levels
         if(zoomIn) {
-            model.getCamera().zoom -= DungeonCrafter.ZOOM_FACTOR;
+            model.getCamera().zoom = (float) Math.max(0.4, (model.getCamera().zoom - DungeonCrafter.ZOOM_FACTOR));
         }
         if(zoomOut) {
-            model.getCamera().zoom += DungeonCrafter.ZOOM_FACTOR;
+            model.getCamera().zoom = (float) Math.min(3, (model.getCamera().zoom + DungeonCrafter.ZOOM_FACTOR));
         }
         if(keyD) {
             System.out.println("D");
+            TiledMapTileLayer.Cell curCell = model.getMap().getBlock(new Pos(
+                    model.getPlayer().getPosition().getX(),
+                    model.getPlayer().getPosition().getY()));
+
             model.getMap().interactBlock(new Pos(
                   model.getPlayer().getPosition().getX(),
                   model.getPlayer().getPosition().getY()));
+
+            // Attempting to add interactive audio effects - need to resolve audio buffer error
+            //if(curCell != null) {
+            //    if (curCell.getTile().getId() == 1)
+            //        super.controller.audioManager.startMusic(super.controller.audioManager.breakStone);
+            //}
         }
         if(keyA) {
             System.out.println("D");
@@ -162,16 +195,21 @@ public class MainGameScreen extends BaseScreen {
         for (GEProjectile t : projectiles) {
             batch.draw(t.getTexture(), t.getPosition().getX(), t.getPosition().getY(), 16, 2, t.getTexture().getWidth(), t.getTexture().getHeight(), 1, 1, (float) t.getAngle(), 0, 0, 35, 5, false, false);
         }
+        font.setColor(1,1,1,1);
+        float redAmount = (float)(totTime - timeLeft) / (float)totTime;
+        float greenAmount = 1-redAmount;
+        timerFont.setColor(redAmount, greenAmount, 0, 1); // Fade font from green to red as time runs out
+        timerFont.getData().setScale(2);
 
-
-        font.setColor(1,1,1,1);   //Brown is an underated Colour
         font.draw(batch, mouseInfo, player.getPosition().getX(), player.getPosition().getY()+150);
         font.draw(batch, "Mouse XY:", player.getPosition().getX(), player.getPosition().getY()+170);
         font.draw(batch, "Keys active:", player.getPosition().getX(), player.getPosition().getY()+200);
-        /*for(int i = 0; i < keyInfo.size(); i++)
-        {
-            font.draw(batch, super.controller.keyListener.activeKeys.get(i), player.getPosition().getX()+80+(i*10), player.getPosition().getY()+200);
-        }*/
+
+        //for(int i = 0; i < keyInfo.size(); i++)
+        //{
+        //    font.draw(batch, super.controller.keyListener.activeKeys.get(i), player.getPosition().getX()+80+(i*10), player.getPosition().getY()+200);
+        //}
+        timerFont.draw(batch, Float.toString(timeLeft).substring(0, 4), player.getPosition().getX() - 120, player.getPosition().getY() + 130);
         batch.end();
         model.getCamera().update();
 
@@ -276,13 +314,6 @@ public class MainGameScreen extends BaseScreen {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        System.out.println("x = " + screenX);
-        System.out.println("y = " + screenY);
-
-        Pos pos = new Pos(screenX, screenY);
-        model.getPlayer().getRegion().setRegionX(screenX);
-        model.getPlayer().getRegion().setRegionY(DungeonCrafter.HEIGHT - screenY);
-
         return false;
     }
 

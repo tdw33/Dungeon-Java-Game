@@ -69,6 +69,12 @@ public class GMap extends GameElement{
     this.tileSet = map.getTileSets().getTileSet("default_dirt");
   }
 
+public TiledMapTileLayer.Cell getBlock(Pos pos){
+    int x = (int)(pos.getX() / tileWidth)-1;
+    int y =  (int)(pos.getY() / tileHeight);
+    return terrainLayer.getCell(x,y);
+}
+
   public void interactBlock(Pos pos){
     
     // dig to the left
