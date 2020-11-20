@@ -26,7 +26,7 @@
 
 - Documentation
 
-![ ](./imgs/docweek5.png)
+![ ](./imgs/docWeek5.png)
 
 - Major Refactoring  and restructuring into classes 
 
