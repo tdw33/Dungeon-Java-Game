@@ -10,11 +10,11 @@
 
 With the customer happy with our initial game idea for a Minecraft inspired dungeon game, we were able to start planning out the game and wrote some basic code. This meant the product backlog continued to be filled out withideas that we had, and the initial game architecture was looked at: menu system and game function. To achieve this planned architecture we used Miro board, which was also used to sort out the class UML. This was also based on our product backlog, but we did not use CRC cards which could of made the process simpler. The week had 3 meetings: customer debrief with sprint plan; game architecture; and sprint review with presentation creation. For the coding side everyone was assigned to generate a basic square that could move left, right, up, and down.
 
-![](C:\Users\tomwe\Desktop\Dungeon\doc\full documentation\week_2_artifacts\miro.png)
+![](./week_2_artifacts/miro.png)
 
 The Scrum technique was continued for this week with the Scrum master and product lead roles being switched around, so each member of the group can experience them. In between these first and last meeting we had daily stand-ups that were carried out on Microsoft teams. From the last sprint we made sure to tag the team within the post, so everyone will get a notification and remider to post.
 
-![](C:\Users\tomwe\Desktop\Dungeon\doc\full documentation\week_2_artifacts\standUp.png)
+![](./week_2_artifacts/standUp.png)
 
 This sprint was conducted in much the same way as the last one as we thought it was generating good results in the last sprint. The only problem was we still assigned everybody the coding task which is not efficient. However, there were 3 different systems (mac, windows Linux) used my different members of the team and the task would help in getting people comfortable with libGDX. Heading into the next sprint we will make sure to spread the tasks more efficiently so that a grater progression of the game can be achieved. 
 
@@ -30,7 +30,7 @@ We discussed how the customer meeting went and how it affected the game. In the 
 
 Now the initial game idea was confirmed, and we have established our coding language with framework (Java with Libgdx), we initiated coding with this sprint. As no one had used Libgdx before everyone was assigned to create a basic character (square) and give it basic movement (up, down, left and right). On top of this everyone was assigned finding a naming system, designing classes and UML diagram.
 
-![](C:\Users\tomwe\Desktop\Dungeon\doc\full documentation\week_2_artifacts\sprintBoard2.png)
+![](./week_2_artifacts/sprintBoard2.png)
 
 
 
@@ -38,11 +38,11 @@ Now the initial game idea was confirmed, and we have established our coding lang
 
 In this meeting we used our thoughts on classes to generate the architecture of the game as well as a UML diagram. First, we looked at the game flow which will be how the menu and game will function together, which can be seen below. The important part of this architecture is the ability to save the game and how this will function in different scenarios, So, it shows the flow with saving the game and then continuing the game from this save state. Upon dying the user will be able to start from the last save state. From the initiating a new game from the staring menu screen, a new seed will be generated. This will allow the user to have more unique experiences in future playthrough of our game. 
 
-![](C:\Users\tomwe\Desktop\Dungeon\doc\full documentation\week_2_artifacts\GameFlow.png)
+![](./week_2_artifacts/GameFlow.png)
 
 In the next part we designed an UML off the initial idea for the class system as shown below as well as our product backlog. Everything will stem from the Game element, as our map is fully interactive. This means each block will in theory die when the player destroys it. like and enemy and main character.  The process of designing this UML diagram did not use CRC cards as we were not aware of that. Instead we all interacted with the miro board and discussed our ideas until we had the classes maped out. This was proablaly not as effcient as using CRC cards
 
-![](C:\Users\tomwe\Desktop\Dungeon\doc\full documentation\week_2_artifacts\ClassDiagram.png)
+![](./week_2_artifacts/ClassDiagram.png)
 
 
 
@@ -50,9 +50,9 @@ In the next part we designed an UML off the initial idea for the class system as
 
 From this second sprint we were all able to generate a basic character and have basic movement using libGdx and Java. The naming class we established and an initial UML borard was generated. These can be seen below with the UML shown above. No one had any major problems, so the sprint was considered successful.
 
-![](C:\Users\tomwe\Desktop\Dungeon\doc\full documentation\week_2_artifacts\codeconventions.png)
+![](./week_2_artifacts/codeconventions.png)
 
-![](C:\Users\tomwe\Desktop\Dungeon\doc\full documentation\week_2_artifacts\movement.gif)
+![](./week_2_artifacts/movement.gif)
 
 Following the sprint review we created the presentation for the customer meeting. This highlighted all our progress on each sprint task as well proposing some art styles for the game. 
 
@@ -420,13 +420,13 @@ There are none
 
 During this week we had a meeting to dicuss how the different parts of the game wil interact with each other and create a UML diagram. Before the meetig a couple of members of the group had though out potential class interactions which was used as a starting point for the discussion. 
 
-![](C:\Users\tomwe\Desktop\Dungeon\doc\full documentation\week_2_artifacts\Blank diagram.png)
+![](./week_2_artifacts/Blank diagram.png)
 
 
 
 From this discuusion the final intial UML was structured. As stated before this took aobut 2 hours and CRC cards were not used. The use of each member genrating CRC cards would have likely reduced the time to create the UML diagram, as well as creating a better understanding of the diagram. 
 
-![](C:\Users\tomwe\Desktop\Dungeon\doc\full documentation\week_2_artifacts\ClassDiagram.png)
+![](./week_2_artifacts/ClassDiagram.png)
 
 ## User interface design
 
