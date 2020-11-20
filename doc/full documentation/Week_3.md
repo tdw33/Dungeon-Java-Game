@@ -6,6 +6,10 @@
 Having a general class structure is helpful when developing the game. However, the class diagram needs to be based on use cases. Internal user stories need to be created when developing game features so that user requirements will be fulfilled and the whole process should be documented for future reference. Moreover, it may be better to set a small rather than a hard-to-reach goal since each sprint is only one week long. It is also helpful to move the tasks which had been done on GitHub in time so that the sprint progress is up-to-date. The team may function better when taking course load into consideration while assigning tasks so that distribution of the development tasks can be more reasonable and effective. 
 
 ## Meeting Minutes
+
+### Customer meeting debrief and sprint planning:
+A sprint planning meeting was held right after the customer meeting, in which the team added tasks to sprint backlog according to the user requirements and additional features that could be added to the game. The customer expressed a preference toward a high-resolution art style for the game so a task to find sprites that would fit the style was created and assigned. The customer also wanted to see a variety of backgrounds and scenes while playing the game. Therefore, map generation was added to this week's sprint tasks. In addition to the customer's suggestions, the team also decided to work on menu screens since they are a fundamental part of a game. Another component of a game is sounds so some member were assigned to find background music and short sound effects that fit with the game theme. In terms of character movement, since a map will be generated which will influence where the character can go, gravity and collision are needed to make the movements seem more real (e.g. the character jumps down - gravity; cannot pass the edge of the map - collision). 
+
 ### MVC model - Controller, Map and Elements
 Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo  
 Minutes:  
@@ -37,15 +41,45 @@ Questions:
 - Each class has a method called view?
 - How to implement main map controller?  
 
-## backlog  
-Completed:
-- General game structure (features & menu files)
-- Class UML diagrams and typings
-- Generate a block that can move around
-- Pebble backstory
-- Research on how github version control works  
+### Sprint review and presentation creation
+- A map could be generated that had a black background with edges, different obstacles and materials. 
 
-Sprint backlog:
+![ ](../week3-presentation/gifs/mapexample.gif)  
+
+- User input can be shown as current position that constantly changes according to the user's control. 
+
+![ ](../week3-presentation/imgs/gifedit.gif)    
+
+- Camera view was implemented to always have the character in the center of the screen. 
+
+![ ](../week3-presentation/gifs/InitialGameRecording.gif)  
+
+- A menu was created with basic functions such as new game, load game, settings and exit.   
+
+![ ](../week3-presentation/imgs/mainmenu.gif)  
+
+## backlog  
+
+**Product backlog:** 
+
+- Create a character (square) and give it basic movement (up, down, left, right)
+- Find a common naming system 
+- Design classes and create a UML diagram
+
+- Generation of block map (side on view)
+- The blocks of the map can be interacted with by the player
+- A player is spawned on the map
+- The player can interact with the blocks (destroy and create)
+- The player can collect these resources in an inventory 
+- The players resources can be used to craft items (pickaxe, sword, and light)
+- The crafted tools will break over time
+- The player will have a sidekick (bot) which will either help or race against the player
+- There will be a timer shown to the player on the screen which runs down as they go through the game
+- There will be tasks to complete in order for the player to escape
+- The player can go through a door and the screen will change to top down view 
+- In the top down view, the player will fight bosses
+
+**Sprint backlog:**
 - Map generation
 - Sprite class and art style
 - Menu screens
@@ -55,17 +89,21 @@ Sprint backlog:
 - Find character and enemy sprites
 - Gravity/Collisions
 
+**Completed:**
+- General game structure (features & menu files)
+- Find a common naming system for programming
+- Design classes and create a UML diagram
+- Generate a character (a block) that can move around
+- Pebble backstory
+
 ## Exception Handling
 Many members had course deadlines this week so the team had to balance between keeping up with the progress of game development and finishing individual coursework. Sprint planning meeting was delayed until after a deadline that several members had for their coursework.
 
 ## product contents
 
 ### Customer interview
-- I think Pebble helping more when sanity level drops is an interesting idea
-- I prefer the art style that is high-resolution
-- It will be good to explore a range of different backgrounds as the game progresses  
 
-The customer suggested having a way to interact with the game by controlling the character so that the main character needs to be able to move according to user’s input. After the team presented a general idea of the background story and some possible features for the game, the customer expressed an interest in the sanity level feature. After looking at several proposed art styles for the game, the customer had indicated that the one with higher resolution could show better layers of the ground and material types. Related to that, the customer also wanted to play in different backgrounds so a wider variety of scenes need to be constructed with relatively high resolution.
+The customer suggested having a way to interact with the game by controlling the character so that the main character needs to be able to move according to user’s input. After the team presented a general idea of the background story and some possible features for the game, the customer expressed an interest in the sanity level feature again (same as the last customer meeting). After looking at several proposed art styles for the game, the customer had indicated that the one with higher resolution could show better layers of the ground and material types. Related to that, the customer also wanted to play in different backgrounds so a wider variety of scenes need to be constructed with relatively high resolution.
 
 ### User stories
 
@@ -73,7 +111,7 @@ The customer suggested having a way to interact with the game by controlling the
 | ----- | ------------ | ------------ | ------------------------------------------------------------ |
 | US_01 | 2            | 1            | **AS A**   Player  **I WANT**   to be able to  play a dungeon game on different platforms web platforms **SO THAT**   I have choices  for playing the game |
 | US_02 | 2            | 4            | **AS A**   Player  **I WANT**   to have a bot  that that will play for me  **SO THAT**   It can help me  with playing through the game by offering adivce |
-| US_03 | **Deleting** | **Deleting** | **AS A**   Player  **I WANT**   to be able to compete  with a bot  **SO THAT**   I can have a goal  when playing |
+| US_03 | **Deleting** | **Deleting** | **AS A**   Player  **I WANT**   to be able to compete  with a bot  **SO THAT**   I can have a goal when playing |
 | US_04 | 1            | 5            | **AS A**   **Player**  **I WANT**   to be able to  see my progress  **SO THAT**  I know  if I am doing well at the game as I play |
 | US_05 | 2            | 7            | **AS A**   Player  **I WANT**   to have different  choices between games modes and diffrent paths to the end in each game mode **SO THAT**   I have new scenarios  to play |
 | US_06 | 1            | 2            | **AS A** Player **I WANT** to interact with the blocks on the map **SO THAT** I can gather resources, place resources, and make new paths |
