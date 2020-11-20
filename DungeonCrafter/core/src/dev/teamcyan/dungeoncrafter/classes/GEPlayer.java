@@ -24,6 +24,7 @@ public class GEPlayer extends GameElement
   public float stateTimer = 0;
   public State currentState;
   public State previousState;
+  private int health = 100;
 
   public GEPlayer () {
     this.getype = GEType.PLAYER;
@@ -53,6 +54,9 @@ public class GEPlayer extends GameElement
     frames.clear();
   }
 
+  public void decrementHealth(int damage) {
+    this.health -= damage;
+  }
   public void setName(String spriteName) {
       this.spriteName = spriteName;
   }

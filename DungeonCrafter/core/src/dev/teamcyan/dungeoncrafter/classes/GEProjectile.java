@@ -1,8 +1,10 @@
 package dev.teamcyan.dungeoncrafter.classes;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.utils.Array;
@@ -11,9 +13,11 @@ public class GEProjectile extends GameElement {
     Velocity velocity;
     private Texture texture;
     private double angle;
+    private GameModel model;
 
-    public GEProjectile (Pos position, Pos destination)
+    public GEProjectile (GameModel model, Pos position, Pos destination)
     {
+        this.model = model;
         this.getype = GEType.DEFAULT;
         this.position = new Pos(position.getX(), position.getY()+30);
 
@@ -28,7 +32,22 @@ public class GEProjectile extends GameElement {
 
     }
 
+    public boolean hitTest() {
+        if (this.position.getX() + this.texture.getWidth()/2 > model.getPlayer().getPosition().getX() &&
+            this.position.getX() + this.texture.getWidth()/2 < model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth() &&
+            this.position.getY() + this.texture.getHeight()/2 > model.getPlayer().getPosition().getY() &&
+            this.position.getY() + this.texture.getHeight()/2 < model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()) {
+
+            return true;
+        }
+        return false;
+    }
+
     public boolean setPosition(TiledMapTileLayer layer) {
+        if (hitTest()) {
+            model.getPlayer().decrementHealth(5);
+            return false;
+        }
         // apply gravity, when no floor
         float delta = Gdx.graphics.getDeltaTime();
 

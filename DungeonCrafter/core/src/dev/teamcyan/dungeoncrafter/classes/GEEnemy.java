@@ -26,9 +26,11 @@ public class GEEnemy extends GameElement
     public State currentState;
     public State previousState;
     public List<GEProjectile> projectiles;
+    public GameModel model;
 
-    public GEEnemy ()
+    public GEEnemy (GameModel model)
     {
+        this.model = model;
         this.getype = GEType.PLAYER;
         this.velocity = new Velocity(0,0);
         this.position = new Pos(0,0);
@@ -151,7 +153,7 @@ public class GEEnemy extends GameElement
     public List<GEProjectile> getProjectiles(TiledMapTileLayer layer, Pos playerPosition) {
         this.projectileTimer += Gdx.graphics.getDeltaTime();
         if (this.projectileTimer > 3) {
-            projectiles.add(new GEProjectile(this.position, playerPosition));
+            projectiles.add(new GEProjectile(this.model, this.position, playerPosition));
             this.projectileTimer = 0;
         }
 

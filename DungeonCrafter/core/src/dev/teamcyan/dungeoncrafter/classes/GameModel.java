@@ -27,7 +27,7 @@ public class GameModel {
         this.map = new GMap(MAPNAME);
         this.player = new GEPlayer();
         this.pebble = new GEPebble();
-        this.enemy = new GEEnemy();
+        this.enemy = new GEEnemy(this);
         this.active = true;
         camera = new OrthographicCamera();
     }
