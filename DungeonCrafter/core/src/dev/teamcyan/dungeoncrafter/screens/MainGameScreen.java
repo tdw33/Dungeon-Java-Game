@@ -26,7 +26,6 @@ import com.badlogic.gdx.utils.Timer;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.*;
 import dev.teamcyan.dungeoncrafter.classes.Pos;
-import sun.rmi.rmic.Main;
 
 public class MainGameScreen extends BaseScreen {
 
