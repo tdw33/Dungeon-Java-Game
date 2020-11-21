@@ -54,6 +54,10 @@ public class GEPlayer extends GameElement
     frames.clear();
   }
 
+  public int getHealth() {
+    return this.health;
+  }
+
   public void decrementHealth(int damage) {
     this.health -= damage;
   }

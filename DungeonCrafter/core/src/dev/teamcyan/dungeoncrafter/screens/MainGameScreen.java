@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.Null;
@@ -31,6 +33,8 @@ public class MainGameScreen extends BaseScreen {
 
     SpriteBatch batch = new SpriteBatch();
     SpriteBatch hud = new SpriteBatch();
+    private ShapeRenderer shapeRenderer;
+
     boolean movingRight = false;
     boolean movingLeft = false;
     boolean movingUp = false;
@@ -51,32 +55,40 @@ public class MainGameScreen extends BaseScreen {
     private float totTime;
     private GameModel model;
 
-  /**
+    private static final int MENU_BUTTON_WIDTH = DungeonCrafter.WIDTH/24*5;
+    private static final int MENU_BUTTON_HEIGHT = DungeonCrafter.HEIGHT/72*5;
+    private static final int MENU_BUTTON_X = DungeonCrafter.WIDTH-MENU_BUTTON_WIDTH-10;
+    private static final int MENU_BUTTON_Y = DungeonCrafter.HEIGHT-MENU_BUTTON_HEIGHT-20;
+    Texture menuButtonActive;
+    Texture menuButtonInactive;
+
+    private static final int HEALTH_BAR_WIDTH = DungeonCrafter.WIDTH/24*5;
+    private static final int HEALTH_BAR_HEIGHT = 10;
+    private static final int HEALTH_BAR_X = 30;
+    private static final int HEALTH_BAR_Y = DungeonCrafter.HEIGHT-HEALTH_BAR_HEIGHT-40;
+
+    private static final int INVENTORY_BUTTON_WIDTH = DungeonCrafter.WIDTH/24*5;
+    private static final int INVENTORY_BUTTON_HEIGHT = DungeonCrafter.HEIGHT/72*5;
+    private static final int INVENTORY_BUTTON_X = HEALTH_BAR_X+HEALTH_BAR_WIDTH+30;
+    private static final int INVENTORY_BUTTON_Y = DungeonCrafter.HEIGHT-MENU_BUTTON_HEIGHT-20;
+    Texture inventoryButtonActive;
+    Texture inventoryButtonInactive;
+
+    /**
    * Constructor - 
    * Inherit the game and the model fron the parent class
    */
     public MainGameScreen(DungeonCrafter parent, GameModel model) {
         super(parent, model);
         this.model = model;
-    }
+
+        menuButtonActive = new Texture("menu_buttons/settings_active.png");
+        menuButtonInactive = new Texture("menu_buttons/settings_inactive.png");
+        inventoryButtonActive = new Texture("menu_buttons/settings_active.png");
+        inventoryButtonInactive = new Texture("menu_buttons/settings_inactive.png");
+        shapeRenderer = new ShapeRenderer();
 
 
-    /**
-     *Initialise the Game Menu Screen
-     * */
-    @Override
-    public void init() {
-
-        this.model.setCameraZoom(0.5f);
-
-        model.getPlayer().getPosition().setX(model.getMap().getMapPixelWidth()/2);
-        model.getPlayer().getPosition().setY(model.getMap().getMapPixelHeight()/2);
-
-        model.getPebble().getPosition().setX(model.getMap().getMapPixelWidth()/2+10);
-        model.getPebble().getPosition().setY(model.getMap().getMapPixelHeight()/2+10);
-
-        model.getEnemy().getPosition().setX(model.getMap().getMapPixelWidth()/2+20);
-        model.getEnemy().getPosition().setY(model.getMap().getMapPixelHeight()/2+20);
 
         font = new BitmapFont();
         timerFont = new BitmapFont();
@@ -98,6 +110,15 @@ public class MainGameScreen extends BaseScreen {
                 //}
             }
         }, 0, (float)0.1, (int)totTime*10);
+
+    }
+
+
+    /**
+     *Initialise the Game Menu Screen
+     * */
+    @Override
+    public void init() {
 
     }
 
@@ -152,6 +173,9 @@ public class MainGameScreen extends BaseScreen {
                         layer, movingLeft, movingRight)) * (-1),
                 (model.getPlayer().getPosition().getY() - model.getPlayer().setY(
                         layer, movingUp, movingDown)) * (-1), 0);
+        model.getCamera().position.set(model.getPlayer().getPosition().getX(),
+                model.getPlayer().getPosition().getY(), 0);
+        model.getCamera().update();
 
         model.getPebble().setRegion();
         model.getPebble().setX(layer, model.getPlayer().getPosition());
@@ -209,8 +233,53 @@ public class MainGameScreen extends BaseScreen {
         //    font.draw(batch, super.controller.keyListener.activeKeys.get(i), player.getPosition().getX()+80+(i*10), player.getPosition().getY()+200);
         //}
         timerFont.draw(batch, Float.toString(timeLeft).substring(0, 4), player.getPosition().getX() - 120, player.getPosition().getY() + 130);
+
         batch.end();
         model.getCamera().update();
+
+
+        // buttons
+        hud.begin();
+
+        if(Gdx.input.getX() < MENU_BUTTON_X + MENU_BUTTON_WIDTH && Gdx.input.getX() > MENU_BUTTON_X && DungeonCrafter.HEIGHT - Gdx.input.getY()
+                < MENU_BUTTON_Y + MENU_BUTTON_HEIGHT &&  DungeonCrafter.HEIGHT - Gdx.input.getY() > MENU_BUTTON_Y ) {
+            hud.draw(menuButtonActive,
+                    MENU_BUTTON_X,MENU_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
+
+            if(Gdx.input.isTouched()){
+                //this.dispose();
+                controller.changeScreen(MainMenuScreen.class);
+            }
+
+        } else {
+            hud.draw(menuButtonInactive,
+                    MENU_BUTTON_X,MENU_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
+        }
+
+        if(Gdx.input.getX() < INVENTORY_BUTTON_X + INVENTORY_BUTTON_WIDTH && Gdx.input.getX() > INVENTORY_BUTTON_X && DungeonCrafter.HEIGHT - Gdx.input.getY()
+                < INVENTORY_BUTTON_Y + INVENTORY_BUTTON_HEIGHT &&  DungeonCrafter.HEIGHT - Gdx.input.getY() > INVENTORY_BUTTON_Y ) {
+            hud.draw(inventoryButtonActive,
+                    INVENTORY_BUTTON_X,INVENTORY_BUTTON_Y, INVENTORY_BUTTON_WIDTH, INVENTORY_BUTTON_HEIGHT);
+
+            if(Gdx.input.isTouched()){
+                //this.dispose();
+                controller.changeScreen(InventoryScreen.class);
+            }
+
+        } else {
+            hud.draw(inventoryButtonInactive,
+                    INVENTORY_BUTTON_X,INVENTORY_BUTTON_Y, INVENTORY_BUTTON_WIDTH, INVENTORY_BUTTON_HEIGHT);
+        }
+        hud.end();
+
+        // health bar
+        float health = model.getPlayer().getHealth()/100f;
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(Color.BLUE);
+        shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y, HEALTH_BAR_WIDTH*health, HEALTH_BAR_HEIGHT);
+        shapeRenderer.setColor(Color.WHITE);
+        shapeRenderer.rect(HEALTH_BAR_X+HEALTH_BAR_WIDTH*health, HEALTH_BAR_Y, HEALTH_BAR_WIDTH-(HEALTH_BAR_WIDTH*health), HEALTH_BAR_HEIGHT);
+        shapeRenderer.end();
 
     }
 

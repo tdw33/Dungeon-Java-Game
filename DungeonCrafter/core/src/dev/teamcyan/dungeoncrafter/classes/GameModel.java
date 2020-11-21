@@ -30,6 +30,16 @@ public class GameModel {
         this.enemy = new GEEnemy(this);
         this.active = true;
         camera = new OrthographicCamera();
+        camera.zoom = 0.5f;
+
+        this.player.getPosition().setX(this.map.getMapPixelWidth()/2);
+        this.player.getPosition().setY(this.map.getMapPixelHeight()/2);
+
+        this.pebble.getPosition().setX(this.map.getMapPixelWidth()/2+10);
+        this.pebble.getPosition().setY(this.map.getMapPixelHeight()/2+10);
+
+        this.enemy.getPosition().setX(this.map.getMapPixelWidth()/2+20);
+        this.enemy.getPosition().setY(this.map.getMapPixelHeight()/2+20);
     }
 
     public void dispose() 
