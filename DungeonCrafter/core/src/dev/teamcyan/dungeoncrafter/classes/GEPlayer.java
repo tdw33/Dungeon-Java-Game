@@ -142,32 +142,44 @@ public class GEPlayer extends GameElement
 
   }
 
-  public float setY(TiledMapTileLayer layer, boolean movingUp, boolean movingDown) {
+  public float setY(TiledMapTileLayer layer, KeyListener keyListener) {
 
   // apply gravity, when no floor
     float delta = Gdx.graphics.getDeltaTime();
 
-    float newYVelocity = this.velocity.getY() + delta * this.GRAVITY;
+    float newYVelocity = this.velocity.getY() - delta * this.GRAVITY;
 
-    float newYPosition = this.position.getY() - newYVelocity;// - Math.floor(newYVelocity);
+    float newYPosition = this.position.getY() + newYVelocity;// - Math.floor(newYVelocity);
     TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.floor(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
     TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-1) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
     if (leftBottom == null && rightBottom == null) {
       this.velocity.setY(newYVelocity);
       this.position.setY((int)newYPosition);
-
     } else {
-      this.velocity.setY(0);
-    }
+      if(keyListener.activeKeys.contains(Input.Keys.UP)) {
+        keyListener.activeKeys.remove(keyListener.activeKeys.indexOf(Input.Keys.UP));
+        TiledMapTileLayer.Cell cellLeftCorner = layer.getCell((int) (this.position.getX() / layer.getTileWidth()), (int) ((this.position.getY()+this.region.getRegionHeight()) / layer.getTileHeight()));
+        TiledMapTileLayer.Cell cellRightCorner = layer.getCell((int) (((this.position.getX()-1)+this.region.getRegionWidth()) / layer.getTileWidth()), (int) ((this.position.getY()+this.region.getRegionHeight()) / layer.getTileHeight()));
+        if (cellLeftCorner == null && cellRightCorner == null) {
+          newYVelocity = this.velocity.getY() + delta * this.JUMPACCELERATION;
+          this.velocity.setY(newYVelocity);
+          newYPosition = this.position.getY() + newYVelocity;// - Math.floor(newYVelocity);
+          this.position.setY(newYPosition);
+        }
+      } else {
+        if (this.velocity.getY() > 0) {
+          this.velocity.setY(newYVelocity);
+          this.position.setY(newYPosition);
 
+        } else {
+          this.velocity.setY(0);
+        }
 
-    if(movingUp) {
-      TiledMapTileLayer.Cell cellLeftCorner = layer.getCell((int) (this.position.getX() / layer.getTileWidth()), (int) ((this.position.getY()+this.region.getRegionHeight()) / layer.getTileHeight()));
-      TiledMapTileLayer.Cell cellRightCorner = layer.getCell((int) (((this.position.getX()-1)+this.region.getRegionWidth()) / layer.getTileWidth()), (int) ((this.position.getY()+this.region.getRegionHeight()) / layer.getTileHeight()));
-      if (cellLeftCorner == null && cellRightCorner == null) {
-        this.position.setY(this.position.getY()+1);
       }
     }
+
+
+
 
     return this.position.getY();
   }

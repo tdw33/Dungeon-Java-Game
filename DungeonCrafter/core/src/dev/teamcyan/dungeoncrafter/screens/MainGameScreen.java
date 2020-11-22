@@ -213,7 +213,7 @@ public class MainGameScreen extends BaseScreen {
                 (model.getPlayer().getPosition().getX() - model.getPlayer().setX(
                         layer, movingLeft, movingRight)) * (-1),
                 (model.getPlayer().getPosition().getY() - model.getPlayer().setY(
-                        layer, movingUp, movingDown)) * (-1), 0);
+                        layer, controller.keyListener)) * (-1), 0);
         model.getCamera().position.set(model.getPlayer().getPosition().getX(),
                 model.getPlayer().getPosition().getY(), 0);
         model.getCamera().update();

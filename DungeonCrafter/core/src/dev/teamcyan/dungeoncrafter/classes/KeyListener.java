@@ -1,5 +1,7 @@
 package dev.teamcyan.dungeoncrafter.classes;
 
+import com.badlogic.gdx.Input;
+
 import java.util.ArrayList;
 
 public class KeyListener {
@@ -14,12 +16,18 @@ public class KeyListener {
     }
 
     public boolean keyDownListener(int keycode) {
-        activeKeys.add(keycode);
+        if (keycode != Input.Keys.UP) {
+            activeKeys.add(keycode);
+        }
         return false;
     }
 
     public boolean keyUpListener(int keycode) {
-        activeKeys.remove(activeKeys.indexOf(keycode));
+        if (keycode == Input.Keys.UP) {
+            activeKeys.add(keycode);
+        } else {
+            activeKeys.remove(activeKeys.indexOf(keycode));
+        }
         return false;
     }
 
