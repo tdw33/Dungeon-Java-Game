@@ -28,9 +28,10 @@ public abstract class BaseScreen implements Screen, InputProcessor {
         ui.setDebugAll(controller.isDebugOn());
 
         // Map the controller
-        InputMultiplexer input = new InputMultiplexer();
-        input.addProcessor(ui);
-        Gdx.input.setInputProcessor(this);
+        InputMultiplexer inputMultiplexer = new InputMultiplexer();
+        inputMultiplexer.addProcessor(ui);
+        inputMultiplexer.addProcessor(this);
+        Gdx.input.setInputProcessor(inputMultiplexer);
 
         // Screen-specific initialization
         init();

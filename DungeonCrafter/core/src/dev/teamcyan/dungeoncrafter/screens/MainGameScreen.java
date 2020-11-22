@@ -14,6 +14,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.Null;
@@ -55,24 +59,17 @@ public class MainGameScreen extends BaseScreen {
     private float totTime;
     private GameModel model;
 
-    private static final int MENU_BUTTON_WIDTH = DungeonCrafter.WIDTH/24*5;
-    private static final int MENU_BUTTON_HEIGHT = DungeonCrafter.HEIGHT/72*5;
-    private static final int MENU_BUTTON_X = DungeonCrafter.WIDTH-MENU_BUTTON_WIDTH-10;
-    private static final int MENU_BUTTON_Y = DungeonCrafter.HEIGHT-MENU_BUTTON_HEIGHT-20;
-    Texture menuButtonActive;
-    Texture menuButtonInactive;
+    private static final int MENU_BUTTON_X = DungeonCrafter.WIDTH-80;
+    private static final int MENU_BUTTON_Y = DungeonCrafter.HEIGHT-45;
 
     private static final int HEALTH_BAR_WIDTH = DungeonCrafter.WIDTH/24*5;
     private static final int HEALTH_BAR_HEIGHT = 10;
     private static final int HEALTH_BAR_X = 30;
     private static final int HEALTH_BAR_Y = DungeonCrafter.HEIGHT-HEALTH_BAR_HEIGHT-40;
 
-    private static final int INVENTORY_BUTTON_WIDTH = DungeonCrafter.WIDTH/24*5;
-    private static final int INVENTORY_BUTTON_HEIGHT = DungeonCrafter.HEIGHT/72*5;
-    private static final int INVENTORY_BUTTON_X = HEALTH_BAR_X+HEALTH_BAR_WIDTH+30;
-    private static final int INVENTORY_BUTTON_Y = DungeonCrafter.HEIGHT-MENU_BUTTON_HEIGHT-20;
-    Texture inventoryButtonActive;
-    Texture inventoryButtonInactive;
+    private static final int INVENTORY_BUTTON_X = HEALTH_BAR_X+HEALTH_BAR_WIDTH+100;
+    private static final int INVENTORY_BUTTON_Y = DungeonCrafter.HEIGHT-45;
+
 
     /**
    * Constructor - 
@@ -82,12 +79,56 @@ public class MainGameScreen extends BaseScreen {
         super(parent, model);
         this.model = model;
 
-        menuButtonActive = new Texture("menu_buttons/settings_active.png");
-        menuButtonInactive = new Texture("menu_buttons/settings_inactive.png");
-        inventoryButtonActive = new Texture("menu_buttons/settings_active.png");
-        inventoryButtonInactive = new Texture("menu_buttons/settings_inactive.png");
         shapeRenderer = new ShapeRenderer();
 
+        final Label.LabelStyle style = new Label.LabelStyle();
+        style.fontColor = Color.WHITE;
+        style.font = new BitmapFont();
+        style.font.getData().setScale(2f);
+        final Label settingsLabel = new Label("Menu", style);
+        final Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
+        final Button settingsButton = new Button(settingsLabel, buttonStyle);
+        settingsButton.setBounds(MENU_BUTTON_X,MENU_BUTTON_Y,0,0);
+        ui.addActor(settingsButton);
+
+        settingsButton.addListener(new EventListener()
+        {
+            @Override
+            public boolean handle(Event event)
+            {
+                if (event.toString() == "enter") {
+                    settingsLabel.setFontScale(3f);
+                } else if (event.toString() == "exit") {
+                    settingsLabel.setFontScale(2f);
+                } else if (event.toString() == "touchDown") {
+                    controller.changeScreen(MainMenuScreen.class);
+                }
+
+                return true;
+            }
+        });
+
+        final Label inventoryLabel = new Label("Inventory", style);
+        final Button inventoryButton = new Button(inventoryLabel, buttonStyle);
+        inventoryButton.setBounds(INVENTORY_BUTTON_X,INVENTORY_BUTTON_Y,0,0);
+        ui.addActor(inventoryButton);
+
+        inventoryButton.addListener(new EventListener()
+        {
+            @Override
+            public boolean handle(Event event)
+            {
+                if (event.toString() == "enter") {
+                    inventoryLabel.setFontScale(3f);
+                } else if (event.toString() == "exit") {
+                    inventoryLabel.setFontScale(2f);
+                } else if (event.toString() == "touchDown") {
+                    controller.changeScreen(InventoryScreen.class);
+                }
+
+                return true;
+            }
+        });
 
 
         font = new BitmapFont();
@@ -238,39 +279,7 @@ public class MainGameScreen extends BaseScreen {
         model.getCamera().update();
 
 
-        // buttons
-        hud.begin();
 
-        if(Gdx.input.getX() < MENU_BUTTON_X + MENU_BUTTON_WIDTH && Gdx.input.getX() > MENU_BUTTON_X && DungeonCrafter.HEIGHT - Gdx.input.getY()
-                < MENU_BUTTON_Y + MENU_BUTTON_HEIGHT &&  DungeonCrafter.HEIGHT - Gdx.input.getY() > MENU_BUTTON_Y ) {
-            hud.draw(menuButtonActive,
-                    MENU_BUTTON_X,MENU_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
-
-            if(Gdx.input.isTouched()){
-                //this.dispose();
-                controller.changeScreen(MainMenuScreen.class);
-            }
-
-        } else {
-            hud.draw(menuButtonInactive,
-                    MENU_BUTTON_X,MENU_BUTTON_Y, MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT);
-        }
-
-        if(Gdx.input.getX() < INVENTORY_BUTTON_X + INVENTORY_BUTTON_WIDTH && Gdx.input.getX() > INVENTORY_BUTTON_X && DungeonCrafter.HEIGHT - Gdx.input.getY()
-                < INVENTORY_BUTTON_Y + INVENTORY_BUTTON_HEIGHT &&  DungeonCrafter.HEIGHT - Gdx.input.getY() > INVENTORY_BUTTON_Y ) {
-            hud.draw(inventoryButtonActive,
-                    INVENTORY_BUTTON_X,INVENTORY_BUTTON_Y, INVENTORY_BUTTON_WIDTH, INVENTORY_BUTTON_HEIGHT);
-
-            if(Gdx.input.isTouched()){
-                //this.dispose();
-                controller.changeScreen(InventoryScreen.class);
-            }
-
-        } else {
-            hud.draw(inventoryButtonInactive,
-                    INVENTORY_BUTTON_X,INVENTORY_BUTTON_Y, INVENTORY_BUTTON_WIDTH, INVENTORY_BUTTON_HEIGHT);
-        }
-        hud.end();
 
         // health bar
         float health = model.getPlayer().getHealth()/100f;

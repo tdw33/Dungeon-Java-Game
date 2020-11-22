@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Array;
 
 public class GEPlayer extends GameElement
 {
+  public enum BLOCK {GOLD, STEEL};
 
   Velocity velocity;
   private TextureRegion region;
@@ -25,6 +26,9 @@ public class GEPlayer extends GameElement
   public State currentState;
   public State previousState;
   private int health = 100;
+  private int gold = 0;
+  private int steel = 0;
+  private BLOCK currentCraftingBlock = BLOCK.STEEL;
 
   public GEPlayer () {
     this.getype = GEType.PLAYER;
@@ -58,6 +62,38 @@ public class GEPlayer extends GameElement
     return this.health;
   }
 
+  public void incrementGold() {
+    this.gold += 1;
+  }
+  public boolean decrementGold() {
+    if (this.gold > 0) {
+      this.gold -= 1;
+      return true;
+    }
+    return false;
+  }
+  public void incrementSteel() {
+    this.steel += 1;
+  }
+  public boolean decrementSteel() {
+    if (this.steel > 0) {
+      this.steel -= 1;
+      return true;
+    }
+    return false;
+  }
+
+  public int getGold() {
+    return this.gold;
+  }
+
+  public int getSteel() {
+    return this.steel;
+  }
+
+  public void setCurrentCraftingBlock(BLOCK block) {
+    this.currentCraftingBlock = block;
+  }
   public void decrementHealth(int damage) {
     this.health -= damage;
   }
