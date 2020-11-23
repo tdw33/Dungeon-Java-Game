@@ -75,6 +75,12 @@ public TiledMapTileLayer.Cell getBlock(Pos pos){
     return terrainLayer.getCell(x,y);
 }
 
+  public TiledMapTile getBackgroundTile(Pos pos){
+    int x = (int)(pos.getX() / tileWidth);
+    int y =  (int)(pos.getY() / tileHeight);
+    return backgroundLayer.getCell(x,y).getTile();
+  }
+
   public void interactBlock(Pos pos){
     
     // dig to the left

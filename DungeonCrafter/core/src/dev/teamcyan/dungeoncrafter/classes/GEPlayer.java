@@ -7,11 +7,13 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.utils.Array;
 
 public class GEPlayer extends GameElement
 {
+  GameModel model;
   public enum BLOCK {GOLD, STEEL};
 
   Velocity velocity;
@@ -30,7 +32,8 @@ public class GEPlayer extends GameElement
   private int steel = 0;
   private BLOCK currentCraftingBlock = BLOCK.STEEL;
 
-  public GEPlayer () {
+  public GEPlayer (GameModel model) {
+    this.model = model;
     this.getype = GEType.PLAYER;
     this.velocity = new Velocity(0, 0);
     this.position = new Pos(0,0);
@@ -143,11 +146,17 @@ public class GEPlayer extends GameElement
   }
 
   public float setY(TiledMapTileLayer layer, KeyListener keyListener) {
-
-  // apply gravity, when no floor
+    TiledMapTile currentBackgroundTile = model.getMap().getBackgroundTile(new Pos(this.position.getX()+this.region.getRegionWidth()/2, this.position.getY()+this.region.getRegionHeight()/2));
+    float gravity;
+    if (currentBackgroundTile.getProperties().get("inverseGravity") != null) {
+      gravity = this.GRAVITY * (-1);
+    } else {
+      gravity = this.GRAVITY;
+    }
+    // apply gravity, when no floor
     float delta = Gdx.graphics.getDeltaTime();
 
-    float newYVelocity = this.velocity.getY() - delta * this.GRAVITY;
+    float newYVelocity = this.velocity.getY() - delta * gravity;
 
     float newYPosition = this.position.getY() + newYVelocity;// - Math.floor(newYVelocity);
     TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.floor(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));

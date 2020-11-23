@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.utils.Array;
 
@@ -94,11 +95,17 @@ public class GEEnemy extends GameElement
     }
 
     public float setY(TiledMapTileLayer layer) {
-
+        TiledMapTile currentBackgroundTile = model.getMap().getBackgroundTile(new Pos(this.position.getX()+this.region.getRegionWidth()/2, this.position.getY()+this.region.getRegionHeight()/2));
+        float gravity;
+        if (currentBackgroundTile.getProperties().get("inverseGravity") != null) {
+            gravity = this.GRAVITY * (-1);
+        } else {
+            gravity = this.GRAVITY;
+        }
         // apply gravity, when no floor
         float delta = Gdx.graphics.getDeltaTime();
 
-        float newYVelocity = this.velocity.getY() + delta * this.GRAVITY;
+        float newYVelocity = this.velocity.getY() + delta * gravity;
 
         double newYPosition = this.position.getY() - Math.floor(newYVelocity);
         TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.floor(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
