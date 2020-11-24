@@ -46,7 +46,7 @@ public class GMap extends GameElement {
     this.mapPixelHeight = mapHeight * tileHeight;
     this.mapRenderer = new OrthogonalTiledMapRenderer(map);
     MapLayers mapLayers = this.map.getLayers();
-    this.terrainLayer = (TiledMapTileLayer) mapLayers.get(2);
+    this.terrainLayer = (TiledMapTileLayer) mapLayers.get("Tile Layer 1");
     this.backgroundLayer = (TiledMapTileLayer) mapLayers.get(1);
     this.lavaLayer = (TiledMapTileLayer) mapLayers.get(0);
     this.tileSet = map.getTileSets().getTileSet("default_dirt");
@@ -101,11 +101,24 @@ public class GMap extends GameElement {
   }
 
   public void interactBlock(Pos pos){
-    TilePos tPos = convertToTilePos(pos);
-    int x = tPos.getX();
-    int y = tPos.getY();
-    TiledMapTileLayer.Cell here = terrainLayer.getCell(x,y);
-    tileDestroy(tPos, terrainLayer);
+    TilePos tPos1 = convertToTilePos(pos);
+    TilePos tPos2 = convertToTilePos(pos);
+    TilePos tPos3 = convertToTilePos(pos);
+
+    System.out.println(tPos1);
+
+    tPos1.setX(tPos1.getX() - 1);
+    tPos1.setY(tPos1.getY() - 1);
+
+    tPos2.setX(tPos2.getX() - 1);
+    tPos2.setY(tPos2.getY());
+
+    tPos3.setX(tPos3.getX() - 1);
+    tPos3.setY(tPos3.getY() + 1);
+
+    tileDestroy(tPos1, terrainLayer);
+    tileDestroy(tPos2, terrainLayer);
+    tileDestroy(tPos3, terrainLayer);
 
     /*
     // dig to the left above
