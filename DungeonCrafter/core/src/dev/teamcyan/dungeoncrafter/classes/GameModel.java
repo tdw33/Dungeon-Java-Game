@@ -10,7 +10,7 @@ public class GameModel {
     private GEPebble pebble;
     private GEEnemy enemy;
 
-    private final String MAPNAME = "tile/TestingMap.tmx";
+    private final String MAPNAME = "tile/TileMap.tmx";
     private OrthographicCamera camera;
 
     public OrthographicCamera getCamera() {

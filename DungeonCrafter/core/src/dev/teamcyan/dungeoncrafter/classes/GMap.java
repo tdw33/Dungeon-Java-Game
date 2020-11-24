@@ -49,7 +49,6 @@ public class GMap extends GameElement {
 
     this.terrainLayer = (TiledMapTileLayer) mapLayers.get("environment_layer");
     this.backgroundLayer = (TiledMapTileLayer) mapLayers.get("background_layer");
-    //this.boostLayer = (TiledMapTileLayer) mapLayers.get("boost_layer");
 
     this.tileSet = map.getTileSets().getTileSet("default_dirt");
   }
