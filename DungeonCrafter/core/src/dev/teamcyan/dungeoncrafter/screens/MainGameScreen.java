@@ -1,36 +1,28 @@
 package dev.teamcyan.dungeoncrafter.screens;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
-import com.badlogic.gdx.math.Matrix4;
-import com.badlogic.gdx.utils.Null;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.*;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.maps.tiled.*;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.maps.*;
 import com.badlogic.gdx.utils.Timer;
+
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
-import dev.teamcyan.dungeoncrafter.classes.*;
+import dev.teamcyan.dungeoncrafter.classes.GEEnemy;
+import dev.teamcyan.dungeoncrafter.classes.GEPebble;
+import dev.teamcyan.dungeoncrafter.classes.GEPlayer;
+import dev.teamcyan.dungeoncrafter.classes.GEProjectile;
+import dev.teamcyan.dungeoncrafter.classes.GameModel;
 import dev.teamcyan.dungeoncrafter.classes.Pos;
 
 public class MainGameScreen extends BaseScreen {
@@ -183,7 +175,6 @@ public class MainGameScreen extends BaseScreen {
      * if Digging is pressed
      **/
     if(keyD) {
-      System.out.println("D");
       model.getMap().interactBlock(
           new Pos(
             model.getPlayer().getPosition().getX(),
@@ -194,18 +185,13 @@ public class MainGameScreen extends BaseScreen {
      * if Place is pressed
      **/
     if(keyA) {
-      System.out.println("A");
       model.getMap().setBlock(
           new Pos( 
             model.getPlayer().getPosition().getX(), 
             model.getPlayer().getPosition().getY()));
     }
 
-    TiledMapTileLayer layer = (TiledMapTileLayer)model
-      .getMap()
-      .getTiledMap()
-      .getLayers()
-      .get("Tile Layer 1");
+    TiledMapTileLayer layer = (TiledMapTileLayer)model.getMap().getTerainLayer();
 
     model.getPlayer().setRegion(controller.keyListener);
 

@@ -21,7 +21,7 @@ public class GMap extends GameElement {
   private OrthogonalTiledMapRenderer mapRenderer;
   private TiledMapTileLayer terrainLayer;
   private TiledMapTileLayer backgroundLayer;
-  private TiledMapTileLayer lavaLayer;
+  //private TiledMapTileLayer boostLayer;
   private TiledMapTileSet tileSet;
 
 
@@ -46,21 +46,14 @@ public class GMap extends GameElement {
     this.mapPixelHeight = mapHeight * tileHeight;
     this.mapRenderer = new OrthogonalTiledMapRenderer(map);
     MapLayers mapLayers = this.map.getLayers();
-    this.terrainLayer = (TiledMapTileLayer) mapLayers.get("Tile Layer 1");
-    this.backgroundLayer = (TiledMapTileLayer) mapLayers.get(1);
-    this.lavaLayer = (TiledMapTileLayer) mapLayers.get(0);
+
+    this.terrainLayer = (TiledMapTileLayer) mapLayers.get("environment_layer");
+    this.backgroundLayer = (TiledMapTileLayer) mapLayers.get("background_layer");
+    //this.boostLayer = (TiledMapTileLayer) mapLayers.get("boost_layer");
+
     this.tileSet = map.getTileSets().getTileSet("default_dirt");
   }
 
-  public TiledMapTileLayer.Cell getBlock(Pos pos) {
-    TilePos tPos = convertToTilePos(pos);
-    return terrainLayer.getCell(tPos.getX(), tPos.getY());
-  }
-
-  public TiledMapTile getBackgroundTile(Pos pos){
-    TilePos tPos = convertToTilePos(pos);
-    return backgroundLayer.getCell(tPos.getX(), tPos.getY()).getTile();
-  }
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -100,6 +93,9 @@ public class GMap extends GameElement {
     }
   }
 
+  /**
+   * Digs to the left 3 squares
+   **/
   public void interactBlock(Pos pos){
     TilePos tPos1 = convertToTilePos(pos);
     TilePos tPos2 = convertToTilePos(pos);
@@ -120,25 +116,6 @@ public class GMap extends GameElement {
     tileDestroy(tPos2, terrainLayer);
     tileDestroy(tPos3, terrainLayer);
 
-    /*
-    // dig to the left above
-    x = (int)(pos.getX() / tileWidth)-1; 
-    y =  (int)(pos.getY() / tileHeight)+1;
-    here = terrainLayer.getCell(x,y);
-    if(here != null){
-    here.setTile(null);
-    terrainLayer.setCell(x,y,null);
-    }
-
-    // dig to the left below
-    x = (int)(pos.getX() / tileWidth)-1; 
-    y =  (int)(pos.getY() / tileHeight)-1;
-    here = terrainLayer.getCell(x,y);
-    if(here != null){
-    here.setTile(null);
-    terrainLayer.setCell(x,y,null);
-    }
-    */
     return;
   }
 
@@ -156,6 +133,20 @@ public class GMap extends GameElement {
 //
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+
+  public TiledMapTileLayer.Cell getBlock(Pos pos) {
+    TilePos tPos = convertToTilePos(pos);
+    return terrainLayer.getCell(tPos.getX(), tPos.getY());
+  }
+
+  public TiledMapTile getBackgroundTile(Pos pos){
+    TilePos tPos = convertToTilePos(pos);
+    return backgroundLayer.getCell(tPos.getX(), tPos.getY()).getTile();
+  }
+
+  public TiledMapTileLayer getTerainLayer(){
+    return this.terrainLayer;
+  }
 
   public TiledMap getTiledMap() {
     return this.map;
