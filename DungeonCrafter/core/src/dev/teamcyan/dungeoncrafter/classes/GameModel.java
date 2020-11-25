@@ -25,7 +25,7 @@ public class GameModel {
     //Start a new game.
     public void startNewGame(DungeonCrafter controller) 
     {
-        this.map = new GMap(MAPNAME);
+        this.map = new GMap(controller.getModel(), MAPNAME);
         this.player = new GEPlayer(this);
         this.pebble = new GEPebble(this);
         this.enemy = new GEEnemy(this);

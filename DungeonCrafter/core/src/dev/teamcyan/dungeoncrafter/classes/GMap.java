@@ -1,5 +1,7 @@
 package dev.teamcyan.dungeoncrafter.classes;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -8,9 +10,13 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
+
+import java.util.Iterator;
 
 
 public class GMap extends GameElement {
+  private GameModel model;
   private TiledMap map;
   private int mapWidth;
   private int mapHeight;
@@ -31,8 +37,9 @@ public class GMap extends GameElement {
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-  public GMap(String mapName) {
+  public GMap(GameModel model, String mapName) {
     // load the map
+    this.model = model;
     TmxMapLoader loader = new TmxMapLoader();
     map = loader.load(mapName);
     // surface the map properties
@@ -50,6 +57,7 @@ public class GMap extends GameElement {
     this.backgroundLayer = (TiledMapTileLayer) mapLayers.get("background_layer");
 
     this.tileSet = map.getTileSets().getTileSet("default_dirt");
+
   }
 
 
@@ -94,6 +102,15 @@ public class GMap extends GameElement {
    * */
   private void tileDestroy(TilePos tPos, TiledMapTileLayer layer) {
     if (tileExists(tPos, layer)) {
+      String cellType = layer.getCell(tPos.getX(), tPos.getY()).getTile().getTextureRegion().getTexture().toString();
+      if (cellType == "stone") {
+        this.model.getPlayer().incrementStone();
+      } else if (cellType == "iron") {
+        this.model.getPlayer().incrementIron();
+      } else {
+        this.model.getPlayer().incrementDirt();
+      }
+
       layer.getCell(tPos.getX(), tPos.getY()).setTile(null);
       layer.setCell(tPos.getX(), tPos.getY(), null);
     }
@@ -182,7 +199,13 @@ public class GMap extends GameElement {
   public void setBlockLeft(Pos pos){
     TilePos tPos = convertToTilePos(pos);
     TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
-    cell.setTile(tileSet.getTile(1));
+    if (model.getPlayer().getCurrentCraftingBlock() == GEPlayer.BLOCK.STONE) {
+      cell.setTile(map.getTileSets().getTileSet("default_stone").getTile(182));
+    } else if (model.getPlayer().getCurrentCraftingBlock() == GEPlayer.BLOCK.IRON) {
+      cell.setTile(map.getTileSets().getTileSet("default_mineral_iron").getTile(345));
+    } else {
+      cell.setTile(tileSet.getTile(1));
+    }
     terrainLayer.setCell(tPos.getX()-1, tPos.getY(), cell);
     return;
   }
@@ -190,7 +213,14 @@ public class GMap extends GameElement {
   public void setBlockRight(Pos pos){
     TilePos tPos = convertToTilePos(pos);
     TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
-    cell.setTile(tileSet.getTile(1));
+    if (model.getPlayer().getCurrentCraftingBlock() == GEPlayer.BLOCK.STONE) {
+      cell.setTile(map.getTileSets().getTileSet("default_stone").getTile(182));
+    } else if (model.getPlayer().getCurrentCraftingBlock() == GEPlayer.BLOCK.IRON) {
+      cell.setTile(map.getTileSets().getTileSet("default_mineral_iron").getTile(345));
+    } else {
+      cell.setTile(map.getTileSets().getTileSet("default_dirt").getTile(1));
+    }
+
     terrainLayer.setCell(tPos.getX()+1, tPos.getY(), cell);
     return;
   }

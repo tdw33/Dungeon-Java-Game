@@ -148,6 +148,10 @@ public class DungeonCrafter extends Game {
 		model.startNewGame(this);
 		this.changeScreen(DifficultyScreen.class);
 	}
+
+	public GameModel getModel() {
+		return this.model;
+	}
 	/*@Override
 	public void render () {
 		super.render();

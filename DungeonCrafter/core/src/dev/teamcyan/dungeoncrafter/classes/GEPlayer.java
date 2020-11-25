@@ -14,7 +14,7 @@ import com.badlogic.gdx.utils.Array;
 public class GEPlayer extends GameElement
 {
   GameModel model;
-  public enum BLOCK {GOLD, STEEL};
+  public enum BLOCK {DIRT, STONE, IRON};
 
   Velocity velocity;
   private TextureRegion region;
@@ -28,9 +28,10 @@ public class GEPlayer extends GameElement
   public State currentState;
   public State previousState;
   private int health = 100;
-  private int gold = 0;
-  private int steel = 0;
-  private BLOCK currentCraftingBlock = BLOCK.STEEL;
+  private int stone = 0;
+  private int iron = 0;
+  private int dirt = 0;
+  private BLOCK currentCraftingBlock = BLOCK.DIRT;
 
   public GEPlayer (GameModel model) {
     this.model = model;
@@ -61,37 +62,55 @@ public class GEPlayer extends GameElement
     frames.clear();
   }
 
+  public BLOCK getCurrentCraftingBlock() {
+    return this.currentCraftingBlock;
+  }
+
   public int getHealth() {
     return this.health;
   }
 
-  public void incrementGold() {
-    this.gold += 1;
+  public void incrementDirt() {
+    this.dirt += 1;
   }
-  public boolean decrementGold() {
-    if (this.gold > 0) {
-      this.gold -= 1;
+  public boolean decrementDirt() {
+    if (this.dirt > 0) {
+      this.dirt -= 1;
       return true;
     }
     return false;
   }
-  public void incrementSteel() {
-    this.steel += 1;
+  public void incrementIron() {
+    this.iron += 1;
   }
-  public boolean decrementSteel() {
-    if (this.steel > 0) {
-      this.steel -= 1;
+  public boolean decrementIron() {
+    if (this.iron > 0) {
+      this.iron -= 1;
+      return true;
+    }
+    return false;
+  }
+  public void incrementStone() {
+    this.stone += 1;
+  }
+  public boolean decrementStone() {
+    if (this.stone > 0) {
+      this.stone -= 1;
       return true;
     }
     return false;
   }
 
-  public int getGold() {
-    return this.gold;
+  public int getIron() {
+    return this.iron;
   }
 
-  public int getSteel() {
-    return this.steel;
+  public int getStone() {
+    return this.stone;
+  }
+
+  public int getDirt() {
+    return this.dirt;
   }
 
   public void setCurrentCraftingBlock(BLOCK block) {
