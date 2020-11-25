@@ -185,8 +185,8 @@ public class MainGameScreen extends BaseScreen {
     if(keyA) {
       model.getMap().interactBlockLeft(
           new Pos(
-            model.getPlayer().getPosition().getX(),
-            model.getPlayer().getPosition().getY()));
+            model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+            model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
 
     /**
@@ -195,8 +195,8 @@ public class MainGameScreen extends BaseScreen {
     if(keyD) {
       model.getMap().interactBlockRight(
           new Pos(
-            model.getPlayer().getPosition().getX(),
-            model.getPlayer().getPosition().getY()));
+            model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+            model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
 
 
@@ -206,8 +206,8 @@ public class MainGameScreen extends BaseScreen {
     if(keyS) {
       model.getMap().interactBlockCentre(
           new Pos(
-            model.getPlayer().getPosition().getX(),
-            model.getPlayer().getPosition().getY()));
+            model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+            model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
 
     /**
@@ -216,8 +216,8 @@ public class MainGameScreen extends BaseScreen {
     if(keyQ) {
       model.getMap().setBlockLeft(
           new Pos( 
-            model.getPlayer().getPosition().getX(), 
-            model.getPlayer().getPosition().getY()));
+            model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+            model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
 
     /**
@@ -226,8 +226,8 @@ public class MainGameScreen extends BaseScreen {
     if(keyE) {
       model.getMap().setBlockRight(
           new Pos( 
-            model.getPlayer().getPosition().getX(), 
-            model.getPlayer().getPosition().getY()));
+            model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+            model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
 
     TiledMapTileLayer layer = (TiledMapTileLayer)model.getMap().getTerainLayer();
@@ -386,6 +386,10 @@ public class MainGameScreen extends BaseScreen {
 
     if(keycode == Input.Keys.E) {
       keyE = true;
+    }
+
+    if(keycode == Input.Keys.Q) {
+      keyQ = true;
     }
 
     return false;

@@ -183,7 +183,7 @@ public class GMap extends GameElement {
     TilePos tPos = convertToTilePos(pos);
     TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
     cell.setTile(tileSet.getTile(1));
-    terrainLayer.setCell(tPos.getX(), tPos.getY(), cell);
+    terrainLayer.setCell(tPos.getX()-1, tPos.getY(), cell);
     return;
   }
 
@@ -191,7 +191,7 @@ public class GMap extends GameElement {
     TilePos tPos = convertToTilePos(pos);
     TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
     cell.setTile(tileSet.getTile(1));
-    terrainLayer.setCell(tPos.getX()+2, tPos.getY(), cell);
+    terrainLayer.setCell(tPos.getX()+1, tPos.getY(), cell);
     return;
   }
 
