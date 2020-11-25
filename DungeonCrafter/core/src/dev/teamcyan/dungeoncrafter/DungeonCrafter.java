@@ -24,6 +24,7 @@ public class DungeonCrafter extends Game {
 	public static final int WIDTH = 720;
 	public static final int HEIGHT = 720;
 	public static final float ZOOM_FACTOR = 0.1f;
+	public float totTime;
 
 	public SpriteBatch batch;
 	public AudioManager audioManager;
@@ -138,6 +139,7 @@ public class DungeonCrafter extends Game {
 		screens.put(MainGameScreen.class, new MainGameScreen(this, model));
 		screens.put(MainMenuScreen.class, new MainMenuScreen(this, model));
 		screens.put(SettingsScreen.class, new SettingsScreen(this, model));
+		screens.put(DifficultyScreen.class, new DifficultyScreen(this, model));
 	}
 	/*@Override
 	public void render () {

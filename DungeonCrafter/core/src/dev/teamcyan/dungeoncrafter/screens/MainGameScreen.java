@@ -133,8 +133,6 @@ public class MainGameScreen extends BaseScreen {
     timerFont = new BitmapFont();
     keyInfo = new ArrayList<String>();
     mouseInfo = "";
-    timeLeft = 60;
-    totTime = 60;
   }
 
 
@@ -143,6 +141,8 @@ public class MainGameScreen extends BaseScreen {
    * */
   @Override
   public void init() {
+    totTime = super.controller.totTime;
+    timeLeft = totTime;
 // Create countdown variable for overlay
     Timer timer=new Timer();
     timer.scheduleTask(new Timer.Task() {
@@ -262,7 +262,7 @@ public class MainGameScreen extends BaseScreen {
     Color timerColor = new Color(redAmount, greenAmount, 0, 1);
     timerStyle.fontColor = timerColor;
     timerLabel.setStyle(timerStyle);
-    timerLabel.setText(Float.toString(timeLeft).substring(0, 4));
+    timerLabel.setText(Float.toString(timeLeft).substring(0, 5));
     ui.addActor(timerLabel);
     timerLabel.draw(batch, 1);
 
