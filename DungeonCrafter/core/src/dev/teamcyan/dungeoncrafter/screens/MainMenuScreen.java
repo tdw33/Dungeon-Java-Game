@@ -82,7 +82,7 @@ public class MainMenuScreen extends BaseScreen {
                     PLAY_BUTTON_X,PLAY_BUTTON_Y, PLAY_BUTTON_WIDTH, PLAY_BUTTON_HEIGHT);
                 if(Gdx.input.isTouched()){
                     this.dispose();
-                    controller.changeScreen(DifficultyScreen.class);
+                    controller.restartGame();
                 }
 
         } else {

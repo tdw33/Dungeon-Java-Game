@@ -141,6 +141,13 @@ public class DungeonCrafter extends Game {
 		screens.put(SettingsScreen.class, new SettingsScreen(this, model));
 		screens.put(DifficultyScreen.class, new DifficultyScreen(this, model));
 	}
+
+	public void restartGame() {
+		this.screens = new ObjectMap<>();
+		loadScreens();
+		model.startNewGame(this);
+		this.changeScreen(DifficultyScreen.class);
+	}
 	/*@Override
 	public void render () {
 		super.render();
