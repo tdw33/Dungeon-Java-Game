@@ -32,8 +32,11 @@ public class MainGameScreen extends BaseScreen {
   boolean movingDown = false;
   boolean zoomIn = false;
   boolean zoomOut = false;
-  boolean keyD = false;
   boolean keyA = false;
+  boolean keyD = false;
+  boolean keyS = false;
+  boolean keyQ = false;
+  boolean keyE = false;
 
 
 
@@ -167,20 +170,51 @@ public class MainGameScreen extends BaseScreen {
     }
 
     /**
-     * if Digging is pressed
+     * if Digging Left is pressed
      **/
-    if(keyD) {
-      model.getMap().interactBlock(
+    if(keyA) {
+      model.getMap().interactBlockLeft(
           new Pos(
             model.getPlayer().getPosition().getX(),
             model.getPlayer().getPosition().getY()));
     }
 
     /**
-     * if Place is pressed
+     * if Digging Right  is pressed
      **/
-    if(keyA) {
-      model.getMap().setBlock(
+    if(keyD) {
+      model.getMap().interactBlockRight(
+          new Pos(
+            model.getPlayer().getPosition().getX(),
+            model.getPlayer().getPosition().getY()));
+    }
+
+
+    /**
+     * if Digging Right  is pressed
+     **/
+    if(keyS) {
+      model.getMap().interactBlockCentre(
+          new Pos(
+            model.getPlayer().getPosition().getX(),
+            model.getPlayer().getPosition().getY()));
+    }
+
+    /**
+     * if Place left is pressed
+     **/
+    if(keyQ) {
+      model.getMap().setBlockLeft(
+          new Pos( 
+            model.getPlayer().getPosition().getX(), 
+            model.getPlayer().getPosition().getY()));
+    }
+
+    /**
+     * if Place right is pressed
+     **/
+    if(keyE) {
+      model.getMap().setBlockRight(
           new Pos( 
             model.getPlayer().getPosition().getX(), 
             model.getPlayer().getPosition().getY()));
@@ -216,7 +250,6 @@ public class MainGameScreen extends BaseScreen {
     if(uiMatrix == null) {
       uiMatrix = model.getCamera().combined.cpy();
     }
-
 
     model.getCamera().update();
 
@@ -331,11 +364,21 @@ public class MainGameScreen extends BaseScreen {
     if(keycode == Input.Keys.O) {
       zoomOut = true;
     }
-    if(keycode == Input.Keys.D)
-      keyD = true;
-
-    if(keycode == Input.Keys.A) 
+    if(keycode == Input.Keys.A) {
       keyA = true;
+    }
+
+    if(keycode == Input.Keys.D) {
+      keyD = true;
+    }
+
+    if(keycode == Input.Keys.S) {
+      keyS = true;
+    }
+
+    if(keycode == Input.Keys.E) {
+      keyE = true;
+    }
 
     return false;
   }
@@ -362,11 +405,20 @@ public class MainGameScreen extends BaseScreen {
     if(keycode == Input.Keys.O)
       zoomOut = false;
 
-    if(keycode == Input.Keys.D) 
+    if(keycode == Input.Keys.A)
+      keyA = false;
+
+    if(keycode == Input.Keys.D)
       keyD = false;
 
-    if(keycode == Input.Keys.A) 
-      keyA = false;
+    if(keycode == Input.Keys.S)
+      keyS = false;
+
+    if(keycode == Input.Keys.E) 
+      keyE = false;
+    
+    if(keycode == Input.Keys.Q) 
+      keyQ = false;
 
     return false;
   }
