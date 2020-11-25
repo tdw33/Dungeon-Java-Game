@@ -20,7 +20,7 @@ import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GEPlayer;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 
-import javax.xml.soap.Text;
+
 
 public class InventoryScreen extends BaseScreen{
 

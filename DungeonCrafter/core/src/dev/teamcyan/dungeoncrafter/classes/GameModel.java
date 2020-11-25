@@ -9,6 +9,7 @@ public class GameModel {
     private GEPlayer player;
     private GEPebble pebble;
     private GEEnemy enemy;
+    private GESpeech speech;
 
     private final String MAPNAME = "tile/TileMap.tmx";
     private OrthographicCamera camera;
@@ -28,6 +29,7 @@ public class GameModel {
         this.player = new GEPlayer(this);
         this.pebble = new GEPebble(this);
         this.enemy = new GEEnemy(this);
+        this.speech = new GESpeech(this);
         this.active = true;
         camera = new OrthographicCamera();
         camera.zoom = 0.5f;
@@ -65,6 +67,7 @@ public class GameModel {
     public GEEnemy getEnemy() {
         return enemy;
     }
+    public GESpeech getSpeech(){ return speech; }
 
 
 

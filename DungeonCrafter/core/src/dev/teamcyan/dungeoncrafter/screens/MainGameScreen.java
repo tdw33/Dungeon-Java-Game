@@ -18,12 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Timer;
 
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
-import dev.teamcyan.dungeoncrafter.classes.GEEnemy;
-import dev.teamcyan.dungeoncrafter.classes.GEPebble;
-import dev.teamcyan.dungeoncrafter.classes.GEPlayer;
-import dev.teamcyan.dungeoncrafter.classes.GEProjectile;
-import dev.teamcyan.dungeoncrafter.classes.GameModel;
-import dev.teamcyan.dungeoncrafter.classes.Pos;
+import dev.teamcyan.dungeoncrafter.classes.*;
 
 public class MainGameScreen extends BaseScreen {
 
@@ -213,6 +208,9 @@ public class MainGameScreen extends BaseScreen {
     model.getMap().getMapRenderer().render();
     batch.setProjectionMatrix(model.getCamera().combined);
 
+    model.getSpeech().setSpeech();
+    model.getSpeech().setPosition();
+
     batch.begin();
 
     if(uiMatrix == null) {
@@ -237,6 +235,12 @@ public class MainGameScreen extends BaseScreen {
 
     GEEnemy enemy = model.getEnemy();
     batch.draw(enemy.getRegion(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getRegion().getRegionWidth(), enemy.getRegion().getRegionHeight());
+
+
+    GESpeech speech = model.getSpeech();
+    if(speech.isSpeaking()) {
+      batch.draw(speech.getSpeech(), pebble.getPosition().getX() + speech.getSpeechX(), pebble.getPosition().getY() + speech.getSpeechY(), speech.getSpeechWidth(), speech.getSpeechHeight());
+    }
 
     List<GEProjectile> projectiles = enemy.getProjectiles(layer, player.getPosition());
     for (GEProjectile t : projectiles) {
