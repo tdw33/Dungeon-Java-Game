@@ -1,4 +1,4 @@
-# Week 4 (Nov 5-12)
+# Week 4 (Nov 6-12)
 
 ## Process
 
@@ -18,8 +18,8 @@ Minutes:
 - Sprites for character had been found that conform to user’s preferred high resolution, considered actions that the main character need such as attacking, walking and mining
 Rock enemy sprite was found. The sprites can be changed in size as the game needs, such as reducing or increasing the rock enemy sprite size  
 
-![](./full%20documentation/week_4_artifacts/main%20character%20sprite.png)  
-![](./full%20documentation/week_4_artifacts/enemy%20sprite.png)     
+![](./week_4_artifacts/main%20character%20sprite.png)  
+![](./week_4_artifacts/enemy%20sprite.png)     
 
 - Found background music for different environments and scenes (e.g. boss fight)
 - Implement sounds in reaction to input/an event, have background music playing when at main menu and when playing the game
@@ -32,36 +32,36 @@ Rock enemy sprite was found. The sprites can be changed in size as the game need
 - Implement destroying a block
 
 ### Sprint review and presentation creation
-Collision and gravity had been implemented with the character (a block). 
+Collision and gravity had been implemented with the character (a block) and user input shown above. 
 
-![](./week4-presentation/GravityAndCollision.gif)  
+![](../week4-presentation/GravityAndCollision.gif)  
 
 A new main character sprite has been chosen instead of the previous one because there are more potential actions and the sprite can be modified more flexibly.
 
-![](./full%20documentation/week_4_artifacts/characterSpriteUpdate.png)   
+![](./week_4_artifacts/characterSpriteUpdate.png)   
 
 The main character’s walking animation had been created with a tool (pickaxe) in hand.
 
-![](./week4-presentation/gifs/walking.gif)  
+![](../week4-presentation/gifs/walking.gif)  
 
 The map had been linked with the game, providing interaction from selecting an option (new game) and generating a map. A boss map was created.
 
-![](./week4-presentation/gifs/map.gif)  
+![](../week4-presentation/gifs/map.gif)  
 
 The team also decided on a game name: Into the Dark, which fits with the sanity feature of the game. Several menu background images were found that correspond to the theme of the game. 
 
-![](./week4-presentation/gifs/01.png)
+![](../week4-presentation/gifs/01.png)
 
-![](./week4-presentation/gifs/05.png)
+![](../week4-presentation/gifs/05.png)
 
-![](./week4-presentation/gifs/06.png)
+![](../week4-presentation/gifs/06.png)
 
-![](./week4-presentation/gifs/07.png)
+![](../week4-presentation/gifs/07.png)
 
 
 As the customer required, a more detailed storyline was generated with episodes that gradually unwrap plots that give the main character certain items or abilities with Pebble as the guide to tell the story and give instructions. 
 
-![](./week4-presentation/gifs/story.png)  
+![](../week4-presentation/gifs/story.png)  
 
 Sound effects and game background music had been further selected for implementation.
 
@@ -172,8 +172,8 @@ The customer mentioned that more details of the game background story should be 
 **Author**: TJ  
 **Date**: 11/19/2020    
 **Modification date**: 11/19/2020  
-**Purpose**: The player needs to be able to control the character to drop from a certain height in order to proceed in the game 
-**Overview**: The player will control the character to walk towards the edge of a platform and go down
+**Purpose**: The player needs to be able to control the character to drop from a certain height in order to proceed in the game  
+**Overview**: The player will control the character to walk towards the edge of a platform and go down  
 **Cross reference**: US_06  
 **Actors**: player  
 
@@ -201,8 +201,8 @@ The customer mentioned that more details of the game background story should be 
 **Author**: TJ  
 **Date**: 11/19/2020    
 **Modification date**: 11/19/2020  
-**Purpose**: Define edges in the game map which the player cannot pass through, like a wall
-**Overview**: The player will control the character to walk until reaching a wall and will not be able to go further
+**Purpose**: Define edges in the game map which the player cannot pass through, like a wall  
+**Overview**: The player will control the character to walk until reaching a wall and will not be able to go further  
 **Cross reference**: US_06  
 **Actors**: player  
 
@@ -229,7 +229,7 @@ The customer mentioned that more details of the game background story should be 
 **Author**: TJ  
 **Date**: 11/19/2020  
 **Modification date**: 11/19/2020  
-**Purpose**: make the game layered so that the player will be introduced to different functions the game has and build up the concept of the storyline and what the main character can do
+**Purpose**: make the game layered so that the player will be introduced to different functions the game has and build up the concept of the storyline and what the main character can do  
 **Overview**: The player will listen to Pebble telling the storyline so that reasons for a particular ability are given and related tutorials are shown.  
 **Cross reference**: US_11  
 **Actors**: player  
@@ -310,7 +310,19 @@ Class: Environment (see UC_04)
 | Present different environments such as water, stone, coal and tree | Game Element|
 
 
-
+Class: Gravity (see UC_09)         
+| Responsibilities                                  |                   Collaborators                            |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| Make the character drop when there's no ground below him | Position                 |  
+|    | Character |  
+|    | Environment |  
+       
+Class: Collision (see UC_10)
+| Responsibilities                                  |                   Collaborators                            |
+| ---------------------------------------------- | ------------------------------------------------------------ |
+| Make the character stop when reaching obstable or the edge of the map | Position |  
+|    | Character |  
+|    | Environment |  
 
 
 ### User interface design
@@ -328,4 +340,5 @@ Class: Environment (see UC_04)
 | When the player had successfully completed the game they will be sent to the credits and the starting screen | 2       |
 | The character needs to be able to drop to lower heights | 1       |
 | The map should have edges and certain sections that the user cannot pass through such as a wall | 1       |
+| Dialog box at the bottom of the screen at the beginning of each episode (instructions and story-telling from Pebble), which can be skipped | 1       |
 
