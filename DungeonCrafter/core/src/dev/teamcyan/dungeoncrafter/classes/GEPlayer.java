@@ -22,6 +22,8 @@ public class GEPlayer extends GameElement
   private Animation<TextureRegion> charRunL;
   private TextureRegion charFall;
   private Animation<TextureRegion> charRunR;
+  private Animation<TextureRegion> charMineL;
+  private Animation<TextureRegion> charMineR;
   private TextureRegion charStand;
   private TextureRegion charJump;
   public float stateTimer = 0;
@@ -58,6 +60,18 @@ public class GEPlayer extends GameElement
       frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 587, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
     }
     this.charRunL = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 5; i > 0; i--) {
+      frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 843, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.charMineL = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 5; i > 0; i--) {
+      frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 969, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.charMineR = new Animation(0.15f, frames);
     frames.clear();
   }
 
@@ -200,7 +214,17 @@ public class GEPlayer extends GameElement
                     this.previousState == GameElement.State.JUMPING){
 
       this.currentState = GameElement.State.JUMPING;
-    } else if(keyListener.activeKeys.contains(Input.Keys.LEFT) &&
+    }  else if(keyListener.activeKeys.contains(Input.Keys.D) &&
+            !keyListener.activeKeys.contains(Input.Keys.UP) &&
+            !keyListener.activeKeys.contains(Input.Keys.DOWN)) {
+
+      this.currentState = GameElement.State.MININGL;
+    }else if(keyListener.activeKeys.contains(Input.Keys.G) &&
+            !keyListener.activeKeys.contains(Input.Keys.UP) &&
+            !keyListener.activeKeys.contains(Input.Keys.DOWN)) {
+
+      this.currentState = GameElement.State.MININGR;
+    }else if(keyListener.activeKeys.contains(Input.Keys.LEFT) &&
        !keyListener.activeKeys.contains(Input.Keys.UP) &&
        !keyListener.activeKeys.contains(Input.Keys.DOWN)){
 
@@ -226,7 +250,11 @@ public class GEPlayer extends GameElement
       region = charRunR.getKeyFrame(stateTimer, true);
     } else if (this.currentState == State.JUMPING){
       region = charJump;
-    } else if (this.currentState == State.FALLING) {
+    } else if (this.currentState == State.MININGL){
+      region = charMineL.getKeyFrame(stateTimer, true);
+    } else if (this.currentState == State.MININGR){
+      region = charMineR.getKeyFrame(stateTimer, true);
+    }else if (this.currentState == State.FALLING) {
       region = charFall;
     } else {
       region = charStand;
