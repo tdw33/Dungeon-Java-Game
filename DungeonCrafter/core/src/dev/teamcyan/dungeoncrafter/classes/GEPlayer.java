@@ -41,7 +41,7 @@ public class GEPlayer extends GameElement
     this.currentState = State.STANDING;
     this.previousState = State.STANDING;
 
-    this.charStand = new TextureRegion(basicSpriteSheet, 0, 640, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+    this.charStand = new TextureRegion(basicSpriteSheet, 0, 649, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12);
     this.charJump = new TextureRegion(basicSpriteSheet, 64, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
     this.charFall = new TextureRegion(basicSpriteSheet, 128, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
 
@@ -49,13 +49,13 @@ public class GEPlayer extends GameElement
 
     Array<TextureRegion> frames = new Array<TextureRegion>();
     for (int i = 0; i < 9; i++) {
-      frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 704, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT));
+      frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 713, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
     }
     this.charRunR = new Animation(0.15f, frames);
     frames.clear();
 
     for (int i = 0; i < 9; i++) {
-      frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 576, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT));
+      frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 587, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
     }
     this.charRunL = new Animation(0.15f, frames);
     frames.clear();
@@ -195,7 +195,12 @@ public class GEPlayer extends GameElement
 
   public void setRegion(KeyListener keyListener) {
 
-    if(keyListener.activeKeys.contains(Input.Keys.LEFT) &&
+    if(keyListener.activeKeys.contains(Input.Keys.UP) ||
+            keyListener.activeKeys.contains(Input.Keys.DOWN) &&
+                    this.previousState == GameElement.State.JUMPING){
+
+      this.currentState = GameElement.State.JUMPING;
+    } else if(keyListener.activeKeys.contains(Input.Keys.LEFT) &&
        !keyListener.activeKeys.contains(Input.Keys.UP) &&
        !keyListener.activeKeys.contains(Input.Keys.DOWN)){
 
@@ -205,11 +210,6 @@ public class GEPlayer extends GameElement
             !keyListener.activeKeys.contains(Input.Keys.DOWN)){
 
       this.currentState = GameElement.State.RUNNINGR;
-    } else if(keyListener.activeKeys.contains(Input.Keys.UP) ||
-            keyListener.activeKeys.contains(Input.Keys.DOWN) &&
-            this.previousState == GameElement.State.JUMPING){
-
-      this.currentState = GameElement.State.JUMPING;
     } else if(keyListener.activeKeys.contains(Input.Keys.DOWN)) {
 
       this.currentState = GameElement.State.FALLING;
