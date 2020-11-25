@@ -11,7 +11,7 @@ public class GameModel {
     private GEEnemy enemy;
     private GESpeech speech;
 
-    private final String MAPNAME = "tile/TileMap.tmx";
+    private final String MAPNAME = "tile/TestingMap.tmx";
     private OrthographicCamera camera;
 
     public OrthographicCamera getCamera() {
@@ -34,14 +34,17 @@ public class GameModel {
         camera = new OrthographicCamera();
         camera.zoom = 0.5f;
 
-        this.player.getPosition().setX(this.map.getMapPixelWidth()/2);
-        this.player.getPosition().setY(this.map.getMapPixelHeight()/2);
+        int position_x = 150;
+        int position_y = 1400;
 
-        this.pebble.getPosition().setX(this.map.getMapPixelWidth()/2+10);
-        this.pebble.getPosition().setY(this.map.getMapPixelHeight()/2+10);
+        this.player.getPosition().setX(position_x);
+        this.player.getPosition().setY(position_y);
 
-        this.enemy.getPosition().setX(this.map.getMapPixelWidth()/2+20);
-        this.enemy.getPosition().setY(this.map.getMapPixelHeight()/2+20);
+        this.pebble.getPosition().setX(position_x+10);
+        this.pebble.getPosition().setY(position_y+10);
+
+        this.enemy.getPosition().setX(position_x+20);
+        this.enemy.getPosition().setY(position_x+20);
     }
 
     public void dispose() 
