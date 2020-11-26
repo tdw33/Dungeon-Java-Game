@@ -34,20 +34,49 @@
 ![ ](./imgs/menuscreen.png)
 
 # Curent Status 
-![ ](./imgs/project.png)
+![ ](./imgs/goal.png)
 
 
 
 # Updates
 - Inventory
 
+![ ](./imgs/inventory.png)
+
+- Blocks have HP and properties
+- Can dig directionally and place block left/right
+
+![ ](./imgs/dig.gif)
+
+- Pebble can speak and give helpful tips
+- Reverse gravity is working 
+
+![ ](./imgs/gravity.gif)
+
+- Map updates - bigger map and underground theme
+- Markdwon => PDF implemented
+![ ](./imgs/pdfDocumentation.png)
+
+- Projectiles decrease health 
+
+![ ](./imgs/health.gif)
+
+- Jumping works correctly 
 
 
-- Projectiles
-- Sprite updating with armor
-- Map blocks with properties
+![ ](./imgs/jump.gif)
 
+
+- Difficulty selection
+
+![ ](./imgs/diffScreen.png)
 
 
 # Future
 
+- Fix underlying issue
+- Testing
+- FInal map
+- Death
+- Armour updates
+- End Credits
