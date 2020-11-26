@@ -32,7 +32,7 @@ public class DifficultyScreen extends BaseScreen {
     private static final int BACK_BUTTON_WIDTH = DungeonCrafter.WIDTH / 9;
     private static final int BACK_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 72 * 5;
     private static final int BACK_BUTTON_X = DungeonCrafter.WIDTH / 12 * 10;
-    private static final int BACK_BUTTON_Y = DungeonCrafter.HEIGHT / 18 * 5;
+    private static final int BACK_BUTTON_Y = 60;
 
 
     DungeonCrafter game;
@@ -120,6 +120,20 @@ public class DifficultyScreen extends BaseScreen {
                 batch.draw(hardButtonInactive,
                         HARD_BUTTON_X, HARD_BUTTON_Y, HARD_BUTTON_WIDTH, HARD_BUTTON_HEIGHT);
             }
+
+            int settings_x = (DungeonCrafter.WIDTH/2)-100;
+            int back_x = 50;
+            // back arrow
+            if(Gdx.input.getX() < settings_x + BACK_BUTTON_WIDTH && Gdx.input.getX() > back_x && DungeonCrafter.HEIGHT - Gdx.input.getY()
+                    < BACK_BUTTON_Y + BACK_BUTTON_HEIGHT &&  DungeonCrafter.HEIGHT - Gdx.input.getY() > BACK_BUTTON_Y) {
+                batch.draw(backButtonActive,
+                        back_x,BACK_BUTTON_Y, BACK_BUTTON_WIDTH, BACK_BUTTON_HEIGHT);
+                if(Gdx.input.isTouched()){
+                    this.dispose();
+                    controller.changeScreen(MainMenuScreen.class);}
+            } else {
+                batch.draw(backButtonInactive,
+                        back_x,BACK_BUTTON_Y, BACK_BUTTON_WIDTH, BACK_BUTTON_HEIGHT);}
 
         }
         batch.end();

@@ -347,7 +347,9 @@ public class MainGameScreen extends BaseScreen {
   public void dispose() {
     batch.dispose();
     hud.dispose();
-    model.getMap().getTiledMap().dispose();
+    if (model.getMap() != null) {
+      model.getMap().getTiledMap().dispose();
+    }
   }
 
   @Override
