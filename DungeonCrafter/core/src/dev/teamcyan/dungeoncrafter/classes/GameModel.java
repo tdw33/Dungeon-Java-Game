@@ -40,8 +40,8 @@ public class GameModel {
         this.player.getPosition().setX(position_x);
         this.player.getPosition().setY(position_y);
 
-        this.pebble.getPosition().setX(position_x+10);
-        this.pebble.getPosition().setY(position_y+10);
+        this.pebble.getPosition().setX(position_x+50);
+        this.pebble.getPosition().setY(position_y+50);
 
         this.enemy.getPosition().setX(position_x+20);
         this.enemy.getPosition().setY(position_x+20);

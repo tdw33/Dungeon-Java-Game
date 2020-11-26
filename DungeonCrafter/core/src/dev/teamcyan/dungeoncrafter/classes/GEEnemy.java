@@ -60,9 +60,11 @@ public class GEEnemy extends GameElement
             newXVelocity = this.velocity.getX();
         } else if (distance > 300) {
             if (playerPosition.getX() > this.position.getX()) {
-                newXVelocity = this.velocity.getX() + this.ACCELERATION * delta;
+                float newV = this.velocity.getX() + this.ACCELERATION * delta;
+                newXVelocity = newV > layer.getTileWidth() ? this.velocity.getX() : newV;
             } else {
-                newXVelocity = this.velocity.getX() - this.ACCELERATION * delta;
+                float newV = this.velocity.getX() - this.ACCELERATION * delta;
+                newXVelocity = newV < layer.getTileWidth() ? this.velocity.getX() : newV;
             }
         } else {
             newXVelocity = this.velocity.getX() * this.RESISTANCE;
@@ -107,10 +109,12 @@ public class GEEnemy extends GameElement
 
         float newYVelocity = this.velocity.getY() + delta * gravity;
 
-        double newYPosition = this.position.getY() - Math.floor(newYVelocity);
-        TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.floor(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
-        TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-1) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
-        if (leftBottom == null && rightBottom == null) {
+        float newYPosition = this.position.getY() - newYVelocity;
+        TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+        TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-10) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+        TiledMapTileLayer.Cell leftTop = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor((newYPosition+this.getRegion().getRegionHeight()) / layer.getTileHeight()));
+        TiledMapTileLayer.Cell rightTop = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-10) / layer.getTileWidth()), (int) Math.floor((newYPosition+this.getRegion().getRegionHeight()) / layer.getTileHeight()));
+        if ((newYVelocity <= 0 && leftBottom == null && rightBottom == null) || (newYVelocity > 0 && leftTop == null && rightTop == null)) {
             this.velocity.setY(newYVelocity);
             this.position.setY((int)newYPosition);
 
