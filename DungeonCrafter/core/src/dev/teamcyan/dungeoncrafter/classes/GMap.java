@@ -117,7 +117,7 @@ public class GMap extends GameElement {
   }
 
 
-  private void tileAttack(TilePos tPos, TiledMapTileLayer layer) {
+  private boolean tileAttack(TilePos tPos, TiledMapTileLayer layer) {
     int attack = 5;
     if (tileExists(tPos, layer)) {
       if (tileHasHealth(tPos, layer)){
@@ -128,72 +128,77 @@ public class GMap extends GameElement {
           tileSetHealth(tPos, layer, tHealth);
         } else {
           tileDestroy(tPos, layer);
+          return true;
         }
       }
     }
-
+    return false;
   }
 
   /**
    * Digs to the left 3 squares
    **/
-  public void interactBlockRight(Pos pos){
+  public boolean interactBlockRight(Pos pos){
+    boolean broken = false;
     TilePos tPos1 = convertToTilePos(pos);
     tPos1.setX(tPos1.getX() + 1);
     tPos1.setY(tPos1.getY() - 1);
-    tileAttack(tPos1, terrainLayer);
+    broken = broken | tileAttack(tPos1, terrainLayer);
 
     TilePos tPos2 = convertToTilePos(pos);
     tPos2.setX(tPos2.getX() + 1 );
     tPos2.setY(tPos2.getY());
-    tileAttack(tPos2, terrainLayer);
+    broken = broken | tileAttack(tPos2, terrainLayer);
 
     TilePos tPos3 = convertToTilePos(pos);
     tPos3.setX(tPos3.getX() + 1);
     tPos3.setY(tPos3.getY() + 1);
-    tileAttack(tPos3, terrainLayer);
-
-    return;
+    broken = broken | tileAttack(tPos3, terrainLayer);
+    return broken;
   }
 
   /**
    * Digs to the left 3 squares
    **/
-  public void interactBlockLeft(Pos pos){
+  public boolean interactBlockLeft(Pos pos){
+    boolean broken = false;
     TilePos tPos1 = convertToTilePos(pos);
     tPos1.setX(tPos1.getX() - 1);
     tPos1.setY(tPos1.getY() - 1);
-    tileAttack(tPos1, terrainLayer);
+    broken = broken | tileAttack(tPos1, terrainLayer);
 
     TilePos tPos2 = convertToTilePos(pos);
     tPos2.setX(tPos2.getX() - 1);
     tPos2.setY(tPos2.getY());
-    tileAttack(tPos2, terrainLayer);
+    broken = broken | tileAttack(tPos2, terrainLayer);
 
     TilePos tPos3 = convertToTilePos(pos);
     tPos3.setX(tPos3.getX() - 1);
     tPos3.setY(tPos3.getY() + 1);
-    tileAttack(tPos3, terrainLayer);
+    broken = broken | tileAttack(tPos3, terrainLayer);
+    return broken;
   }
 
   /**
    * Digs to the centre 3 squares
    **/
-  public void interactBlockCentre(Pos pos){
+  public boolean interactBlockCentre(Pos pos){
+    boolean broken = false;
     TilePos tPos1 = convertToTilePos(pos);
     tPos1.setX(tPos1.getX());
     tPos1.setY(tPos1.getY() - 1);
-    tileAttack(tPos1, terrainLayer);
+    broken = broken | tileAttack(tPos1, terrainLayer);
 
     TilePos tPos2 = convertToTilePos(pos);
     tPos2.setX(tPos2.getX());
     tPos2.setY(tPos2.getY());
-    tileAttack(tPos2, terrainLayer);
+    broken = broken |tileAttack(tPos2, terrainLayer);
 
     TilePos tPos3 = convertToTilePos(pos);
     tPos3.setX(tPos3.getX());
     tPos3.setY(tPos3.getY() + 1);
-    tileAttack(tPos3, terrainLayer);
+    broken = broken |tileAttack(tPos3, terrainLayer);
+    return broken;
   }
 
   public void setBlockLeft(Pos pos){
