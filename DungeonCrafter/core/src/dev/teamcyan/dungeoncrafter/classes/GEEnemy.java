@@ -64,7 +64,7 @@ public class GEEnemy extends GameElement
                 newXVelocity = newV > layer.getTileWidth() ? this.velocity.getX() : newV;
             } else {
                 float newV = this.velocity.getX() - this.ACCELERATION * delta;
-                newXVelocity = newV < layer.getTileWidth() ? this.velocity.getX() : newV;
+                newXVelocity = newV < (-1)*layer.getTileWidth() ? this.velocity.getX() : newV;
             }
         } else {
             newXVelocity = this.velocity.getX() * this.RESISTANCE;

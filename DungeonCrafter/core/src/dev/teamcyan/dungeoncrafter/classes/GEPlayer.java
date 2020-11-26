@@ -137,7 +137,7 @@ public class GEPlayer extends GameElement
       newXVelocity = newV > layer.getTileWidth() ? this.velocity.getX() : newV;
     } else {
       float newV = this.velocity.getX() - this.ACCELERATION * delta;
-      newXVelocity = newV < layer.getTileWidth() ? this.velocity.getX() : newV;
+      newXVelocity = newV < (-1)*layer.getTileWidth() ? this.velocity.getX() : newV;
     }
 
     float newXPosition = this.position.getX() + newXVelocity;
