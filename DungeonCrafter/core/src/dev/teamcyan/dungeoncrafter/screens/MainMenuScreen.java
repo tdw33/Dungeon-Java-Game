@@ -91,17 +91,20 @@ public class MainMenuScreen extends BaseScreen {
 
 
         // load game
-        if(Gdx.input.getX() < LOAD_BUTTON_X + LOAD_BUTTON_WIDTH && Gdx.input.getX() > LOAD_BUTTON_X && DungeonCrafter.HEIGHT - Gdx.input.getY()
-                < LOAD_BUTTON_Y + LOAD_BUTTON_HEIGHT &&  DungeonCrafter.HEIGHT - Gdx.input.getY() > LOAD_BUTTON_Y) {
-            batch.draw(loadButtonActive,
-                    LOAD_BUTTON_X,LOAD_BUTTON_Y, LOAD_BUTTON_WIDTH, LOAD_BUTTON_HEIGHT);
-            if(Gdx.input.isTouched()){
-                this.dispose();
-                controller.changeScreen(MainGameScreen.class);}
+        if (model.isActive()) {
+            if(Gdx.input.getX() < LOAD_BUTTON_X + LOAD_BUTTON_WIDTH && Gdx.input.getX() > LOAD_BUTTON_X && DungeonCrafter.HEIGHT - Gdx.input.getY()
+                    < LOAD_BUTTON_Y + LOAD_BUTTON_HEIGHT &&  DungeonCrafter.HEIGHT - Gdx.input.getY() > LOAD_BUTTON_Y) {
+                batch.draw(loadButtonActive,
+                        LOAD_BUTTON_X,LOAD_BUTTON_Y, LOAD_BUTTON_WIDTH, LOAD_BUTTON_HEIGHT);
+                if(Gdx.input.isTouched()){
+                    this.dispose();
+                    controller.changeScreen(MainGameScreen.class);}
 
-        } else {
-            batch.draw(loadButtonInactive,
-                    LOAD_BUTTON_X,LOAD_BUTTON_Y, LOAD_BUTTON_WIDTH, LOAD_BUTTON_HEIGHT);}
+            } else {
+                batch.draw(loadButtonInactive,
+                        LOAD_BUTTON_X,LOAD_BUTTON_Y, LOAD_BUTTON_WIDTH, LOAD_BUTTON_HEIGHT);}
+        }
+
 
         //settings
         if(Gdx.input.getX() < SETTINGS_BUTTON_X + SETTINGS_BUTTON_WIDTH && Gdx.input.getX() > SETTINGS_BUTTON_X && DungeonCrafter.HEIGHT - Gdx.input.getY()

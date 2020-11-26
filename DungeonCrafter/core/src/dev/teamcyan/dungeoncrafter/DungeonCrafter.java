@@ -110,7 +110,6 @@ public class DungeonCrafter extends Game {
 
 	//	  Create a new game, starting with the story screen
 	public void newGame() {
-		model.startNewGame(this);
 		this.changeScreen(MainMenuScreen.class);
 	}
 
@@ -140,6 +139,7 @@ public class DungeonCrafter extends Game {
 		screens.put(MainMenuScreen.class, new MainMenuScreen(this, model));
 		screens.put(SettingsScreen.class, new SettingsScreen(this, model));
 		screens.put(DifficultyScreen.class, new DifficultyScreen(this, model));
+		screens.put(GameOverScreen.class, new GameOverScreen(this, model));
 	}
 
 	public void restartGame() {

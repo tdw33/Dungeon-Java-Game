@@ -10,10 +10,13 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.utils.Array;
+import dev.teamcyan.dungeoncrafter.DungeonCrafter;
+import dev.teamcyan.dungeoncrafter.screens.GameOverScreen;
 
 public class GEPlayer extends GameElement
 {
   GameModel model;
+  DungeonCrafter controller;
   public enum BLOCK {DIRT, STONE, IRON};
 
   Velocity velocity;
@@ -33,7 +36,8 @@ public class GEPlayer extends GameElement
   private int dirt = 0;
   private BLOCK currentCraftingBlock = BLOCK.DIRT;
 
-  public GEPlayer (GameModel model) {
+  public GEPlayer (GameModel model, DungeonCrafter controller) {
+    this.controller = controller;
     this.model = model;
     this.getype = GEType.PLAYER;
     this.velocity = new Velocity(0, 0);
@@ -118,6 +122,10 @@ public class GEPlayer extends GameElement
   }
   public void decrementHealth(int damage) {
     this.health -= damage;
+    if (this.health <= 0) {
+      this.controller.changeScreen(GameOverScreen.class);
+      model.deactivate();
+    }
   }
   public void setName(String spriteName) {
       this.spriteName = spriteName;

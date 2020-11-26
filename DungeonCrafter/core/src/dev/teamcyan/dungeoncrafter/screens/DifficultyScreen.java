@@ -80,6 +80,8 @@ public class DifficultyScreen extends BaseScreen {
                         EASY_BUTTON_X, EASY_BUTTON_Y, EASY_BUTTON_WIDTH, EASY_BUTTON_HEIGHT);
                 if (Gdx.input.isTouched()) {
                     this.dispose();
+                    model.startNewGame(game);
+
                     super.controller.totTime = EASY_TIME;
                     controller.changeScreen(MainGameScreen.class);
                 }
