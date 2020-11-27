@@ -29,11 +29,16 @@ public class InventoryScreen extends BaseScreen{
     public InventoryScreen(DungeonCrafter parent, final GameModel model) {
         super(parent, model);
 
+        Texture backgroundTexture = new Texture("menu_buttons/InventoryBackground.png");
+        Image background = new Image(backgroundTexture);
+        background.setBounds(0,0,DungeonCrafter.WIDTH, DungeonCrafter.HEIGHT);
+        ui.addActor(background);
+
         Texture dirtTexture = new Texture("sprites/rocks/default_dirt.png");
         TextureRegion dirtTextureRegion = new TextureRegion(dirtTexture);
         TextureRegionDrawable dirtTexRegionDrawable = new TextureRegionDrawable(dirtTextureRegion);
         Image dirtImage = new Image(dirtTexRegionDrawable);
-        dirtImage.setBounds(100,DungeonCrafter.HEIGHT-200,IMAGE_DIM,IMAGE_DIM);
+        dirtImage.setBounds(100,DungeonCrafter.HEIGHT-250,IMAGE_DIM,IMAGE_DIM);
         ui.addActor(dirtImage);
 
         final Label.LabelStyle style = new Label.LabelStyle();
@@ -41,40 +46,40 @@ public class InventoryScreen extends BaseScreen{
         style.font = new BitmapFont();
         style.font.getData().setScale(2f);
         final Label dirtLabel = new Label("Dirt:", style);
-        dirtLabel.setBounds(250,DungeonCrafter.HEIGHT-200,IMAGE_DIM,IMAGE_DIM);
+        dirtLabel.setBounds(250,DungeonCrafter.HEIGHT-250,IMAGE_DIM,IMAGE_DIM);
         ui.addActor(dirtLabel);
 
         Texture stoneTexture = new Texture("sprites/rocks/default_stone_brick.png");
         TextureRegion stoneTextureRegion = new TextureRegion(stoneTexture);
         TextureRegionDrawable stoneTexRegionDrawable = new TextureRegionDrawable(stoneTextureRegion);
         Image stoneImage = new Image(stoneTexRegionDrawable);
-        stoneImage.setBounds(100,DungeonCrafter.HEIGHT-320,IMAGE_DIM,IMAGE_DIM);
+        stoneImage.setBounds(100,DungeonCrafter.HEIGHT-370,IMAGE_DIM,IMAGE_DIM);
         ui.addActor(stoneImage);
 
         Label stoneLabel = new Label("Stone:", style);
-        stoneLabel.setBounds(250,DungeonCrafter.HEIGHT-320,IMAGE_DIM,IMAGE_DIM);
+        stoneLabel.setBounds(250,DungeonCrafter.HEIGHT-370,IMAGE_DIM,IMAGE_DIM);
         ui.addActor(stoneLabel);
 
         Texture ironTexture = new Texture("sprites/otherPrecious/default_mineral_iron.png");
         TextureRegion ironTextureRegion = new TextureRegion(ironTexture);
         TextureRegionDrawable ironTexRegionDrawable = new TextureRegionDrawable(ironTextureRegion);
         Image ironImage = new Image(ironTexRegionDrawable);
-        ironImage.setBounds(100,DungeonCrafter.HEIGHT-440,IMAGE_DIM,IMAGE_DIM);
+        ironImage.setBounds(100,DungeonCrafter.HEIGHT-490,IMAGE_DIM,IMAGE_DIM);
         ui.addActor(ironImage);
 
         Label ironLabel = new Label("Iron:", style);
-        ironLabel.setBounds(250,DungeonCrafter.HEIGHT-440,IMAGE_DIM,IMAGE_DIM);
+        ironLabel.setBounds(250,DungeonCrafter.HEIGHT-490,IMAGE_DIM,IMAGE_DIM);
         ui.addActor(ironLabel);
 
         Label chooseLabel = new Label("Choose a block to craft with:", style);
-        chooseLabel.setBounds(150,DungeonCrafter.HEIGHT-500,0,0);
+        chooseLabel.setBounds(150,DungeonCrafter.HEIGHT-550,0,0);
         ui.addActor(chooseLabel);
 
         Texture stoneBlockTexture = new Texture("sprites/rocks/default_stone_block.png");
         TextureRegion stoneBlockTextureRegion = new TextureRegion(stoneBlockTexture);
         TextureRegionDrawable stoneBlockTexRegionDrawable = new TextureRegionDrawable(stoneBlockTextureRegion);
         final ImageButton stoneButton = new ImageButton(stoneBlockTexRegionDrawable);
-        stoneButton.setBounds(DungeonCrafter.WIDTH/2-220,DungeonCrafter.HEIGHT-640,IMAGE_DIM,IMAGE_DIM);
+        stoneButton.setBounds(DungeonCrafter.WIDTH/2-220,DungeonCrafter.HEIGHT-690,IMAGE_DIM,IMAGE_DIM);
         ui.addActor(stoneButton);
 
         stoneButton.addListener(new EventListener()
@@ -83,12 +88,12 @@ public class InventoryScreen extends BaseScreen{
             public boolean handle(Event event)
             {
                 if (event.toString() == "enter") {
-                    stoneButton.setBounds(DungeonCrafter.WIDTH/2-230,DungeonCrafter.HEIGHT-650,IMAGE_DIM+20,IMAGE_DIM+20);
+                    stoneButton.setBounds(DungeonCrafter.WIDTH/2-230,DungeonCrafter.HEIGHT-700,IMAGE_DIM+20,IMAGE_DIM+20);
                 } else if (event.toString() == "exit") {
-                    stoneButton.setBounds(DungeonCrafter.WIDTH/2-220,DungeonCrafter.HEIGHT-640,IMAGE_DIM,IMAGE_DIM);
+                    stoneButton.setBounds(DungeonCrafter.WIDTH/2-220,DungeonCrafter.HEIGHT-690,IMAGE_DIM,IMAGE_DIM);
                 } else if (event.toString() == "touchDown") {
                     model.getPlayer().setCurrentCraftingBlock(GEPlayer.BLOCK.STONE);
-                    stoneButton.setBounds(DungeonCrafter.WIDTH/2-220,DungeonCrafter.HEIGHT-640,IMAGE_DIM,IMAGE_DIM);
+                    stoneButton.setBounds(DungeonCrafter.WIDTH/2-220,DungeonCrafter.HEIGHT-690,IMAGE_DIM,IMAGE_DIM);
                     controller.changeScreen(MainGameScreen.class);
                 }
 
@@ -100,7 +105,7 @@ public class InventoryScreen extends BaseScreen{
         TextureRegion dirtBlockTextureRegion = new TextureRegion(dirtBlockTexture);
         TextureRegionDrawable dirtBlockTexRegionDrawable = new TextureRegionDrawable(dirtBlockTextureRegion);
         final ImageButton dirtButton = new ImageButton(dirtBlockTexRegionDrawable);
-        dirtButton.setBounds(DungeonCrafter.WIDTH/2-50,DungeonCrafter.HEIGHT-640,IMAGE_DIM,IMAGE_DIM);
+        dirtButton.setBounds(DungeonCrafter.WIDTH/2-50,DungeonCrafter.HEIGHT-690,IMAGE_DIM,IMAGE_DIM);
         ui.addActor(dirtButton);
 
         dirtButton.addListener(new EventListener()
@@ -109,12 +114,12 @@ public class InventoryScreen extends BaseScreen{
             public boolean handle(Event event)
             {
                 if (event.toString() == "enter") {
-                    dirtButton.setBounds(DungeonCrafter.WIDTH/2-60,DungeonCrafter.HEIGHT-650,IMAGE_DIM+20,IMAGE_DIM+20);
+                    dirtButton.setBounds(DungeonCrafter.WIDTH/2-60,DungeonCrafter.HEIGHT-700,IMAGE_DIM+20,IMAGE_DIM+20);
                 } else if (event.toString() == "exit") {
-                    dirtButton.setBounds(DungeonCrafter.WIDTH/2-50,DungeonCrafter.HEIGHT-640,IMAGE_DIM,IMAGE_DIM);
+                    dirtButton.setBounds(DungeonCrafter.WIDTH/2-50,DungeonCrafter.HEIGHT-690,IMAGE_DIM,IMAGE_DIM);
                 } else if (event.toString() == "touchDown") {
                     model.getPlayer().setCurrentCraftingBlock(GEPlayer.BLOCK.DIRT);
-                    dirtButton.setBounds(DungeonCrafter.WIDTH/2-50,DungeonCrafter.HEIGHT-640,IMAGE_DIM,IMAGE_DIM);
+                    dirtButton.setBounds(DungeonCrafter.WIDTH/2-50,DungeonCrafter.HEIGHT-690,IMAGE_DIM,IMAGE_DIM);
                     controller.changeScreen(MainGameScreen.class);
                 }
 
@@ -126,7 +131,7 @@ public class InventoryScreen extends BaseScreen{
         TextureRegion ironBlockTextureRegion = new TextureRegion(ironBlockTexture);
         TextureRegionDrawable ironBlockTexRegionDrawable = new TextureRegionDrawable(ironBlockTextureRegion);
         final ImageButton ironButton = new ImageButton(ironBlockTexRegionDrawable);
-        ironButton.setBounds(DungeonCrafter.WIDTH/2+120,DungeonCrafter.HEIGHT-640,IMAGE_DIM,IMAGE_DIM);
+        ironButton.setBounds(DungeonCrafter.WIDTH/2+120,DungeonCrafter.HEIGHT-690,IMAGE_DIM,IMAGE_DIM);
         ui.addActor(ironButton);
 
         ironButton.addListener(new EventListener()
@@ -135,12 +140,12 @@ public class InventoryScreen extends BaseScreen{
             public boolean handle(Event event)
             {
                 if (event.toString() == "enter") {
-                    ironButton.setBounds(DungeonCrafter.WIDTH/2+110,DungeonCrafter.HEIGHT-650,IMAGE_DIM+20,IMAGE_DIM+20);
+                    ironButton.setBounds(DungeonCrafter.WIDTH/2+110,DungeonCrafter.HEIGHT-700,IMAGE_DIM+20,IMAGE_DIM+20);
                 } else if (event.toString() == "exit") {
-                    ironButton.setBounds(DungeonCrafter.WIDTH/2+120,DungeonCrafter.HEIGHT-640,IMAGE_DIM,IMAGE_DIM);
+                    ironButton.setBounds(DungeonCrafter.WIDTH/2+120,DungeonCrafter.HEIGHT-690,IMAGE_DIM,IMAGE_DIM);
                 } else if (event.toString() == "touchDown") {
                     model.getPlayer().setCurrentCraftingBlock(GEPlayer.BLOCK.IRON);
-                    ironButton.setBounds(DungeonCrafter.WIDTH/2+120,DungeonCrafter.HEIGHT-640,IMAGE_DIM,IMAGE_DIM);
+                    ironButton.setBounds(DungeonCrafter.WIDTH/2+120,DungeonCrafter.HEIGHT-690,IMAGE_DIM,IMAGE_DIM);
                     controller.changeScreen(MainGameScreen.class);
                 }
 
@@ -187,15 +192,15 @@ public class InventoryScreen extends BaseScreen{
         style.font.getData().setScale(2f);
 
         final Label dirt = new Label(Integer.toString(model.getPlayer().getDirt()), style);
-        dirt.setBounds(350,DungeonCrafter.HEIGHT-200,IMAGE_DIM,IMAGE_DIM);
+        dirt.setBounds(350,DungeonCrafter.HEIGHT-250,IMAGE_DIM,IMAGE_DIM);
         ui.addActor(dirt);
 
         final Label iron = new Label(Integer.toString(model.getPlayer().getIron()), style);
-        iron.setBounds(350,DungeonCrafter.HEIGHT-440,IMAGE_DIM,IMAGE_DIM);
+        iron.setBounds(350,DungeonCrafter.HEIGHT-490,IMAGE_DIM,IMAGE_DIM);
         ui.addActor(iron);
 
         final Label stone = new Label(Integer.toString(model.getPlayer().getStone()), style);
-        stone.setBounds(350,DungeonCrafter.HEIGHT-320,IMAGE_DIM,IMAGE_DIM);
+        stone.setBounds(350,DungeonCrafter.HEIGHT-370,IMAGE_DIM,IMAGE_DIM);
         ui.addActor(stone);
 
     }
