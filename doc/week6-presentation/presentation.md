@@ -6,7 +6,7 @@
 | 27   |	November	|	2020	|
 # From previous presentation
 
-
+- Documentation preview
 
 ![ ](./imgs/docWeek5.png)
 
