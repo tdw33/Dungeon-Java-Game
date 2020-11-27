@@ -86,6 +86,7 @@ public class GEPebble extends GameElement
                 this.velocity.setX(newXVelocity);
                 this.position.setX((int)Math.ceil(newXPosition));
             } else {
+                this.velocity.setY(4f);
                 this.velocity.setX((float)0.0);
             }
 
@@ -96,6 +97,7 @@ public class GEPebble extends GameElement
                 this.velocity.setX(newXVelocity);
                 this.position.setX((int)Math.floor(newXPosition));
             } else {
+                this.velocity.setY(4f);
                 this.velocity.setX((float)0.0);
             }
         }
@@ -132,7 +134,7 @@ public class GEPebble extends GameElement
 
     public void setRegion() {
         if (this.velocity.getY() >1) {
-            this.currentState = GameElement.State.JUMPING;
+            this.currentState = GameElement.State.STANDING;
         } else if(this.velocity.getY() < -1) {
             this.currentState = GameElement.State.FALLING;
         } else if (this.velocity.getX() < -1) {

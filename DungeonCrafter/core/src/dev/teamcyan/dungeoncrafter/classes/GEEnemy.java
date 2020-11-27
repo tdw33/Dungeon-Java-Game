@@ -80,6 +80,7 @@ public class GEEnemy extends GameElement
                 this.velocity.setX(newXVelocity);
                 this.position.setX((int)Math.ceil(newXPosition));
             } else {
+                this.velocity.setY(4f);
                 this.velocity.setX((float)0.0);
             }
 
@@ -90,6 +91,7 @@ public class GEEnemy extends GameElement
                 this.velocity.setX(newXVelocity);
                 this.position.setX((int)Math.floor(newXPosition));
             } else {
+                this.velocity.setY(4f);
                 this.velocity.setX(0);
             }
         }

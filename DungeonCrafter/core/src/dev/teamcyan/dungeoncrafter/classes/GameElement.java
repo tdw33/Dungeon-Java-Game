@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 public class GameElement {
 
   public static final float GRAVITY = (float) 9.81;
-  public static final float JUMPACCELERATION = (float) 200;
+  public static final float JUMPACCELERATION = (float) 230;
   public static final float RESISTANCE = (float) 0.2;
   public static final float ACCELERATION = (float) 5.0;
 
