@@ -128,8 +128,9 @@ public class DungeonCrafter extends Game {
 	public void changeScreen(Class<? extends BaseScreen> key) {
 		this.setScreen(screens.get(key));
 		//handle(new GameEvent("SCREEN_CHANGE").set("SCREEN", screens.get(key)));
-		if(key.getName() != "dev.teamcyan.dungeoncrafter.screens.MainMenuScreen") {
-			audioManager.fadeMusic(audioManager.menuSound);
+		if(key.getName() != "dev.teamcyan.dungeoncrafter.screens.MainMenuScreen" &
+				key.getName() != "dev.teamcyan.dungeoncrafter.screens.DifficultyScreen") {
+			audioManager.fadeMusicOut(audioManager.menuSound);
 		}
 	}
 

@@ -45,7 +45,7 @@ public class GEProjectile extends GameElement {
 
     public boolean setPosition(TiledMapTileLayer layer) {
         if (hitTest()) {
-            model.getPlayer().decrementHealth(100);
+            model.getPlayer().decrementHealth(5);
             return false;
         }
         // apply gravity, when no floor

@@ -1,27 +1,28 @@
 package dev.teamcyan.dungeoncrafter.screens;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
+
+import javax.xml.soap.Text;
 
 public class GameOverScreen extends BaseScreen {
 
     public GameOverScreen(final DungeonCrafter controller, GameModel model) {
         super(controller, model);
 
-        final Label.LabelStyle style = new Label.LabelStyle();
-        style.fontColor = Color.RED;
-        style.font = new BitmapFont();
-        style.font.getData().setScale(4f);
-
-        final Label gameOver = new Label("GAME OVER", style);
-        gameOver.setBounds(190,DungeonCrafter.HEIGHT-400,200,200);
-        ui.addActor(gameOver);
+        Texture backgroundTexture = new Texture("menu_buttons/GameOverBackground.png");
+        Image background = new Image(backgroundTexture);
+        background.setBounds(0,0,DungeonCrafter.WIDTH, DungeonCrafter.HEIGHT);
+        ui.addActor(background);
 
         final Label.LabelStyle restartStyle = new Label.LabelStyle();
         restartStyle.fontColor = Color.WHITE;

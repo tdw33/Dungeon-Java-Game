@@ -146,6 +146,7 @@ public class MainGameScreen extends BaseScreen {
   public void init() {
     totTime = super.controller.totTime;
     timeLeft = totTime;
+    super.controller.audioManager.startMusic(super.controller.audioManager.ambients, 20);
 // Create countdown variable for overlay
     Timer timer=new Timer();
     timer.scheduleTask(new Timer.Task() {
@@ -179,21 +180,26 @@ public class MainGameScreen extends BaseScreen {
       model.getCamera().zoom = (float) Math.min(3, (model.getCamera().zoom + DungeonCrafter.ZOOM_FACTOR));
     }
 
+    // Get the current cell the player is over
+    TiledMapTileLayer.Cell curCell = model.getMap().getBlock
+            (new Pos(model.getPlayer().getPosition().getX(),
+                    model.getPlayer().getPosition().getY()));
+
+    boolean isBroken = false;
     /**
      * if Digging Left is pressed
      **/
     if(keyA) {
-      model.getMap().interactBlockLeft(
+      isBroken = model.getMap().interactBlockLeft(
           new Pos(
             model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
             model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
-
     /**
      * if Digging Right  is pressed
      **/
     if(keyD) {
-      model.getMap().interactBlockRight(
+      isBroken = model.getMap().interactBlockRight(
           new Pos(
             model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
             model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
@@ -201,13 +207,20 @@ public class MainGameScreen extends BaseScreen {
 
 
     /**
-     * if Digging Right  is pressed
+     * if Digging Center  is pressed
      **/
     if(keyS) {
-      model.getMap().interactBlockCentre(
+      if (curCell != null) {
+        controller.audioManager.breakBlock("gravel"); // curCell.getTile().getTextureRegion().getTexture().toString()
+      }
+      isBroken = model.getMap().interactBlockCentre(
           new Pos(
             model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
             model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
+    }
+
+    if (isBroken) {
+      controller.audioManager.breakBlock("gravel");
     }
 
     /**
@@ -289,6 +302,8 @@ public class MainGameScreen extends BaseScreen {
     for (GEProjectile t : projectiles) {
       batch.draw(t.getTexture(), t.getPosition().getX(), t.getPosition().getY(), 16, 2, t.getTexture().getWidth(), t.getTexture().getHeight(), 1, 1, (float) t.getAngle(), 0, 0, 35, 5, false, false);
     }
+
+
     // Configure fading colour of timer
     float redAmount = (float)(totTime - timeLeft) / (float)totTime;
     float greenAmount = 1-redAmount;
@@ -298,24 +313,33 @@ public class MainGameScreen extends BaseScreen {
     timerLabel.setText(Float.toString(timeLeft).substring(0, 5));
     ui.addActor(timerLabel);
     timerLabel.draw(batch, 1);
-
-    font.draw(batch, mouseInfo, player.getPosition().getX(), player.getPosition().getY()+150);
-    font.draw(batch, "Mouse XY:", player.getPosition().getX(), player.getPosition().getY()+170);
-    font.draw(batch, "Keys active:", player.getPosition().getX(), player.getPosition().getY()+200);
-
     batch.end();
     model.getCamera().update();
 
 
+    // Play next song when previous finishes
+      //if(controller.audioManager.ambientMusic.get(controller.audioManager.curSong).isPlaying() == false){
+      //  controller.audioManager.curSong =  (controller.audioManager.curSong + 1) %
+      //          controller.audioManager.ambientMusic.size();
+      //  controller.audioManager.startMusic(controller.audioManager.ambientMusic.get(controller.audioManager.curSong),
+      //          40);
+     // }
 
 
     // health bar
-    float health = model.getPlayer().getHealth()/100f;
+    float armour = model.getPlayer().getHealth() == 200 ? 100 : model.getPlayer().getHealth() % 100;
+    float health = (model.getPlayer().getHealth()-armour)/100f;
+
     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
     shapeRenderer.setColor(Color.BLUE);
     shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y, HEALTH_BAR_WIDTH*health, HEALTH_BAR_HEIGHT);
     shapeRenderer.setColor(Color.WHITE);
     shapeRenderer.rect(HEALTH_BAR_X+HEALTH_BAR_WIDTH*health, HEALTH_BAR_Y, HEALTH_BAR_WIDTH-(HEALTH_BAR_WIDTH*health), HEALTH_BAR_HEIGHT);
+    shapeRenderer.end();
+    //armour
+    shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+    shapeRenderer.setColor(Color.GRAY);
+    shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y-HEALTH_BAR_HEIGHT, HEALTH_BAR_WIDTH*armour/100f, HEALTH_BAR_HEIGHT);
     shapeRenderer.end();
 
   }
