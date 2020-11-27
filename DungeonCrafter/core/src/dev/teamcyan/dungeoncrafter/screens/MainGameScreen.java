@@ -156,10 +156,10 @@ public class MainGameScreen extends BaseScreen {
         if(timeLeft == 0.0)
           timeUp = true;
         // Attempting to add interactive audio - need to fix audio buffer error
-        //if(timeLeft < 0.9 * totTime){
-        //    MainGameScreen.super.controller.audioManager.startMusicStr(
-        //            "tick");
-        //}
+        if(timeLeft < 0.1 * totTime){
+            MainGameScreen.super.controller.audioManager.startMusicStr(
+                  "tick");
+        }
       }
     }, 0, (float)0.1, (int)totTime*10);
   }
@@ -171,7 +171,8 @@ public class MainGameScreen extends BaseScreen {
     Gdx.gl.glClearColor(0, 0, 0, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-    model.getCamera().zoom = (1 - ((totTime - timeLeft)/(totTime*10)));
+    model.getCamera().zoom = (float)Math.max((1 - Math.pow(((totTime - timeLeft)/(totTime)), 2)), 0.1);
+    System.out.println(model.getCamera().zoom);
     // Cap max and min zoom levels
     if(zoomIn) {
       model.getCamera().zoom = (float) Math.max(0.4, (model.getCamera().zoom - DungeonCrafter.ZOOM_FACTOR));
@@ -310,7 +311,7 @@ public class MainGameScreen extends BaseScreen {
     Color timerColor = new Color(redAmount, greenAmount, 0, 1);
     timerStyle.fontColor = timerColor;
     timerLabel.setStyle(timerStyle);
-    timerLabel.setText(Float.toString(timeLeft).substring(0, 5));
+    timerLabel.setText(Float.toString(timeLeft).substring(0, Math.min(Float.toString(timeLeft).length(), 5)));
     ui.addActor(timerLabel);
     timerLabel.draw(batch, 1);
     batch.end();
