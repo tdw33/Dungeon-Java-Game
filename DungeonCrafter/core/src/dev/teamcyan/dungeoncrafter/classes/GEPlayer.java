@@ -13,6 +13,9 @@ import com.badlogic.gdx.utils.Array;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.screens.GameOverScreen;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class GEPlayer extends GameElement
 {
   GameModel model;
@@ -119,8 +122,16 @@ public class GEPlayer extends GameElement
   public void decrementHealth(int damage) {
     this.health -= damage;
     if (this.health <= 0) {
-      this.controller.changeScreen(GameOverScreen.class);
-      model.deactivate();
+      Timer timer = new Timer();
+      timer.schedule(new TimerTask() {
+        @Override
+        public void run() {
+          controller.changeScreen(GameOverScreen.class);
+          model.deactivate();
+        }
+      }, 2000);
+
+
     }
   }
 
