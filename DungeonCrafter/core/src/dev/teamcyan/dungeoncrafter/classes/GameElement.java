@@ -13,7 +13,7 @@ public class GameElement {
 
   public final static int CHAR_PIXEL_WIDTH = 64;
   public final static int CHAR_PIXEL_HEIGHT = 64;
-  public enum State {RUNNINGL, RUNNINGR, JUMPING, STANDING, FALLING, MININGL, MININGR };
+  public enum State {RUNNINGL, RUNNINGR, JUMPING, STANDING, FALLING, MININGL, MININGR, MININGD };
 
   protected String uid;
   protected Pos position;
