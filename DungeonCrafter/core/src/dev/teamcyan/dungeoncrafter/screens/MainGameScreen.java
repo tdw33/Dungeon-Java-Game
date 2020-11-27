@@ -146,7 +146,7 @@ public class MainGameScreen extends BaseScreen {
   public void init() {
     totTime = super.controller.totTime;
     timeLeft = totTime;
-    super.controller.audioManager.startMusic(super.controller.audioManager.ambientMusic.get(0), 20);
+    super.controller.audioManager.startMusic(super.controller.audioManager.ambients, 20);
 // Create countdown variable for overlay
     Timer timer=new Timer();
     timer.scheduleTask(new Timer.Task() {
@@ -211,7 +211,7 @@ public class MainGameScreen extends BaseScreen {
      **/
     if(keyS) {
       if (curCell != null) {
-        controller.audioManager.breakBlock(curCell.getTile().getTextureRegion().getTexture().toString());
+        controller.audioManager.breakBlock("gravel"); // curCell.getTile().getTextureRegion().getTexture().toString()
       }
       isBroken = model.getMap().interactBlockCentre(
           new Pos(
