@@ -327,12 +327,19 @@ public class MainGameScreen extends BaseScreen {
 
 
     // health bar
-    float health = model.getPlayer().getHealth()/100f;
+    float armour = model.getPlayer().getHealth() == 200 ? 100 : model.getPlayer().getHealth() % 100;
+    float health = (model.getPlayer().getHealth()-armour)/100f;
+
     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
     shapeRenderer.setColor(Color.BLUE);
     shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y, HEALTH_BAR_WIDTH*health, HEALTH_BAR_HEIGHT);
     shapeRenderer.setColor(Color.WHITE);
     shapeRenderer.rect(HEALTH_BAR_X+HEALTH_BAR_WIDTH*health, HEALTH_BAR_Y, HEALTH_BAR_WIDTH-(HEALTH_BAR_WIDTH*health), HEALTH_BAR_HEIGHT);
+    shapeRenderer.end();
+    //armour
+    shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+    shapeRenderer.setColor(Color.GRAY);
+    shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y-HEALTH_BAR_HEIGHT, HEALTH_BAR_WIDTH*armour/100f, HEALTH_BAR_HEIGHT);
     shapeRenderer.end();
 
   }

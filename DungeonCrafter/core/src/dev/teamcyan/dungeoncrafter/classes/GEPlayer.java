@@ -87,12 +87,8 @@ public class GEPlayer extends GameElement
   public void incrementIron() {
     this.iron += 1;
   }
-  public boolean decrementIron() {
-    if (this.iron > 0) {
-      this.iron -= 1;
-      return true;
-    }
-    return false;
+  public void decrementIron(int amount) {
+    this.iron = amount > this.iron ? 0 : this.iron-amount;
   }
   public void incrementStone() {
     this.stone += 1;
@@ -126,6 +122,11 @@ public class GEPlayer extends GameElement
       this.controller.changeScreen(GameOverScreen.class);
       model.deactivate();
     }
+  }
+
+  public void incrementHealth(int armour) {
+
+    this.health = this.health+armour > 200 ? 200 : this.health+armour;
   }
   public void setName(String spriteName) {
       this.spriteName = spriteName;

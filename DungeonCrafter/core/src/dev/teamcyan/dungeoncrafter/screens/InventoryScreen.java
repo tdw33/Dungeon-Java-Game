@@ -176,6 +176,36 @@ public class InventoryScreen extends BaseScreen{
             }
         });
 
+
+        final Label ironArmourLabel = new Label("Craft armour", style);
+        final Button.ButtonStyle ironArmourButtonStyle = new Button.ButtonStyle();
+        final Button ironArmourButton = new Button(ironArmourLabel, ironArmourButtonStyle);
+        ironArmourButton.setBounds(550,DungeonCrafter.HEIGHT-440,0,0);
+        ui.addActor(ironArmourButton);
+
+        exitButton.addListener(new EventListener()
+        {
+            @Override
+            public boolean handle(Event event)
+            {
+                if (event.toString() == "enter") {
+                    if (model.getPlayer().getIron() >= 10 && model.getPlayer().getHealth() < 200) {
+                        ironArmourLabel.setFontScale(3f);
+                    }
+                } else if (event.toString() == "exit") {
+                    ironArmourLabel.setFontScale(2f);
+                } else if (event.toString() == "touchDown") {
+                    if (model.getPlayer().getIron() >= 10 && model.getPlayer().getHealth() < 200) {
+                        model.getPlayer().decrementIron(10);
+                        model.getPlayer().incrementHealth(100);
+                    }
+
+                }
+
+                return true;
+            }
+        });
+
     }
 
     @Override
