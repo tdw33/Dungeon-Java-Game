@@ -1,11 +1,11 @@
 package dev.teamcyan.dungeoncrafter.screens;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -16,9 +16,11 @@ import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Timer;
-
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainGameScreen extends BaseScreen {
 
@@ -37,6 +39,9 @@ public class MainGameScreen extends BaseScreen {
   boolean keyS = false;
   boolean keyQ = false;
   boolean keyE = false;
+
+  boolean wasSpeaking = true;
+  private TextureData curSpeech;
 
   // Countdown timer labeling
   private Label timerLabel;
@@ -172,7 +177,6 @@ public class MainGameScreen extends BaseScreen {
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
     model.getCamera().zoom = (float)Math.max((1 - Math.pow(((totTime - timeLeft)/(totTime)), 2)), 0.1);
-    System.out.println(model.getCamera().zoom);
     // Cap max and min zoom levels
     if(zoomIn) {
       model.getCamera().zoom = (float) Math.max(0.4, (model.getCamera().zoom - DungeonCrafter.ZOOM_FACTOR));
@@ -269,6 +273,12 @@ public class MainGameScreen extends BaseScreen {
     model.getSpeech().setSpeech();
     model.getSpeech().setPosition();
 
+
+    if(model.getSpeech().isSpeaking() == true &
+            model.getSpeech().getSpeech().getTextureData().equals(curSpeech) == false){
+        curSpeech = model.getSpeech().getSpeech().getTextureData();
+        controller.audioManager.startMusicStr("notify");
+    }
     batch.begin();
 
     if(uiMatrix == null) {

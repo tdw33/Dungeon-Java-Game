@@ -14,6 +14,7 @@ public class AudioManager {
 
     public Sound breakStone;
     public Sound tick;
+    public Sound alert;
     public ArrayList<Music> ambientMusic = new ArrayList<>();
     public Music ambients;
 
@@ -28,10 +29,12 @@ public class AudioManager {
         this.menuSound = Gdx.audio.newMusic(Gdx.files.internal("sounds/sound1.mp3"));
         this.breakStone = Gdx.audio.newSound(Gdx.files.internal("sounds/harddig.ogg"));
         this.tick = Gdx.audio.newSound(Gdx.files.internal("sounds/tick.wav"));
+        this.ambients = Gdx.audio.newMusic(Gdx.files.internal("sounds/ambients.ogg"));
+        this.alert = Gdx.audio.newSound(Gdx.files.internal("sounds/notify.ogg"));
         ambientMusic.add(Gdx.audio.newMusic(Gdx.files.internal("sounds/tick.wav")));
         ambientMusic.add(Gdx.audio.newMusic(Gdx.files.internal("sounds/ambient2.ogg")));
         ambientMusic.add(Gdx.audio.newMusic(Gdx.files.internal("sounds/ambient3.ogg")));
-        this.ambients = (Gdx.audio.newMusic(Gdx.files.internal("sounds/ambients.ogg")));
+
 
         curSong = 0;
 
@@ -54,9 +57,13 @@ public class AudioManager {
     }
 
     public void startMusicStr(String toPlay){
-        if(toPlay == "tick" & tickPlaying == false)
+        if(toPlay == "tick" & tickPlaying == false) {
             tick.play();
             tickPlaying = true;
+        }
+        if(toPlay == "notify"){
+            alert.play();
+        }
     }
 
     public void startMusic(Music toPlay, int maxVol){
