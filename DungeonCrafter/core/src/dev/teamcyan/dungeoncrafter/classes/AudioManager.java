@@ -15,6 +15,7 @@ public class AudioManager {
     public Sound breakStone;
     public Music tick;
     public ArrayList<Music> ambientMusic = new ArrayList<>();
+    public Music ambients;
 
     long menuSoundID;
     public int curSong;
@@ -29,6 +30,7 @@ public class AudioManager {
         ambientMusic.add(Gdx.audio.newMusic(Gdx.files.internal("sounds/tick.wav")));
         ambientMusic.add(Gdx.audio.newMusic(Gdx.files.internal("sounds/ambient2.ogg")));
         ambientMusic.add(Gdx.audio.newMusic(Gdx.files.internal("sounds/ambient3.ogg")));
+        this.ambients = (Gdx.audio.newMusic(Gdx.files.internal("sounds/ambients.ogg")));
 
         curSong = 0;
 
@@ -58,6 +60,8 @@ public class AudioManager {
     public void startMusic(Music toPlay, int maxVol){
         if(!toPlay.isPlaying()) {
             toPlay.setVolume(0);
+            toPlay.play();
+            toPlay.setLooping(true);
             fadeMusicIn(toPlay, maxVol);
         }
     }
