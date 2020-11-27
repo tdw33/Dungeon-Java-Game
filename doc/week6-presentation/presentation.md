@@ -41,14 +41,17 @@
 # Updates
 - Inventory
 
-![ ](./imgs/inventory.png)
+![ ](./imgs/Inventory.png)
 
 - Blocks have HP and properties
 - Can dig directionally and place block left/right
 
-![ ](./imgs/dig.gif)
+![ ](./imgs/Dig.gif)
 
 - Pebble can speak and give helpful tips
+
+![ ](./speech.gif)
+
 - Reverse gravity is working 
 
 ![ ](./imgs/gravity.gif)
@@ -64,7 +67,7 @@
 - Jumping works correctly 
 
 
-![ ](./imgs/jump.gif)
+![ ](./imgs/Jump.gif)
 
 
 - Difficulty selection
