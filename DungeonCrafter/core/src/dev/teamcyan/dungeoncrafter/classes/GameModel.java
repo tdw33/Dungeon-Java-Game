@@ -25,8 +25,8 @@ public class GameModel {
     //Start a new game.
     public void startNewGame(DungeonCrafter controller) 
     {
-        this.map = new GMap(MAPNAME);
-        this.player = new GEPlayer(this);
+        this.map = new GMap(controller.getModel(), MAPNAME);
+        this.player = new GEPlayer(this, controller);
         this.pebble = new GEPebble(this);
         this.enemy = new GEEnemy(this);
         this.speech = new GESpeech(this);
@@ -40,8 +40,8 @@ public class GameModel {
         this.player.getPosition().setX(position_x);
         this.player.getPosition().setY(position_y);
 
-        this.pebble.getPosition().setX(position_x+10);
-        this.pebble.getPosition().setY(position_y+10);
+        this.pebble.getPosition().setX(position_x+50);
+        this.pebble.getPosition().setY(position_y+50);
 
         this.enemy.getPosition().setX(position_x+20);
         this.enemy.getPosition().setY(position_x+20);
@@ -74,8 +74,12 @@ public class GameModel {
 
 
 
-    public boolean isActive() 
+    public boolean isActive()
     {
         return this.active;
+    }
+    public void deactivate()
+    {
+         this.active = false;
     }
 }

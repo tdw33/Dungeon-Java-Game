@@ -66,9 +66,11 @@ public class GEPebble extends GameElement
             newXVelocity = this.velocity.getX();
         } else if (distance > 80) {
             if (playerPosition.getX() > this.position.getX()) {
-                newXVelocity = this.velocity.getX() + this.ACCELERATION * delta;
+                float newV = this.velocity.getX() + this.ACCELERATION * delta;
+                newXVelocity = newV > layer.getTileWidth() ? this.velocity.getX() : newV;
             } else {
-                newXVelocity = this.velocity.getX() - this.ACCELERATION * delta;
+                float newV = this.velocity.getX() - this.ACCELERATION * delta;
+                newXVelocity = newV < (-1)*layer.getTileWidth() ? this.velocity.getX() : newV;
             }
         } else {
             newXVelocity = this.velocity.getX() * this.RESISTANCE;
@@ -111,12 +113,14 @@ public class GEPebble extends GameElement
         // apply gravity, when no floor
         float delta = Gdx.graphics.getDeltaTime();
 
-        float newYVelocity = this.velocity.getY() + delta * gravity;
+        float newYVelocity = this.velocity.getY() - delta * gravity;
 
-        double newYPosition = this.position.getY() - Math.floor(newYVelocity);
-        TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.floor(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
-        TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-1) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
-        if (leftBottom == null && rightBottom == null) {
+        float newYPosition = this.position.getY() + newYVelocity;
+        TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+        TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-10) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+        TiledMapTileLayer.Cell leftTop = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor((newYPosition+this.getRegion().getRegionHeight()) / layer.getTileHeight()));
+        TiledMapTileLayer.Cell rightTop = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-10) / layer.getTileWidth()), (int) Math.floor((newYPosition+this.getRegion().getRegionHeight()) / layer.getTileHeight()));
+        if ((newYVelocity <= 0 && leftBottom == null && rightBottom == null) || (newYVelocity > 0 && leftTop == null && rightTop == null)) {
             this.velocity.setY(newYVelocity);
             this.position.setY((int)newYPosition);
 
@@ -128,9 +132,9 @@ public class GEPebble extends GameElement
 
     public void setRegion() {
         if (this.velocity.getY() >1) {
-            this.currentState = GameElement.State.FALLING;
-        } else if(this.velocity.getY() < -1) {
             this.currentState = GameElement.State.JUMPING;
+        } else if(this.velocity.getY() < -1) {
+            this.currentState = GameElement.State.FALLING;
         } else if (this.velocity.getX() < -1) {
             this.currentState = GameElement.State.RUNNINGL;
         } else if (this.velocity.getX() > 1) {

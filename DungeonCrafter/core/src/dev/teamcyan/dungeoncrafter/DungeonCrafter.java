@@ -24,6 +24,7 @@ public class DungeonCrafter extends Game {
 	public static final int WIDTH = 720;
 	public static final int HEIGHT = 720;
 	public static final float ZOOM_FACTOR = 0.1f;
+	public float totTime;
 
 	public SpriteBatch batch;
 	public AudioManager audioManager;
@@ -109,7 +110,6 @@ public class DungeonCrafter extends Game {
 
 	//	  Create a new game, starting with the story screen
 	public void newGame() {
-		model.startNewGame(this);
 		this.changeScreen(MainMenuScreen.class);
 	}
 
@@ -138,6 +138,19 @@ public class DungeonCrafter extends Game {
 		screens.put(MainGameScreen.class, new MainGameScreen(this, model));
 		screens.put(MainMenuScreen.class, new MainMenuScreen(this, model));
 		screens.put(SettingsScreen.class, new SettingsScreen(this, model));
+		screens.put(DifficultyScreen.class, new DifficultyScreen(this, model));
+		screens.put(GameOverScreen.class, new GameOverScreen(this, model));
+	}
+
+	public void restartGame() {
+		this.screens = new ObjectMap<>();
+		loadScreens();
+		model.startNewGame(this);
+		this.changeScreen(DifficultyScreen.class);
+	}
+
+	public GameModel getModel() {
+		return this.model;
 	}
 	/*@Override
 	public void render () {

@@ -10,11 +10,14 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.utils.Array;
+import dev.teamcyan.dungeoncrafter.DungeonCrafter;
+import dev.teamcyan.dungeoncrafter.screens.GameOverScreen;
 
 public class GEPlayer extends GameElement
 {
   GameModel model;
-  public enum BLOCK {GOLD, STEEL};
+  DungeonCrafter controller;
+  public enum BLOCK {DIRT, STONE, IRON};
 
   Velocity velocity;
   private TextureRegion region;
@@ -30,11 +33,13 @@ public class GEPlayer extends GameElement
   public State currentState;
   public State previousState;
   private int health = 100;
-  private int gold = 0;
-  private int steel = 0;
-  private BLOCK currentCraftingBlock = BLOCK.STEEL;
+  private int stone = 0;
+  private int iron = 0;
+  private int dirt = 0;
+  private BLOCK currentCraftingBlock = BLOCK.DIRT;
 
-  public GEPlayer (GameModel model) {
+  public GEPlayer (GameModel model, DungeonCrafter controller) {
+    this.controller = controller;
     this.model = model;
     this.getype = GEType.PLAYER;
     this.velocity = new Velocity(0, 0);
@@ -75,37 +80,55 @@ public class GEPlayer extends GameElement
     frames.clear();
   }
 
+  public BLOCK getCurrentCraftingBlock() {
+    return this.currentCraftingBlock;
+  }
+
   public int getHealth() {
     return this.health;
   }
 
-  public void incrementGold() {
-    this.gold += 1;
+  public void incrementDirt() {
+    this.dirt += 1;
   }
-  public boolean decrementGold() {
-    if (this.gold > 0) {
-      this.gold -= 1;
+  public boolean decrementDirt() {
+    if (this.dirt > 0) {
+      this.dirt -= 1;
       return true;
     }
     return false;
   }
-  public void incrementSteel() {
-    this.steel += 1;
+  public void incrementIron() {
+    this.iron += 1;
   }
-  public boolean decrementSteel() {
-    if (this.steel > 0) {
-      this.steel -= 1;
+  public boolean decrementIron() {
+    if (this.iron > 0) {
+      this.iron -= 1;
+      return true;
+    }
+    return false;
+  }
+  public void incrementStone() {
+    this.stone += 1;
+  }
+  public boolean decrementStone() {
+    if (this.stone > 0) {
+      this.stone -= 1;
       return true;
     }
     return false;
   }
 
-  public int getGold() {
-    return this.gold;
+  public int getIron() {
+    return this.iron;
   }
 
-  public int getSteel() {
-    return this.steel;
+  public int getStone() {
+    return this.stone;
+  }
+
+  public int getDirt() {
+    return this.dirt;
   }
 
   public void setCurrentCraftingBlock(BLOCK block) {
@@ -113,6 +136,10 @@ public class GEPlayer extends GameElement
   }
   public void decrementHealth(int damage) {
     this.health -= damage;
+    if (this.health <= 0) {
+      this.controller.changeScreen(GameOverScreen.class);
+      model.deactivate();
+    }
   }
   public void setName(String spriteName) {
       this.spriteName = spriteName;
@@ -128,9 +155,11 @@ public class GEPlayer extends GameElement
       newXVelocity = this.velocity.getX() * this.RESISTANCE;
       newXVelocity = newXVelocity > -0.000000001 && newXVelocity < 0.000000001 ? 0 : newXVelocity;
     } else if (movingRight) {
-      newXVelocity = this.velocity.getX() + this.ACCELERATION * delta;
+      float newV = this.velocity.getX() + this.ACCELERATION * delta;
+      newXVelocity = newV > layer.getTileWidth() ? this.velocity.getX() : newV;
     } else {
-      newXVelocity = this.velocity.getX() - this.ACCELERATION * delta;
+      float newV = this.velocity.getX() - this.ACCELERATION * delta;
+      newXVelocity = newV < (-1)*layer.getTileWidth() ? this.velocity.getX() : newV;
     }
 
     float newXPosition = this.position.getX() + newXVelocity;
@@ -173,9 +202,11 @@ public class GEPlayer extends GameElement
     float newYVelocity = this.velocity.getY() - delta * gravity;
 
     float newYPosition = this.position.getY() + newYVelocity;// - Math.floor(newYVelocity);
-    TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.floor(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
-    TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-1) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
-    if (leftBottom == null && rightBottom == null) {
+    TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+    TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-10) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
+    TiledMapTileLayer.Cell leftTop = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor((newYPosition+this.getRegion().getRegionHeight()) / layer.getTileHeight()));
+    TiledMapTileLayer.Cell rightTop = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-10) / layer.getTileWidth()), (int) Math.floor((newYPosition+this.getRegion().getRegionHeight()) / layer.getTileHeight()));
+    if ((newYVelocity <= 0 && leftBottom == null && rightBottom == null) || (newYVelocity > 0 && leftTop == null && rightTop == null)) {
       this.velocity.setY(newYVelocity);
       this.position.setY((int)newYPosition);
     } else {

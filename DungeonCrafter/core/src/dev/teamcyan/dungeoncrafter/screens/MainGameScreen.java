@@ -32,9 +32,15 @@ public class MainGameScreen extends BaseScreen {
   boolean movingDown = false;
   boolean zoomIn = false;
   boolean zoomOut = false;
-  boolean keyD = false;
   boolean keyA = false;
+  boolean keyD = false;
+  boolean keyS = false;
+  boolean keyQ = false;
+  boolean keyE = false;
 
+  // Countdown timer labeling
+  private Label timerLabel;
+  private Label.LabelStyle timerStyle;
 
 
   Matrix4 uiMatrix;
@@ -44,6 +50,7 @@ public class MainGameScreen extends BaseScreen {
   private String mouseInfo;
   private float timeLeft;
   private float totTime;
+  private boolean timeUp;
   private GameModel model;
 
   private static final int MENU_BUTTON_X = DungeonCrafter.WIDTH-80;
@@ -69,9 +76,16 @@ public class MainGameScreen extends BaseScreen {
     shapeRenderer = new ShapeRenderer();
 
     final Label.LabelStyle style = new Label.LabelStyle();
+    timerStyle = new Label.LabelStyle();
     style.fontColor = Color.WHITE;
     style.font = new BitmapFont();
     style.font.getData().setScale(2f);
+
+    timerStyle.fontColor = Color.WHITE;
+    timerStyle.font = new BitmapFont();
+    timerStyle.font.getData().setScale(2f);
+
+    timerLabel = new Label("Test", timerStyle);
     final Label settingsLabel = new Label("Menu", style);
     final Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
     final Button settingsButton = new Button(settingsLabel, buttonStyle);
@@ -122,23 +136,6 @@ public class MainGameScreen extends BaseScreen {
     timerFont = new BitmapFont();
     keyInfo = new ArrayList<String>();
     mouseInfo = "";
-    timeLeft = 60;
-    totTime = 60;
-
-    // Create countdown variable for overlay
-    Timer timer=new Timer();
-    timer.scheduleTask(new Timer.Task() {
-      @Override
-      public void run() {
-        timeLeft = timeLeft - (float)0.1;
-        // Attempting to add interactive audio - need to fix audio buffer error
-        //if(timeLeft < 0.9 * totTime){
-        //    MainGameScreen.super.controller.audioManager.startMusicStr(
-        //            "tick");
-        //}
-      }
-    }, 0, (float)0.1, (int)totTime*10);
-
   }
 
 
@@ -147,7 +144,23 @@ public class MainGameScreen extends BaseScreen {
    * */
   @Override
   public void init() {
-
+    totTime = super.controller.totTime;
+    timeLeft = totTime;
+// Create countdown variable for overlay
+    Timer timer=new Timer();
+    timer.scheduleTask(new Timer.Task() {
+      @Override
+      public void run() {
+        timeLeft = timeLeft - (float)0.1;
+        if(timeLeft == 0.0)
+          timeUp = true;
+        // Attempting to add interactive audio - need to fix audio buffer error
+        //if(timeLeft < 0.9 * totTime){
+        //    MainGameScreen.super.controller.audioManager.startMusicStr(
+        //            "tick");
+        //}
+      }
+    }, 0, (float)0.1, (int)totTime*10);
   }
 
 
@@ -167,23 +180,54 @@ public class MainGameScreen extends BaseScreen {
     }
 
     /**
-     * if Digging is pressed
+     * if Digging Left is pressed
      **/
-    if(keyD) {
-      model.getMap().interactBlock(
+    if(keyA) {
+      model.getMap().interactBlockLeft(
           new Pos(
-            model.getPlayer().getPosition().getX(),
-            model.getPlayer().getPosition().getY()));
+            model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+            model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
 
     /**
-     * if Place is pressed
+     * if Digging Right  is pressed
      **/
-    if(keyA) {
-      model.getMap().setBlock(
+    if(keyD) {
+      model.getMap().interactBlockRight(
+          new Pos(
+            model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+            model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
+    }
+
+
+    /**
+     * if Digging Right  is pressed
+     **/
+    if(keyS) {
+      model.getMap().interactBlockCentre(
+          new Pos(
+            model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+            model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
+    }
+
+    /**
+     * if Place left is pressed
+     **/
+    if(keyQ) {
+      model.getMap().setBlockLeft(
           new Pos( 
-            model.getPlayer().getPosition().getX(), 
-            model.getPlayer().getPosition().getY()));
+            model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+            model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
+    }
+
+    /**
+     * if Place right is pressed
+     **/
+    if(keyE) {
+      model.getMap().setBlockRight(
+          new Pos( 
+            model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+            model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
 
     TiledMapTileLayer layer = (TiledMapTileLayer)model.getMap().getTerainLayer();
@@ -217,7 +261,6 @@ public class MainGameScreen extends BaseScreen {
       uiMatrix = model.getCamera().combined.cpy();
     }
 
-
     model.getCamera().update();
 
     font.setColor(1,1,1,1);
@@ -246,21 +289,19 @@ public class MainGameScreen extends BaseScreen {
     for (GEProjectile t : projectiles) {
       batch.draw(t.getTexture(), t.getPosition().getX(), t.getPosition().getY(), 16, 2, t.getTexture().getWidth(), t.getTexture().getHeight(), 1, 1, (float) t.getAngle(), 0, 0, 35, 5, false, false);
     }
-    font.setColor(1,1,1,1);
+    // Configure fading colour of timer
     float redAmount = (float)(totTime - timeLeft) / (float)totTime;
     float greenAmount = 1-redAmount;
-    timerFont.setColor(redAmount, greenAmount, 0, 1); // Fade font from green to red as time runs out
-    timerFont.getData().setScale(2);
+    Color timerColor = new Color(redAmount, greenAmount, 0, 1);
+    timerStyle.fontColor = timerColor;
+    timerLabel.setStyle(timerStyle);
+    timerLabel.setText(Float.toString(timeLeft).substring(0, 5));
+    ui.addActor(timerLabel);
+    timerLabel.draw(batch, 1);
 
     font.draw(batch, mouseInfo, player.getPosition().getX(), player.getPosition().getY()+150);
     font.draw(batch, "Mouse XY:", player.getPosition().getX(), player.getPosition().getY()+170);
     font.draw(batch, "Keys active:", player.getPosition().getX(), player.getPosition().getY()+200);
-
-    //for(int i = 0; i < keyInfo.size(); i++)
-    //{
-    //    font.draw(batch, super.controller.keyListener.activeKeys.get(i), player.getPosition().getX()+80+(i*10), player.getPosition().getY()+200);
-    //}
-    timerFont.draw(batch, Float.toString(timeLeft).substring(0, 4), player.getPosition().getX() - 120, player.getPosition().getY() + 130);
 
     batch.end();
     model.getCamera().update();
@@ -306,7 +347,9 @@ public class MainGameScreen extends BaseScreen {
   public void dispose() {
     batch.dispose();
     hud.dispose();
-    model.getMap().getTiledMap().dispose();
+    if (model.getMap() != null) {
+      model.getMap().getTiledMap().dispose();
+    }
   }
 
   @Override
@@ -331,11 +374,25 @@ public class MainGameScreen extends BaseScreen {
     if(keycode == Input.Keys.O) {
       zoomOut = true;
     }
-    if(keycode == Input.Keys.D)
-      keyD = true;
-
-    if(keycode == Input.Keys.A) 
+    if(keycode == Input.Keys.A) {
       keyA = true;
+    }
+
+    if(keycode == Input.Keys.D) {
+      keyD = true;
+    }
+
+    if(keycode == Input.Keys.S) {
+      keyS = true;
+    }
+
+    if(keycode == Input.Keys.E) {
+      keyE = true;
+    }
+
+    if(keycode == Input.Keys.Q) {
+      keyQ = true;
+    }
 
     return false;
   }
@@ -362,11 +419,20 @@ public class MainGameScreen extends BaseScreen {
     if(keycode == Input.Keys.O)
       zoomOut = false;
 
-    if(keycode == Input.Keys.D) 
+    if(keycode == Input.Keys.A)
+      keyA = false;
+
+    if(keycode == Input.Keys.D)
       keyD = false;
 
-    if(keycode == Input.Keys.A) 
-      keyA = false;
+    if(keycode == Input.Keys.S)
+      keyS = false;
+
+    if(keycode == Input.Keys.E) 
+      keyE = false;
+    
+    if(keycode == Input.Keys.Q) 
+      keyQ = false;
 
     return false;
   }
