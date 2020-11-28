@@ -40,8 +40,8 @@ public class MainGameScreen extends BaseScreen {
   boolean keyQ = false;
   boolean keyE = false;
 
-  boolean wasSpeaking = true;
   private TextureData curSpeech;
+  private GameElement.State prevState;
 
   // Countdown timer labeling
   private Label timerLabel;
@@ -279,6 +279,10 @@ public class MainGameScreen extends BaseScreen {
         curSpeech = model.getSpeech().getSpeech().getTextureData();
         controller.audioManager.startMusicStr("notify");
     }
+
+    if(model.getPlayer().currentState == GameElement.State.JUMPING & !model.getPlayer().currentState.equals(prevState))
+      controller.audioManager.startMusicStr("jump");
+    prevState = model.getPlayer().currentState;
     batch.begin();
 
     if(uiMatrix == null) {

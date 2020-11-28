@@ -132,6 +132,9 @@ public class DungeonCrafter extends Game {
 				key.getName() != "dev.teamcyan.dungeoncrafter.screens.DifficultyScreen") {
 			audioManager.fadeMusicOut(audioManager.menuSound);
 		}
+		if(key.getName() == "dev.teamcyan.dungeoncrafter.screens.MainMenuScreen"){
+			audioManager.fadeMusicOut(audioManager.ambients);
+		}
 	}
 
 	public void loadScreens() {
