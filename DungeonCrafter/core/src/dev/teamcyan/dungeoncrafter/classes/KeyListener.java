@@ -17,7 +17,7 @@ public class KeyListener {
 
     public boolean keyDownListener(int keycode) {
         if (keycode != Input.Keys.UP) {
-            activeKeys.add(keycode);
+            //activeKeys.add(keycode);
         }
         return false;
     }
@@ -26,7 +26,7 @@ public class KeyListener {
         if (keycode == Input.Keys.UP) {
             activeKeys.add(keycode);
         } else {
-            activeKeys.remove(activeKeys.indexOf(keycode));
+            //activeKeys.remove(activeKeys.indexOf(keycode));
         }
         return false;
     }

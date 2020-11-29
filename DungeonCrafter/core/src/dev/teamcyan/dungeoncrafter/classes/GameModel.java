@@ -44,7 +44,7 @@ public class GameModel {
         this.pebble.getPosition().setY(position_y+50);
 
         this.enemy.getPosition().setX(position_x+20);
-        this.enemy.getPosition().setY(position_x+20);
+        this.enemy.getPosition().setY(position_y+20);
     }
 
     public void dispose() 

@@ -1,11 +1,11 @@
 package dev.teamcyan.dungeoncrafter.screens;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -16,9 +16,11 @@ import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Timer;
-
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainGameScreen extends BaseScreen {
 
@@ -37,6 +39,9 @@ public class MainGameScreen extends BaseScreen {
   boolean keyS = false;
   boolean keyQ = false;
   boolean keyE = false;
+
+  private TextureData curSpeech;
+  private GameElement.State prevState;
 
   // Countdown timer labeling
   private Label timerLabel;
@@ -156,10 +161,10 @@ public class MainGameScreen extends BaseScreen {
         if(timeLeft == 0.0)
           timeUp = true;
         // Attempting to add interactive audio - need to fix audio buffer error
-        //if(timeLeft < 0.9 * totTime){
-        //    MainGameScreen.super.controller.audioManager.startMusicStr(
-        //            "tick");
-        //}
+        if(timeLeft < 0.1 * totTime){
+            MainGameScreen.super.controller.audioManager.startMusicStr(
+                  "tick");
+        }
       }
     }, 0, (float)0.1, (int)totTime*10);
   }
@@ -171,7 +176,7 @@ public class MainGameScreen extends BaseScreen {
     Gdx.gl.glClearColor(0, 0, 0, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-    model.getCamera().zoom = (1 - ((totTime - timeLeft)/(totTime*10)));
+    model.getCamera().zoom = (float)Math.max((1 - Math.pow(((totTime - timeLeft)/(totTime)), 2)), 0.1);
     // Cap max and min zoom levels
     if(zoomIn) {
       model.getCamera().zoom = (float) Math.max(0.4, (model.getCamera().zoom - DungeonCrafter.ZOOM_FACTOR));
@@ -268,6 +273,16 @@ public class MainGameScreen extends BaseScreen {
     model.getSpeech().setSpeech();
     model.getSpeech().setPosition();
 
+
+    if(model.getSpeech().isSpeaking() == true &
+            model.getSpeech().getSpeech().getTextureData().equals(curSpeech) == false){
+        curSpeech = model.getSpeech().getSpeech().getTextureData();
+        controller.audioManager.startMusicStr("notify");
+    }
+
+    if(model.getPlayer().currentState == GameElement.State.JUMPING & !model.getPlayer().currentState.equals(prevState))
+      controller.audioManager.startMusicStr("jump");
+    prevState = model.getPlayer().currentState;
     batch.begin();
 
     if(uiMatrix == null) {
@@ -310,7 +325,7 @@ public class MainGameScreen extends BaseScreen {
     Color timerColor = new Color(redAmount, greenAmount, 0, 1);
     timerStyle.fontColor = timerColor;
     timerLabel.setStyle(timerStyle);
-    timerLabel.setText(Float.toString(timeLeft).substring(0, 5));
+    timerLabel.setText(Float.toString(timeLeft).substring(0, Math.min(Float.toString(timeLeft).length(), 5)));
     ui.addActor(timerLabel);
     timerLabel.draw(batch, 1);
     batch.end();
