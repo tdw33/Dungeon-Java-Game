@@ -34,8 +34,8 @@ public class GameModel {
         camera = new OrthographicCamera();
         camera.zoom = 0.5f;
 
-        int position_x = 150;
-        int position_y = 1400;
+        int position_x = 5*32;
+        int position_y = 280*32;
 
         this.player.getPosition().setX(position_x);
         this.player.getPosition().setY(position_y);

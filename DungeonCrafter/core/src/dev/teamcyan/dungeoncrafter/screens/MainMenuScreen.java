@@ -13,21 +13,24 @@ public class MainMenuScreen extends BaseScreen {
 
     // The size and position of the four buttons
     private static final int PLAY_BUTTON_WIDTH = DungeonCrafter.WIDTH/24*5;
-    private static final int PLAY_BUTTON_HEIGHT = DungeonCrafter.HEIGHT/72*5;
+    private static final int PLAY_BUTTON_HEIGHT = DungeonCrafter.HEIGHT/72*3;
     private static final int PLAY_BUTTON_X = DungeonCrafter.WIDTH/12;
-    private static final int PLAY_BUTTON_Y = DungeonCrafter.HEIGHT/18*5;
+    private static final int PLAY_BUTTON_Y = DungeonCrafter.HEIGHT/3;
+
     private static final int LOAD_BUTTON_WIDTH = DungeonCrafter.WIDTH/24*5;
-    private static final int LOAD_BUTTON_HEIGHT = DungeonCrafter.HEIGHT/72*5;
+    private static final int LOAD_BUTTON_HEIGHT = DungeonCrafter.HEIGHT/72*3;
     private static final int LOAD_BUTTON_X = DungeonCrafter.WIDTH/12*4;
-    private static final int LOAD_BUTTON_Y = DungeonCrafter.HEIGHT/18*5;
+    private static final int LOAD_BUTTON_Y = DungeonCrafter.HEIGHT/3;
+
     private static final int SETTINGS_BUTTON_WIDTH = DungeonCrafter.WIDTH/24*5;
-    private static final int SETTINGS_BUTTON_HEIGHT = DungeonCrafter.HEIGHT/72*5;
+    private static final int SETTINGS_BUTTON_HEIGHT = DungeonCrafter.HEIGHT/72*3;
     private static final int SETTINGS_BUTTON_X = DungeonCrafter.WIDTH/12*7;
-    private static final int SETTINGS_BUTTON_Y = DungeonCrafter.HEIGHT/18*5;
+    private static final int SETTINGS_BUTTON_Y = DungeonCrafter.HEIGHT/3;
+
     private static final int EXIT_BUTTON_WIDTH = DungeonCrafter.WIDTH/9;
-    private static final int EXIT_BUTTON_HEIGHT = DungeonCrafter.HEIGHT/72*5;
+    private static final int EXIT_BUTTON_HEIGHT = DungeonCrafter.HEIGHT/72*3;
     private static final int EXIT_BUTTON_X = DungeonCrafter.WIDTH/12*10;
-    private static final int EXIT_BUTTON_Y = DungeonCrafter.HEIGHT/18*5;
+    private static final int EXIT_BUTTON_Y = DungeonCrafter.HEIGHT/3;
 
     DungeonCrafter game;
     SpriteBatch batch = new SpriteBatch();
@@ -37,6 +40,7 @@ public class MainMenuScreen extends BaseScreen {
     Texture playButtonInactive;
     Texture loadButtonActive;
     Texture loadButtonInactive;
+    Texture loadButtonUnable;
     Texture settingsButtonActive;
     Texture settingsButtonInactive;
     Texture exitButtonActive;
@@ -50,6 +54,7 @@ public class MainMenuScreen extends BaseScreen {
         playButtonInactive = new Texture("menu_buttons/new_game_inactive.png");
         loadButtonActive = new Texture("menu_buttons/load_game_active.png");
         loadButtonInactive = new Texture("menu_buttons/load_game_inactive.png");
+        loadButtonUnable = new Texture("menu_buttons/load_game_unable.png");
         settingsButtonActive = new Texture("menu_buttons/settings_active.png");
         settingsButtonInactive = new Texture("menu_buttons/settings_inactive.png");
         exitButtonActive = new Texture("menu_buttons/exit_active.png");
@@ -61,7 +66,7 @@ public class MainMenuScreen extends BaseScreen {
 
     @Override
     public void init() {
-        super.controller.audioManager.startMusic(super.controller.audioManager.menuSound, 5);
+        super.controller.audioManager.startMusic(super.controller.audioManager.menuSound, 40);
     }
 
     @Override
@@ -91,6 +96,7 @@ public class MainMenuScreen extends BaseScreen {
 
 
         // load game
+        batch.draw(loadButtonUnable, LOAD_BUTTON_X,LOAD_BUTTON_Y, LOAD_BUTTON_WIDTH, LOAD_BUTTON_HEIGHT);
         if (model.isActive()) {
             if(Gdx.input.getX() < LOAD_BUTTON_X + LOAD_BUTTON_WIDTH && Gdx.input.getX() > LOAD_BUTTON_X && DungeonCrafter.HEIGHT - Gdx.input.getY()
                     < LOAD_BUTTON_Y + LOAD_BUTTON_HEIGHT &&  DungeonCrafter.HEIGHT - Gdx.input.getY() > LOAD_BUTTON_Y) {

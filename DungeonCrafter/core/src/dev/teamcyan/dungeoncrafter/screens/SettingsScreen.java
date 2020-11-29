@@ -14,11 +14,11 @@ import dev.teamcyan.dungeoncrafter.classes.GameModel;
 
 public class SettingsScreen extends BaseScreen {
 
-    public static final int SETTINGS_BUTTON_WIDTH = 150;
+    public static final int SETTINGS_BUTTON_WIDTH = 170;
     public static final int SETTINGS_BUTTON_HEIGHT = 50;
     public static final int SETTINGS_BUTTON_Y = 600;
-    public static final int BACK_BUTTON_WIDTH = 50;
-    public static final int BACK_BUTTON_HEIGHT = 50;
+    public static final int BACK_BUTTON_WIDTH = 70;
+    public static final int BACK_BUTTON_HEIGHT = 40;
     public static final int BACK_BUTTON_Y = 650;
 
     DungeonCrafter game;
