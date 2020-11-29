@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 
-//import javax.xml.soap.Text;
+
 
 public class GameOverScreen extends BaseScreen {
 
@@ -145,4 +145,3 @@ public class GameOverScreen extends BaseScreen {
 
     }
 }
-
