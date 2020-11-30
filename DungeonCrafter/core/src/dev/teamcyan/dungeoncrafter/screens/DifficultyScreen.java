@@ -17,22 +17,25 @@ public class DifficultyScreen extends BaseScreen {
     private static final float HARD_TIME = 150;
 
     // The size and position of the four buttons
-    private static final int EASY_BUTTON_WIDTH = DungeonCrafter.WIDTH / 24 * 5;
-    private static final int EASY_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 72 * 5;
-    private static final int EASY_BUTTON_X = DungeonCrafter.WIDTH / 12;
+    private static final int EASY_BUTTON_WIDTH = DungeonCrafter.WIDTH / 6;
+    private static final int EASY_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 18;
+    private static final int EASY_BUTTON_X = DungeonCrafter.WIDTH / 9;
     private static final int EASY_BUTTON_Y = DungeonCrafter.HEIGHT / 18 * 5;
-    private static final int MEDIUM_BUTTON_WIDTH = DungeonCrafter.WIDTH / 24 * 5;
-    private static final int MEDIUM_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 72 * 5;
-    private static final int MEDIUM_BUTTON_X = DungeonCrafter.WIDTH / 12 * 4;
+
+    private static final int MEDIUM_BUTTON_WIDTH = DungeonCrafter.WIDTH / 4;
+    private static final int MEDIUM_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 18;
+    private static final int MEDIUM_BUTTON_X = DungeonCrafter.WIDTH / 8*3;
     private static final int MEDIUM_BUTTON_Y = DungeonCrafter.HEIGHT / 18 * 5;
-    private static final int HARD_BUTTON_WIDTH = DungeonCrafter.WIDTH / 24 * 5;
-    private static final int HARD_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 72 * 5;
-    private static final int HARD_BUTTON_X = DungeonCrafter.WIDTH / 12 * 7;
+
+    private static final int HARD_BUTTON_WIDTH = DungeonCrafter.WIDTH / 6;
+    private static final int HARD_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 18;
+    private static final int HARD_BUTTON_X = DungeonCrafter.WIDTH / 24*17;
     private static final int HARD_BUTTON_Y = DungeonCrafter.HEIGHT / 18 * 5;
-    private static final int BACK_BUTTON_WIDTH = DungeonCrafter.WIDTH / 9;
-    private static final int BACK_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 72 * 5;
-    private static final int BACK_BUTTON_X = DungeonCrafter.WIDTH / 12 * 10;
-    private static final int BACK_BUTTON_Y = 60;
+
+    private static final int BACK_BUTTON_WIDTH = DungeonCrafter.WIDTH / 6;
+    private static final int BACK_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 18;
+    private static final int BACK_BUTTON_X = DungeonCrafter.WIDTH / 72*55;
+    private static final int BACK_BUTTON_Y = DungeonCrafter.HEIGHT / 18 * 2;
 
 
     DungeonCrafter game;
@@ -57,8 +60,8 @@ public class DifficultyScreen extends BaseScreen {
         mediumButtonInactive = new Texture("menu_buttons/medium_inactive.png");
         hardButtonActive = new Texture("menu_buttons/hard_active.png");
         hardButtonInactive = new Texture("menu_buttons/hard_inactive.png");
-        backButtonActive = new Texture("menu_buttons/back_active2.png");
-        backButtonInactive = new Texture("menu_buttons/back_inactive2.png");
+        backButtonActive = new Texture("menu_buttons/back_active.png");
+        backButtonInactive = new Texture("menu_buttons/back_inactive.png");
         menuBackground = new Texture("menu_buttons/menuBackground.png");
 
     }
@@ -73,7 +76,8 @@ public class DifficultyScreen extends BaseScreen {
         // menu background
         batch.draw(menuBackground, 0, 0, DungeonCrafter.WIDTH, DungeonCrafter.HEIGHT);
 
-        if (mouseDown == false) {
+        if (!mouseDown) {
+            // easy
             if (Gdx.input.getX() < EASY_BUTTON_X + EASY_BUTTON_WIDTH && Gdx.input.getX() > EASY_BUTTON_X && DungeonCrafter.HEIGHT - Gdx.input.getY()
                     < EASY_BUTTON_Y + EASY_BUTTON_HEIGHT && DungeonCrafter.HEIGHT - Gdx.input.getY() > EASY_BUTTON_Y) {
                 batch.draw(easyButtonActive,
@@ -90,7 +94,7 @@ public class DifficultyScreen extends BaseScreen {
                 batch.draw(easyButtonInactive,
                         EASY_BUTTON_X, EASY_BUTTON_Y, EASY_BUTTON_WIDTH, EASY_BUTTON_HEIGHT);
             }
-
+            // MEDIUM
             if (Gdx.input.getX() < MEDIUM_BUTTON_X + MEDIUM_BUTTON_WIDTH && Gdx.input.getX() > MEDIUM_BUTTON_X && DungeonCrafter.HEIGHT - Gdx.input.getY()
                     < MEDIUM_BUTTON_Y + MEDIUM_BUTTON_HEIGHT && DungeonCrafter.HEIGHT - Gdx.input.getY() > MEDIUM_BUTTON_Y) {
                 batch.draw(mediumButtonActive,
@@ -105,7 +109,7 @@ public class DifficultyScreen extends BaseScreen {
                 batch.draw(mediumButtonInactive,
                         MEDIUM_BUTTON_X, MEDIUM_BUTTON_Y, MEDIUM_BUTTON_WIDTH, MEDIUM_BUTTON_HEIGHT);
             }
-
+            // Hard
             if (Gdx.input.getX() < HARD_BUTTON_X + HARD_BUTTON_WIDTH && Gdx.input.getX() > HARD_BUTTON_X && DungeonCrafter.HEIGHT - Gdx.input.getY()
                     < HARD_BUTTON_Y + HARD_BUTTON_HEIGHT && DungeonCrafter.HEIGHT - Gdx.input.getY() > HARD_BUTTON_Y) {
                 batch.draw(hardButtonActive,
@@ -120,20 +124,17 @@ public class DifficultyScreen extends BaseScreen {
                 batch.draw(hardButtonInactive,
                         HARD_BUTTON_X, HARD_BUTTON_Y, HARD_BUTTON_WIDTH, HARD_BUTTON_HEIGHT);
             }
-
-            int settings_x = (DungeonCrafter.WIDTH/2)-100;
-            int back_x = 50;
             // back arrow
-            if(Gdx.input.getX() < settings_x + BACK_BUTTON_WIDTH && Gdx.input.getX() > back_x && DungeonCrafter.HEIGHT - Gdx.input.getY()
+            if(Gdx.input.getX() < BACK_BUTTON_X + BACK_BUTTON_WIDTH && Gdx.input.getX() > BACK_BUTTON_X && DungeonCrafter.HEIGHT - Gdx.input.getY()
                     < BACK_BUTTON_Y + BACK_BUTTON_HEIGHT &&  DungeonCrafter.HEIGHT - Gdx.input.getY() > BACK_BUTTON_Y) {
                 batch.draw(backButtonActive,
-                        back_x,BACK_BUTTON_Y, BACK_BUTTON_WIDTH, BACK_BUTTON_HEIGHT);
+                        BACK_BUTTON_X,BACK_BUTTON_Y, BACK_BUTTON_WIDTH, BACK_BUTTON_HEIGHT);
                 if(Gdx.input.isTouched()){
                     this.dispose();
                     controller.changeScreen(MainMenuScreen.class);}
             } else {
                 batch.draw(backButtonInactive,
-                        back_x,BACK_BUTTON_Y, BACK_BUTTON_WIDTH, BACK_BUTTON_HEIGHT);}
+                        BACK_BUTTON_X,BACK_BUTTON_Y, BACK_BUTTON_WIDTH, BACK_BUTTON_HEIGHT);}
 
         }
         batch.end();
