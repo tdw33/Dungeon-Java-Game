@@ -10,9 +10,12 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.utils.Array;
+import dev.teamcyan.dungeoncrafter.screens.GameOverScreen;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class GEEnemy extends GameElement
 {
@@ -28,6 +31,8 @@ public class GEEnemy extends GameElement
     public State previousState;
     public List<GEProjectile> projectiles;
     public GameModel model;
+    private int health = 100;
+    private boolean isAlive = true;
 
     public GEEnemy (GameModel model)
     {
@@ -109,9 +114,9 @@ public class GEEnemy extends GameElement
         // apply gravity, when no floor
         float delta = Gdx.graphics.getDeltaTime();
 
-        float newYVelocity = this.velocity.getY() + delta * gravity;
+        float newYVelocity = this.velocity.getY() - delta * gravity;
 
-        float newYPosition = this.position.getY() - newYVelocity;
+        float newYPosition = this.position.getY() + newYVelocity;
         TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
         TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-10) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
         TiledMapTileLayer.Cell leftTop = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor((newYPosition+this.getRegion().getRegionHeight()) / layer.getTileHeight()));
@@ -180,5 +185,33 @@ public class GEEnemy extends GameElement
         this.projectiles.removeAll(projectilesToRemove);
 
         return this.projectiles;
+    }
+
+    public int getHealth() {
+        return this.health;
+    }
+
+    public void decrementHealth(int damage) {
+        this.health -= damage;
+        if (this.health <= 0) {
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    isAlive = false;
+                }
+            }, 2000);
+
+
+        }
+    }
+
+    public void incrementHealth(int armour) {
+
+        this.health = this.health+armour > 200 ? 200 : this.health+armour;
+    }
+
+    public boolean isAlive() {
+        return this.isAlive;
     }
 }

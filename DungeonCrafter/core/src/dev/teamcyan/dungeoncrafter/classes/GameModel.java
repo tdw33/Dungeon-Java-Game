@@ -3,12 +3,15 @@ package dev.teamcyan.dungeoncrafter.classes;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameModel {
     private GMap map;
     private boolean active = false;
     private GEPlayer player;
     private GEPebble pebble;
-    private GEEnemy enemy;
+    private List<GEEnemy> enemies = new ArrayList<GEEnemy>();
     private GESpeech speech;
 
     private final String MAPNAME = "tile/TestingMap.tmx";
@@ -28,7 +31,7 @@ public class GameModel {
         this.map = new GMap(controller.getModel(), MAPNAME);
         this.player = new GEPlayer(this, controller);
         this.pebble = new GEPebble(this);
-        this.enemy = new GEEnemy(this);
+        this.enemies.add(new GEEnemy(this));
         this.speech = new GESpeech(this);
         this.active = true;
         camera = new OrthographicCamera();
@@ -43,8 +46,8 @@ public class GameModel {
         this.pebble.getPosition().setX(position_x+50);
         this.pebble.getPosition().setY(position_y+50);
 
-        this.enemy.getPosition().setX(position_x+20);
-        this.enemy.getPosition().setY(position_y+20);
+        this.enemies.get(0).getPosition().setX(position_x+20);
+        this.enemies.get(0).getPosition().setY(position_y+20);
     }
 
     public void dispose() 
@@ -67,8 +70,8 @@ public class GameModel {
         return pebble;
     }
 
-    public GEEnemy getEnemy() {
-        return enemy;
+    public List<GEEnemy> getEnemies() {
+        return this.enemies;
     }
     public GESpeech getSpeech(){ return speech; }
 
