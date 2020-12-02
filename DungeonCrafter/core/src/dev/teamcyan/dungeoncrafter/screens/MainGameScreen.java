@@ -194,7 +194,8 @@ public class MainGameScreen extends BaseScreen {
 
     // Loop warp sound effect when over antigravity background
     TiledMapTile currentBackgroundTile = model.getMap().getBackgroundTile
-            (new Pos(model.getPlayer().getPosition().getX(), model.getPlayer().getPosition().getY()));
+            (new Pos(model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+                    model.getPlayer().getPosition().getY()));
 
     if(currentBackgroundTile.getProperties().get("inverseGravity") != null)
       controller.audioManager.antiGrav("play");
