@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.scenes.scene2d.Event;
@@ -189,6 +190,16 @@ public class MainGameScreen extends BaseScreen {
     TiledMapTileLayer.Cell curCell = model.getMap().getBlock
             (new Pos(model.getPlayer().getPosition().getX(),
                     model.getPlayer().getPosition().getY()));
+
+
+    // Loop warp sound effect when over antigravity background
+    TiledMapTile currentBackgroundTile = model.getMap().getBackgroundTile
+            (new Pos(model.getPlayer().getPosition().getX(), model.getPlayer().getPosition().getY()));
+
+    if(currentBackgroundTile.getProperties().get("inverseGravity") != null)
+      controller.audioManager.antiGrav("play");
+    else
+      controller.audioManager.antiGrav("stop");
 
     boolean isBroken = false;
     /**
