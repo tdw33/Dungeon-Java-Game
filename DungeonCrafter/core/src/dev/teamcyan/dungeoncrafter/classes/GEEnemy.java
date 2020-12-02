@@ -219,7 +219,7 @@ public class GEEnemy extends GameElement
                 public void run() {
                     isAlive = false;
                 }
-            }, 2000);
+            }, 500);
 
 
         }

@@ -61,13 +61,15 @@ public class GEPlayer extends GameElement
   public float stateTimer = 0;
   public State currentState;
   public State previousState;
-  private int health = 300;
+  private int health = 100;
   private int stone = 0;
   private int iron = 0;
   private int dirt = 0;
   private int gold = 0;
 
   private BLOCK currentCraftingBlock = BLOCK.DIRT;
+
+  private float attackTimer = 0;
 
   public GEPlayer (GameModel model, DungeonCrafter controller) {
     this.controller = controller;
@@ -516,6 +518,19 @@ public class GEPlayer extends GameElement
         region = goldCharMineD.getKeyFrame(stateTimer, true);
       }
     }else if (this.currentState == State.ATTACKR){
+      this.attackTimer += Gdx.graphics.getDeltaTime();
+      if (this.attackTimer > 0.9) {
+        for (GEEnemy e : model.getEnemies()) {
+          if (e.isAlive() && this.getDistance(e.getPosition()) < 50 && e.getPosition().getX() > position.getX()){
+            if (e.getClass() == GEBoss.class) {
+              e.decrementHealth(10);
+            } else {
+              e.decrementHealth(20);
+            }
+          }
+        }
+        this.attackTimer = 0;
+      }
       if(this.health <= 100){
         region = charAttackR.getKeyFrame(stateTimer, true);
       } else if (this.health <= 200) {
@@ -524,6 +539,15 @@ public class GEPlayer extends GameElement
         region = goldAttackR.getKeyFrame(stateTimer, true);
       }
     }else if (this.currentState == State.ATTACKL){
+      this.attackTimer += Gdx.graphics.getDeltaTime();
+      if (this.attackTimer > 0.9) {
+        for (GEEnemy e : model.getEnemies()) {
+          if (e.isAlive() && this.getDistance(e.getPosition()) < 50 && e.getPosition().getX() < position.getX()){
+            e.decrementHealth(20);
+          }
+        }
+        this.attackTimer = 0;
+      }
       if(this.health <= 100){
         region = charAttackL.getKeyFrame(stateTimer, true);
       } else if (this.health <= 200) {
@@ -550,6 +574,10 @@ public class GEPlayer extends GameElement
     }
 
     previousState = currentState;
+  }
+
+  private double getDistance(Pos pos) {
+    return Math.sqrt(Math.pow(pos.getX()-this.position.getX(), 2)+Math.pow(pos.getY()-this.position.getY(), 2));
   }
 
   public TextureRegion getRegion(){

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GEBoss extends GameElement
+public class GEBoss extends GEEnemy
 {
     public static final float ACCELERATION = (float) 2.0;
 
@@ -33,9 +33,11 @@ public class GEBoss extends GameElement
     public GameModel model;
     private int health = 100;
     private boolean isAlive = true;
+    private float attackTimer = 0;
 
     public GEBoss (GameModel model)
     {
+        super(model);
         this.model = model;
         this.getype = GEType.PLAYER;
         this.velocity = new Velocity(0,0);
@@ -175,6 +177,13 @@ public class GEBoss extends GameElement
         } else if (this.currentState == State.RUNNINGR){
             region = bossWalkR.getKeyFrame(stateTimer, true);
         } else if (this.currentState == State.ATTACKL){
+            this.attackTimer += Gdx.graphics.getDeltaTime();
+            if (this.attackTimer > 1.2) {
+                if (this.getDistance(model.getPlayer().getPosition()) < 70 ){
+                    model.getPlayer().decrementHealth(5);
+                }
+                this.attackTimer = 0;
+            }
             region = bossAttackL.getKeyFrame(stateTimer, true);
         } else if (this.currentState == State.ATTACKR){
             region = bossAttackR.getKeyFrame(stateTimer, true);
@@ -223,10 +232,14 @@ public class GEBoss extends GameElement
                 public void run() {
                     isAlive = false;
                 }
-            }, 2000);
+            }, 500);
 
 
         }
+    }
+
+    private double getDistance(Pos pos) {
+        return Math.sqrt(Math.pow(pos.getX()-this.position.getX(), 2)+Math.pow(pos.getY()-this.position.getY(), 2));
     }
 
     public void incrementHealth(int armour) {

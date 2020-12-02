@@ -28,6 +28,7 @@ public class MainGameScreen extends BaseScreen {
   SpriteBatch batch = new SpriteBatch();
   SpriteBatch hud = new SpriteBatch();
   private ShapeRenderer shapeRenderer;
+  private ShapeRenderer cameraShapeRenderer;
 
   boolean movingRight = false;
   boolean movingLeft = false;
@@ -80,6 +81,7 @@ public class MainGameScreen extends BaseScreen {
     this.model = model;
 
     shapeRenderer = new ShapeRenderer();
+    cameraShapeRenderer = new ShapeRenderer();
 
     final Label.LabelStyle style = new Label.LabelStyle();
     timerStyle = new Label.LabelStyle();
@@ -282,10 +284,6 @@ public class MainGameScreen extends BaseScreen {
       }
     }
 
-    model.getBoss().setRegion();
-    model.getBoss().setX(layer, model.getPlayer().getPosition());
-    model.getBoss().setY(layer);
-
     model.getMap().getMapRenderer().setView(model.getCamera());
     model.getMap().getMapRenderer().render();
     batch.setProjectionMatrix(model.getCamera().combined);
@@ -327,16 +325,15 @@ public class MainGameScreen extends BaseScreen {
     for (GEEnemy enemy : model.getEnemies()) {
       if (enemy.isAlive()) {
         batch.draw(enemy.getRegion(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getRegion().getRegionWidth(), enemy.getRegion().getRegionHeight());
-      }
-      List<GEProjectile> projectiles = enemy.getProjectiles(layer, player.getPosition());
-      for (GEProjectile t : projectiles) {
-        batch.draw(t.getTexture(), t.getPosition().getX(), t.getPosition().getY(), 16, 2, t.getTexture().getWidth(), t.getTexture().getHeight(), 1, 1, (float) t.getAngle(), 0, 0, 35, 5, false, false);
+
+        if (enemy.getClass() == GEEnemy.class) {
+          List<GEProjectile> projectiles = enemy.getProjectiles(layer, player.getPosition());
+          for (GEProjectile t : projectiles) {
+            batch.draw(t.getTexture(), t.getPosition().getX(), t.getPosition().getY(), 16, 2, t.getTexture().getWidth(), t.getTexture().getHeight(), 1, 1, (float) t.getAngle(), 0, 0, 35, 5, false, false);
+          }
+        }
       }
     }
-
-    GEBoss boss = model.getBoss();
-    batch.draw(boss.getRegion(), boss.getPosition().getX(), boss.getPosition().getY(), boss.getRegion().getRegionWidth(),boss.getRegion().getRegionHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
-
 
     GESpeech speech = model.getSpeech();
     if(speech.isSpeaking()) {
@@ -358,8 +355,20 @@ public class MainGameScreen extends BaseScreen {
     batch.end();
     model.getCamera().update();
 
+    //enemy healthbar
+    cameraShapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+    cameraShapeRenderer.setProjectionMatrix(this.model.getCamera().combined);
+    for (GEEnemy enemy : model.getEnemies()) {
+      if (enemy.isAlive()) {
+        cameraShapeRenderer.setColor(Color.RED);
+        cameraShapeRenderer.rect(enemy.getPosition().getX() - 20, enemy.getPosition().getY() + 60, enemy.getHealth(), 7);
+        cameraShapeRenderer.setColor(Color.WHITE);
+        cameraShapeRenderer.rect(enemy.getPosition().getX() - 20 + enemy.getHealth(), enemy.getPosition().getY() + 60, 100 - enemy.getHealth(), 7);
+      }
+    }
+    cameraShapeRenderer.end();
 
-    // Play next song when previous finishes
+        // Play next song when previous finishes
       //if(controller.audioManager.ambientMusic.get(controller.audioManager.curSong).isPlaying() == false){
       //  controller.audioManager.curSong =  (controller.audioManager.curSong + 1) %
       //          controller.audioManager.ambientMusic.size();
@@ -369,8 +378,8 @@ public class MainGameScreen extends BaseScreen {
 
 
     // health bar
-    float goldArmour = model.getPlayer().getHealth() == 300 ? 100 : model.getPlayer().getHealth() % 100;
-    float ironArmour = model.getPlayer().getHealth()-goldArmour == 200 ? 100 : model.getPlayer().getHealth()-goldArmour % 100;
+    float goldArmour = model.getPlayer().getHealth() == 300 ? 100 : (model.getPlayer().getHealth() > 200 ? model.getPlayer().getHealth() % 100 : 0);
+    float ironArmour = model.getPlayer().getHealth()-goldArmour == 200 ? 100 : (model.getPlayer().getHealth()-goldArmour > 100 ? model.getPlayer().getHealth()-goldArmour % 100 : 0);
     float health = (model.getPlayer().getHealth()-goldArmour-ironArmour)/100f;
 
     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
@@ -378,14 +387,10 @@ public class MainGameScreen extends BaseScreen {
     shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y, HEALTH_BAR_WIDTH*health, HEALTH_BAR_HEIGHT);
     shapeRenderer.setColor(Color.WHITE);
     shapeRenderer.rect(HEALTH_BAR_X+HEALTH_BAR_WIDTH*health, HEALTH_BAR_Y, HEALTH_BAR_WIDTH-(HEALTH_BAR_WIDTH*health), HEALTH_BAR_HEIGHT);
-    shapeRenderer.end();
     //ironArmour
-    shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
     shapeRenderer.setColor(Color.GRAY);
     shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y-HEALTH_BAR_HEIGHT, HEALTH_BAR_WIDTH*ironArmour/100f, HEALTH_BAR_HEIGHT);
-    shapeRenderer.end();
     //goldArmour
-    shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
     shapeRenderer.setColor(Color.GOLD);
     shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y-HEALTH_BAR_HEIGHT*2, HEALTH_BAR_WIDTH*goldArmour/100f, HEALTH_BAR_HEIGHT);
     shapeRenderer.end();
