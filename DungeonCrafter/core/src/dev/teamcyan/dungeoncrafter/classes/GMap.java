@@ -52,12 +52,9 @@ public class GMap extends GameElement {
     this.mapPixelHeight = mapHeight * tileHeight;
     this.mapRenderer = new OrthogonalTiledMapRenderer(map);
     MapLayers mapLayers = this.map.getLayers();
-
     this.terrainLayer = (TiledMapTileLayer) mapLayers.get("environment_layer");
     this.backgroundLayer = (TiledMapTileLayer) mapLayers.get("background_layer");
-
     this.tileSet = map.getTileSets().getTileSet("default_dirt");
-
   }
 
 
@@ -116,7 +113,6 @@ public class GMap extends GameElement {
     }
   }
 
-
   private boolean tileAttack(TilePos tPos, TiledMapTileLayer layer) {
     int attack = 5;
     if (tileExists(tPos, layer)) {
@@ -140,20 +136,27 @@ public class GMap extends GameElement {
    **/
   public boolean interactBlockRight(Pos pos){
     boolean broken = false;
+
     TilePos tPos1 = convertToTilePos(pos);
     tPos1.setX(tPos1.getX() + 1);
-    tPos1.setY(tPos1.getY() - 1);
+    tPos1.setY(tPos1.getY());
     broken = broken | tileAttack(tPos1, terrainLayer);
 
     TilePos tPos2 = convertToTilePos(pos);
-    tPos2.setX(tPos2.getX() + 1 );
-    tPos2.setY(tPos2.getY());
+    tPos2.setX(tPos2.getX() + 1);
+    tPos2.setY(tPos2.getY() + 1);
     broken = broken | tileAttack(tPos2, terrainLayer);
 
     TilePos tPos3 = convertToTilePos(pos);
-    tPos3.setX(tPos3.getX() + 1);
-    tPos3.setY(tPos3.getY() + 1);
+    tPos3.setX(tPos3.getX() + 2);
+    tPos3.setY(tPos3.getY());
     broken = broken | tileAttack(tPos3, terrainLayer);
+
+    TilePos tPos4 = convertToTilePos(pos);
+    tPos4.setX(tPos4.getX() + 2);
+    tPos4.setY(tPos4.getY() + 1);
+    broken = broken | tileAttack(tPos4, terrainLayer);
+
     return broken;
   }
 
@@ -162,20 +165,27 @@ public class GMap extends GameElement {
    **/
   public boolean interactBlockLeft(Pos pos){
     boolean broken = false;
+
     TilePos tPos1 = convertToTilePos(pos);
     tPos1.setX(tPos1.getX() - 1);
-    tPos1.setY(tPos1.getY() - 1);
+    tPos1.setY(tPos1.getY());
     broken = broken | tileAttack(tPos1, terrainLayer);
 
     TilePos tPos2 = convertToTilePos(pos);
     tPos2.setX(tPos2.getX() - 1);
-    tPos2.setY(tPos2.getY());
+    tPos2.setY(tPos2.getY() + 1);
     broken = broken | tileAttack(tPos2, terrainLayer);
 
     TilePos tPos3 = convertToTilePos(pos);
-    tPos3.setX(tPos3.getX() - 1);
-    tPos3.setY(tPos3.getY() + 1);
+    tPos3.setX(tPos3.getX() - 2);
+    tPos3.setY(tPos3.getY());
     broken = broken | tileAttack(tPos3, terrainLayer);
+
+    TilePos tPos4 = convertToTilePos(pos);
+    tPos4.setX(tPos4.getX() - 2);
+    tPos4.setY(tPos4.getY() + 1);
+    broken = broken | tileAttack(tPos4, terrainLayer);
+
     return broken;
   }
 
@@ -184,6 +194,7 @@ public class GMap extends GameElement {
    **/
   public boolean interactBlockCentre(Pos pos){
     boolean broken = false;
+
     TilePos tPos1 = convertToTilePos(pos);
     tPos1.setX(tPos1.getX());
     tPos1.setY(tPos1.getY() - 1);
@@ -198,6 +209,17 @@ public class GMap extends GameElement {
     tPos3.setX(tPos3.getX());
     tPos3.setY(tPos3.getY() + 1);
     broken = broken |tileAttack(tPos3, terrainLayer);
+
+    TilePos tPos4 = convertToTilePos(pos);
+    tPos4.setX(tPos4.getX() - 1);
+    tPos4.setY(tPos4.getY() - 1);
+    broken = broken | tileAttack(tPos4, terrainLayer);
+
+    TilePos tPos5 = convertToTilePos(pos);
+    tPos5.setX(tPos5.getX() + 1);
+    tPos5.setY(tPos5.getY() - 1);
+    broken = broken | tileAttack(tPos5, terrainLayer);
+
     return broken;
   }
 

@@ -262,9 +262,14 @@ public class MainGameScreen extends BaseScreen {
     model.getPebble().setX(layer, model.getPlayer().getPosition());
     model.getPebble().setY(layer);
 
-    model.getEnemy().setRegion();
-    model.getEnemy().setX(layer, model.getPlayer().getPosition());
-    model.getEnemy().setY(layer);
+    for (GEEnemy enemy : model.getEnemies()) {
+      if (enemy.isAlive()) {
+        enemy.setRegion();
+        enemy.setX(layer, model.getPlayer().getPosition());
+        enemy.setY(layer);
+      }
+    }
+
 
     model.getMap().getMapRenderer().setView(model.getCamera());
     model.getMap().getMapRenderer().render();
@@ -304,8 +309,15 @@ public class MainGameScreen extends BaseScreen {
     GEPebble pebble = model.getPebble();
     batch.draw(pebble.getRegion(), pebble.getPosition().getX(), pebble.getPosition().getY(), 47,47); // this will be diffrent when you have nummbers at end eg player_1, player_2
 
-    GEEnemy enemy = model.getEnemy();
-    batch.draw(enemy.getRegion(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getRegion().getRegionWidth(), enemy.getRegion().getRegionHeight());
+    for (GEEnemy enemy : model.getEnemies()) {
+      if (enemy.isAlive()) {
+        batch.draw(enemy.getRegion(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getRegion().getRegionWidth(), enemy.getRegion().getRegionHeight());
+      }
+      List<GEProjectile> projectiles = enemy.getProjectiles(layer, player.getPosition());
+      for (GEProjectile t : projectiles) {
+        batch.draw(t.getTexture(), t.getPosition().getX(), t.getPosition().getY(), 16, 2, t.getTexture().getWidth(), t.getTexture().getHeight(), 1, 1, (float) t.getAngle(), 0, 0, 35, 5, false, false);
+      }
+    }
 
 
     GESpeech speech = model.getSpeech();
@@ -313,10 +325,7 @@ public class MainGameScreen extends BaseScreen {
       batch.draw(speech.getSpeech(), pebble.getPosition().getX() + speech.getSpeechX(), pebble.getPosition().getY() + speech.getSpeechY(), speech.getSpeechWidth(), speech.getSpeechHeight());
     }
 
-    List<GEProjectile> projectiles = enemy.getProjectiles(layer, player.getPosition());
-    for (GEProjectile t : projectiles) {
-      batch.draw(t.getTexture(), t.getPosition().getX(), t.getPosition().getY(), 16, 2, t.getTexture().getWidth(), t.getTexture().getHeight(), 1, 1, (float) t.getAngle(), 0, 0, 35, 5, false, false);
-    }
+
 
 
     // Configure fading colour of timer
