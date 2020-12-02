@@ -11,6 +11,7 @@ public class GameModel {
     private boolean active = false;
     private GEPlayer player;
     private GEPebble pebble;
+    private GEBoss boss;
     private List<GEEnemy> enemies = new ArrayList<GEEnemy>();
     private GESpeech speech;
 
@@ -32,6 +33,7 @@ public class GameModel {
         this.player = new GEPlayer(this, controller);
         this.pebble = new GEPebble(this);
         this.enemies.add(new GEEnemy(this));
+        this.boss = (new GEBoss(this));
         this.speech = new GESpeech(this);
         this.active = true;
         camera = new OrthographicCamera();
@@ -48,6 +50,9 @@ public class GameModel {
 
         this.enemies.get(0).getPosition().setX(position_x+20);
         this.enemies.get(0).getPosition().setY(position_y+20);
+
+        this.boss.getPosition().setX(position_x+1750);
+        this.boss.getPosition().setY(position_y+30);
     }
 
     public void dispose() 
@@ -75,7 +80,10 @@ public class GameModel {
     }
     public GESpeech getSpeech(){ return speech; }
 
-
+    public GEBoss getBoss()
+    {
+        return this.boss;
+    }
 
     public boolean isActive()
     {

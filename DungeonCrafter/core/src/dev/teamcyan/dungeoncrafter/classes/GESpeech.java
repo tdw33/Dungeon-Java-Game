@@ -14,8 +14,11 @@ public class GESpeech extends GameElement {
     private float pebbleY;
     private Texture pebbleIntro;
     private Texture pebbleMove;
-    private Texture pebbleInteract;
+    private Texture pebbleDestroy;
     private Texture pebbleIntro2;
+    private Texture pebblePlace;
+    private Texture pebbleAttack;
+    private Texture pebbleGather;
     private Texture speech;
     private float X;
     private float Y;
@@ -34,7 +37,9 @@ public class GESpeech extends GameElement {
         this.pebbleIntro = new Texture("speech/pebble_intro.png");
         this.pebbleMove = new Texture("speech/movement_speech.png");
         this.pebbleIntro2 = new Texture("speech/pebble_notime.png");
-        this.pebbleInteract = new Texture("speech/interaction_speech.png");
+        this.pebbleDestroy = new Texture("speech/pebble_destroy.png");
+        this.pebblePlace = new Texture("speech/pebble_place.png");
+        this.pebbleGather = new Texture("speech/pebble_gather.png");
         this.speech = pebbleIntro;
         this.X = 40;
         this.Y = 40;
@@ -51,12 +56,17 @@ public class GESpeech extends GameElement {
             this.Y = 30;
             this.width = 340;
             this.height = 70;
-        } else if(this.speech == pebbleInteract){
+        } else if(this.speech == pebbleDestroy || this.speech == pebblePlace ){
             this.X = -70;
             this.Y = 30;
             this.width = 340;
             this.height = 70;
-        } else {
+        } else if(this.speech == pebbleGather){
+            this.X = -90;
+            this.Y = 30;
+            this.width = 400;
+            this.height = 100;
+        }else {
             this.X = -70;
             this.Y = 30;
             this.width = 80;
@@ -77,8 +87,14 @@ public class GESpeech extends GameElement {
             this.speech = pebbleMove;
         } else if(stateTimer > 23 && stateTimer < 28){
             this.speaking = true;
-            this.speech = pebbleInteract;
-        } else{this.speaking = false;}
+            this.speech = pebbleDestroy;
+        } else if(stateTimer > 28 && stateTimer < 34){
+            this.speaking = true;
+            this.speech = pebblePlace;
+        }else if(stateTimer > 34 && stateTimer < 43){
+            this.speaking = true;
+            this.speech = pebbleGather;
+        }else{this.speaking = false;}
     }
 
 

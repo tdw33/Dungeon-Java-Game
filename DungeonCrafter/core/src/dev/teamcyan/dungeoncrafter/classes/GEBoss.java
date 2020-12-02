@@ -13,17 +13,18 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GEEnemy extends GameElement
+public class GEBoss extends GameElement
 {
     public static final float ACCELERATION = (float) 2.0;
 
     Velocity velocity;
     private TextureRegion region;
-    private Animation<TextureRegion> enemyShootR;
-    private Animation<TextureRegion> enemyShootL;
-    private Animation<TextureRegion> enemyWalkL;
-    private Animation<TextureRegion> enemyWalkR;
-    private Texture enemySpriteSheet;
+    private Animation<TextureRegion> bossAttackR;
+    private Animation<TextureRegion> bossAttackL;
+    private Animation<TextureRegion> bossWalkL;
+    private Animation<TextureRegion> bossWalkR;
+    private Texture bossSpriteSheet;
+    private TextureRegion bossStand;
     public float stateTimer = 0;
     public float projectileTimer = 0;
     public State currentState;
@@ -33,7 +34,7 @@ public class GEEnemy extends GameElement
     private int health = 100;
     private boolean isAlive = true;
 
-    public GEEnemy (GameModel model)
+    public GEBoss (GameModel model)
     {
         this.model = model;
         this.getype = GEType.PLAYER;
@@ -42,31 +43,34 @@ public class GEEnemy extends GameElement
         this.currentState = State.STANDING;
         this.previousState = State.STANDING;
         this.projectiles = new ArrayList<GEProjectile>();
-        this.enemySpriteSheet = new Texture("sprites/enemy/enemyArcher.png");
+        this.bossSpriteSheet = new Texture("sprites/enemy/boss.png");
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
-        for (int i = 0; i < 13; i++) {
-            frames.add(new TextureRegion(enemySpriteSheet, i*64, 1097, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+
+        this.bossStand = new TextureRegion(bossSpriteSheet, 0, 649, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12);
+
+        for (int i = 5; i > 0; i--) {
+            frames.add(new TextureRegion(this.bossSpriteSheet, i*64, 969, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
         }
-        this.enemyShootL = new Animation(0.35f, frames);
+        this.bossAttackR = new Animation(0.25f, frames);
         frames.clear();
 
-        for (int i = 0; i < 13; i++) {
-            frames.add(new TextureRegion(enemySpriteSheet, i*64, 1225, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+        for (int i = 5; i > 0; i--) {
+            frames.add(new TextureRegion(this.bossSpriteSheet, i*64, 843, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
         }
-        this.enemyShootR = new Animation(0.35f, frames);
+        this.bossAttackL = new Animation(0.25f, frames);
         frames.clear();
 
-        for (int i = 0; i < 13; i++) {
-            frames.add(new TextureRegion(enemySpriteSheet, i*64, 587, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+        for (int i = 0; i < 9; i++) {
+            frames.add(new TextureRegion(bossSpriteSheet, i*64, 587, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
         }
-        this.enemyWalkL = new Animation(0.15f, frames);
+        this.bossWalkL = new Animation(0.15f, frames);
         frames.clear();
 
-        for (int i = 0; i < 13; i++) {
-            frames.add(new TextureRegion(enemySpriteSheet, i*64, 713, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+        for (int i = 0; i < 9; i++) {
+            frames.add(new TextureRegion(bossSpriteSheet, i*64, 713, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
         }
-        this.enemyWalkR = new Animation(0.15f, frames);
+        this.bossWalkR = new Animation(0.15f, frames);
         frames.clear();
     }
 
@@ -78,7 +82,7 @@ public class GEEnemy extends GameElement
         double distance = Math.sqrt(Math.pow((playerPosition.getX() - this.position.getX()), 2) + Math.pow((playerPosition.getY() - this.position.getY()), 2));
         if (this.velocity.getY() > 1) {
             newXVelocity = this.velocity.getX();
-        } else if (distance > 300) {
+        } else if (distance > 40) {
             if (playerPosition.getX() > this.position.getX()) {
                 float newV = this.velocity.getX() + this.ACCELERATION * delta;
                 newXVelocity = newV > layer.getTileWidth() ? this.velocity.getX() : newV;
@@ -167,15 +171,15 @@ public class GEEnemy extends GameElement
         stateTimer += Gdx.graphics.getDeltaTime();
 
         if (this.currentState == State.RUNNINGL ){
-            region =enemyWalkL.getKeyFrame(stateTimer, true);;
+            region =bossWalkL.getKeyFrame(stateTimer, true);;
         } else if (this.currentState == State.RUNNINGR){
-            region = enemyWalkR.getKeyFrame(stateTimer, true);
+            region = bossWalkR.getKeyFrame(stateTimer, true);
         } else if (this.currentState == State.ATTACKL){
-            region = enemyShootL.getKeyFrame(stateTimer, true);
+            region = bossAttackL.getKeyFrame(stateTimer, true);
         } else if (this.currentState == State.ATTACKR){
-            region = enemyShootR.getKeyFrame(stateTimer, true);
+            region = bossAttackR.getKeyFrame(stateTimer, true);
         } else {
-            region = enemyShootR.getKeyFrame(stateTimer,true);
+            region = bossStand;
         }
 
         previousState = currentState;

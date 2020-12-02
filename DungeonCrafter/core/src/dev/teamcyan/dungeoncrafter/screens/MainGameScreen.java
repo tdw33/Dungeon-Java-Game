@@ -270,6 +270,9 @@ public class MainGameScreen extends BaseScreen {
       }
     }
 
+    model.getBoss().setRegion();
+    model.getBoss().setX(layer, model.getPlayer().getPosition());
+    model.getBoss().setY(layer);
 
     model.getMap().getMapRenderer().setView(model.getCamera());
     model.getMap().getMapRenderer().render();
@@ -318,6 +321,9 @@ public class MainGameScreen extends BaseScreen {
         batch.draw(t.getTexture(), t.getPosition().getX(), t.getPosition().getY(), 16, 2, t.getTexture().getWidth(), t.getTexture().getHeight(), 1, 1, (float) t.getAngle(), 0, 0, 35, 5, false, false);
       }
     }
+
+    GEBoss boss = model.getBoss();
+    batch.draw(boss.getRegion(), boss.getPosition().getX(), boss.getPosition().getY(), boss.getRegion().getRegionWidth(),boss.getRegion().getRegionHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
 
 
     GESpeech speech = model.getSpeech();
