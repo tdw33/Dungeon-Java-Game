@@ -302,7 +302,7 @@ public class MainGameScreen extends BaseScreen {
         player.getRegion().getRegionHeight()); 
 
     GEPebble pebble = model.getPebble();
-    batch.draw(pebble.getRegion(), pebble.getPosition().getX(), pebble.getPosition().getY(), pebble.getRegion().getRegionWidth(),pebble.getRegion().getRegionHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
+    batch.draw(pebble.getRegion(), pebble.getPosition().getX(), pebble.getPosition().getY(), 47,47); // this will be diffrent when you have nummbers at end eg player_1, player_2
 
     GEEnemy enemy = model.getEnemy();
     batch.draw(enemy.getRegion(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getRegion().getRegionWidth(), enemy.getRegion().getRegionHeight());

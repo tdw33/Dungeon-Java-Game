@@ -47,20 +47,20 @@ public class GESpeech extends GameElement {
 
     public void setPosition(){
         if(this.speech == pebbleIntro || this.speech == pebbleMove || this.speech == pebbleIntro2){
-            this.X = 0;
+            this.X = -70;
             this.Y = 30;
-            this.width = 170;
-            this.height = 35;
+            this.width = 340;
+            this.height = 70;
         } else if(this.speech == pebbleInteract){
-            this.X = 0;
+            this.X = -70;
             this.Y = 30;
-            this.width = 170;
-            this.height = 35;
+            this.width = 340;
+            this.height = 70;
         } else {
-            this.X = 30;
+            this.X = -70;
             this.Y = 30;
-            this.width = 40;
-            this.height = 30;
+            this.width = 80;
+            this.height = 60;
         }
     }
 
