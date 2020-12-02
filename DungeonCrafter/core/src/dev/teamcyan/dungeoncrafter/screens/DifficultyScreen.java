@@ -20,17 +20,17 @@ public class DifficultyScreen extends BaseScreen {
     private static final int EASY_BUTTON_WIDTH = DungeonCrafter.WIDTH / 6;
     private static final int EASY_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 18;
     private static final int EASY_BUTTON_X = DungeonCrafter.WIDTH / 9;
-    private static final int EASY_BUTTON_Y = DungeonCrafter.HEIGHT / 18 * 5;
+    private static final int EASY_BUTTON_Y = DungeonCrafter.HEIGHT / 3;
 
     private static final int MEDIUM_BUTTON_WIDTH = DungeonCrafter.WIDTH / 4;
     private static final int MEDIUM_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 18;
-    private static final int MEDIUM_BUTTON_X = DungeonCrafter.WIDTH / 8*3;
-    private static final int MEDIUM_BUTTON_Y = DungeonCrafter.HEIGHT / 18 * 5;
+    private static final int MEDIUM_BUTTON_X = DungeonCrafter.WIDTH / 8 * 3;
+    private static final int MEDIUM_BUTTON_Y = DungeonCrafter.HEIGHT / 3;
 
     private static final int HARD_BUTTON_WIDTH = DungeonCrafter.WIDTH / 6;
     private static final int HARD_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 18;
-    private static final int HARD_BUTTON_X = DungeonCrafter.WIDTH / 24*17;
-    private static final int HARD_BUTTON_Y = DungeonCrafter.HEIGHT / 18 * 5;
+    private static final int HARD_BUTTON_X = DungeonCrafter.WIDTH / 24 * 17;
+    private static final int HARD_BUTTON_Y = DungeonCrafter.HEIGHT / 3;
 
     private static final int BACK_BUTTON_WIDTH = DungeonCrafter.WIDTH / 6;
     private static final int BACK_BUTTON_HEIGHT = DungeonCrafter.HEIGHT / 18;
