@@ -15,7 +15,7 @@ public class GameModel {
     private List<GEEnemy> enemies = new ArrayList<GEEnemy>();
     private GESpeech speech;
 
-    private final String MAPNAME = "tile/TestingMap.tmx";
+    private final String MAPNAME = "tile/GameMap.tmx";
     private OrthographicCamera camera;
 
     public OrthographicCamera getCamera() {
