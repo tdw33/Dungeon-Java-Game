@@ -20,7 +20,7 @@ public class GEPlayer extends GameElement
 {
   GameModel model;
   DungeonCrafter controller;
-  public enum BLOCK {DIRT, STONE, IRON};
+  public enum BLOCK {DIRT, STONE, IRON, GOLD};
 
   Velocity velocity;
   private TextureRegion region;
@@ -61,10 +61,12 @@ public class GEPlayer extends GameElement
   public float stateTimer = 0;
   public State currentState;
   public State previousState;
-  private int health = 100;
+  private int health = 300;
   private int stone = 0;
   private int iron = 0;
   private int dirt = 0;
+  private int gold = 0;
+
   private BLOCK currentCraftingBlock = BLOCK.DIRT;
 
   public GEPlayer (GameModel model, DungeonCrafter controller) {
@@ -266,6 +268,12 @@ public class GEPlayer extends GameElement
   public void decrementIron(int amount) {
     this.iron = amount > this.iron ? 0 : this.iron-amount;
   }
+  public void incrementGold() {
+    this.gold += 1;
+  }
+  public void decrementGold(int amount) {
+    this.gold = amount > this.iron ? 0 : this.gold-amount;
+  }
   public void incrementStone() {
     this.stone += 1;
   }
@@ -279,6 +287,10 @@ public class GEPlayer extends GameElement
 
   public int getIron() {
     return this.iron;
+  }
+
+  public int getGold() {
+    return this.gold;
   }
 
   public int getStone() {
@@ -310,7 +322,7 @@ public class GEPlayer extends GameElement
 
   public void incrementHealth(int armour) {
 
-    this.health = this.health+armour > 200 ? 200 : this.health+armour;
+    this.health = this.health+armour > 300 ? 300 : this.health+armour;
   }
   public void setName(String spriteName) {
       this.spriteName = spriteName;

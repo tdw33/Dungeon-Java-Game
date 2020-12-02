@@ -357,8 +357,9 @@ public class MainGameScreen extends BaseScreen {
 
 
     // health bar
-    float armour = model.getPlayer().getHealth() == 200 ? 100 : model.getPlayer().getHealth() % 100;
-    float health = (model.getPlayer().getHealth()-armour)/100f;
+    float goldArmour = model.getPlayer().getHealth() == 300 ? 100 : model.getPlayer().getHealth() % 100;
+    float ironArmour = model.getPlayer().getHealth()-goldArmour == 200 ? 100 : model.getPlayer().getHealth()-goldArmour % 100;
+    float health = (model.getPlayer().getHealth()-goldArmour-ironArmour)/100f;
 
     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
     shapeRenderer.setColor(Color.BLUE);
@@ -366,10 +367,15 @@ public class MainGameScreen extends BaseScreen {
     shapeRenderer.setColor(Color.WHITE);
     shapeRenderer.rect(HEALTH_BAR_X+HEALTH_BAR_WIDTH*health, HEALTH_BAR_Y, HEALTH_BAR_WIDTH-(HEALTH_BAR_WIDTH*health), HEALTH_BAR_HEIGHT);
     shapeRenderer.end();
-    //armour
+    //ironArmour
     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
     shapeRenderer.setColor(Color.GRAY);
-    shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y-HEALTH_BAR_HEIGHT, HEALTH_BAR_WIDTH*armour/100f, HEALTH_BAR_HEIGHT);
+    shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y-HEALTH_BAR_HEIGHT, HEALTH_BAR_WIDTH*ironArmour/100f, HEALTH_BAR_HEIGHT);
+    shapeRenderer.end();
+    //goldArmour
+    shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+    shapeRenderer.setColor(Color.GOLD);
+    shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y-HEALTH_BAR_HEIGHT*2, HEALTH_BAR_WIDTH*goldArmour/100f, HEALTH_BAR_HEIGHT);
     shapeRenderer.end();
 
   }
