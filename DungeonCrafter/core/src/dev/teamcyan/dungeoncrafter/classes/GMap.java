@@ -227,29 +227,22 @@ public class GMap extends GameElement {
     TilePos tPos = convertToTilePos(pos);
     TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
     if (model.getPlayer().getCurrentCraftingBlock() == GEPlayer.BLOCK.STONE) {
-      cell.setTile(map.getTileSets().getTileSet("default_stone").getTile(182));
-    } else if (model.getPlayer().getCurrentCraftingBlock() == GEPlayer.BLOCK.IRON) {
-      cell.setTile(map.getTileSets().getTileSet("default_mineral_iron").getTile(345));
+      cell.setTile(map.getTileSets().getTileSet("default_stone").getTile(113));
     } else {
-      cell.setTile(tileSet.getTile(1));
+      cell.setTile(tileSet.getTile(81));
     }
     terrainLayer.setCell(tPos.getX()-1, tPos.getY(), cell);
-    return;
   }
 
   public void setBlockRight(Pos pos){
     TilePos tPos = convertToTilePos(pos);
     TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
     if (model.getPlayer().getCurrentCraftingBlock() == GEPlayer.BLOCK.STONE) {
-      cell.setTile(map.getTileSets().getTileSet("default_stone").getTile(182));
-    } else if (model.getPlayer().getCurrentCraftingBlock() == GEPlayer.BLOCK.IRON) {
-      cell.setTile(map.getTileSets().getTileSet("default_mineral_iron").getTile(345));
+      cell.setTile(map.getTileSets().getTileSet("default_stone").getTile(113));
     } else {
-      cell.setTile(map.getTileSets().getTileSet("default_dirt").getTile(1));
+      cell.setTile(map.getTileSets().getTileSet("default_dirt").getTile(81));
     }
-
     terrainLayer.setCell(tPos.getX()+1, tPos.getY(), cell);
-    return;
   }
 
 ///////////////////////////////////////////////////////////////////////////////
