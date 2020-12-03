@@ -192,6 +192,45 @@ public class GMap extends GameElement {
   /**
    * Digs to the centre 3 squares
    **/
+  public boolean interactBlockUp(Pos pos){
+    boolean broken = false;
+
+    TilePos tPos1 = convertToTilePos(pos);
+    tPos1.setX(tPos1.getX() + 1);
+    tPos1.setY(tPos1.getY() - 1);
+    broken = broken | tileAttack(tPos1, terrainLayer);
+
+    TilePos tPos2 = convertToTilePos(pos);
+    tPos2.setX(tPos2.getX() + 1);
+    tPos2.setY(tPos2.getY() );
+    broken = broken |tileAttack(tPos2, terrainLayer);
+
+    TilePos tPos3 = convertToTilePos(pos);
+    tPos3.setX(tPos3.getX() + 1);
+    tPos3.setY(tPos3.getY() + 1);
+    broken = broken |tileAttack(tPos3, terrainLayer);
+
+    TilePos tPos4 = convertToTilePos(pos);
+    tPos4.setX(tPos4.getX() + 2);
+    tPos4.setY(tPos4.getY());
+    broken = broken | tileAttack(tPos4, terrainLayer);
+
+    TilePos tPos5 = convertToTilePos(pos);
+    tPos5.setX(tPos5.getX() + 2);
+    tPos5.setY(tPos5.getY() - 1);
+    broken = broken | tileAttack(tPos5, terrainLayer);
+
+    TilePos tPos6 = convertToTilePos(pos);
+    tPos6.setX(tPos6.getX() + 2);
+    tPos6.setY(tPos6.getY() + 1);
+    broken = broken | tileAttack(tPos6, terrainLayer);
+
+    return broken;
+  }
+
+  /**
+   * Digs to the centre 3 squares
+   **/
   public boolean interactBlockCentre(Pos pos){
     boolean broken = false;
 
