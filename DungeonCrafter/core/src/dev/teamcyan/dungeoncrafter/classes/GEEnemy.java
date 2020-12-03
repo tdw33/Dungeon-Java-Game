@@ -23,6 +23,7 @@ public class GEEnemy extends GameElement
     private Animation<TextureRegion> enemyShootL;
     private Animation<TextureRegion> enemyWalkL;
     private Animation<TextureRegion> enemyWalkR;
+    private Animation<TextureRegion> enemyDeath;
     private Texture enemySpriteSheet;
     public float stateTimer = 0;
     public float projectileTimer = 0;
@@ -57,16 +58,22 @@ public class GEEnemy extends GameElement
         this.enemyShootR = new Animation(0.35f, frames);
         frames.clear();
 
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 9; i++) {
             frames.add(new TextureRegion(enemySpriteSheet, i*64, 587, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
         }
         this.enemyWalkL = new Animation(0.15f, frames);
         frames.clear();
 
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 9; i++) {
             frames.add(new TextureRegion(enemySpriteSheet, i*64, 713, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
         }
         this.enemyWalkR = new Animation(0.15f, frames);
+        frames.clear();
+
+        for (int i = 0; i < 6; i++) {
+            frames.add(new TextureRegion(this.enemySpriteSheet, i*64, 1289, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+        }
+        this.enemyDeath = new Animation(0.4f, frames);
         frames.clear();
     }
 
@@ -166,7 +173,9 @@ public class GEEnemy extends GameElement
 
         stateTimer += Gdx.graphics.getDeltaTime();
 
-        if (this.currentState == State.RUNNINGL ){
+        if (this.health <= 0){
+            region = enemyDeath.getKeyFrame(stateTimer, true);
+        } else if (this.currentState == State.RUNNINGL ){
             region =enemyWalkL.getKeyFrame(stateTimer, true);;
         } else if (this.currentState == State.RUNNINGR){
             region = enemyWalkR.getKeyFrame(stateTimer, true);
@@ -219,7 +228,7 @@ public class GEEnemy extends GameElement
                 public void run() {
                     isAlive = false;
                 }
-            }, 500);
+            }, 1000);
 
 
         }
