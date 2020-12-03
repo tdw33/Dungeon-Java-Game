@@ -13,6 +13,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 
 public class GMap extends GameElement {
@@ -100,10 +101,12 @@ public class GMap extends GameElement {
   private void tileDestroy(TilePos tPos, TiledMapTileLayer layer) {
     if (tileExists(tPos, layer)) {
       String cellType = layer.getCell(tPos.getX(), tPos.getY()).getTile().getTextureRegion().getTexture().toString();
-      if (cellType == "stone") {
+      if (Objects.equals(cellType,"sprites/rocks/default_stone.png")) {
         this.model.getPlayer().incrementStone();
-      } else if (cellType == "iron") {
+      } else if (Objects.equals(cellType,"sprites/precious/default_steel_block.png")) {
         this.model.getPlayer().incrementIron();
+      } else if (Objects.equals(cellType,"sprites/precious/default_gold_block.png")) {
+        this.model.getPlayer().incrementGold();
       } else {
         this.model.getPlayer().incrementDirt();
       }
