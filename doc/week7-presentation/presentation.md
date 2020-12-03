@@ -1,43 +1,10 @@
-# Presentation 6
+# Presentation 7
 
 ## Team Cyan
 |  |          |      |
 |-|-|-|
-| 27   |	November	|	2020	|
+| 04  |	December	|	2020	|
 # From previous presentation
-
-- Documentation preview
-
-![ ](./imgs/docWeek5.png)
-
-- Animation added to characters
-
-![ ](./imgs/animations.gif)
-
-- Implemented Digging and map interaction 
-
-  
-
-![ ](./imgs/dignplace.gif)
-
-- Countdown timer and time dependent zoom
-
-![ ](./imgs/timer.gif)
-
-- Implemented arrow projectiles 
-
-![ ](./imgs/arrow.gif)
-
-- Updated Menu Screen 
-
-![ ](./imgs/menuscreen.png)
-
-# Curent Status 
-![ ](./imgs/goal.png)
-
-
-
-# Updates
 
 - Markdown => PDF implemented
 ![ ](./imgs/pdfDocumentation.png)
@@ -77,12 +44,37 @@
 
 ![ ](./imgs/diffScreen.png)
 
+# Curent Status 
+![ ](./imgs/project.png)
+
+# Updates - to be demo'ed on the actual game
+
+- Documentation
+- Improved digging
+- Final map (beta version)
+- Enemy Health
+- Final Boss
+- Inventory:
+  - blocks are counting
+- Sound:
+  - Notification
+  - Reverse Gravity
+  - Ambient noises
+  - Digging noises
+  - Jump noise
+- Speech bubble improved
+- Game .jar
+- Mennu Screens improved
+- Fonts updated
+- Player attacks
+- Death animations for every character
+
 
 # Future
 
-- Fix underlying issue
-- Testing
-- Final map
-- Death
-- Armour updates
-- End Credits
+- Java docs documentation
+- Documentation part 2
+- Further testing
+- Video presentation
+- Credits
+- Bossfight triggering end game
