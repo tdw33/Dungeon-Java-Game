@@ -34,7 +34,7 @@ public class AudioManager {
         this.tick = Gdx.audio.newSound(Gdx.files.internal("sounds/tick.wav"));
         this.ambients = Gdx.audio.newMusic(Gdx.files.internal("sounds/ambients.ogg"));
         this.alert = Gdx.audio.newSound(Gdx.files.internal("sounds/notify.ogg"));
-        this.jump = Gdx.audio.newSound(Gdx.files.internal("sounds/jump.wav"));
+        this.jump = Gdx.audio.newSound(Gdx.files.internal("sounds/jump2.wav"));
         this.warp = Gdx.audio.newSound(Gdx.files.internal("sounds/antigrav.wav"));
 
 

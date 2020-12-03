@@ -154,24 +154,28 @@ public class MainGameScreen extends BaseScreen {
   @Override
   public void init() {
     totTime = super.controller.totTime;
-    timeLeft = totTime;
     super.controller.audioManager.startMusic(super.controller.audioManager.ambients, 20);
+    super.controller.audioManager.stopMusic(super.controller.audioManager.menuSound);
 // Create countdown variable for overlay
-    Timer timer=new Timer();
-    timer.scheduleTask(new Timer.Task() {
-      @Override
-      public void run() {
-        timeLeft = timeLeft - (float)0.1;
-        if(timeLeft == 0.0)
-          timeUp = true;
-        // Attempting to add interactive audio - need to fix audio buffer error
-        if(timeLeft < 0.1 * totTime){
+
+    System.out.println(leavingInv);
+    if(!leavingInv) {
+      timeLeft = totTime;
+      timer.scheduleTask(new Timer.Task() {
+        @Override
+        public void run() {
+          timeLeft = timeLeft - (float) 0.1;
+          if (timeLeft == 0.0)
+            timeUp = true;
+          // Attempting to add interactive audio - need to fix audio buffer error
+          if (timeLeft < 0.1 * totTime) {
             MainGameScreen.super.controller.audioManager.startMusicStr(
-                  "tick");
+                    "tick");
+          }
         }
-      }
-    }, 0, (float)0.1, (int)totTime*10);
-  }
+      }, 0, (float) 0.1, (int) totTime * 10);
+    }
+    }
 
 
   @Override
@@ -440,9 +444,11 @@ public class MainGameScreen extends BaseScreen {
   public void dispose() {
     batch.dispose();
     hud.dispose();
+    super.controller.audioManager.stopMusic(super.controller.audioManager.ambients);
     if (model.getMap() != null) {
       model.getMap().getTiledMap().dispose();
     }
+
   }
 
   @Override

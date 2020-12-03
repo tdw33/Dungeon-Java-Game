@@ -67,6 +67,7 @@ public class MainMenuScreen extends BaseScreen {
     @Override
     public void init() {
         super.controller.audioManager.startMusic(super.controller.audioManager.menuSound, 40);
+        super.controller.audioManager.stopMusic(super.controller.audioManager.ambients);
     }
 
     @Override

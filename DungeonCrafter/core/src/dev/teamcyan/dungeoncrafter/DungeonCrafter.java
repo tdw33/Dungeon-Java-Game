@@ -134,6 +134,7 @@ public class DungeonCrafter extends Game {
 		}
 		if(key.getName() == "dev.teamcyan.dungeoncrafter.screens.MainMenuScreen"){
 			audioManager.fadeMusicOut(audioManager.ambients);
+			audioManager.stopMusic(audioManager.ambients);
 		}
 	}
 

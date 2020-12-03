@@ -2,6 +2,7 @@ package dev.teamcyan.dungeoncrafter.screens;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.utils.Timer;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -14,6 +15,8 @@ public abstract class BaseScreen implements Screen, InputProcessor {
     protected DungeonCrafter controller;
     protected GameModel model;
     protected Stage ui;
+    public static Timer timer=new Timer();
+    public static boolean leavingInv;
 
     public BaseScreen(DungeonCrafter controller, GameModel model) {
         this.controller = controller;
@@ -37,7 +40,8 @@ public abstract class BaseScreen implements Screen, InputProcessor {
         init();
     }
 
-    public void init() { }
+    public void init() {
+    }
 
     @Override
     final public void render(float delta) {
