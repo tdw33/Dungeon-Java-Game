@@ -41,6 +41,7 @@ public class MainGameScreen extends BaseScreen {
   boolean keyS = false;
   boolean keyQ = false;
   boolean keyE = false;
+  boolean keyW = false;
 
   private TextureData curSpeech;
   private GameElement.State prevState;
@@ -205,6 +206,7 @@ public class MainGameScreen extends BaseScreen {
       controller.audioManager.antiGrav("stop");
 
     boolean isBroken = false;
+
     /**
      * if Digging Left is pressed
      **/
@@ -214,6 +216,7 @@ public class MainGameScreen extends BaseScreen {
             model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
             model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
+
     /**
      * if Digging Right  is pressed
      **/
@@ -233,6 +236,19 @@ public class MainGameScreen extends BaseScreen {
         controller.audioManager.breakBlock("gravel"); // curCell.getTile().getTextureRegion().getTexture().toString()
       }
       isBroken = model.getMap().interactBlockCentre(
+          new Pos(
+            model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+            model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
+    }
+
+    /**
+     * if Digging up  is pressed
+     **/
+    if(keyW) {
+      if (curCell != null) {
+        controller.audioManager.breakBlock("gravel"); // curCell.getTile().getTextureRegion().getTexture().toString()
+      }
+      isBroken = model.getMap().interactBlockUp(
           new Pos(
             model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
             model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
@@ -471,6 +487,9 @@ public class MainGameScreen extends BaseScreen {
       keyQ = true;
     }
 
+    if(keycode == Input.Keys.W) {
+      keyW = true;
+    }
     return false;
   }
 
@@ -510,6 +529,9 @@ public class MainGameScreen extends BaseScreen {
     
     if(keycode == Input.Keys.Q) 
       keyQ = false;
+
+    if(keycode == Input.Keys.W) 
+      keyW = false;
 
     return false;
   }
