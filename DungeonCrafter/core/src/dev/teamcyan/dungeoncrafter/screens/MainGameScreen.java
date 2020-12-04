@@ -293,7 +293,7 @@ public class MainGameScreen extends BaseScreen {
     model.getCamera().update();
 
     model.getPebble().setRegion();
-    model.getPebble().setX(layer, model.getPlayer().getPosition());
+    model.getPebble().setX(layer, model.getPlayer().getPosition(), model.getPlayer().getVelocity());
     model.getPebble().setY(layer);
 
     for (GEEnemy enemy : model.getEnemies()) {

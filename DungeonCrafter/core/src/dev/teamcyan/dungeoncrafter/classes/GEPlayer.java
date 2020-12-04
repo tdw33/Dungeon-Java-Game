@@ -584,4 +584,8 @@ public class GEPlayer extends GameElement
     return this.region;
   }
 
+  public Velocity getVelocity() {
+    return this.velocity;
+  }
+
 }

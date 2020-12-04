@@ -56,7 +56,7 @@ public class GEPebble extends GameElement
         frames.clear();
     }
 
-    public float setX(TiledMapTileLayer layer, Pos playerPosition) {
+    public float setX(TiledMapTileLayer layer, Pos playerPosition, Velocity playerVelocity) {
         // apply gravity, when no floor
         float delta = Gdx.graphics.getDeltaTime();
         float newXVelocity;
@@ -64,13 +64,19 @@ public class GEPebble extends GameElement
         double distance = Math.sqrt(Math.pow((playerPosition.getX() - this.position.getX()), 2) + Math.pow((playerPosition.getY() - this.position.getY()), 2));
         if (this.velocity.getY() < -1) {
             newXVelocity = this.velocity.getX();
+        } else if (distance > 800) {
+            this.position.setX(playerPosition.getX()+20);
+            this.position.setY(playerPosition.getY());
+            this.velocity.setX(playerVelocity.getX());
+            this.velocity.setX(playerVelocity.getY());
+            return this.position.getX();
         } else if (distance > 80) {
             if (playerPosition.getX() > this.position.getX()) {
                 float newV = this.velocity.getX() + this.ACCELERATION * delta;
                 newXVelocity = newV > layer.getTileWidth() ? this.velocity.getX() : newV;
             } else {
                 float newV = this.velocity.getX() - this.ACCELERATION * delta;
-                newXVelocity = newV < (-1)*layer.getTileWidth() ? this.velocity.getX() : newV;
+                newXVelocity = newV < (-1) * layer.getTileWidth() ? this.velocity.getX() : newV;
             }
         } else {
             newXVelocity = this.velocity.getX() * this.RESISTANCE;
@@ -86,7 +92,8 @@ public class GEPebble extends GameElement
                 this.velocity.setX(newXVelocity);
                 this.position.setX((int)Math.ceil(newXPosition));
             } else {
-                this.velocity.setY(4f);
+                if (this.velocity.getY() > -1)
+                    this.velocity.setY(4f);
                 this.velocity.setX((float)0.0);
             }
 
@@ -97,7 +104,8 @@ public class GEPebble extends GameElement
                 this.velocity.setX(newXVelocity);
                 this.position.setX((int)Math.floor(newXPosition));
             } else {
-                this.velocity.setY(4f);
+                if (this.velocity.getY() > -1)
+                    this.velocity.setY(4f);
                 this.velocity.setX((float)0.0);
             }
         }
