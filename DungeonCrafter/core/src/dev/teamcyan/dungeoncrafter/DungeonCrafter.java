@@ -170,7 +170,8 @@ public class DungeonCrafter extends Game {
 		//handle(new GameEvent("SCREEN_CHANGE").set("SCREEN", screens.get(key)));
 		if(key.getName() != "dev.teamcyan.dungeoncrafter.screens.MainMenuScreen" &
 				key.getName() != "dev.teamcyan.dungeoncrafter.screens.DifficultyScreen" &
-		key.getName() != "dev.teamcyan.dungeoncrafter.screens.SettingsScreen")
+		key.getName() != "dev.teamcyan.dungeoncrafter.screens.SettingsScreen" &
+				key.getName() != "dev.teamcyan.dungeoncrafter.screens.CreditsScreen")
 		{
 			audioManager.fadeMusicOut(audioManager.menuSound);
 		}
@@ -190,6 +191,7 @@ public class DungeonCrafter extends Game {
 		screens.put(SettingsScreen.class, new SettingsScreen(this, model));
 		screens.put(DifficultyScreen.class, new DifficultyScreen(this, model));
 		screens.put(GameOverScreen.class, new GameOverScreen(this, model));
+		screens.put(CreditsScreen.class, new CreditsScreen(this, model));
 	}
 
 	/**
