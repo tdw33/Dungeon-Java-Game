@@ -35,13 +35,13 @@ public class GEBoss extends GEEnemy
     private boolean isAlive = true;
     private float attackTimer = 0;
 
-    public GEBoss (GameModel model)
+    public GEBoss (GameModel model, Pos position)
     {
-        super(model);
+        super(model, position);
         this.model = model;
         this.getype = GEType.PLAYER;
         this.velocity = new Velocity(0,0);
-        this.position = new Pos(0,0);
+        this.position = position;
         this.currentState = State.STANDING;
         this.previousState = State.STANDING;
         this.projectiles = new ArrayList<GEProjectile>();

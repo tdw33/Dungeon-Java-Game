@@ -34,12 +34,12 @@ public class GEEnemy extends GameElement
     private int health = 100;
     private boolean isAlive = true;
 
-    public GEEnemy (GameModel model)
+    public GEEnemy (GameModel model, Pos position)
     {
         this.model = model;
         this.getype = GEType.PLAYER;
         this.velocity = new Velocity(0,0);
-        this.position = new Pos(0,0);
+        this.position = position;
         this.currentState = State.STANDING;
         this.previousState = State.STANDING;
         this.projectiles = new ArrayList<GEProjectile>();
@@ -85,7 +85,7 @@ public class GEEnemy extends GameElement
         double distance = Math.sqrt(Math.pow((playerPosition.getX() - this.position.getX()), 2) + Math.pow((playerPosition.getY() - this.position.getY()), 2));
         if (this.velocity.getY() > 1) {
             newXVelocity = this.velocity.getX();
-        } else if (distance > 300) {
+        } else if (distance > 300 && distance < 1000) {
             if (playerPosition.getX() > this.position.getX()) {
                 float newV = this.velocity.getX() + this.ACCELERATION * delta;
                 newXVelocity = newV > layer.getTileWidth() ? this.velocity.getX() : newV;
@@ -234,10 +234,6 @@ public class GEEnemy extends GameElement
         }
     }
 
-    public void incrementHealth(int armour) {
-
-        this.health = this.health+armour > 200 ? 200 : this.health+armour;
-    }
 
     public boolean isAlive() {
         return this.isAlive;

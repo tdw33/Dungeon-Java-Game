@@ -28,6 +28,10 @@ public class InventoryScreen extends BaseScreen{
     public static final int IMAGE_DIM = 80;
     public static final int IMAGE_X = 130;
     long timerDelay;
+    private Label dirt;
+    private Label iron;
+    private Label gold;
+    private Label stone;
 
     public InventoryScreen(DungeonCrafter parent, final GameModel model) {
         super(parent, model);
@@ -219,14 +223,14 @@ public class InventoryScreen extends BaseScreen{
             public boolean handle(Event event)
             {
                 if (event.toString() == "enter") {
-                    if (model.getPlayer().getIron() >= 1 && model.getPlayer().getHealth() < 300) {
+                    if (model.getPlayer().getIron() >= 30 && model.getPlayer().getHealth() < 300) {
                         ironArmourLabel.setFontScale(2.5f);
                     }
                 } else if (event.toString() == "exit") {
                     ironArmourLabel.setFontScale(2f);
                 } else if (event.toString() == "touchDown") {
-                    if (model.getPlayer().getIron() >= 1 && model.getPlayer().getHealth() < 300) {
-                        model.getPlayer().decrementIron(10);
+                    if (model.getPlayer().getIron() >= 30 && model.getPlayer().getHealth() < 300) {
+                        model.getPlayer().decrementIron(30);
                         model.getPlayer().incrementHealth(100);
                     }
 
@@ -249,14 +253,14 @@ public class InventoryScreen extends BaseScreen{
             public boolean handle(Event event)
             {
                 if (event.toString() == "enter") {
-                    if (model.getPlayer().getGold() >= 1 && model.getPlayer().getHealth() < 300) {
+                    if (model.getPlayer().getGold() >= 30 && model.getPlayer().getHealth() < 300) {
                         goldArmourLabel.setFontScale(2.5f);
                     }
                 } else if (event.toString() == "exit") {
                     goldArmourLabel.setFontScale(2f);
                 } else if (event.toString() == "touchDown") {
-                    if (model.getPlayer().getGold() >= 1 && model.getPlayer().getHealth() < 300) {
-                        model.getPlayer().decrementGold(10);
+                    if (model.getPlayer().getGold() >= 30 && model.getPlayer().getHealth() < 300) {
+                        model.getPlayer().decrementGold(30);
                         model.getPlayer().incrementHealth(200);
                     }
 
@@ -265,6 +269,28 @@ public class InventoryScreen extends BaseScreen{
                 return true;
             }
         });
+
+        final Label.LabelStyle style2 = new Label.LabelStyle();
+        style2.fontColor = Color.WHITE;
+        style2.font = new BitmapFont();
+        style2.font.getData().setScale(2f);
+
+        int number_x = 370;
+        this.dirt = new Label("", style2);
+        dirt.setBounds(number_x,DungeonCrafter.HEIGHT-250,IMAGE_DIM,IMAGE_DIM);
+        ui.addActor(dirt);
+
+        this.iron = new Label("", style2);
+        iron.setBounds(number_x,DungeonCrafter.HEIGHT-450,IMAGE_DIM,IMAGE_DIM);
+        ui.addActor(iron);
+
+        this.stone = new Label("", style2);
+        stone.setBounds(number_x,DungeonCrafter.HEIGHT-350,IMAGE_DIM,IMAGE_DIM);
+        ui.addActor(stone);
+
+        this.gold = new Label("", style2);
+        gold.setBounds(number_x,DungeonCrafter.HEIGHT-550,IMAGE_DIM,IMAGE_DIM);
+        ui.addActor(gold);
 
     }
 
@@ -278,27 +304,11 @@ public class InventoryScreen extends BaseScreen{
     @Override
     public void draw(float delta) {
 
-        final Label.LabelStyle style = new Label.LabelStyle();
-        style.fontColor = Color.WHITE;
-        style.font = new BitmapFont();
-        style.font.getData().setScale(2f);
+        this.dirt.setText(model.getPlayer().getDirt());
+        this.stone.setText(model.getPlayer().getStone());
+        this.iron.setText(model.getPlayer().getIron());
+        this.gold.setText(model.getPlayer().getGold());
 
-        int number_x = 370;
-        final Label dirt = new Label(Integer.toString(model.getPlayer().getDirt()), style);
-        dirt.setBounds(number_x,DungeonCrafter.HEIGHT-250,IMAGE_DIM,IMAGE_DIM);
-        ui.addActor(dirt);
-
-        final Label iron = new Label(Integer.toString(model.getPlayer().getIron()), style);
-        iron.setBounds(number_x,DungeonCrafter.HEIGHT-450,IMAGE_DIM,IMAGE_DIM);
-        ui.addActor(iron);
-
-        final Label stone = new Label(Integer.toString(model.getPlayer().getStone()), style);
-        stone.setBounds(number_x,DungeonCrafter.HEIGHT-350,IMAGE_DIM,IMAGE_DIM);
-        ui.addActor(stone);
-
-        final Label gold = new Label(Integer.toString(model.getPlayer().getGold()), style);
-        gold.setBounds(number_x,DungeonCrafter.HEIGHT-550,IMAGE_DIM,IMAGE_DIM);
-        ui.addActor(gold);
 
     }
 
