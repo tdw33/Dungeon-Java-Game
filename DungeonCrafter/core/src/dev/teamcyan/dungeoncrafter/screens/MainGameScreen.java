@@ -395,7 +395,7 @@ public class MainGameScreen extends BaseScreen {
 
     // health bar
     float goldArmour = model.getPlayer().getHealth() == 300 ? 100 : (model.getPlayer().getHealth() > 200 ? model.getPlayer().getHealth() % 100 : 0);
-    float ironArmour = model.getPlayer().getHealth()-goldArmour == 200 ? 100 : (model.getPlayer().getHealth()-goldArmour > 100 ? model.getPlayer().getHealth()-goldArmour % 100 : 0);
+    float ironArmour = model.getPlayer().getHealth()-goldArmour == 200 ? 100 : (model.getPlayer().getHealth()-goldArmour > 100 ? (model.getPlayer().getHealth()-goldArmour) % 100 : 0);
     float health = (model.getPlayer().getHealth()-goldArmour-ironArmour)/100f;
 
     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);

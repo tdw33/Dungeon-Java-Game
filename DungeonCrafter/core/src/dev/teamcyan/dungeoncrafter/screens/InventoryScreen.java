@@ -216,13 +216,13 @@ public class InventoryScreen extends BaseScreen{
             public boolean handle(Event event)
             {
                 if (event.toString() == "enter") {
-                    if (model.getPlayer().getIron() >= 50 && model.getPlayer().getHealth() < 300) {
+                    if (model.getPlayer().getIron() >= 1 && model.getPlayer().getHealth() < 300) {
                         ironArmourLabel.setFontScale(2.5f);
                     }
                 } else if (event.toString() == "exit") {
                     ironArmourLabel.setFontScale(2f);
                 } else if (event.toString() == "touchDown") {
-                    if (model.getPlayer().getIron() >= 50 && model.getPlayer().getHealth() < 300) {
+                    if (model.getPlayer().getIron() >= 1 && model.getPlayer().getHealth() < 300) {
                         model.getPlayer().decrementIron(10);
                         model.getPlayer().incrementHealth(100);
                     }
@@ -246,13 +246,13 @@ public class InventoryScreen extends BaseScreen{
             public boolean handle(Event event)
             {
                 if (event.toString() == "enter") {
-                    if (model.getPlayer().getGold() >= 50 && model.getPlayer().getHealth() < 300) {
+                    if (model.getPlayer().getGold() >= 1 && model.getPlayer().getHealth() < 300) {
                         goldArmourLabel.setFontScale(2.5f);
                     }
                 } else if (event.toString() == "exit") {
                     goldArmourLabel.setFontScale(2f);
                 } else if (event.toString() == "touchDown") {
-                    if (model.getPlayer().getGold() >= 50 && model.getPlayer().getHealth() < 300) {
+                    if (model.getPlayer().getGold() >= 1 && model.getPlayer().getHealth() < 300) {
                         model.getPlayer().decrementGold(10);
                         model.getPlayer().incrementHealth(200);
                     }
