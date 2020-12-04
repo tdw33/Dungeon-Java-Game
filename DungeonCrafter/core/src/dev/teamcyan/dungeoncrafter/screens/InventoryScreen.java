@@ -204,27 +204,57 @@ public class InventoryScreen extends BaseScreen{
         });
 
         //Craft armour
-        final Label ironArmourLabel = new Label("Craft armour", style);
+        final Label ironArmourLabel = new Label("Craft iron armour", style);
         final Button.ButtonStyle ironArmourButtonStyle = new Button.ButtonStyle();
         final Button ironArmourButton = new Button(ironArmourLabel, ironArmourButtonStyle);
-        ironArmourButton.setBounds(550,DungeonCrafter.HEIGHT-440,0,0);
+        ironArmourButton.setBounds(550,DungeonCrafter.HEIGHT-410,0,0);
         ui.addActor(ironArmourButton);
 
-        exitButton.addListener(new EventListener()
+        ironArmourButton.addListener(new EventListener()
         {
             @Override
             public boolean handle(Event event)
             {
                 if (event.toString() == "enter") {
-                    if (model.getPlayer().getIron() >= 10 && model.getPlayer().getHealth() < 200) {
-                        ironArmourLabel.setFontScale(3f);
+                    if (model.getPlayer().getIron() >= 50 && model.getPlayer().getHealth() < 300) {
+                        ironArmourLabel.setFontScale(2.5f);
                     }
                 } else if (event.toString() == "exit") {
                     ironArmourLabel.setFontScale(2f);
                 } else if (event.toString() == "touchDown") {
-                    if (model.getPlayer().getIron() >= 10 && model.getPlayer().getHealth() < 200) {
+                    if (model.getPlayer().getIron() >= 50 && model.getPlayer().getHealth() < 300) {
                         model.getPlayer().decrementIron(10);
                         model.getPlayer().incrementHealth(100);
+                    }
+
+                }
+
+                return true;
+            }
+        });
+
+        //Craft gold armour
+        final Label goldArmourLabel = new Label("Craft gold armour", style);
+        final Button.ButtonStyle goldArmourButtonStyle = new Button.ButtonStyle();
+        final Button goldArmourButton = new Button(goldArmourLabel, goldArmourButtonStyle);
+        goldArmourButton.setBounds(550,DungeonCrafter.HEIGHT-510,0,0);
+        ui.addActor(goldArmourButton);
+
+        goldArmourButton.addListener(new EventListener()
+        {
+            @Override
+            public boolean handle(Event event)
+            {
+                if (event.toString() == "enter") {
+                    if (model.getPlayer().getGold() >= 50 && model.getPlayer().getHealth() < 300) {
+                        goldArmourLabel.setFontScale(2.5f);
+                    }
+                } else if (event.toString() == "exit") {
+                    goldArmourLabel.setFontScale(2f);
+                } else if (event.toString() == "touchDown") {
+                    if (model.getPlayer().getGold() >= 50 && model.getPlayer().getHealth() < 300) {
+                        model.getPlayer().decrementGold(10);
+                        model.getPlayer().incrementHealth(200);
                     }
 
                 }
