@@ -12,9 +12,9 @@ import dev.teamcyan.dungeoncrafter.classes.GameModel;
 public class DifficultyScreen extends BaseScreen {
 
     boolean mouseDown = true;
-    private static final float EASY_TIME = 600;
-    private static final float MED_TIME = 300;
-    private static final float HARD_TIME = 150;
+    private static final float EASY_TIME = 1500;
+    private static final float MED_TIME = 750;
+    private static final float HARD_TIME = 300;
 
     // The size and position of the four buttons
     private static final int EASY_BUTTON_WIDTH = DungeonCrafter.WIDTH / 6;
@@ -88,6 +88,7 @@ public class DifficultyScreen extends BaseScreen {
 
                     super.leavingInv = false;
                     super.controller.totTime = EASY_TIME;
+                    super.controller.startZoom = 1.5;
                     controller.changeScreen(MainGameScreen.class);
                 }
 
@@ -104,6 +105,7 @@ public class DifficultyScreen extends BaseScreen {
                     this.dispose();
                     super.controller.totTime = MED_TIME;
                     super.leavingInv = false;
+                    super.controller.startZoom = 1.25;
                     controller.changeScreen(MainGameScreen.class);
                 }
 
@@ -120,6 +122,7 @@ public class DifficultyScreen extends BaseScreen {
                     this.dispose();
                     super.leavingInv = false;
                     super.controller.totTime = HARD_TIME;
+                    super.controller.startZoom = 1;
                     controller.changeScreen(MainGameScreen.class);
                 }
 
