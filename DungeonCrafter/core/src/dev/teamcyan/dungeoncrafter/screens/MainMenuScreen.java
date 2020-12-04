@@ -67,6 +67,7 @@ public class MainMenuScreen extends BaseScreen {
     @Override
     public void init() {
         super.controller.audioManager.startMusic(super.controller.audioManager.menuSound, 40);
+        super.controller.audioManager.stopMusic(super.controller.audioManager.ambients);
     }
 
     @Override
@@ -104,6 +105,7 @@ public class MainMenuScreen extends BaseScreen {
                         LOAD_BUTTON_X,LOAD_BUTTON_Y, LOAD_BUTTON_WIDTH, LOAD_BUTTON_HEIGHT);
                 if(Gdx.input.isTouched()){
                     this.dispose();
+                    controller.audioManager.startMusic(controller.audioManager.ambients, 20);
                     controller.changeScreen(MainGameScreen.class);}
 
             } else {

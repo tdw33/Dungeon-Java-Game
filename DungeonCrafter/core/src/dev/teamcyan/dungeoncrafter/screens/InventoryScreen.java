@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.TimeUtils;
 import com.kotcrab.vis.ui.widget.*;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GEPlayer;
@@ -26,6 +27,7 @@ public class InventoryScreen extends BaseScreen{
 
     public static final int IMAGE_DIM = 80;
     public static final int IMAGE_X = 130;
+    long timerDelay;
 
     public InventoryScreen(DungeonCrafter parent, final GameModel model) {
         super(parent, model);
@@ -196,6 +198,7 @@ public class InventoryScreen extends BaseScreen{
                 } else if (event.toString() == "exit") {
                     exitLabel.setFontScale(2f);
                 } else if (event.toString() == "touchDown") {
+                    leavingInv = true;
                     controller.changeScreen(MainGameScreen.class);
                 }
 
@@ -267,7 +270,8 @@ public class InventoryScreen extends BaseScreen{
 
     @Override
     public void init() {
-
+        leavingInv = true;
+        //super.timer.stop();
     }
 
     //Number of blocks
@@ -305,6 +309,11 @@ public class InventoryScreen extends BaseScreen{
 
     }
 
+    @Override
+    public void dispose() {
+    }
+
+
     /**
      * Flush all stateful data.
      */
@@ -321,6 +330,7 @@ public class InventoryScreen extends BaseScreen{
 
         return false;
     }
+
 
     @Override
     public boolean keyUp(int keycode) {

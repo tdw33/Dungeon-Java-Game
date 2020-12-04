@@ -86,6 +86,7 @@ public class DifficultyScreen extends BaseScreen {
                     this.dispose();
                     model.startNewGame(game);
 
+                    super.leavingInv = false;
                     super.controller.totTime = EASY_TIME;
                     controller.changeScreen(MainGameScreen.class);
                 }
@@ -102,6 +103,7 @@ public class DifficultyScreen extends BaseScreen {
                 if (Gdx.input.isTouched()) {
                     this.dispose();
                     super.controller.totTime = MED_TIME;
+                    super.leavingInv = false;
                     controller.changeScreen(MainGameScreen.class);
                 }
 
@@ -116,6 +118,7 @@ public class DifficultyScreen extends BaseScreen {
                         HARD_BUTTON_X, HARD_BUTTON_Y, HARD_BUTTON_WIDTH, HARD_BUTTON_HEIGHT);
                 if (Gdx.input.isTouched()) {
                     this.dispose();
+                    super.leavingInv = false;
                     super.controller.totTime = HARD_TIME;
                     controller.changeScreen(MainGameScreen.class);
                 }
