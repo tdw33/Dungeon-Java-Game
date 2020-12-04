@@ -204,6 +204,10 @@ public class MainGameScreen extends BaseScreen {
             (new Pos(model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
                     model.getPlayer().getPosition().getY()));
 
+
+    if(timeLeft < 0.1)
+      controller.changeScreen(GameOverScreen.class);
+
     if(currentBackgroundTile.getProperties().get("inverseGravity") != null)
       controller.audioManager.antiGrav("play");
     else
