@@ -12,6 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 
+/**
+ * Displays settings and controls.
+ */
 public class SettingsScreen extends BaseScreen {
 
     public static final int SETTINGS_BUTTON_WIDTH = 170;

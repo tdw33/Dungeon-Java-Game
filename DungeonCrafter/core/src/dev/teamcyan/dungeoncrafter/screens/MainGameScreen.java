@@ -23,6 +23,9 @@ import dev.teamcyan.dungeoncrafter.classes.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * View for the currently active game.
+ */
 public class MainGameScreen extends BaseScreen {
 
   SpriteBatch batch = new SpriteBatch();
@@ -75,7 +78,9 @@ public class MainGameScreen extends BaseScreen {
 
   /**
    * Constructor - 
-   * Inherit the game and the model fron the parent class
+   * Inherit the game and the model from the parent class
+   * @param parent Controller
+   * @param model GameModel
    */
   public MainGameScreen(DungeonCrafter parent, GameModel model) {
     super(parent, model);

@@ -11,6 +11,9 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 
+/**
+ * Screens act as views in the MVC-pattern. BaseScreen provides all screens with base functionalities.
+ */
 public abstract class BaseScreen implements Screen, InputProcessor {
     protected DungeonCrafter controller;
     protected GameModel model;

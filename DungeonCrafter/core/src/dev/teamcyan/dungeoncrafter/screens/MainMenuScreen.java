@@ -9,6 +9,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 
+/**
+ * Displays the main menu.
+ */
 public class MainMenuScreen extends BaseScreen {
 
     // The size and position of the four buttons

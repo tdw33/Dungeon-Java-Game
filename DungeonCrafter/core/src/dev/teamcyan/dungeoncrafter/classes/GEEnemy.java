@@ -82,7 +82,7 @@ public class GEEnemy extends GameElement
         float delta = Gdx.graphics.getDeltaTime();
         float newXVelocity;
 
-        double distance = Math.sqrt(Math.pow((playerPosition.getX() - this.position.getX()), 2) + Math.pow((playerPosition.getY() - this.position.getY()), 2));
+        double distance = this.getDistance(playerPosition);// = Math.sqrt(Math.pow((playerPosition.getX() - this.position.getX()), 2) + Math.pow((playerPosition.getY() - this.position.getY()), 2));
         if (this.velocity.getY() > 1) {
             newXVelocity = this.velocity.getX();
         } else if (distance > 300 && distance < 1000) {
@@ -234,8 +234,12 @@ public class GEEnemy extends GameElement
         }
     }
 
-
     public boolean isAlive() {
         return this.isAlive;
+    }
+
+
+    protected double getDistance(Pos pos) {
+        return Math.sqrt(Math.pow(pos.getX()-this.position.getX(), 2)+Math.pow(pos.getY()-this.position.getY(), 2));
     }
 }

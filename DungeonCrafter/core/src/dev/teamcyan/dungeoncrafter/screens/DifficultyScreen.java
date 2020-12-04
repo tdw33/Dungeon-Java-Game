@@ -1,14 +1,15 @@
 package dev.teamcyan.dungeoncrafter.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
 import dev.teamcyan.dungeoncrafter.classes.GameModel;
 
+/**
+ * View to adjust difficulty of the game that is about to begin.
+ */
 public class DifficultyScreen extends BaseScreen {
 
     boolean mouseDown = true;

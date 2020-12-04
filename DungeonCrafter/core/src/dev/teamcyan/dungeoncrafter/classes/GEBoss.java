@@ -30,7 +30,6 @@ public class GEBoss extends GEEnemy
     public State currentState;
     public State previousState;
     public List<GEProjectile> projectiles;
-    public GameModel model;
     private int health = 100;
     private boolean isAlive = true;
     private float attackTimer = 0;
@@ -38,7 +37,6 @@ public class GEBoss extends GEEnemy
     public GEBoss (GameModel model, Pos position)
     {
         super(model, position);
-        this.model = model;
         this.getype = GEType.PLAYER;
         this.velocity = new Velocity(0,0);
         this.position = position;
@@ -140,8 +138,8 @@ public class GEBoss extends GEEnemy
         float newYPosition = this.position.getY() + newYVelocity;
         TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
         TiledMapTileLayer.Cell rightBottom = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-10) / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
-        TiledMapTileLayer.Cell leftTop = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor((newYPosition+this.getRegion().getRegionHeight()) / layer.getTileHeight()));
-        TiledMapTileLayer.Cell rightTop = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-10) / layer.getTileWidth()), (int) Math.floor((newYPosition+this.getRegion().getRegionHeight()) / layer.getTileHeight()));
+        TiledMapTileLayer.Cell leftTop = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor((newYPosition+this.region.getRegionHeight()) / layer.getTileHeight()));
+        TiledMapTileLayer.Cell rightTop = layer.getCell((int) Math.floor((this.position.getX()+this.region.getRegionWidth()-10) / layer.getTileWidth()), (int) Math.floor((newYPosition+this.region.getRegionHeight()) / layer.getTileHeight()));
         if ((newYVelocity <= 0 && leftBottom == null && rightBottom == null) || (newYVelocity > 0 && leftTop == null && rightTop == null)) {
             this.velocity.setY(newYVelocity);
             this.position.setY((int)newYPosition);
@@ -150,6 +148,10 @@ public class GEBoss extends GEEnemy
             this.velocity.setY(0);
         }
         return this.position.getY();
+    }
+
+    public TextureRegion getRegion() {
+        return region;
     }
 
     public void setRegion() {
@@ -179,7 +181,7 @@ public class GEBoss extends GEEnemy
         } else if (this.currentState == State.ATTACKL){
             this.attackTimer += Gdx.graphics.getDeltaTime();
             if (this.attackTimer > 1.2) {
-                if (this.getDistance(model.getPlayer().getPosition()) < 70 ){
+                if (super.getDistance(model.getPlayer().getPosition()) < 70 ){
                     model.getPlayer().decrementHealth(5);
                 }
                 this.attackTimer = 0;
@@ -194,57 +196,6 @@ public class GEBoss extends GEEnemy
         previousState = currentState;
 
 
-    }
-
-    public TextureRegion getRegion() {
-        return region;
-    }
-
-    public List<GEProjectile> getProjectiles(TiledMapTileLayer layer, Pos playerPosition) {
-        this.projectileTimer += Gdx.graphics.getDeltaTime();
-        if (this.projectileTimer > 3) {
-            projectiles.add(new GEProjectile(this.model, this.position, playerPosition));
-            this.projectileTimer = 0;
-        }
-
-        List<GEProjectile> projectilesToRemove = new ArrayList<GEProjectile>();
-        for (GEProjectile proj : this.projectiles) {
-
-            if (!proj.setPosition(layer)) {
-                projectilesToRemove.add(proj);
-            }
-        }
-        this.projectiles.removeAll(projectilesToRemove);
-
-        return this.projectiles;
-    }
-
-    public int getHealth() {
-        return this.health;
-    }
-
-    public void decrementHealth(int damage) {
-        this.health -= damage;
-        if (this.health <= 0) {
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    isAlive = false;
-                }
-            }, 500);
-
-
-        }
-    }
-
-    private double getDistance(Pos pos) {
-        return Math.sqrt(Math.pow(pos.getX()-this.position.getX(), 2)+Math.pow(pos.getY()-this.position.getY(), 2));
-    }
-
-    public void incrementHealth(int armour) {
-
-        this.health = this.health+armour > 200 ? 200 : this.health+armour;
     }
 
     public boolean isAlive() {
