@@ -184,10 +184,10 @@ public class MainGameScreen extends BaseScreen {
     Gdx.gl.glClearColor(0, 0, 0, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-    model.getCamera().zoom = (float)Math.max((1 - Math.pow(((totTime - timeLeft)/(totTime)), 2)), 0.1);
+    model.getCamera().zoom = (float)Math.max((super.controller.startZoom - Math.pow(((totTime - timeLeft)/(totTime)), 2)), .7);
     // Cap max and min zoom levels
     if(zoomIn) {
-      model.getCamera().zoom = (float) Math.max(0.4, (model.getCamera().zoom - DungeonCrafter.ZOOM_FACTOR));
+      model.getCamera().zoom = (float) Math.max(0.1, (model.getCamera().zoom - DungeonCrafter.ZOOM_FACTOR));
     }
     if(zoomOut) {
       model.getCamera().zoom = (float) Math.min(3, (model.getCamera().zoom + DungeonCrafter.ZOOM_FACTOR));
