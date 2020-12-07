@@ -32,7 +32,7 @@ public class CreditsScreen extends BaseScreen {
     public CreditsScreen(final DungeonCrafter controller, GameModel model) {
         super(controller, model);
 
-        Texture backgroundTexture = new Texture("menu_buttons/GameOverBackground.png");
+        Texture backgroundTexture = new Texture("menu_buttons/background.png");
         Image background = new Image(backgroundTexture);
         background.setBounds(0,0,DungeonCrafter.WIDTH, DungeonCrafter.HEIGHT);
         ui.addActor(background);
