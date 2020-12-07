@@ -1,4 +1,4 @@
-# Week 1
+# Week 1 16th- 22nd October
 
 
 
@@ -22,30 +22,30 @@ From this initial sprint, we were able to analyse the use of teams for daily sta
 
 ### Brainstorming and sprint planning meeting
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo
+Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
 
 Minutes:
 
-- Everyone in the group introduced themselves and discussed their programming background.
+- Everyone in the group introduced themselves and discussed their programming background
 
-- We decided what programming language we thought would be best for the project.
+- We decided what programming language we thought would be best for the project
 
 - Each member presented their idea for the game based on the customer criteria given:
 
-  - Top down view with the aim to escape the dungeon by doing tasks.
-  - Text type game where the user will pick answers that dedicate their journey through the dungeon.
-  - Side scroller game where the player can interact with the map as seen in Minecraft.
+  - Top down view with the aim to escape the dungeon by doing tasks
+  - Text type game where the user will pick answers that dedicate their journey through the dungeon
+  - Side scroller game where the player can interact with the map as seen in Minecraft
 
 - From the presentations we brainstormed a final game idea:
 
-  - The player can generate tools from gathering resources from the map (blocks).
-  - These tools will perish meaning the player will keep gathering resources throughout the game.
+  - The player can generate tools from gathering resources from the map (blocks)
+  - These tools will perish meaning the player will keep gathering resources throughout the game
   
-  - The player can be assigned tasks to complete so they can escape the dungeon. 
-  - There could be a bot which can either help you or you race against it to escape.
+  - The player can be assigned tasks to complete so they can escape the dungeon 
+  - There could be a bot which can either help you or you race against it to escape
   
-  - The game will have a time constraint so the user can be ware how good they are doing.
-  - The user can battle bosses which can be in a top down view.
+  - The game will have a time constraint so the user can be ware how good they are doing
+  - The user can battle bosses which can be in a top down view
   
 - We established initial tools to use in this project. This was GitHub to contain the sprint documentation and share code between use. Then teams for communication within the project as well as daily stand-ups.
 
@@ -53,13 +53,13 @@ Minutes:
 
 ### sprint review and presentation creation
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo
+Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
 
 - From the assigned sprint tasks we were able to complete many of them for different individuals. 
 - As many were understanding concept tasks, not all could be considered done. E.G for GitHub, some team members were still not comfortable with it.
 - We created a presentation for the customer meeting next week. This contained our original idea for the game for the customer to decide if it fills the starting criteria to develop from.
 
-This is a link to the presentation: https://computingservices-my.sharepoint.com/:p:/g/personal/vpl22_bath_ac_uk/EXuDPu9iA85BjODgRgP3Y6wBMNTvxc8W3fzBx68dvrNY4A?e=TCF88V
+This is a link to the first presentation for the customer meeting 23rd October: [link](https://computingservices-my.sharepoint.com/:p:/g/personal/vpl22_bath_ac_uk/EXuDPu9iA85BjODgRgP3Y6wBMNTvxc8W3fzBx68dvrNY4A?e=TCF88V)
 
 
 
@@ -87,7 +87,7 @@ This is a link to the presentation: https://computingservices-my.sharepoint.com/
 
 **sprint backlog**
 
-- Find cross platofrm library
+- Find cross platform library
 - Understand GitHub for version control
 - Java research 
 - Game development research 
@@ -119,19 +119,19 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 
 | ID    | Version | Priority | Story                                                        |
 | ----- | ------- | -------- | ------------------------------------------------------------ |
-| US_01 | 1       | 1        | **AS A**   Player  **I WANT**   to be able to  play a dungeon game on different platforms  **SO THAT**   I have choices  for playing the game |
-| US_02 | 1       | 4        | **AS A**   Player  **I WANT**   to have a bot  that that will play for me  **SO THAT**   It can help me  with playing through the game |
-| US_03 | 1       | 5        | **AS A**   Player  **I WANT**   to be able to compete  with a bot  **SO THAT**   I can have a goal  when playing |
-| US_04 | 1       | 6        | **AS A**   **Player**  **I WANT**   to be able to  see my progress  **SO THAT**   So that I know  if I am doing well at the game as I play |
-| US_05 | 1       | 7        | **AS A**   Player  **I WANT**   to have different  choices between games modes  **SO THAT**   I have new scenarios  to play |
-| US_06 | 1       | 2        | **AS A** Player **I WANT** to move around and interact with the blocks on the map **SO THAT** I can gather resources, place resources, and make new paths |
-| US_07 | 1       | 3        | **AS A** Player **I WANT** to use resources to craft items **SO THAT** I can use them throughout the game to make tasks easier |
+| US_01 | 1       | 1        | **AS A**   player  **I WANT**   to be able to  play a dungeon game on different platforms  **SO THAT**   I have choices  for playing the game |
+| US_02 | 1       | 4        | **AS A**   player  **I WANT**   to have a bot  that that will play for me  **SO THAT**   It can help me  with playing through the game |
+| US_03 | 1       | 5        | **AS A**   player  **I WANT**   to be able to compete  with a bot  **SO THAT**   I can have a goal  when playing |
+| US_04 | 1       | 6        | **AS A**   player  **I WANT**   to be able to  see my progress  **SO THAT**   So that I know  if I am doing well at the game as I play |
+| US_05 | 1       | 7        | **AS A**   player  **I WANT**   to have different  choices between games modes  **SO THAT**   I have new scenarios  to play |
+| US_06 | 1       | 2        | **AS A** player **I WANT** to move around and interact with the blocks on the map **SO THAT** I can gather resources, place resources, and make new paths |
+| US_07 | 1       | 3        | **AS A** player **I WANT** to use resources to craft items **SO THAT** I can use them throughout the game to make tasks easier |
 
 
 
 ### User stories tests
 
-| User story ID | Test                                                         | Comments                                                     | completed |
+| User story ID | Test acceptance                                              | comments                                                     | completed |
 | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------- |
 | US_01         | Run code on different systems and see if code compiles       |                                                              | NO        |
 | US_02         | A bot character is generated on the game screen  The bot aids the user with text aids | The bot will have to be able to follow the player around the map, meaning it will need similar movement animations to the main character | NO        |
@@ -145,11 +145,11 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 
 ### Use cases
 
-At this stage of the process we had not considered to implement use cases in our developement aproach. This was due to us not having our game idea confirmed by the customer, as well as not being aware of the process since the lecture material was not release yet. Instead we had user stories as shown in the user story section, which is a similar to a less dressed version of the use cases. 
+At this stage of the process we had not considered to implement use cases in our development approach. This was due to us not having our game idea confirmed by the customer, as well as not being aware of the process since the lecture material was not release yet. Instead we had user stories as shown in the user story section, which is a similar to a less dressed version of the use cases. 
 
 ###  Use cases Tests
 
-As we had no use case there were no test to conduct. 
+As we had no use case there were no tests to conduct. 
 
 
 
@@ -161,7 +161,7 @@ At this stage, no thought has been given into the software design and classes as
 
 ### User interface design
 
-This is a baisic framwork of how the potential game will look like to the user. 
+This is a basic framework of how the potential game will look like to the user. 
 
 | Design implement                                             | Version |
 | ------------------------------------------------------------ | ------- |

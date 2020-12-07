@@ -164,12 +164,12 @@ The customer seemed to be satisfied with the progress shown. No requirements wer
 | UC_17       | Player walks on block and reverses gravity           | YES     |
 
 
-##### **New Use cases:**  
+##### **New and updated use cases:**  
 
 
-#### UC_18
+#### UC_04
 
-**Use case**: Armor crafting  
+**Use case**: Player crafts armour from the inventory  
 **Author**: TJ  
 **Date**: 06/12/2020    
 **Modification date**: 06/12/2020  
@@ -197,9 +197,9 @@ The customer seemed to be satisfied with the progress shown. No requirements wer
 **Exceptional flow of events:**
 - Player has gathered many resources but the system fails to update the number on inventory screen
 
-#### UC_19
+#### UC_18
 
-**Use case**: Enemy health bar  
+**Use case**: Enemy has a health bar that will go down when attacked  
 **Author**: TJ  
 **Date**: 06/12/2020    
 **Modification date**: 06/12/2020  
