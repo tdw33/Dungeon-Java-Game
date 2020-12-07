@@ -103,7 +103,7 @@ public class CreditsScreen extends BaseScreen {
         creatorsLabel = new Label("Creators", teamCyanStyle);
         intoTheDarkLabel = new Label("Into the Dark", titleStyle);
         teamCyanLabel = new Label("Developed by\n Team Cyan", teamCyanStyle);
-        teamMembersLabel = new Label("Vlad Posmangiu Luchian \n Julius Martinez \n He Jiang \n Tom Wells " +
+        teamMembersLabel = new Label("Vlad Posmangiu Luchian \n Julius Martinetz \n He Jiang \n Tom Wells " +
                 "\n Yandong Guo \n Lewis Williams \n Samuel Love \n Tianyu Ji", creditStyle);
 
         teamMembersLabel.setX((super.ui.getWidth() / 2) - (teamMembersLabel.getWidth() / 2));
