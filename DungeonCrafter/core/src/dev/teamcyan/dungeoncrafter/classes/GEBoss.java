@@ -7,17 +7,14 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.utils.Array;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GEBoss extends GEEnemy
-{
+public class GEBoss extends GEEnemy{
     public static final float ACCELERATION = (float) 2.0;
-
-    Velocity velocity;
+    public Velocity velocity;
     private TextureRegion region;
     private Animation<TextureRegion> bossAttackR;
     private Animation<TextureRegion> bossAttackL;
@@ -34,8 +31,12 @@ public class GEBoss extends GEEnemy
     private boolean isAlive = true;
     private float attackTimer = 0;
 
-    public GEBoss (GameModel model, Pos position)
-    {
+    /**
+     * Constructor for Game Element Boss 
+     * @param model
+     * @param position
+     */
+    public GEBoss (GameModel model, Pos position){
         super(model, position);
         this.getype = GEType.PLAYER;
         this.velocity = new Velocity(0,0);
@@ -74,6 +75,11 @@ public class GEBoss extends GEEnemy
         frames.clear();
     }
 
+    /**
+     * Setter for X
+     * @param layer
+     * @param playerPosition
+     */
     public float setX(TiledMapTileLayer layer, Pos playerPosition) {
         // apply gravity, when no floor
         float delta = Gdx.graphics.getDeltaTime();
@@ -122,6 +128,10 @@ public class GEBoss extends GEEnemy
         return this.position.getX();
     }
 
+    /**
+     * Setter for Y
+     * @param layer
+     */
     public float setY(TiledMapTileLayer layer) {
         TiledMapTile currentBackgroundTile = model.getMap().getBackgroundTile(new Pos(this.position.getX()+this.region.getRegionWidth()/2, this.position.getY()+this.region.getRegionHeight()/2));
         float gravity;
@@ -154,8 +164,10 @@ public class GEBoss extends GEEnemy
         return region;
     }
 
+    /**
+     * Setter for Region
+     */
     public void setRegion() {
-
         if (this.velocity.getY() >1) {
             this.currentState = GameElement.State.JUMPING;
         } else if(this.velocity.getY() < -1) {
@@ -194,10 +206,11 @@ public class GEBoss extends GEEnemy
         }
 
         previousState = currentState;
-
-
     }
 
+    /**
+     * Getter for isAlive Flag 
+     */
     public boolean isAlive() {
         return this.isAlive;
     }
