@@ -321,7 +321,6 @@ public class GEPlayer extends GameElement
 
   /**
    * decrement amount of iron if exists
-   * @return whether iron could be incremented
    */
   public void decrementIron(int amount) {
     this.iron = amount > this.iron ? 0 : this.iron-amount;
@@ -336,7 +335,6 @@ public class GEPlayer extends GameElement
 
   /**
    * decrement amount of gold if exists
-   * @return whether gold could be incremented
    */
   public void decrementGold(int amount) {
     this.gold = amount > this.iron ? 0 : this.gold-amount;

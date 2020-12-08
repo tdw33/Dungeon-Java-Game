@@ -20,7 +20,7 @@ public class Velocity {
 
     /**
      * Setter for X
-     * @param y
+     * @param x
      */
     public void setX(float x)
     {
