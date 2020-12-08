@@ -3,11 +3,14 @@
 ## Process
 
 ## Weekly Overview
-Having a general class structure is helpful when developing the game. However, the class diagram needs to be based on use cases. Internal user stories need to be created when developing game features so that user requirements will be fulfilled and the whole process should be documented for future reference. Moreover, it may be better to set a small rather than a hard-to-reach goal since each sprint is only one week long. It is also helpful to move the tasks which had been done on GitHub in time so that the sprint progress is up-to-date. The team may function better when taking course load into consideration while assigning tasks so that distribution of the development tasks can be more reasonable and effective. 
+As UML class diagram was developed last week, game development followed the order and relationship between different classes, which made the the process more structured. Moreover, team members experimented with the coding platform and created a character (a block) that can move. For this week, the team continued to use Miro board to create a MVC model based on the different classes generated in the UML diagram which further defines how the three main components of the game interact with each other: controller, map and elements. The sprint tasks were done according to the model: a map was created, players can see their input as they control the character. Camera view was implemented that always had the character in the center of the screen as it moved around. 
+
+Lessons learned: The class diagram needs to be based on use cases. Internal user stories need to be created when developing game features so that user requirements will be fulfilled and the whole process should be documented for future reference. Moreover, it may be better to set a small rather than a hard-to-reach goal since each sprint is only one week long. It is also helpful to move the tasks which had been done on GitHub in time so that the sprint progress is up-to-date. The team may function better when taking course load into consideration while assigning tasks so that distribution of the development tasks can be more reasonable and effective. 
 
 ## Meeting Minutes
 
 ### Customer meeting debrief and sprint planning:
+Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo  
 A sprint planning meeting was held right after the customer meeting, in which the team added tasks to sprint backlog according to the user requirements and additional features that could be added to the game. The customer expressed a preference toward a high-resolution art style for the game so a task to find sprites that would fit the style was created and assigned. The customer also wanted to see a variety of backgrounds and scenes while playing the game. Therefore, map generation was added to this week's sprint tasks. In addition to the customer's suggestions, the team also decided to work on menu screens since they are a fundamental part of a game. Another component of a game is sounds so some member were assigned to find background music and short sound effects that fit with the game theme. In terms of character movement, since a map will be generated which will influence where the character can go, gravity and collision are needed to make the movements seem more real (e.g. the character jumps down - gravity; cannot pass the edge of the map - collision). 
 
 ### MVC model - Controller, Map and Elements
@@ -42,6 +45,8 @@ Questions:
 - How to implement main map controller?  
 
 ### Sprint review and presentation creation
+Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+
 - A map could be generated that had a black background with edges, different obstacles and materials. 
 
 ![ ](../week3-presentation/gifs/mapexample.gif)  
@@ -111,7 +116,6 @@ The customer suggested having a way to interact with the game by controlling the
 | ----- | ------------ | ------------ | ------------------------------------------------------------ |
 | US_01 | 2            | 1            | **AS A**   Player  **I WANT**   to be able to  play a dungeon game on different platforms web platforms **SO THAT**   I have choices  for playing the game |
 | US_02 | 2            | 4            | **AS A**   Player  **I WANT**   to have a bot  that that will play for me  **SO THAT**   It can help me  with playing through the game by offering adivce |
-| US_03 | **Deleting** | **Deleting** | **AS A**   Player  **I WANT**   to be able to compete  with a bot  **SO THAT**   I can have a goal when playing |
 | US_04 | 1            | 5            | **AS A**   **Player**  **I WANT**   to be able to  see my progress  **SO THAT**  I know  if I am doing well at the game as I play |
 | US_05 | 2            | 7            | **AS A**   Player  **I WANT**   to have different  choices between games modes and diffrent paths to the end in each game mode **SO THAT**   I have new scenarios  to play |
 | US_06 | 1            | 2            | **AS A** Player **I WANT** to interact with the blocks on the map **SO THAT** I can gather resources, place resources, and make new paths |
@@ -133,8 +137,8 @@ The customer suggested having a way to interact with the game by controlling the
 | US_06         | The player can destroy a block and it disappears from the game screen. This block will then show up within the inventory | From the inventory screen there are multiple options the player can take which require use cases and user stories | NO        |
 | US_07         | There is an option to craft items from the inventory screen. If the player has the required resources, they can craft the item and the resources are taken from their inventory | You can implement many ways to show what can be crafted with the resources provided. | NO        |
 | US_08         | Have the player take damage, from then the health will decrease and then it regenerates once they stop taking damage |                                                              | NO        |
-| US_09         | Add sprites into the game |  The sprites need to be suitable in terms of the theme of the game and overall art style | NO        |
-| US_10         | Add sprites, generate different types of ground and environment texture | The player should be able to go to different places with various environment such as river, woods, stone road | NO        |
+| **US_09**         | Add sprites into the game |  The sprites need to be suitable in terms of the theme of the game and overall art style | NO        |
+| **US_10**         | Add sprites, generate different types of ground and environment texture | The player should be able to go to different places with various environment such as river, woods, stone road | NO        |
 
 ### Use cases
 
@@ -212,7 +216,7 @@ The customer suggested having a way to interact with the game by controlling the
 - [ ] **UC_02**
 - [ ] **UC_03**
 - [ ] **UC_04**
-- [ ] **UC_05**
+- [x] **UC_05**
 - [ ] **UC_06**
 
 - [ ] **UC_07**
@@ -226,53 +230,27 @@ The customer suggested having a way to interact with the game by controlling the
 
 
 ### Software design Documentation
-Class: Position (see UC_01)         
-| Responsibilities                                  |                   Collaborators                            |
-| ---------------------------------------------- | ------------------------------------------------------------ |
-| Get an element (character/item/environment)’s position | Game Element                 |  
-  Set an element’s position      |                |  
-  
-Class: Game Element (see UC_01)
-| Responsibilities                                  |                   Collaborators                            |
-| ---------------------------------------------- | ------------------------------------------------------------ |
-| Get an element’s position   | Recipe
-| Provide interactions such as being attacked, destroyed or created    |Item
-| | Character
-| |Environment              |  
+MVC model was added based on the UML diagram to get a more specific relationship between controller, map and elements. No changes had been made to UML since last week.
 
-Class: Character (see UC_01)
-| Responsibilities                                  |                   Collaborators                            |
-| ---------------------------------------------- | ------------------------------------------------------------ |
-| Make the character walk, attack, sleep and drop | Game Element
-Acquire items   | Player
-|     |Boss
-
-Class: Recipe (see UC_03)
-| Responsibilities                                  |                   Collaborators                            |
-| ---------------------------------------------- | ------------------------------------------------------------ |
-| Show different elements of the environment which can be crafted | Game Element|
-|| Item |
-
-Class: Environment (see UC_04)
-| Responsibilities                                  |                   Collaborators                            |
-| ---------------------------------------------- | ------------------------------------------------------------ |
-| Present different environments such as water, stone, coal and tree | Game Element|
-
-
-
-
+![ ](./week_3_artifacts/MVC.png)  
 
 ### User interface design
 
-| Design implement                                             | Version |
-| ------------------------------------------------------------ | ------- |
-| There will be a starting menu screen with the game settings, load game, continue and new game | 2       |
-| In the settings tab there will be choices for audio, visuals, and controls | 1       |
-| There should be background music played at the menu screen and during the game. Background music can change along with the character’s state such as sanity levels and become more intense during events like a boss fight | 1       |
-| Sounds should be triggered when certain actions are performed (e.g. menu click, fight, mining) | 1       |
-| Once in the game there will be character that can move and interact with the whole map | 1       |
-| The player can go to an in game menu with save game and acheivements | 1       |
-| The player can access an inventory screen which has options for equipment | 1       |
-| In the equipment tab there will be options for view, craft, and delete | 1       |
-| When the player had successfully completed the game they will be sent to the credits and the starting screen | 2       |
+- Character:
+  - Once in the game there will be character that can move and interact with the whole map [1]
 
+- Menu:  
+  - There will be a starting menu screen with the game settings, load game, continue and new game [2]
+  - In the settings tab there will be choices for audio, visuals, and controls [1]
+  - The player can go to an in game menu with save game and achievements [1]
+
+- Sounds:
+  - There should be background music played at the menu screen and during the game. Background music can change along with the character’s state such as sanity levels and become more intense during events like a boss fight [1]
+  - Sounds should be triggered when certain actions are performed (e.g. menu click, fight, mining) [1]
+
+- Inventory:
+  - The player can access an inventory screen which has options for equipment [1]
+  - In the equipment tab there will be options for view, craft, and delete [1]
+
+- Game flow:
+  - When the player had successfully completed the game they will be sent to the credits and the starting screen [2]

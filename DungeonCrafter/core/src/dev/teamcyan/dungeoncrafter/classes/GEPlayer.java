@@ -20,7 +20,7 @@ public class GEPlayer extends GameElement
 {
   GameModel model;
   DungeonCrafter controller;
-  public enum BLOCK {DIRT, STONE, IRON};
+  public enum BLOCK {DIRT, STONE, IRON, GOLD};
 
   Velocity velocity;
   private TextureRegion region;
@@ -28,8 +28,36 @@ public class GEPlayer extends GameElement
   private Animation<TextureRegion> charRunL;
   private TextureRegion charFall;
   private Animation<TextureRegion> charRunR;
+  private Animation<TextureRegion> charMineL;
+  private Animation<TextureRegion> charMineR;
+  private Animation<TextureRegion> charMineD;
   private TextureRegion charStand;
   private TextureRegion charJump;
+  private Animation<TextureRegion> charDeath;
+  private Animation<TextureRegion> charAttackL;
+  private Animation<TextureRegion> charAttackR;
+  private Texture ironSpriteSheet;
+  private Animation<TextureRegion> ironCharRunL;
+  private TextureRegion ironCharFall;
+  private Animation<TextureRegion> ironCharRunR;
+  private Animation<TextureRegion> ironCharMineL;
+  private Animation<TextureRegion> ironCharMineR;
+  private Animation<TextureRegion> ironCharMineD;
+  private TextureRegion ironCharStand;
+  private TextureRegion ironCharJump;
+  private Animation<TextureRegion> ironAttackL;
+  private Animation<TextureRegion> ironAttackR;
+  private Texture goldSpriteSheet;
+  private Animation<TextureRegion> goldCharRunL;
+  private TextureRegion goldCharFall;
+  private Animation<TextureRegion> goldCharRunR;
+  private Animation<TextureRegion> goldCharMineL;
+  private Animation<TextureRegion> goldCharMineR;
+  private Animation<TextureRegion> goldCharMineD;
+  private TextureRegion goldCharStand;
+  private TextureRegion goldCharJump;
+  private Animation<TextureRegion> goldAttackL;
+  private Animation<TextureRegion> goldAttackR;
   public float stateTimer = 0;
   public State currentState;
   public State previousState;
@@ -37,7 +65,11 @@ public class GEPlayer extends GameElement
   private int stone = 0;
   private int iron = 0;
   private int dirt = 0;
+  private int gold = 0;
+
   private BLOCK currentCraftingBlock = BLOCK.DIRT;
+
+  private float attackTimer = 0;
 
   public GEPlayer (GameModel model, DungeonCrafter controller) {
     this.controller = controller;
@@ -46,8 +78,13 @@ public class GEPlayer extends GameElement
     this.velocity = new Velocity(0, 0);
     this.position = new Pos(0,0);
     this.basicSpriteSheet = new Texture("sprites/mainCharacter/characterPickaxe.png");
+    this.ironSpriteSheet = new Texture("sprites/mainCharacter/steelCharacterPickaxe.png");
+    this.goldSpriteSheet = new Texture("sprites/mainCharacter/goldCharacterPickaxe.png");
     this.currentState = State.STANDING;
     this.previousState = State.STANDING;
+
+
+    // basic character frames
 
     this.charStand = new TextureRegion(basicSpriteSheet, 0, 649, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12);
     this.charJump = new TextureRegion(basicSpriteSheet, 64, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
@@ -67,6 +104,146 @@ public class GEPlayer extends GameElement
     }
     this.charRunL = new Animation(0.15f, frames);
     frames.clear();
+
+    for (int i = 5; i > 0; i--) {
+      frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 843, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.charMineL = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 5; i > 0; i--) {
+      frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 905, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.charMineD = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 5; i > 0; i--) {
+      frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 969, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.charMineR = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 0; i < 6; i++) {
+      frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 1289, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.charDeath = new Animation(0.4f, frames);
+    frames.clear();
+
+    for (int i = 0; i < 6; i++) {
+      frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 843, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.charAttackL = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 0; i < 6; i++) {
+      frames.add(new TextureRegion(this.basicSpriteSheet, i*64, 969, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.charAttackR = new Animation(0.15f, frames);
+    frames.clear();
+
+
+    //iron armour frames
+
+    this.ironCharStand = new TextureRegion(ironSpriteSheet, 0, 649, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12);
+    this.ironCharJump = new TextureRegion(ironSpriteSheet, 64, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+    this.ironCharFall = new TextureRegion(ironSpriteSheet, 128, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+
+    this.region = ironCharStand;
+
+    for (int i = 0; i < 9; i++) {
+      frames.add(new TextureRegion(this.ironSpriteSheet, i*64, 713, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.ironCharRunR = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 0; i < 9; i++) {
+      frames.add(new TextureRegion(this.ironSpriteSheet, i*64, 587, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.ironCharRunL = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 5; i > 0; i--) {
+      frames.add(new TextureRegion(this.ironSpriteSheet, i*64, 843, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.ironCharMineL = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 5; i > 0; i--) {
+      frames.add(new TextureRegion(this.ironSpriteSheet, i*64, 905, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.ironCharMineD = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 5; i > 0; i--) {
+      frames.add(new TextureRegion(this.ironSpriteSheet, i*64, 969, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.ironCharMineR = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 0; i < 6; i++) {
+      frames.add(new TextureRegion(this.ironSpriteSheet, i*64, 843, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.ironAttackL = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 0; i < 6; i++) {
+      frames.add(new TextureRegion(this.ironSpriteSheet, i*64, 969, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.ironAttackR = new Animation(0.15f, frames);
+    frames.clear();
+
+
+
+    // gold armour
+
+    this.goldCharStand = new TextureRegion(goldSpriteSheet, 0, 649, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12);
+    this.goldCharJump = new TextureRegion(goldSpriteSheet, 64, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+    this.goldCharFall = new TextureRegion(goldSpriteSheet, 128, 1280, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT);
+
+    this.region = goldCharStand;
+
+    for (int i = 0; i < 9; i++) {
+      frames.add(new TextureRegion(this.goldSpriteSheet, i*64, 713, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.goldCharRunR = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 0; i < 9; i++) {
+      frames.add(new TextureRegion(this.goldSpriteSheet, i*64, 587, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.goldCharRunL = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 5; i > 0; i--) {
+      frames.add(new TextureRegion(this.goldSpriteSheet, i*64, 843, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.goldCharMineL = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 5; i > 0; i--) {
+      frames.add(new TextureRegion(this.goldSpriteSheet, i*64, 905, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.goldCharMineD = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 5; i > 0; i--) {
+      frames.add(new TextureRegion(this.goldSpriteSheet, i*64, 969, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.goldCharMineR = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 0; i < 6; i++) {
+      frames.add(new TextureRegion(this.goldSpriteSheet, i*64, 843, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.goldAttackL = new Animation(0.15f, frames);
+    frames.clear();
+
+    for (int i = 0; i < 6; i++) {
+      frames.add(new TextureRegion(this.goldSpriteSheet, i*64, 969, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
+    }
+    this.goldAttackR = new Animation(0.15f, frames);
+    frames.clear();
+
   }
 
   public BLOCK getCurrentCraftingBlock() {
@@ -93,6 +270,12 @@ public class GEPlayer extends GameElement
   public void decrementIron(int amount) {
     this.iron = amount > this.iron ? 0 : this.iron-amount;
   }
+  public void incrementGold() {
+    this.gold += 1;
+  }
+  public void decrementGold(int amount) {
+    this.gold = amount > this.iron ? 0 : this.gold-amount;
+  }
   public void incrementStone() {
     this.stone += 1;
   }
@@ -106,6 +289,10 @@ public class GEPlayer extends GameElement
 
   public int getIron() {
     return this.iron;
+  }
+
+  public int getGold() {
+    return this.gold;
   }
 
   public int getStone() {
@@ -137,7 +324,7 @@ public class GEPlayer extends GameElement
 
   public void incrementHealth(int armour) {
 
-    this.health = this.health+armour > 200 ? 200 : this.health+armour;
+    this.health = this.health+armour > 300 ? 300 : this.health+armour;
   }
   public void setName(String spriteName) {
       this.spriteName = spriteName;
@@ -240,10 +427,27 @@ public class GEPlayer extends GameElement
 
     if(keyListener.activeKeys.contains(Input.Keys.UP) ||
             keyListener.activeKeys.contains(Input.Keys.DOWN) &&
-                    this.previousState == GameElement.State.JUMPING){
+            this.previousState == GameElement.State.JUMPING){
 
       this.currentState = GameElement.State.JUMPING;
-    } else if(keyListener.activeKeys.contains(Input.Keys.LEFT) &&
+    }  else if(keyListener.activeKeys.contains(Input.Keys.SPACE) &&
+            (this.currentState == State.RUNNINGL || this.previousState == State.ATTACKL)) {
+
+      this.currentState = State.ATTACKL;
+    }else if(keyListener.activeKeys.contains(Input.Keys.SPACE) &&
+            (this.currentState == State.RUNNINGR || this.previousState == State.ATTACKR ||this.previousState == State.STANDING)) {
+
+      this.currentState = State.ATTACKR;
+    }else if(keyListener.activeKeys.contains(Input.Keys.A)) {
+
+      this.currentState = GameElement.State.MININGL;
+    }else if(keyListener.activeKeys.contains(Input.Keys.D)) {
+
+      this.currentState = GameElement.State.MININGR;
+    }else if(keyListener.activeKeys.contains(Input.Keys.S)) {
+
+      this.currentState = GameElement.State.MININGD;
+    }else if(keyListener.activeKeys.contains(Input.Keys.LEFT) &&
        !keyListener.activeKeys.contains(Input.Keys.UP) &&
        !keyListener.activeKeys.contains(Input.Keys.DOWN)){
 
@@ -263,23 +467,125 @@ public class GEPlayer extends GameElement
 
     stateTimer += Gdx.graphics.getDeltaTime();
 
-    if (this.currentState == State.RUNNINGL ){
-      region = charRunL.getKeyFrame(stateTimer, true);;
+    if (this.health <= 0){
+        region = charDeath.getKeyFrame(stateTimer, true);
+    } else if (this.currentState == State.RUNNINGL){
+      if(this.health <= 100){
+        region = charRunL.getKeyFrame(stateTimer, true);
+      } else if (this.health <= 200) {
+        region = ironCharRunL.getKeyFrame(stateTimer, true);
+      } else{
+        region = goldCharRunL.getKeyFrame(stateTimer, true);
+      }
     } else if (this.currentState == State.RUNNINGR){
-      region = charRunR.getKeyFrame(stateTimer, true);
+      if(this.health <= 100){
+        region = charRunR.getKeyFrame(stateTimer, true);
+      } else if (this.health <= 200) {
+        region = ironCharRunR.getKeyFrame(stateTimer, true);
+      } else{
+        region = goldCharRunR.getKeyFrame(stateTimer, true);
+      }
     } else if (this.currentState == State.JUMPING){
-      region = charJump;
-    } else if (this.currentState == State.FALLING) {
-      region = charFall;
+      if(this.health <= 100){
+        region = charJump;
+      } else if (this.health <= 200) {
+        region = ironCharJump;
+      } else{
+        region = goldCharJump;
+      }
+    } else if (this.currentState == State.MININGL){
+        if(this.health <= 100){
+          region = charMineL.getKeyFrame(stateTimer, true);
+        } else if (this.health <= 200) {
+          region = ironCharMineL.getKeyFrame(stateTimer, true);
+        } else{
+          region = goldCharMineL.getKeyFrame(stateTimer, true);
+        }
+    } else if (this.currentState == State.MININGR){
+        if(this.health <= 100){
+          region = charMineR.getKeyFrame(stateTimer, true);
+        }  else if (this.health <= 200) {
+          region = ironCharMineR.getKeyFrame(stateTimer, true);
+        } else{
+          region = goldCharMineR.getKeyFrame(stateTimer, true);
+        }
+    } else if (this.currentState == State.MININGD){
+      if(this.health <= 100){
+        region = charMineD.getKeyFrame(stateTimer, true);
+      } else if (this.health <= 200) {
+        region = ironCharMineD.getKeyFrame(stateTimer, true);
+      } else{
+        region = goldCharMineD.getKeyFrame(stateTimer, true);
+      }
+    }else if (this.currentState == State.ATTACKR){
+      this.attackTimer += Gdx.graphics.getDeltaTime();
+      if (this.attackTimer > 0.9) {
+        for (GEEnemy e : model.getEnemies()) {
+          if (e.isAlive() && this.getDistance(e.getPosition()) < 50 && e.getPosition().getX() > position.getX()){
+            if (e.getClass() == GEBoss.class) {
+              e.decrementHealth(10);
+            } else {
+              e.decrementHealth(20);
+            }
+          }
+        }
+        this.attackTimer = 0;
+      }
+      if(this.health <= 100){
+        region = charAttackR.getKeyFrame(stateTimer, true);
+      } else if (this.health <= 200) {
+        region = ironAttackR.getKeyFrame(stateTimer, true);
+      } else{
+        region = goldAttackR.getKeyFrame(stateTimer, true);
+      }
+    }else if (this.currentState == State.ATTACKL){
+      this.attackTimer += Gdx.graphics.getDeltaTime();
+      if (this.attackTimer > 0.9) {
+        for (GEEnemy e : model.getEnemies()) {
+          if (e.isAlive() && this.getDistance(e.getPosition()) < 50 && e.getPosition().getX() < position.getX()){
+            e.decrementHealth(20);
+          }
+        }
+        this.attackTimer = 0;
+      }
+      if(this.health <= 100){
+        region = charAttackL.getKeyFrame(stateTimer, true);
+      } else if (this.health <= 200) {
+        region = ironAttackL.getKeyFrame(stateTimer, true);
+      } else{
+        region = goldAttackL.getKeyFrame(stateTimer, true);
+      }
+    }else if (this.currentState == State.FALLING) {
+      if(this.health <= 100){
+        region = charFall;
+      } else if (this.health <= 200) {
+        region = ironCharFall;
+      } else{
+        region = goldCharFall;
+      }
     } else {
-      region = charStand;
+      if(this.health <= 100){
+        region = charStand;
+      }  else if (this.health <= 200) {
+        region = ironCharStand;
+      } else{
+        region = goldCharStand;
+      }
     }
 
     previousState = currentState;
   }
 
+  private double getDistance(Pos pos) {
+    return Math.sqrt(Math.pow(pos.getX()-this.position.getX(), 2)+Math.pow(pos.getY()-this.position.getY(), 2));
+  }
+
   public TextureRegion getRegion(){
     return this.region;
+  }
+
+  public Velocity getVelocity() {
+    return this.velocity;
   }
 
 }

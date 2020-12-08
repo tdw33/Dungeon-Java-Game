@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.TextureData;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.scenes.scene2d.Event;
@@ -22,11 +23,27 @@ import dev.teamcyan.dungeoncrafter.classes.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * View for the currently active game.
+ */
 public class MainGameScreen extends BaseScreen {
 
+  /**
+   * Batch that updates camera-sensitive parts of the screen
+   */
   SpriteBatch batch = new SpriteBatch();
+  /**
+   * Batch that updates camera-insensitive parts of the screen
+   */
   SpriteBatch hud = new SpriteBatch();
+  /**
+   * ShapeRenderer that creates camera-insensitive parts of the screen
+   */
   private ShapeRenderer shapeRenderer;
+  /**
+   * ShapeRenderer that creates camera-sensitive parts of the screen
+   */
+  private ShapeRenderer cameraShapeRenderer;
 
   boolean movingRight = false;
   boolean movingLeft = false;
@@ -39,11 +56,18 @@ public class MainGameScreen extends BaseScreen {
   boolean keyS = false;
   boolean keyQ = false;
   boolean keyE = false;
+  boolean keyW = false;
 
+  /**
+   * Current text in pebble's speech bubble
+   */
   private TextureData curSpeech;
+
   private GameElement.State prevState;
 
-  // Countdown timer labeling
+  /**
+   * Label for difficulty dependant game countdown
+   */
   private Label timerLabel;
   private Label.LabelStyle timerStyle;
 
@@ -71,14 +95,17 @@ public class MainGameScreen extends BaseScreen {
 
 
   /**
-   * Constructor - 
-   * Inherit the game and the model fron the parent class
+   * Constructor - Setup the camera-insensitive parts of the screen (hud)
+   * Inherit the game and the model from the parent class
+   * @param parent Controller
+   * @param model GameModel
    */
   public MainGameScreen(DungeonCrafter parent, GameModel model) {
     super(parent, model);
     this.model = model;
 
     shapeRenderer = new ShapeRenderer();
+    cameraShapeRenderer = new ShapeRenderer();
 
     final Label.LabelStyle style = new Label.LabelStyle();
     timerStyle = new Label.LabelStyle();
@@ -145,41 +172,48 @@ public class MainGameScreen extends BaseScreen {
 
 
   /**
-   *Initialise the Game Menu Screen
+   * Setup the game audio
    * */
   @Override
   public void init() {
     totTime = super.controller.totTime;
-    timeLeft = totTime;
     super.controller.audioManager.startMusic(super.controller.audioManager.ambients, 20);
-// Create countdown variable for overlay
-    Timer timer=new Timer();
-    timer.scheduleTask(new Timer.Task() {
-      @Override
-      public void run() {
-        timeLeft = timeLeft - (float)0.1;
-        if(timeLeft == 0.0)
-          timeUp = true;
-        // Attempting to add interactive audio - need to fix audio buffer error
-        if(timeLeft < 0.1 * totTime){
+    super.controller.audioManager.stopMusic(super.controller.audioManager.menuSound);
+    // Create countdown variable for overlay
+
+    if(!leavingInv) {
+      timeLeft = totTime;
+      timer.scheduleTask(new Timer.Task() {
+        @Override
+        public void run() {
+          timeLeft = timeLeft - (float) 0.1;
+          if (timeLeft == 0.0)
+            timeUp = true;
+          // Attempting to add interactive audio - need to fix audio buffer error
+          if (timeLeft < 0.1 * totTime) {
             MainGameScreen.super.controller.audioManager.startMusicStr(
-                  "tick");
+                    "tick");
+          }
         }
-      }
-    }, 0, (float)0.1, (int)totTime*10);
+      }, 0, (float) 0.1, (int) totTime * 10);
+    }
   }
 
 
+  /**
+   * All the game updates origin from here.
+   * @param delta amount of time that passed since last call
+   */
   @Override
   public void draw(float delta) {
 
     Gdx.gl.glClearColor(0, 0, 0, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-    model.getCamera().zoom = (float)Math.max((1 - Math.pow(((totTime - timeLeft)/(totTime)), 2)), 0.1);
+    model.getCamera().zoom = (float)Math.max((super.controller.startZoom - Math.pow(((totTime - timeLeft)/(totTime)), 2)), .7);
     // Cap max and min zoom levels
     if(zoomIn) {
-      model.getCamera().zoom = (float) Math.max(0.4, (model.getCamera().zoom - DungeonCrafter.ZOOM_FACTOR));
+      model.getCamera().zoom = (float) Math.max(0.1, (model.getCamera().zoom - DungeonCrafter.ZOOM_FACTOR));
     }
     if(zoomOut) {
       model.getCamera().zoom = (float) Math.min(3, (model.getCamera().zoom + DungeonCrafter.ZOOM_FACTOR));
@@ -190,19 +224,36 @@ public class MainGameScreen extends BaseScreen {
             (new Pos(model.getPlayer().getPosition().getX(),
                     model.getPlayer().getPosition().getY()));
 
+
+    // Loop warp sound effect when over antigravity background
+    TiledMapTile currentBackgroundTile = model.getMap().getBackgroundTile
+            (new Pos(model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+                    model.getPlayer().getPosition().getY()));
+
+
+    if(timeLeft < 0.1)
+      controller.changeScreen(GameOverScreen.class);
+
+    if(currentBackgroundTile.getProperties().get("inverseGravity") != null)
+      controller.audioManager.antiGrav("play");
+    else
+      controller.audioManager.antiGrav("stop");
+
     boolean isBroken = false;
-    /**
-     * if Digging Left is pressed
-     **/
+
+    if(model.getEnemies().get(17).getHealth() == 0)
+      controller.changeScreen(CreditsScreen.class);
+
+    //if Digging Left is pressed
     if(keyA) {
       isBroken = model.getMap().interactBlockLeft(
           new Pos(
             model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
             model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
-    /**
-     * if Digging Right  is pressed
-     **/
+
+    // if Digging Right  is pressed
+
     if(keyD) {
       isBroken = model.getMap().interactBlockRight(
           new Pos(
@@ -211,9 +262,7 @@ public class MainGameScreen extends BaseScreen {
     }
 
 
-    /**
-     * if Digging Center  is pressed
-     **/
+    //if Digging Center  is pressed
     if(keyS) {
       if (curCell != null) {
         controller.audioManager.breakBlock("gravel"); // curCell.getTile().getTextureRegion().getTexture().toString()
@@ -224,13 +273,22 @@ public class MainGameScreen extends BaseScreen {
             model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
 
+    //if Digging up  is pressed
+    if(keyW) {
+      if (curCell != null) {
+        controller.audioManager.breakBlock("gravel"); // curCell.getTile().getTextureRegion().getTexture().toString()
+      }
+      isBroken = model.getMap().interactBlockUp(
+          new Pos(
+            model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth()/2,
+            model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
+    }
+
     if (isBroken) {
       controller.audioManager.breakBlock("gravel");
     }
 
-    /**
-     * if Place left is pressed
-     **/
+    //if Place left is pressed
     if(keyQ) {
       model.getMap().setBlockLeft(
           new Pos( 
@@ -238,9 +296,7 @@ public class MainGameScreen extends BaseScreen {
             model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
 
-    /**
-     * if Place right is pressed
-     **/
+    //if Place right is pressed
     if(keyE) {
       model.getMap().setBlockRight(
           new Pos( 
@@ -259,12 +315,16 @@ public class MainGameScreen extends BaseScreen {
     model.getCamera().update();
 
     model.getPebble().setRegion();
-    model.getPebble().setX(layer, model.getPlayer().getPosition());
+    model.getPebble().setX(layer, model.getPlayer().getPosition(), model.getPlayer().getVelocity());
     model.getPebble().setY(layer);
 
-    model.getEnemy().setRegion();
-    model.getEnemy().setX(layer, model.getPlayer().getPosition());
-    model.getEnemy().setY(layer);
+    for (GEEnemy enemy : model.getEnemies()) {
+      if (enemy.isAlive()) {
+        enemy.setRegion();
+        enemy.setX(layer, model.getPlayer().getPosition());
+        enemy.setY(layer);
+      }
+    }
 
     model.getMap().getMapRenderer().setView(model.getCamera());
     model.getMap().getMapRenderer().render();
@@ -302,21 +362,27 @@ public class MainGameScreen extends BaseScreen {
         player.getRegion().getRegionHeight()); 
 
     GEPebble pebble = model.getPebble();
-    batch.draw(pebble.getRegion(), pebble.getPosition().getX(), pebble.getPosition().getY(), pebble.getRegion().getRegionWidth(),pebble.getRegion().getRegionHeight()); // this will be diffrent when you have nummbers at end eg player_1, player_2
+    batch.draw(pebble.getRegion(), pebble.getPosition().getX(), pebble.getPosition().getY(), 47,47); // this will be diffrent when you have nummbers at end eg player_1, player_2
 
-    GEEnemy enemy = model.getEnemy();
-    batch.draw(enemy.getRegion(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getRegion().getRegionWidth(), enemy.getRegion().getRegionHeight());
+    for (GEEnemy enemy : model.getEnemies()) {
+      if (enemy.isAlive()) {
+        batch.draw(enemy.getRegion(), enemy.getPosition().getX(), enemy.getPosition().getY(), enemy.getRegion().getRegionWidth(), enemy.getRegion().getRegionHeight());
 
+        if (enemy.getClass() == GEEnemy.class) {
+          List<GEProjectile> projectiles = enemy.getProjectiles(layer, player.getPosition());
+          for (GEProjectile t : projectiles) {
+            batch.draw(t.getTexture(), t.getPosition().getX(), t.getPosition().getY(), 16, 2, t.getTexture().getWidth(), t.getTexture().getHeight(), 1, 1, (float) t.getAngle(), 0, 0, 35, 5, false, false);
+          }
+        }
+      }
+    }
 
     GESpeech speech = model.getSpeech();
     if(speech.isSpeaking()) {
       batch.draw(speech.getSpeech(), pebble.getPosition().getX() + speech.getSpeechX(), pebble.getPosition().getY() + speech.getSpeechY(), speech.getSpeechWidth(), speech.getSpeechHeight());
     }
 
-    List<GEProjectile> projectiles = enemy.getProjectiles(layer, player.getPosition());
-    for (GEProjectile t : projectiles) {
-      batch.draw(t.getTexture(), t.getPosition().getX(), t.getPosition().getY(), 16, 2, t.getTexture().getWidth(), t.getTexture().getHeight(), 1, 1, (float) t.getAngle(), 0, 0, 35, 5, false, false);
-    }
+
 
 
     // Configure fading colour of timer
@@ -331,8 +397,20 @@ public class MainGameScreen extends BaseScreen {
     batch.end();
     model.getCamera().update();
 
+    //enemy healthbar
+    cameraShapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+    cameraShapeRenderer.setProjectionMatrix(this.model.getCamera().combined);
+    for (GEEnemy enemy : model.getEnemies()) {
+      if (enemy.isAlive()) {
+        cameraShapeRenderer.setColor(Color.RED);
+        cameraShapeRenderer.rect(enemy.getPosition().getX() - 20, enemy.getPosition().getY() + 60, enemy.getHealth(), 7);
+        cameraShapeRenderer.setColor(Color.WHITE);
+        cameraShapeRenderer.rect(enemy.getPosition().getX() - 20 + enemy.getHealth(), enemy.getPosition().getY() + 60, 100 - enemy.getHealth(), 7);
+      }
+    }
+    cameraShapeRenderer.end();
 
-    // Play next song when previous finishes
+        // Play next song when previous finishes
       //if(controller.audioManager.ambientMusic.get(controller.audioManager.curSong).isPlaying() == false){
       //  controller.audioManager.curSong =  (controller.audioManager.curSong + 1) %
       //          controller.audioManager.ambientMusic.size();
@@ -342,23 +420,30 @@ public class MainGameScreen extends BaseScreen {
 
 
     // health bar
-    float armour = model.getPlayer().getHealth() == 200 ? 100 : model.getPlayer().getHealth() % 100;
-    float health = (model.getPlayer().getHealth()-armour)/100f;
+    float goldArmour = model.getPlayer().getHealth() == 300 ? 100 : (model.getPlayer().getHealth() > 200 ? model.getPlayer().getHealth() % 100 : 0);
+    float ironArmour = model.getPlayer().getHealth()-goldArmour == 200 ? 100 : (model.getPlayer().getHealth()-goldArmour > 100 ? (model.getPlayer().getHealth()-goldArmour) % 100 : 0);
+    float health = (model.getPlayer().getHealth()-goldArmour-ironArmour)/100f;
 
     shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
     shapeRenderer.setColor(Color.BLUE);
     shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y, HEALTH_BAR_WIDTH*health, HEALTH_BAR_HEIGHT);
     shapeRenderer.setColor(Color.WHITE);
     shapeRenderer.rect(HEALTH_BAR_X+HEALTH_BAR_WIDTH*health, HEALTH_BAR_Y, HEALTH_BAR_WIDTH-(HEALTH_BAR_WIDTH*health), HEALTH_BAR_HEIGHT);
-    shapeRenderer.end();
-    //armour
-    shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+    //ironArmour
     shapeRenderer.setColor(Color.GRAY);
-    shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y-HEALTH_BAR_HEIGHT, HEALTH_BAR_WIDTH*armour/100f, HEALTH_BAR_HEIGHT);
+    shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y-HEALTH_BAR_HEIGHT, HEALTH_BAR_WIDTH*ironArmour/100f, HEALTH_BAR_HEIGHT);
+    //goldArmour
+    shapeRenderer.setColor(Color.GOLD);
+    shapeRenderer.rect(HEALTH_BAR_X, HEALTH_BAR_Y-HEALTH_BAR_HEIGHT*2, HEALTH_BAR_WIDTH*goldArmour/100f, HEALTH_BAR_HEIGHT);
     shapeRenderer.end();
 
   }
 
+  /**
+   * update the camera on window resizes
+   * @param width width of newly resized window
+   * @param height width of newly resized window
+   */
   @Override
   public void resize(int width, int height) {
     model.getCamera().viewportWidth = width;
@@ -377,20 +462,33 @@ public class MainGameScreen extends BaseScreen {
 
   }
 
+  /**
+   * Flush all stateful data.
+   */
   @Override
   public void hide() {
 
   }
 
+  /**
+   * Safely dispose all data if necessary
+   */
   @Override
   public void dispose() {
     batch.dispose();
     hud.dispose();
+    super.controller.audioManager.stopMusic(super.controller.audioManager.ambients);
     if (model.getMap() != null) {
       model.getMap().getTiledMap().dispose();
     }
+
   }
 
+   /**
+   * Implement for keyboard inputs. Called immediately on key presses.
+   * @param keycode the code of the key that was clicked. One of Input.Keys.
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean keyDown(int keycode) {
     super.controller.keyListener.keyDownListener(keycode);
@@ -433,9 +531,17 @@ public class MainGameScreen extends BaseScreen {
       keyQ = true;
     }
 
+    if(keycode == Input.Keys.W) {
+      keyW = true;
+    }
     return false;
   }
 
+  /**
+   * Implement for keyboard inputs. Called immediately on key releases.
+   * @param keycode the code of the key that was clicked. One of Input.Keys.
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean keyUp(int keycode) {
     super.controller.keyListener.keyUpListener(keycode);
@@ -473,35 +579,77 @@ public class MainGameScreen extends BaseScreen {
     if(keycode == Input.Keys.Q) 
       keyQ = false;
 
+    if(keycode == Input.Keys.W) 
+      keyW = false;
+
     return false;
   }
 
+  /**
+   * Implement for keyboard inputs. Called when a key was typed.
+   * @param character the character that was typed
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean keyTyped(char character) {
     return false;
   }
 
+  /**
+   * Implement for screen clicks or touches. Called immediately on screen press.
+   * @param screenX x-coordinate of the click. Origin is in the upper left corner.
+   * @param screenY y-coordinate of the click. Origin is in the upper left corner.
+   * @param pointer the pointer for the event.
+   * @param button the button for the event.
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean touchDown(int screenX, int screenY, int pointer, int button) {
     return false;
   }
 
+  /**
+   * Implement for screen clicks or touches. Called immediately on screen release.
+   * @param screenX x-coordinate of the click. Origin is in the upper left corner.
+   * @param screenY y-coordinate of the click. Origin is in the upper left corner.
+   * @param pointer the pointer for the event.
+   * @param button the button for the event.
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean touchUp(int screenX, int screenY, int pointer, int button) {
     return false;
   }
 
+  /**
+   * Implement for screen clicks or touches. Called when mouse or finger was dragged.
+   * @param screenX x-coordinate of the event. Origin is in the upper left corner.
+   * @param screenY y-coordinate of the event. Origin is in the upper left corner.
+   * @param pointer the pointer for the event.
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean touchDragged(int screenX, int screenY, int pointer) {
     return false;
   }
 
+  /**
+   * Called when the mouse was moved without any buttons being pressed. Will not be called on iOS.
+   * @param screenX x-coordinate of the event. Origin is in the upper left corner.
+   * @param screenY y-coordinate of the event. Origin is in the upper left corner.
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean mouseMoved(int screenX, int screenY) {
     super.controller.keyListener.mouseMoved(screenX, screenY);
     return false;
   }
 
+  /**
+   * Called when the mouse wheel was scrolled.
+   * @param amount the amount the wheel was scrolled
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean scrolled(int amount) {
     return false;

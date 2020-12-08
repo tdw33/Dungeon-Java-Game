@@ -13,6 +13,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 
 public class GMap extends GameElement {
@@ -52,12 +53,9 @@ public class GMap extends GameElement {
     this.mapPixelHeight = mapHeight * tileHeight;
     this.mapRenderer = new OrthogonalTiledMapRenderer(map);
     MapLayers mapLayers = this.map.getLayers();
-
     this.terrainLayer = (TiledMapTileLayer) mapLayers.get("environment_layer");
     this.backgroundLayer = (TiledMapTileLayer) mapLayers.get("background_layer");
-
     this.tileSet = map.getTileSets().getTileSet("default_dirt");
-
   }
 
 
@@ -103,10 +101,12 @@ public class GMap extends GameElement {
   private void tileDestroy(TilePos tPos, TiledMapTileLayer layer) {
     if (tileExists(tPos, layer)) {
       String cellType = layer.getCell(tPos.getX(), tPos.getY()).getTile().getTextureRegion().getTexture().toString();
-      if (cellType == "stone") {
+      if (Objects.equals(cellType,"sprites/rocks/default_stone.png")) {
         this.model.getPlayer().incrementStone();
-      } else if (cellType == "iron") {
+      } else if (Objects.equals(cellType,"sprites/precious/default_steel_block.png")) {
         this.model.getPlayer().incrementIron();
+      } else if (Objects.equals(cellType,"sprites/precious/default_gold_block.png")) {
+        this.model.getPlayer().incrementGold();
       } else {
         this.model.getPlayer().incrementDirt();
       }
@@ -115,7 +115,6 @@ public class GMap extends GameElement {
       layer.setCell(tPos.getX(), tPos.getY(), null);
     }
   }
-
 
   private boolean tileAttack(TilePos tPos, TiledMapTileLayer layer) {
     int attack = 5;
@@ -140,20 +139,27 @@ public class GMap extends GameElement {
    **/
   public boolean interactBlockRight(Pos pos){
     boolean broken = false;
+
     TilePos tPos1 = convertToTilePos(pos);
     tPos1.setX(tPos1.getX() + 1);
-    tPos1.setY(tPos1.getY() - 1);
+    tPos1.setY(tPos1.getY());
     broken = broken | tileAttack(tPos1, terrainLayer);
 
     TilePos tPos2 = convertToTilePos(pos);
-    tPos2.setX(tPos2.getX() + 1 );
-    tPos2.setY(tPos2.getY());
+    tPos2.setX(tPos2.getX() + 1);
+    tPos2.setY(tPos2.getY() + 1);
     broken = broken | tileAttack(tPos2, terrainLayer);
 
     TilePos tPos3 = convertToTilePos(pos);
-    tPos3.setX(tPos3.getX() + 1);
-    tPos3.setY(tPos3.getY() + 1);
+    tPos3.setX(tPos3.getX() + 2);
+    tPos3.setY(tPos3.getY());
     broken = broken | tileAttack(tPos3, terrainLayer);
+
+    TilePos tPos4 = convertToTilePos(pos);
+    tPos4.setX(tPos4.getX() + 2);
+    tPos4.setY(tPos4.getY() + 1);
+    broken = broken | tileAttack(tPos4, terrainLayer);
+
     return broken;
   }
 
@@ -162,20 +168,66 @@ public class GMap extends GameElement {
    **/
   public boolean interactBlockLeft(Pos pos){
     boolean broken = false;
+
     TilePos tPos1 = convertToTilePos(pos);
     tPos1.setX(tPos1.getX() - 1);
-    tPos1.setY(tPos1.getY() - 1);
+    tPos1.setY(tPos1.getY());
     broken = broken | tileAttack(tPos1, terrainLayer);
 
     TilePos tPos2 = convertToTilePos(pos);
     tPos2.setX(tPos2.getX() - 1);
-    tPos2.setY(tPos2.getY());
+    tPos2.setY(tPos2.getY() + 1);
     broken = broken | tileAttack(tPos2, terrainLayer);
+
+    TilePos tPos3 = convertToTilePos(pos);
+    tPos3.setX(tPos3.getX() - 2);
+    tPos3.setY(tPos3.getY());
+    broken = broken | tileAttack(tPos3, terrainLayer);
+
+    TilePos tPos4 = convertToTilePos(pos);
+    tPos4.setX(tPos4.getX() - 2);
+    tPos4.setY(tPos4.getY() + 1);
+    broken = broken | tileAttack(tPos4, terrainLayer);
+
+    return broken;
+  }
+
+  /**
+   * Digs to the centre 3 squares
+   **/
+  public boolean interactBlockUp(Pos pos){
+    boolean broken = false;
+
+    TilePos tPos1 = convertToTilePos(pos);
+    tPos1.setX(tPos1.getX() + 1);
+    tPos1.setY(tPos1.getY() + 1);
+    broken = broken | tileAttack(tPos1, terrainLayer);
+
+    TilePos tPos2 = convertToTilePos(pos);
+    tPos2.setX(tPos2.getX() );
+    tPos2.setY(tPos2.getY() + 1);
+    broken = broken |tileAttack(tPos2, terrainLayer);
 
     TilePos tPos3 = convertToTilePos(pos);
     tPos3.setX(tPos3.getX() - 1);
     tPos3.setY(tPos3.getY() + 1);
-    broken = broken | tileAttack(tPos3, terrainLayer);
+    broken = broken |tileAttack(tPos3, terrainLayer);
+
+    TilePos tPos4 = convertToTilePos(pos);
+    tPos4.setX(tPos4.getX() + 1);
+    tPos4.setY(tPos4.getY() + 2);
+    broken = broken | tileAttack(tPos4, terrainLayer);
+
+    TilePos tPos5 = convertToTilePos(pos);
+    tPos5.setX(tPos5.getX());
+    tPos5.setY(tPos5.getY() + 2);
+    broken = broken | tileAttack(tPos5, terrainLayer);
+
+    TilePos tPos6 = convertToTilePos(pos);
+    tPos6.setX(tPos6.getX() - 1);
+    tPos6.setY(tPos6.getY() + 2);
+    broken = broken | tileAttack(tPos6, terrainLayer);
+
     return broken;
   }
 
@@ -184,6 +236,7 @@ public class GMap extends GameElement {
    **/
   public boolean interactBlockCentre(Pos pos){
     boolean broken = false;
+
     TilePos tPos1 = convertToTilePos(pos);
     tPos1.setX(tPos1.getX());
     tPos1.setY(tPos1.getY() - 1);
@@ -198,6 +251,17 @@ public class GMap extends GameElement {
     tPos3.setX(tPos3.getX());
     tPos3.setY(tPos3.getY() + 1);
     broken = broken |tileAttack(tPos3, terrainLayer);
+
+    TilePos tPos4 = convertToTilePos(pos);
+    tPos4.setX(tPos4.getX() - 1);
+    tPos4.setY(tPos4.getY() - 1);
+    broken = broken | tileAttack(tPos4, terrainLayer);
+
+    TilePos tPos5 = convertToTilePos(pos);
+    tPos5.setX(tPos5.getX() + 1);
+    tPos5.setY(tPos5.getY() - 1);
+    broken = broken | tileAttack(tPos5, terrainLayer);
+
     return broken;
   }
 
@@ -205,29 +269,22 @@ public class GMap extends GameElement {
     TilePos tPos = convertToTilePos(pos);
     TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
     if (model.getPlayer().getCurrentCraftingBlock() == GEPlayer.BLOCK.STONE) {
-      cell.setTile(map.getTileSets().getTileSet("default_stone").getTile(182));
-    } else if (model.getPlayer().getCurrentCraftingBlock() == GEPlayer.BLOCK.IRON) {
-      cell.setTile(map.getTileSets().getTileSet("default_mineral_iron").getTile(345));
+      cell.setTile(map.getTileSets().getTileSet("default_stone").getTile(113));
     } else {
-      cell.setTile(tileSet.getTile(1));
+      cell.setTile(tileSet.getTile(81));
     }
     terrainLayer.setCell(tPos.getX()-1, tPos.getY(), cell);
-    return;
   }
 
   public void setBlockRight(Pos pos){
     TilePos tPos = convertToTilePos(pos);
     TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
     if (model.getPlayer().getCurrentCraftingBlock() == GEPlayer.BLOCK.STONE) {
-      cell.setTile(map.getTileSets().getTileSet("default_stone").getTile(182));
-    } else if (model.getPlayer().getCurrentCraftingBlock() == GEPlayer.BLOCK.IRON) {
-      cell.setTile(map.getTileSets().getTileSet("default_mineral_iron").getTile(345));
+      cell.setTile(map.getTileSets().getTileSet("default_stone").getTile(113));
     } else {
-      cell.setTile(map.getTileSets().getTileSet("default_dirt").getTile(1));
+      cell.setTile(map.getTileSets().getTileSet("default_dirt").getTile(81));
     }
-
     terrainLayer.setCell(tPos.getX()+1, tPos.getY(), cell);
-    return;
   }
 
 ///////////////////////////////////////////////////////////////////////////////

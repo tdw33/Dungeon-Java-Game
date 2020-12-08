@@ -16,12 +16,14 @@ public class AudioManager {
     public Sound tick;
     public Sound alert;
     public Sound jump;
+    public Sound warp;
     public ArrayList<Music> ambientMusic = new ArrayList<>();
     public Music ambients;
 
     long menuSoundID;
     public int curSong;
     boolean tickPlaying = false;
+    long warpStatus = -1;
 
     ArrayList<Long> activeAudio = new ArrayList<>();
     ArrayList<String> playingAudio = new ArrayList<>();
@@ -32,19 +34,12 @@ public class AudioManager {
         this.tick = Gdx.audio.newSound(Gdx.files.internal("sounds/tick.wav"));
         this.ambients = Gdx.audio.newMusic(Gdx.files.internal("sounds/ambients.ogg"));
         this.alert = Gdx.audio.newSound(Gdx.files.internal("sounds/notify.ogg"));
-        this.jump = Gdx.audio.newSound(Gdx.files.internal("sounds/jump.wav"));
-        ambientMusic.add(Gdx.audio.newMusic(Gdx.files.internal("sounds/tick.wav")));
-        ambientMusic.add(Gdx.audio.newMusic(Gdx.files.internal("sounds/ambient2.ogg")));
-        ambientMusic.add(Gdx.audio.newMusic(Gdx.files.internal("sounds/ambient3.ogg")));
+        this.jump = Gdx.audio.newSound(Gdx.files.internal("sounds/jump2.wav"));
+        this.warp = Gdx.audio.newSound(Gdx.files.internal("sounds/antigrav.wav"));
 
-
-        curSong = 0;
 
         // Fix volume levels
         this.menuSound.setVolume((float)0.6);
-        ambientMusic.get(0).setVolume((float)0.6);
-        ambientMusic.get(1).setVolume((float)0.4);
-        ambientMusic.get(2).setVolume((float)0.4);
     }
 
 
@@ -88,6 +83,15 @@ public class AudioManager {
         System.out.println("Testing function is running");
     }
 
+    public void antiGrav(String status) {
+        if(status == "play" & warpStatus == -1){
+            warpStatus = this.warp.loop();
+        }
+        if(status == "stop" & warpStatus != -1) {
+            this.warp.stop(warpStatus);
+            warpStatus = -1;
+        }
+    }
 
     public void stopAudio(Sound toStop, long audioID){
         toStop.stop(audioID);

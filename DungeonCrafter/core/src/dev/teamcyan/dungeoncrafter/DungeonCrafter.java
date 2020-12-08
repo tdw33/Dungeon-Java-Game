@@ -16,36 +16,58 @@ import dev.teamcyan.dungeoncrafter.screens.*;
 import dev.teamcyan.dungeoncrafter.classes.AudioManager;
 import dev.teamcyan.dungeoncrafter.classes.KeyListener;
 
-
+/**
+ * Controller of the MVC-pattern
+ */
 public class DungeonCrafter extends Game {
+
 
 	private AssetManager assetManager;
 
+	/**
+	 * Width of the game window
+	 */
 	public static final int WIDTH = 720;
+	/**
+	 * Height of the game window
+	 */
 	public static final int HEIGHT = 720;
+	/**
+	 * global rate of zoom changes
+	 */
 	public static final float ZOOM_FACTOR = 0.1f;
 	public float totTime;
+	public double startZoom;
 
-	public SpriteBatch batch;
 	public AudioManager audioManager;
 	public KeyListener keyListener;
 
+	/**
+	 * The model of the game, which holds the state of the current game. Model of the MVC-pattern.
+	 */
 	private GameModel model;
 	private boolean debugMode = true;
+
+	/**
+	 * List of available screens of the game. View of the MVC-pattern.
+	 */
 	private ObjectMap<Class<? extends BaseScreen>, BaseScreen> screens = new ObjectMap<>();
 
 
-
+	/**
+	 * Convenience method to safely load assets
+	 */
    public void init_asset_manager()
    {
-     /** 
-      * Init asset manager 
-      */
 		assetManager = new AssetManager();
 		assetManager.load("spritesheets/sprites.atlas", TextureAtlas.class);
 		assetManager.finishLoading();
    }
 
+	/**
+	 * Creates new game, including keyListener, audioManager.
+	 * Loads all game screens.
+	 */
 	@Override
 	public void create () 
    {
@@ -63,6 +85,9 @@ public class DungeonCrafter extends Game {
 	   newGame();
 	}
 
+	/**
+	 * Disposes all screens and GameModel, when game is exited.
+	 */
 	@Override
 	public void dispose () 
    {
@@ -82,9 +107,8 @@ public class DungeonCrafter extends Game {
     * Convenience method to safely load textures. If the texture isn't found, a
     * blank one is created and the error is logged.
 	 * @param textureName The name of the image that is being looked up.
-	 * @return
+	 * @return TextureAtlas.AtlasRegion
 	 */
-
 	public TextureAtlas.AtlasRegion getAtlasRegion(String textureName) {
 		try 
       {
@@ -100,6 +124,10 @@ public class DungeonCrafter extends Game {
 		}
 	}
 
+	/**
+	 * Convenience method to provide getAtlasRegion() with empty empty AtlasRegion in case of error.
+	 * @return TextureAtlas.AtlasRegion
+	 */
 	public TextureAtlas.AtlasRegion getEmptyAtlasRegion() {
 		return new TextureAtlas
         .AtlasRegion(
@@ -108,35 +136,54 @@ public class DungeonCrafter extends Game {
                 new Pixmap(1,1, Pixmap.Format.RGBA8888))));
 	}
 
-	//	  Create a new game, starting with the story screen
+	/**
+	 * Starts a new session that begins with the Main Menu Screen.
+	 */
 	public void newGame() {
 		this.changeScreen(MainMenuScreen.class);
 	}
 
-	// === Debug Logic === //
+	/**
+	 * @return boolean
+	 */
 	public boolean isDebugOn() {
 		return debugMode;
 	}
 
+	/**
+	 * Set the debugging mode for amount of logging information printed.
+	 * @param on boolean to set debugMode to
+	 * @return DungeonCrafter
+	 */
 	public DungeonCrafter setDebugOn(boolean on) {
 		this.debugMode = on;
 		Gdx.app.setLogLevel(on ? Application.LOG_DEBUG : Application.LOG_INFO);
 		return this;
 	}
 
-	// Screen Management
+	/**
+	 * Switches between Screens of the game.
+	 * @param key The Screen class to set the current screen to
+	 */
 	public void changeScreen(Class<? extends BaseScreen> key) {
 		this.setScreen(screens.get(key));
 		//handle(new GameEvent("SCREEN_CHANGE").set("SCREEN", screens.get(key)));
 		if(key.getName() != "dev.teamcyan.dungeoncrafter.screens.MainMenuScreen" &
-				key.getName() != "dev.teamcyan.dungeoncrafter.screens.DifficultyScreen") {
+				key.getName() != "dev.teamcyan.dungeoncrafter.screens.DifficultyScreen" &
+		key.getName() != "dev.teamcyan.dungeoncrafter.screens.SettingsScreen" &
+				key.getName() != "dev.teamcyan.dungeoncrafter.screens.CreditsScreen")
+		{
 			audioManager.fadeMusicOut(audioManager.menuSound);
 		}
 		if(key.getName() == "dev.teamcyan.dungeoncrafter.screens.MainMenuScreen"){
 			audioManager.fadeMusicOut(audioManager.ambients);
+			audioManager.stopMusic(audioManager.ambients);
 		}
 	}
 
+	/**
+	 * Instantiates all necessary screens of the game session.
+	 */
 	public void loadScreens() {
 		screens.put(InventoryScreen.class, new InventoryScreen(this, model));
 		screens.put(MainGameScreen.class, new MainGameScreen(this, model));
@@ -144,8 +191,12 @@ public class DungeonCrafter extends Game {
 		screens.put(SettingsScreen.class, new SettingsScreen(this, model));
 		screens.put(DifficultyScreen.class, new DifficultyScreen(this, model));
 		screens.put(GameOverScreen.class, new GameOverScreen(this, model));
+		screens.put(CreditsScreen.class, new CreditsScreen(this, model));
 	}
 
+	/**
+	 * Restart the game by overriding all screens and GameModel, and setting current screen to DifficultyScreen
+	 */
 	public void restartGame() {
 		this.screens = new ObjectMap<>();
 		loadScreens();
@@ -153,12 +204,11 @@ public class DungeonCrafter extends Game {
 		this.changeScreen(DifficultyScreen.class);
 	}
 
+	/**
+	 * Get the model of the current game session.
+	 * @return GameModel
+	 */
 	public GameModel getModel() {
 		return this.model;
 	}
-	/*@Override
-	public void render () {
-		super.render();
-	}*/
-
 }
