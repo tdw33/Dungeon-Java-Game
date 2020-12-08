@@ -13,10 +13,11 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class GEEnemy extends GameElement
-{
+/**
+ * Game Element Enemy Class
+ */
+public class GEEnemy extends GameElement{
     public static final float ACCELERATION = (float) 2.0;
-
     Velocity velocity;
     private TextureRegion region;
     private Animation<TextureRegion> enemyShootR;
@@ -34,6 +35,11 @@ public class GEEnemy extends GameElement
     private int health = 100;
     private boolean isAlive = true;
 
+    /**
+     * Constructor for Enemy Game Element
+     * @param model
+     * @param position
+     */
     public GEEnemy (GameModel model, Pos position)
     {
         this.model = model;
@@ -77,6 +83,12 @@ public class GEEnemy extends GameElement
         frames.clear();
     }
 
+    /**
+     * Setter for X
+     * @param layer
+     * @param playerPosition
+     * @return
+     */
     public float setX(TiledMapTileLayer layer, Pos playerPosition) {
         // apply gravity, when no floor
         float delta = Gdx.graphics.getDeltaTime();
@@ -125,6 +137,11 @@ public class GEEnemy extends GameElement
         return this.position.getX();
     }
 
+    /**
+     * Setter for Y
+     * @param layer
+     * @return
+     */
     public float setY(TiledMapTileLayer layer) {
         TiledMapTile currentBackgroundTile = model.getMap().getBackgroundTile(new Pos(this.position.getX()+this.region.getRegionWidth()/2, this.position.getY()+this.region.getRegionHeight()/2));
         float gravity;
@@ -153,8 +170,10 @@ public class GEEnemy extends GameElement
         return this.position.getY();
     }
 
+    /**
+     * Setter for Region
+     */
     public void setRegion() {
-
         if (this.velocity.getY() >1) {
             this.currentState = GameElement.State.JUMPING;
         } else if(this.velocity.getY() < -1) {
@@ -188,14 +207,22 @@ public class GEEnemy extends GameElement
         }
 
         previousState = currentState;
-
-
     }
 
+    /**
+     * Getter for Texture Region
+     * @return
+     */
     public TextureRegion getRegion() {
         return region;
     }
 
+    /**
+     * Getter for tiles 
+     * @param layer
+     * @param playerPosition
+     * @return
+     */
     public List<GEProjectile> getProjectiles(TiledMapTileLayer layer, Pos playerPosition) {
         this.projectileTimer += Gdx.graphics.getDeltaTime();
         if (this.projectileTimer > 3) {
@@ -215,10 +242,18 @@ public class GEEnemy extends GameElement
         return this.projectiles;
     }
 
+    /**
+     * Getter for health
+     * @return
+     */
     public int getHealth() {
         return this.health;
     }
 
+    /**
+     * Setter for decrementing Health
+     * @param damage
+     */
     public void decrementHealth(int damage) {
         this.health -= damage;
         if (this.health <= 0) {
@@ -229,16 +264,22 @@ public class GEEnemy extends GameElement
                     isAlive = false;
                 }
             }, 1000);
-
-
         }
     }
 
+    /**
+     * Checker for isAlive Flag
+     * @return
+     */
     public boolean isAlive() {
         return this.isAlive;
     }
 
-
+    /**
+     * Getter for Distance 
+     * @param pos
+     * @return
+     */
     protected double getDistance(Pos pos) {
         return Math.sqrt(Math.pow(pos.getX()-this.position.getX(), 2)+Math.pow(pos.getY()-this.position.getY(), 2));
     }

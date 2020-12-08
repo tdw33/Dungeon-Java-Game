@@ -2,14 +2,14 @@ package dev.teamcyan.dungeoncrafter.classes;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.TextureData;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import dev.teamcyan.dungeoncrafter.DungeonCrafter;
-
 import javax.swing.plaf.TextUI;
 
+/**
+ * Speech handler class
+ */
 public class GESpeech extends GameElement {
-
+    // TODO
     private float pebbleX;
     private float pebbleY;
     private Texture pebbleIntro;
@@ -25,12 +25,14 @@ public class GESpeech extends GameElement {
     private float width;
     private float height;
     private boolean speaking;
-
-    public float stateTimer = 0;
     private GameModel model;
     private DungeonCrafter game;
+    public float stateTimer = 0;
 
-
+    /**
+     * Constructor 
+     * @param model
+     */
     public GESpeech(GameModel model){
         this.model = model;
         this.game = game;
@@ -46,10 +48,11 @@ public class GESpeech extends GameElement {
         this.width = 40;
         this.height = 30;
         this.speaking = true;
-
     }
 
-
+    /**
+     * Setter for Position
+     */
     public void setPosition(){
         if(this.speech == pebbleIntro || this.speech == pebbleMove || this.speech == pebbleIntro2){
             this.X = -70;
@@ -74,6 +77,9 @@ public class GESpeech extends GameElement {
         }
     }
 
+    /**
+     * Setter for Speech
+     */
     public void setSpeech() {
         stateTimer += Gdx.graphics.getDeltaTime();
         if(stateTimer > 4 &&  stateTimer < 12 ){
@@ -97,27 +103,52 @@ public class GESpeech extends GameElement {
         }else{this.speaking = false;}
     }
 
-
-
-
+    /**
+     * Getter for speech
+     * @return
+     */
     public Texture getSpeech(){
         return this.speech;
     }
+
+    /**
+     * Getter for speech X
+     * @return
+     */
     public float getSpeechX(){
         return this.X;
     }
+
+    /**
+     * Getter for speech Y
+     * @return
+     */
     public float getSpeechY(){
         return this.Y;
     }
+
+    /**
+     * Getter for speech widht
+     * @return
+     */
     public float getSpeechWidth(){
         return this.width;
     }
+
+    /**
+     * Getter for speech Height
+     * @return
+     */
     public float getSpeechHeight(){
         return this.height;
     }
 
-
+    /**
+     * Flag Checker for speaking flag
+     * @return
+     */
     public boolean isSpeaking(){
         return this.speaking;
     }
+    
 }

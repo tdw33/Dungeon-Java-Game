@@ -1,22 +1,25 @@
 package dev.teamcyan.dungeoncrafter.classes;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
-import com.badlogic.gdx.utils.Array;
 
+/**
+ * Projectile Game Element Class
+ */
 public class GEProjectile extends GameElement {
     Velocity velocity;
     private Texture texture;
     private double angle;
     private GameModel model;
 
-    public GEProjectile (GameModel model, Pos position, Pos destination)
-    {
+    /**
+     * Constructor for Projectile 
+     * @param model
+     * @param position
+     * @param destination
+     */
+    public GEProjectile (GameModel model, Pos position, Pos destination){
         this.model = model;
         this.getype = GEType.DEFAULT;
         this.position = new Pos(position.getX(), position.getY()+30);
@@ -29,20 +32,27 @@ public class GEProjectile extends GameElement {
         this.angle = Math.atan2(spriteDirection.getX()* velocity.getY()-spriteDirection.getY()* velocity.getX(),spriteDirection.getX()* velocity.getX()+ spriteDirection.getY()* velocity.getY());
         this.velocity = new Velocity(this.velocity.getX()*4, this.velocity.getY()*4);
         this.texture = new Texture("sprites/enemy/arrow.png");
-
     }
 
+    /**
+     * Method that checks if the Projectile has hit something
+     * @return
+     */
     public boolean hitTest() {
         if (this.position.getX() + this.texture.getWidth()/2 > model.getPlayer().getPosition().getX() &&
             this.position.getX() + this.texture.getWidth()/2 < model.getPlayer().getPosition().getX() + model.getPlayer().getRegion().getRegionWidth() &&
             this.position.getY() + this.texture.getHeight()/2 > model.getPlayer().getPosition().getY() &&
             this.position.getY() + this.texture.getHeight()/2 < model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()) {
-
             return true;
         }
         return false;
     }
 
+    /**
+     * Setter for projectile position
+     * @param layer
+     * @return
+     */
     public boolean setPosition(TiledMapTileLayer layer) {
         if (hitTest()) {
             model.getPlayer().decrementHealth(5);
@@ -102,10 +112,18 @@ public class GEProjectile extends GameElement {
         previousState = currentState;
     }*/
 
+    /**
+     * Getter for Texture
+     * @return
+     */
     public Texture getTexture(){
         return this.texture;
     }
 
+    /**
+     * Getter for angle of projectile 
+     * @return
+     */
     public double getAngle() {
         return this.angle * 180/3.1415;
     }
