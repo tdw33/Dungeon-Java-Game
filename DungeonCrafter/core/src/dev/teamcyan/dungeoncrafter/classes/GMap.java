@@ -15,7 +15,9 @@ import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import java.util.Iterator;
 import java.util.Objects;
 
-
+/**
+ * 
+ */
 public class GMap extends GameElement {
   private GameModel model;
   private TiledMap map;
@@ -31,13 +33,13 @@ public class GMap extends GameElement {
   private TiledMapTileSet tileSet;
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-// Constructor 
-//
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
+/**
+ * GMap Constructor
+ * 
+ * @param model the GameModel which it is part of 
+ * 
+ * @param mapName the .txf file which it uses as a starting map
+ */
   public GMap(GameModel model, String mapName) {
     // load the map
     this.model = model;
@@ -67,8 +69,12 @@ public class GMap extends GameElement {
 ///////////////////////////////////////////////////////////////////////////////
 
   /**
-   * Returns true if tile exists on layer and false if it does not 
-   **/
+   * A method of interogating if a tile exists at a specific tPos on a named layer
+   * 
+   * @param tPos receives the position of the tile as a TilePos already converted
+   * @param layer receives the TiledMapLyayer of the layer to search for
+   * @return Returns true if tile exists on layer and false if it does not 
+   */
   private boolean tileExists(TilePos tPos, TiledMapTileLayer layer) {
     TiledMapTileLayer.Cell tileHere = layer.getCell(tPos.getX(), tPos.getY());
     if(tileHere != null){
@@ -76,7 +82,12 @@ public class GMap extends GameElement {
     }
     return false;
   }
-
+/**
+ * 
+ * @param tPos
+ * @param layer
+ * @return
+ */
   private boolean tileHasHealth(TilePos tPos, TiledMapTileLayer layer) {
     TiledMapTileLayer.Cell tileHere = layer.getCell(tPos.getX(), tPos.getY());
     if (tileHere.getTile().getProperties().get("block_health") != null) {
@@ -85,10 +96,12 @@ public class GMap extends GameElement {
     return false;
   }
 
+ 
   /**
-   * Convert the Pos to a TilePos
-   * Returns a TilePos
-   **/
+   * Method to easily convert from Pos to a TilePos
+   * @param pos global position
+   * @return Returns the equivalent TilePos coordinate of the Pos
+   */
   private TilePos convertToTilePos(Pos pos) {
     int x = (int)(pos.getX() / tileWidth); 
     int y = (int)(pos.getY() / tileHeight);
@@ -96,8 +109,10 @@ public class GMap extends GameElement {
   }
 
   /**
-   * Returns the y of  position of a tile  
-   * */
+   * Destroys (empties) the tile at the specifice position 
+   * @param tPos TilePos of the tile to be destroyed
+   * @param layer Layer where the Tile can be found
+   */
   private void tileDestroy(TilePos tPos, TiledMapTileLayer layer) {
     if (tileExists(tPos, layer)) {
       String cellType = layer.getCell(tPos.getX(), tPos.getY()).getTile().getTextureRegion().getTexture().toString();
