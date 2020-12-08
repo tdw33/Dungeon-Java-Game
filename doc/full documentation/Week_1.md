@@ -1,16 +1,30 @@
-# Week 1 16th- 22nd October
+---
+title: "Documentation"
+author: 
+- He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, 
+- Tom Wells, Vlad Postmangiu Luchian, Yandong Guo
+toc: true
+toc_depth: 2
+number_sections: true
+fontsize: 11pt
+geometry: margin=1.5in
+fd_print: kable
+urlcolor: blue
+---
 
+\pagebreak
 
+# Week 1: 16th- 22nd October
 
 ## **Process**
 
 
 
-## Weekly overview 
+### Weekly overview 
 
 This was the start of the project, meaning there was no coding. Instead, we planned: what game we wanted to create based on the initial customer specification; the programming language; control flow and communication (meetings), and the agile approach to the project. The week consisted of 2 meetings. The first meeting was to introduce ourselves and brainstorm ideas for the game, as well as plan the agile approach (Scrum) for the week. The second meeting was a sprint review followed by preparing the customer presentation. In between these two meetings we had daily stand-ups that were carried out on Microsoft teams.
 
-![](./week_1_artifacts/week1_backlog.png)
+![](./week_1_artifacts/week1_backlog.png){ width=50% }
 
 Since the Scrum approach was chosen to be used in this project, we assigned a product lead and Scrum master. The product lead was responsible for setting out the sprint backlog from the product backlog created from the brainstorm meeting, while the Scrum master assured daily stand-up posts were being completed. All the sprint information was stored on GitHub for ease of access and updating the tasks.
 
@@ -18,9 +32,11 @@ From this initial sprint, we were able to analyse the use of teams for daily sta
 
 
 
-## Meeting minutes
 
-### Brainstorming and sprint planning meeting
+\pagebreak
+### Meeting minutes
+
+**Brainstorming and sprint planning meeting**
 
 Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
 
@@ -51,7 +67,7 @@ Minutes:
 
 - The first sprint everyone was assigned the same tasks as it was all researched based. These include find a cross-platform Java library, research version control and how GitHub works, game development research, Java research. The end of the sprint was the Friday.
 
-### sprint review and presentation creation
+**sprint review and presentation creation**
 
 Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
 
@@ -63,7 +79,9 @@ This is a link to the first presentation for the customer meeting 23rd October: 
 
 
 
-## backlog
+
+\pagebreak
+### backlog
 
 **Product backlog:**
 
@@ -92,13 +110,17 @@ This is a link to the first presentation for the customer meeting 23rd October: 
 - Java research 
 - Game development research 
 
-## Exception handling
+
+
+\pagebreak
+
+### Exception handling
 
 At this early stage there were no issues within the project. 
 
 
-
-## product contents
+\pagebreak
+## **product contents**
 
 
 
@@ -115,6 +137,7 @@ In this week we had no customer meeting but instead the customer debrief:
 
 This was vague meaning we had plenty of choice of where we wanted to go with the game. One key part was the game being able to be played on multiple devices. This made Java a good choice for game development as it can be used for android gaming. The use of a bot in our mining dungeon game had multiple possibilities such as: mining for the player, hold items for the player, provide hints and tips, and fight for the player. In order to track progress, we could implement a progress bar, time limit, kill number, equipment gained (precious ores). The game can have multiple ways of how it can change the difficulty. We can include achievement system, creative or survival mode, altitude challenge, mining challenge and adjust time constraint.
 
+\pagebreak
 ### User stories
 
 | ID    | Version | Priority | Story                                                        |
@@ -128,7 +151,7 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 | US_07 | 1       | 3        | **AS A** player **I WANT** to use resources to craft items **SO THAT** I can use them throughout the game to make tasks easier |
 
 
-
+\pagebreak
 ### User stories tests
 
 | User story ID | Test acceptance                                              | comments                                                     | completed |
@@ -142,23 +165,24 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 | US_07         | There is an option to craft items from the inventory screen. If the player has the required resources, they can craft the item and the resources are taken from their inventory | You can implement many ways to show what can be crafted with the resources provided. | NO        |
 
 
-
+\pagebreak
 ### Use cases
 
 At this stage of the process we had not considered to implement use cases in our development approach. This was due to us not having our game idea confirmed by the customer, as well as not being aware of the process since the lecture material was not release yet. Instead we had user stories as shown in the user story section, which is a similar to a less dressed version of the use cases. 
 
+\pagebreak
 ###  Use cases Tests
 
 As we had no use case there were no tests to conduct. 
 
 
-
+\pagebreak
 ### Software design Documentation
 
 At this stage, no thought has been given into the software design and classes as the mining game has not been confirmed by the customer. 
 
 
-
+\pagebreak
 ### User interface design
 
 This is a basic framework of how the potential game will look like to the user. 
