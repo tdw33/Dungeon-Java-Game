@@ -26,9 +26,9 @@ date: 08-12-2020
 
 - He Jiang
 - Julius Martinetz
+- Lewis Williams
 - Samuel Love
 - Tianyu Ji
 - Tom Wells
-- Lewis Williams
 - Vlad P Luchian
 - Yandong Guo
