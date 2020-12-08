@@ -15,10 +15,18 @@ import dev.teamcyan.dungeoncrafter.classes.GameModel;
 
 import java.util.ArrayList;
 
-
+/**
+ * Screen which is called when the game was successfully completed.
+ */
 public class CreditsScreen extends BaseScreen {
-    ArrayList<Label> creditText;
+
+    /**
+     * The amount of time the screen is active
+     */
     double timeElapsed = 0;
+    /**
+     * The amount of time the credits are supposed to take to move through window
+     */
     int creditLength = 50;
     Label intoTheDarkLabel;
     Label teamCyanLabel;
@@ -29,6 +37,11 @@ public class CreditsScreen extends BaseScreen {
 
     Label exitLabel;
 
+    /**
+     * Setup initial credits screen. Initializes all labels.
+     * @param controller instance of the DungeonCrafter class
+     * @param model instance of the current GameModel class
+     */
     public CreditsScreen(final DungeonCrafter controller, GameModel model) {
         super(controller, model);
 
@@ -143,6 +156,10 @@ public class CreditsScreen extends BaseScreen {
 
     }
 
+    /**
+     * Create a scheduler which continuously updates a timer. Timer serves as reference for continuous screen
+     * updates.
+     */
     @Override
     public void init() {
         Timer creditsTimer = new Timer();
@@ -154,9 +171,13 @@ public class CreditsScreen extends BaseScreen {
         }, 0, (float) 0.01, (int) creditLength*100);
     }
 
+    /**
+     * Continuously update label positions to create credit lieke moving visualization
+     * @param delta amount of time that passed since last call
+     */
     @Override
     public void draw(float delta) {
-        System.out.println(timeElapsed);
+
         if(timeElapsed > 10)
             intoTheDarkLabel.setY( (float) (10*(timeElapsed-20)));
         if(timeElapsed > 40)
@@ -175,45 +196,95 @@ public class CreditsScreen extends BaseScreen {
         }
     }
 
+    /**
+     * Implement for keyboard inputs. Called immediately on key presses.
+     * @param keycode the code of the key that was clicked. One of Input.Keys.
+     * @return boolean whether the input was processed
+     */
     @Override
     public boolean keyDown(int keycode) {
         return false;
     }
 
+    /**
+     * Implement for keyboard inputs. Called immediately on key releases.
+     * @param keycode the code of the key that was clicked. One of Input.Keys.
+     * @return boolean whether the input was processed
+     */
     @Override
     public boolean keyUp(int keycode) {
         return false;
     }
 
+    /**
+     * Implement for keyboard inputs. Called when a key was typed.
+     * @param character the character that was typed
+     * @return boolean whether the input was processed
+     */
     @Override
     public boolean keyTyped(char character) {
         return false;
     }
 
+    /**
+     * Implement for screen clicks or touches. Called immediately on screen press.
+     * @param screenX x-coordinate of the click. Origin is in the upper left corner.
+     * @param screenY y-coordinate of the click. Origin is in the upper left corner.
+     * @param pointer the pointer for the event.
+     * @param button the button for the event.
+     * @return boolean whether the input was processed
+     */
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         return false;
     }
 
+    /**
+     * Implement for screen clicks or touches. Called immediately on screen release.
+     * @param screenX x-coordinate of the click. Origin is in the upper left corner.
+     * @param screenY y-coordinate of the click. Origin is in the upper left corner.
+     * @param pointer the pointer for the event.
+     * @param button the button for the event.
+     * @return boolean whether the input was processed
+     */
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         return false;
     }
 
+    /**
+     * Implement for screen clicks or touches. Called when mouse or finger was dragged.
+     * @param screenX x-coordinate of the event. Origin is in the upper left corner.
+     * @param screenY y-coordinate of the event. Origin is in the upper left corner.
+     * @param pointer the pointer for the event.
+     * @return boolean whether the input was processed
+     */
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
         return false;
     }
 
+    /**
+     * Called when the mouse was moved without any buttons being pressed. Will not be called on iOS.
+     * @param screenX x-coordinate of the event. Origin is in the upper left corner.
+     * @param screenY y-coordinate of the event. Origin is in the upper left corner.
+     * @return boolean whether the input was processed
+     */
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
         return false;
     }
 
+    /**
+     * Called when the mouse wheel was scrolled.
+     * @param amount the amount the wheel was scrolled
+     * @return boolean whether the input was processed
+     */
     @Override
     public boolean scrolled(int amount) {
         return false;
     }
+
 
     @Override
     public void pause() {
@@ -225,6 +296,9 @@ public class CreditsScreen extends BaseScreen {
 
     }
 
+    /**
+     * Flush all stateful data.
+     */
     @Override
     public void hide() {
 
