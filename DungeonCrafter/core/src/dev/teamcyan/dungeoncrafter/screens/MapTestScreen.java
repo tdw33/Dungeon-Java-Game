@@ -23,6 +23,9 @@ public class MapTestScreen implements Screen, InputProcessor {
 
     DungeonCrafter game;
 
+    /**
+     * @param game instance of the DungeonCrafter class
+     */
     public MapTestScreen (DungeonCrafter game) {
         this.game = game;
     }
