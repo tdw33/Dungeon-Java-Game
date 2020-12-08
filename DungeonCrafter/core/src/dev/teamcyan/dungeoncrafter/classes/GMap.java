@@ -1,7 +1,5 @@
 package dev.teamcyan.dungeoncrafter.classes;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -10,13 +8,10 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
-
-import java.util.Iterator;
 import java.util.Objects;
 
 /**
- * 
+ * Gmap is the map class of the game
  */
 public class GMap extends GameElement {
   private GameModel model;
@@ -59,14 +54,6 @@ public class GMap extends GameElement {
     this.backgroundLayer = (TiledMapTileLayer) mapLayers.get("background_layer");
     this.tileSet = map.getTileSets().getTileSet("default_dirt");
   }
-
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-// Internal methods
-//
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 
   /**
    * A method of interogating if a tile exists at a specific tPos on a named layer
@@ -131,6 +118,12 @@ public class GMap extends GameElement {
     }
   }
 
+  /**
+   * Method to attack a tile and reduce its health. When the health falls under 0 the tile is destroyed
+   * @param tPos
+   * @param layer
+   * @return boolean
+   */
   private boolean tileAttack(TilePos tPos, TiledMapTileLayer layer) {
     int attack = 5;
     if (tileExists(tPos, layer)) {
@@ -150,8 +143,10 @@ public class GMap extends GameElement {
   }
 
   /**
-   * Digs to the left 3 squares
-   **/
+   * Interact with blocks to the right
+   * @param pos
+   * @return
+   */
   public boolean interactBlockRight(Pos pos){
     boolean broken = false;
 
@@ -178,9 +173,11 @@ public class GMap extends GameElement {
     return broken;
   }
 
-  /**
-   * Digs to the left 3 squares
-   **/
+   /**
+   * Interact with blocks to the left
+   * @param pos
+   * @return
+   */
   public boolean interactBlockLeft(Pos pos){
     boolean broken = false;
 
@@ -207,9 +204,11 @@ public class GMap extends GameElement {
     return broken;
   }
 
-  /**
-   * Digs to the centre 3 squares
-   **/
+   /**
+   * Interact with blocks above
+   * @param pos
+   * @return
+   */
   public boolean interactBlockUp(Pos pos){
     boolean broken = false;
 
@@ -246,9 +245,11 @@ public class GMap extends GameElement {
     return broken;
   }
 
-  /**
-   * Digs to the centre 3 squares
-   **/
+    /**
+   * Interact with blocks under
+   * @param pos
+   * @return
+   */
   public boolean interactBlockCentre(Pos pos){
     boolean broken = false;
 
@@ -280,6 +281,10 @@ public class GMap extends GameElement {
     return broken;
   }
 
+  /**
+   * Place block to the left
+   * @param pos
+   */
   public void setBlockLeft(Pos pos){
     TilePos tPos = convertToTilePos(pos);
     TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
@@ -291,6 +296,10 @@ public class GMap extends GameElement {
     terrainLayer.setCell(tPos.getX()-1, tPos.getY(), cell);
   }
 
+  /**
+   * Place block to the right
+   * @param pos
+   */
   public void setBlockRight(Pos pos){
     TilePos tPos = convertToTilePos(pos);
     TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
@@ -309,47 +318,84 @@ public class GMap extends GameElement {
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
+/**
+ * Returns the cell block from the foreground layer
+ * @param pos
+ * @return
+ */
   public TiledMapTileLayer.Cell getBlock(Pos pos) {
     TilePos tPos = convertToTilePos(pos);
     return terrainLayer.getCell(tPos.getX(), tPos.getY());
   }
-
+/**
+ * 
+ * @param pos
+ * @return
+ */
   public TiledMapTile getBackgroundTile(Pos pos){
     TilePos tPos = convertToTilePos(pos);
     return backgroundLayer.getCell(tPos.getX(), tPos.getY()).getTile();
   }
 
+  /**
+   * Returns the Terrain layer
+   * @return
+   */
   public TiledMapTileLayer getTerainLayer(){
     return this.terrainLayer;
   }
 
+  /**
+   * Returns the Map Object
+   * @return
+   */
   public TiledMap getTiledMap() {
     return this.map;
   }
 
   /**
-   * Returns an int of the tileMap HP
-   **/
+   * Returns the health of a tile as an int
+   * @param tPos
+   * @param layer
+   * @return int
+   */
   private int tileGetHealth(TilePos tPos, TiledMapTileLayer layer) {
     int health = (int)terrainLayer.getCell(tPos.getX(), tPos.getY()).getTile().getProperties().get("block_health");
     return health;
   }
 
+  /**
+   * Sets the health of a tile as an int
+   * @param tPos
+   * @param layer
+   * @param value
+   */
   private void tileSetHealth(TilePos tPos, TiledMapTileLayer layer, int value) {
     terrainLayer.getCell(tPos.getX(), tPos.getY()).getTile().getProperties().put("block_health", value);
     return;
   }
 
+  /**
+   * Returns the map Renderer for the GMap Element
+   * @return
+   */
   public OrthogonalTiledMapRenderer getMapRenderer() {
     return this.mapRenderer;
   }
 
+  /**
+   * Returns the width of a cell
+   * @return
+   */
   public int getMapPixelWidth() {
     return mapPixelWidth;
   }
 
+  /**
+   * Returns the Height of a cell
+   * @return
+   */
   public int getMapPixelHeight() {
     return mapPixelHeight;
   }
-
 }
