@@ -14,7 +14,7 @@ All the indirect prerequisites needed to setup libGDX (including JDK) and extens
 
 Make sure to satisfy all the [prerequisites](#prerequisites) before moving on.
 
-Javadoc can be found [here](../index.html).
+Javadoc can be found [here](https://github.bath.ac.uk/pages/Team-Cyan/Dungeon/).
 
 ### Introduction
 libGDX comes with a predefined structure optimized for multiplatform development.
