@@ -11,11 +11,23 @@ import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * The player's sidekick, called Pebble
+ */
 public class GEPebble extends GameElement
 {
     GameModel model;
+    /**
+     * Current velocity of the player
+     */
     Velocity velocity;
+    /**
+     * Current texture of pebble. Changes based on animation state.
+     */
     private TextureRegion region;
+    /**
+     * Sprite sheet that holds all the different sprites needed for all animations.
+     */
     private Texture basicSpriteSheet;
     private Animation<TextureRegion> charRunL;
     private TextureRegion charFall;
@@ -26,6 +38,10 @@ public class GEPebble extends GameElement
     public State currentState;
     public State previousState;
 
+    /**
+     * Constructor - setup pebble's initial position, velocity and its animations
+     * @param model
+     */
     public GEPebble (GameModel model)
     {
         this.model = model;
@@ -56,6 +72,14 @@ public class GEPebble extends GameElement
         frames.clear();
     }
 
+    /**
+     * Set the new x-coordinate of pebble based on the player's position and velocity, the layer of the map responsible
+     * for collisions, pebble's current position and pebble's current velocity
+     * @param layer collision layer of the map to check for collisions of the player
+     * @param playerPosition player's current position
+     * @param playerVelocity player's current velocity
+     * @return pebble's new x-coordinate
+     */
     public float setX(TiledMapTileLayer layer, Pos playerPosition, Velocity playerVelocity) {
         // apply gravity, when no floor
         float delta = Gdx.graphics.getDeltaTime();
@@ -112,6 +136,12 @@ public class GEPebble extends GameElement
         return this.position.getX();
     }
 
+    /**
+     * Set the pebble's new y-coordinate based on the layer of the map responsible
+     * for collisions, pebble's current position, pebble's current velocity and GRAVITY
+     * @param layer collision layer of the map to check for collisions of the player
+     * @return pebble's new y-coordinate
+     */
     public float setY(TiledMapTileLayer layer) {
         TiledMapTile currentBackgroundTile = model.getMap().getBackgroundTile(new Pos(this.position.getX()+this.region.getRegionWidth()/2, this.position.getY()+this.region.getRegionHeight()/2));
         float gravity;
@@ -140,6 +170,9 @@ public class GEPebble extends GameElement
         return this.position.getY();
     }
 
+    /**
+     * Update pebble's visual based on velocity
+     */
     public void setRegion() {
         if (this.velocity.getY() >1) {
             this.currentState = GameElement.State.STANDING;
@@ -170,6 +203,9 @@ public class GEPebble extends GameElement
         previousState = currentState;
     }
 
+    /**
+     * @return pebble's current visual display
+     */
     public TextureRegion getRegion(){
         return this.region;
     }

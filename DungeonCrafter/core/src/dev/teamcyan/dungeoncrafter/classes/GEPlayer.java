@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -16,14 +14,26 @@ import dev.teamcyan.dungeoncrafter.screens.GameOverScreen;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * The main character of the game
+ */
 public class GEPlayer extends GameElement
 {
   GameModel model;
   DungeonCrafter controller;
   public enum BLOCK {DIRT, STONE, IRON, GOLD};
 
+  /**
+   * Current velocity of the player
+   */
   Velocity velocity;
+  /**
+   * Current texture of the player. Changes based on animation state.
+   */
   private TextureRegion region;
+  /**
+   * Sprite sheet that holds all the different sprites needed for all animations.
+   */
   private Texture basicSpriteSheet;
   private Animation<TextureRegion> charRunL;
   private TextureRegion charFall;
@@ -61,16 +71,39 @@ public class GEPlayer extends GameElement
   public float stateTimer = 0;
   public State currentState;
   public State previousState;
+  /**
+   * Current health. Starts wtih 100.
+   */
   private int health = 100;
+  /**
+   * Current amount of stone collected
+   */
   private int stone = 0;
+  /**
+   * Current amount of iron collects
+   */
   private int iron = 0;
+  /**
+   * Current amount of dirt collected
+   */
   private int dirt = 0;
+  /**
+   * Current amount of gold collected
+   */
   private int gold = 0;
 
   private BLOCK currentCraftingBlock = BLOCK.DIRT;
 
+  /**
+   * Timer responsible for continuous decrement of enemies being attacked.
+   */
   private float attackTimer = 0;
 
+  /**
+   * Constructor - player position, velocity and animations are setup
+   * @param model represents the current model of the game
+   * @param controller represents the controller of the game
+   */
   public GEPlayer (GameModel model, DungeonCrafter controller) {
     this.controller = controller;
     this.model = model;
@@ -246,17 +279,31 @@ public class GEPlayer extends GameElement
 
   }
 
+  /**
+   * @return the currently selected material the player creates new blocks with
+   */
   public BLOCK getCurrentCraftingBlock() {
     return this.currentCraftingBlock;
   }
 
+  /**
+   * @return the current health of the player
+   */
   public int getHealth() {
     return this.health;
   }
 
+  /**
+   * increment amount of dirt by 1
+   */
   public void incrementDirt() {
     this.dirt += 1;
   }
+
+  /**
+   * decrement amount of dirt if exists
+   * @return whether dirt could be incremented
+   */
   public boolean decrementDirt() {
     if (this.dirt > 0) {
       this.dirt -= 1;
@@ -264,21 +311,48 @@ public class GEPlayer extends GameElement
     }
     return false;
   }
+
+  /**
+   * increment amount of iron by 1
+   */
   public void incrementIron() {
     this.iron += 1;
   }
+
+  /**
+   * decrement amount of iron if exists
+   * @return whether iron could be incremented
+   */
   public void decrementIron(int amount) {
     this.iron = amount > this.iron ? 0 : this.iron-amount;
   }
+
+  /**
+   * increment amount of gold by 1
+   */
   public void incrementGold() {
     this.gold += 1;
   }
+
+  /**
+   * decrement amount of gold if exists
+   * @return whether gold could be incremented
+   */
   public void decrementGold(int amount) {
     this.gold = amount > this.iron ? 0 : this.gold-amount;
   }
+
+  /**
+   * increment amount of stone by 1
+   */
   public void incrementStone() {
     this.stone += 1;
   }
+
+  /**
+   * decrement amount of stone if exists
+   * @return whether stone could be incremented
+   */
   public boolean decrementStone() {
     if (this.stone > 0) {
       this.stone -= 1;
@@ -287,25 +361,46 @@ public class GEPlayer extends GameElement
     return false;
   }
 
+  /**
+   * @return current amount of iron
+   */
   public int getIron() {
     return this.iron;
   }
 
+  /**
+   * @return current amount of gold
+   */
   public int getGold() {
     return this.gold;
   }
 
+  /**
+   * @return current amount of stone
+   */
   public int getStone() {
     return this.stone;
   }
 
+  /**
+   * @return current amount of dirt
+   */
   public int getDirt() {
     return this.dirt;
   }
 
+  /**
+   * Change the player's currently selected material for creating new blocks
+   * @param block
+   */
   public void setCurrentCraftingBlock(BLOCK block) {
     this.currentCraftingBlock = block;
   }
+
+  /**
+   * Decrement health. If health smaller equals after, trigger end of game by switching to GameOverScreen
+   * @param damage the amount of damage to decrement health
+   */
   public void decrementHealth(int damage) {
     this.health -= damage;
     if (this.health <= 0) {
@@ -322,15 +417,23 @@ public class GEPlayer extends GameElement
     }
   }
 
+  /**
+   * Increment health, but don't let it exceed 300.
+   * @param armour amount of health to increment health with
+   */
   public void incrementHealth(int armour) {
 
     this.health = this.health+armour > 300 ? 300 : this.health+armour;
   }
-  public void setName(String spriteName) {
-      this.spriteName = spriteName;
-  }
 
-
+  /**
+   * Set the new x-coordinate of the player based on current movement commands, the layer of the map responsible
+   * for collisions, the player's current position and the player's current velocity
+   * @param layer collision layer of the map to check for collisions of the player
+   * @param movingLeft whether KEYS.left is pressed
+   * @param movingRight whether KEYS.right is pressed
+   * @return player's new x-coordinate
+   */
   public float setX(TiledMapTileLayer layer, boolean movingLeft, boolean movingRight) {
     float delta = Gdx.graphics.getDeltaTime();
     float newXVelocity;
@@ -373,6 +476,13 @@ public class GEPlayer extends GameElement
 
   }
 
+  /**
+   * Set the player's new y-coordinate based on current movement commands, the layer of the map responsible
+   * for collisions, the player's current position, the player's current velocity and GRAVITY
+   * @param layer collision layer of the map to check for collisions of the player
+   * @param keyListener holds information about currently pressed KEYS
+   * @return player's new y-coordinate
+   */
   public float setY(TiledMapTileLayer layer, KeyListener keyListener) {
     TiledMapTile currentBackgroundTile = model.getMap().getBackgroundTile(new Pos(this.position.getX()+this.region.getRegionWidth()/2, this.position.getY()+this.region.getRegionHeight()/2));
     float gravity;
@@ -423,6 +533,10 @@ public class GEPlayer extends GameElement
     return this.position.getY();
   }
 
+  /**
+   * Update the visual of the player based on currently pressed keys
+   * @param keyListener holds information about currently pressed KEYS
+   */
   public void setRegion(KeyListener keyListener) {
 
     if(keyListener.activeKeys.contains(Input.Keys.UP) ||
@@ -576,14 +690,24 @@ public class GEPlayer extends GameElement
     previousState = currentState;
   }
 
+  /**
+   * @param pos position to find the distance to from current player's position
+   * @return distance between player and pos
+   */
   private double getDistance(Pos pos) {
     return Math.sqrt(Math.pow(pos.getX()-this.position.getX(), 2)+Math.pow(pos.getY()-this.position.getY(), 2));
   }
 
+  /**
+   * @return the player's current visual display
+   */
   public TextureRegion getRegion(){
     return this.region;
   }
 
+  /**
+   * @return the player's current velocity
+   */
   public Velocity getVelocity() {
     return this.velocity;
   }
