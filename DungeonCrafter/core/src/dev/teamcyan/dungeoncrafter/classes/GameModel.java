@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Model of the MVC-pattern. Holds all stateful information of the game.
+ */
 public class GameModel {
     private GMap map;
     private boolean active = false;

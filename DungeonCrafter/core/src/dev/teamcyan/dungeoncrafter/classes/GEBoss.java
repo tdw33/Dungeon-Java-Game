@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * The final boss class. Subclass of GEEnemy
+ */
 public class GEBoss extends GEEnemy{
     public static final float ACCELERATION = (float) 2.0;
     public Velocity velocity;

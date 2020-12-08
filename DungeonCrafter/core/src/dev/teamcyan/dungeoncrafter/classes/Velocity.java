@@ -1,7 +1,7 @@
 package dev.teamcyan.dungeoncrafter.classes;
 
 /**
- * 
+ * A helper class to send and recieve velocities across functions
  */
 public class Velocity {
     private float x;
