@@ -1,32 +1,34 @@
-# Week 2
+\pagebreak
 
-## Process
+# Week 2: 23rd-29th October
 
+## **Process**
 
+### Weekly overview 
 
-
-
-## Weekly overview 
-
-With the customer happy with our initial game idea for a Minecraft inspired dungeon game, we were able to start planning out the game and wrote some basic code. This meant the product backlog continued to be filled out withideas that we had, and the initial game architecture was looked at: menu system and game function. To achieve this planned architecture we used Miro board, which was also used to sort out the class UML. This was also based on our product backlog, but we did not use CRC cards which could of made the process simpler. The week had 3 meetings: customer debrief with sprint plan; game architecture; and sprint review with presentation creation. For the coding side everyone was assigned to generate a basic square that could move left, right, up, and down.
+With the customer happy with our initial game idea for a Minecraft inspired dungeon game, we were able to start planning out the game and wrote some basic code. This meant the product backlog continued to be filled out with ideas that we had, and the initial game architecture was looked at: menu system and game function. To achieve this planned architecture we used Miro board, which was also used to sort out the class UML. This was also based on our product backlog, but we did not use CRC cards which could of made the process simpler. The week had 3 meetings: customer debrief with sprint plan; game architecture; and sprint review with presentation creation. For the coding side everyone was assigned to generate a basic square that could move left, right, up, and down.
 
 ![](./week_2_artifacts/miro.png)
 
-The Scrum technique was continued for this week with the Scrum master and product lead roles being switched around, so each member of the group can experience them. In between these first and last meeting we had daily stand-ups that were carried out on Microsoft teams. From the last sprint we made sure to tag the team within the post, so everyone will get a notification and remider to post.
+The Scrum technique was continued for this week with the Scrum master and product lead roles being switched around, so each member of the group can experience them. In between these first and last meeting we had daily stand-ups that were carried out on Microsoft teams. From the last sprint we made sure to tag the team within the post, so everyone will get a notification and reminder to post an update.
 
 ![](./week_2_artifacts/standUp.png)
 
-This sprint was conducted in much the same way as the last one as we thought it was generating good results in the last sprint. The only problem was we still assigned everybody the coding task which is not efficient. However, there were 3 different systems (mac, windows Linux) used my different members of the team and the task would help in getting people comfortable with libGDX. Heading into the next sprint we will make sure to spread the tasks more efficiently so that a grater progression of the game can be achieved. 
+This sprint was conducted in much the same way as the last one as we thought it was generating good results in the last sprint. The only problem was we still assigned everybody the coding task which is not efficient. However, there were 3 different systems (mac, windows Linux) used my different members of the team and the task would help in getting people comfortable with LibGDX. Heading into the next sprint we will make sure to spread the tasks more efficiently so that a grater progression of the game can be achieved. 
 
-We assigned the sprint tasks from looking at the product backlog and the existing user stories we had. Since US_01 was a great priorty we assigned everbody to coding the character with movement as explained before. 
+We assigned the sprint tasks from looking at the product backlog and the existing user stories we had. Since US_01 was a great priority we assigned everybody to coding the character with movement as explained before. 
 
-**Need to add the presentation** 
+Attached here is the presentation created for the customer meeting on the 30th November, which will include the GIF version of the some of the pictures in this weeks report: [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/develop/doc/week2-presentation/presentation.md)
 
-## Meeting minutes
+\pagebreak
 
-### Customer meeting debrief and sprint planning:
+### Meeting minutes
 
-We discussed how the customer meeting went and how it affected the game. In the meeting the customer said they were happy with the idea of doing an interactive game like Minecraft in a dungeon themed setting. We presented a broad overview of the game so there was plenty to look into as potential final ideas, meaning the customer still has plenty of choice in how the game will look and feel. One important part was clarification of cross platform relating to windows, linux and mac instead of referring to mobile. So, our focus will be ensuring the game runs on those operating systems with android as a potential bonus. 
+**Customer meeting debrief and sprint planning:**
+
+Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+
+We discussed how the customer meeting went and how it affected the game. In the meeting the customer said they were happy with the idea of doing an interactive game like Minecraft in a dungeon themed setting. We presented a broad overview of the game so there was plenty to look into as potential final ideas, meaning the customer still has plenty of choice in how the game will look and feel. One important part was clarification of cross platform relating to Windows, Linux and MacOS instead of referring to mobile. So, our focus will be ensuring the game runs on those operating systems with android as a potential bonus. 
 
 Now the initial game idea was confirmed, and we have established our coding language with framework (Java with Libgdx), we initiated coding with this sprint. As no one had used Libgdx before everyone was assigned to create a basic character (square) and give it basic movement (up, down, left and right). On top of this everyone was assigned finding a naming system, designing classes and UML diagram.
 
@@ -34,31 +36,35 @@ Now the initial game idea was confirmed, and we have established our coding lang
 
 
 
-### Miro board
+**Miro board**
+
+Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
 
 In this meeting we used our thoughts on classes to generate the architecture of the game as well as a UML diagram. First, we looked at the game flow which will be how the menu and game will function together, which can be seen below. The important part of this architecture is the ability to save the game and how this will function in different scenarios, So, it shows the flow with saving the game and then continuing the game from this save state. Upon dying the user will be able to start from the last save state. From the initiating a new game from the staring menu screen, a new seed will be generated. This will allow the user to have more unique experiences in future playthrough of our game. 
 
 ![](./week_2_artifacts/GameFlow.png)
 
-In the next part we designed an UML off the initial idea for the class system as shown below as well as our product backlog. Everything will stem from the Game element, as our map is fully interactive. This means each block will in theory die when the player destroys it. like and enemy and main character.  The process of designing this UML diagram did not use CRC cards as we were not aware of that. Instead we all interacted with the miro board and discussed our ideas until we had the classes maped out. This was proablaly not as effcient as using CRC cards
+In the next part we designed an UML off the initial idea for the class system as shown below as well as our product backlog. Everything will stem from the Game element, as our map is fully interactive. This means each block will in theory die when the player destroys it. like and enemy and main character.  The process of designing this UML diagram did not use CRC cards as we were not aware of that. Instead we all interacted with the Miro board and discussed our ideas until we had the classes mapped out. This was probably not as efficient as using CRC cards and is further discusses in the software design section.
 
 ![](./week_2_artifacts/ClassDiagram.png)
 
 
 
-### Sprint review and presentation creation
+**Sprint review and presentation creation**
 
-From this second sprint we were all able to generate a basic character and have basic movement using libGdx and Java. The naming class we established and an initial UML borard was generated. These can be seen below with the UML shown above. No one had any major problems, so the sprint was considered successful.
+Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+
+From this second sprint we were all able to generate a basic character and have basic movement using LibGdx and Java. The naming class we established and an initial UML board was generated. These can be seen below with the UML shown above. No one had any major problems, so the sprint was considered successful.
 
 ![](./week_2_artifacts/codeconventions.png)
 
 ![](./week_2_artifacts/movement.gif)
 
-Following the sprint review we created the presentation for the customer meeting. This highlighted all our progress on each sprint task as well proposing some art styles for the game. 
+We then created the presentation for the customer at the end of the week. Instead of using PowerPoint we used Markdown. This was so we could show GIFs as well as keep all the documentation on GitHub with the code, meaning everyone could easily access it. The presentation is linked in the weekly overview section. To create it we met in teams, with one member sharing their screen as we discussed what to put in. We decided to use the same template every week following this one: last time, updates, and future.
 
+\pagebreak
 
-
-## Backlog
+### Backlog
 
 **Product backlog:** 
 
@@ -83,56 +89,58 @@ Following the sprint review we created the presentation for the customer meeting
 
 - Create a simple character (square)
 - give this character up, down, left, and right movement 
-- FInd a common naming system
+- Find a common naming system
 - Design classes and create a UML diagram
 
 **Completed:**
 
-- Find cross platofrm library
+- Find cross platform library
 - Research on how GitHub version control works 
 - Java research 
 - Game development research 
 
+\pagebreak
 
-
-## Exceptoinal handling 
+### Exceptional handling 
 
 There were no problems with this sprint or week.
 
+\pagebreak
+
+## **Product content** 
 
 
-## Product content 
 
-
-
-## Customer meeting 
+### Customer meeting 
 
 At the start of the week we had our first customer meeting which was presenting our initial idea for the game. The customer was happy with the premise of a mining based game where the user is able to interact with the map, whether it be destroying or building. We did not present a rigid plot. Instead we simply suggested the idea of the player falling down a hole where they awake and see a small figure approach (name: Pebble). Pebble explains the world they are now in and that he can help the player escape back above the surface. We suggested that Pebble could be the imagination of the main player, which could lead to many story plots. The feature we suggested was sanity which could change throughout the game. As the player gets more insane Pebble will help the player out more. This game mechanic can be used to help the player when they are stuck. The customer liked the idea of this and how we can implement this, and suggested we looked into Senua’s sacrifice. Finally, we showed some potential art styles for the game. The customer expressed interest in the high resolution with earth tones
 
- 
+
 
 We showed the progress of our game development. This was the UML diagram and game architecture. As the customer is very well versed in software engineering he suggested we look into Research Model view, and adapt out UML. We also showed the basic character moving around the screen to show visual game progress.  All of these are shown in previous examples. 
 
-## User stories
+\pagebreak
+
+### User stories
 
 | ID    | Version      | Priority     | Story                                                        |
 | ----- | ------------ | ------------ | ------------------------------------------------------------ |
 | US_01 | 2            | 1            | **AS A**   Player  **I WANT**   to be able to  play a dungeon game on different platforms web platforms **SO THAT**   I have choices  for playing the game |
-| US_02 | 2            | 4            | **AS A**   Player  **I WANT**   to have a bot  that that will play for me  **SO THAT**   It can help me  with playing through the game by offering adivce |
+| US_02 | 2            | 4            | **AS A**   Player  **I WANT**   to have a bot  that that will play for me  **SO THAT**   It can help me  with playing through the game by offering advice |
 | US_03 | **Deleting** | **Deleting** | **AS A**   Player  **I WANT**   to be able to compete  with a bot  **SO THAT**   I can have a goal  when playing |
 | US_04 | 1            | 5            | **AS A**   **Player**  **I WANT**   to be able to  see my progress  **SO THAT**   So that I know  if I am doing well at the game as I play |
-| US_05 | 2            | 7            | **AS A**   Player  **I WANT**   to have different  choices between games modes and diffrent paths to the end in each game mode **SO THAT**   I have new scenarios  to play |
+| US_05 | 2            | 7            | **AS A**   Player  **I WANT**   to have different  choices between games modes and different paths to the end in each game mode **SO THAT**   I have new scenarios  to play |
 | US_06 | 1            | 2            | **AS A** Player **I WANT** to interact with the blocks on the map **SO THAT** I can gather resources, place resources, and make new paths |
 | US_07 | 1            | 3            | **AS A** Player **I WANT** to use resources to craft items **SO THAT** I can use them throughout the game to make tasks easier |
 | US_08 | 1            | 6            | **AS A** player **I WANT** to be able to regenerate health **SO THAT** I can survive longer |
 
- 
+ \pagebreak
 
-## User story testing 
+### User story testing 
 
 | User story ID | Test                                                         | Comments                                                     | completed |
 | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------- |
-| US_01         | Run code on different systems and see if code compiles       | Web based sytems on Windows, Mac and Linux                   | YES       |
+| US_01         | Run code on different systems and see if code compiles       | Web based systems on Windows, MacOS and Linux                | YES       |
 | US_02         | A bot character is generated on the game screen  The bot aids the user with text aids | The bot will have to be able to follow the player around the map, meaning it will need similar movement animations to the main character | NO        |
 | US_04         | There is a visual queue on the screen that will track specific progression. | There are multiple types of progress – elevation, time ore collection | NO        |
 | US_05         | Within the menu screen the player sets the game mode and the characteristics of the game change | These characteristics could be unlimited health, unlimited resources and no enemies | NO        |
@@ -140,9 +148,11 @@ We showed the progress of our game development. This was the UML diagram and gam
 | US_07         | There is an option to craft items from the inventory screen. If the player has the required resources, they can craft the item and the resources are taken from their inventory | You can implement many ways to show what can be crafted with the resources provided. | NO        |
 | US_08         | Have the player take damage, from then the health will decrease and then it regenerates once they stop taking damage |                                                              | NO        |
 
+\pagebreak
 
+### Use cases
 
-## Use cases
+We started to think of use cases this week and setup some initial cases that will cover the basic mechanics of the game. 
 
 ##### UC_01
 
@@ -150,13 +160,13 @@ We showed the progress of our game development. This was the UML diagram and gam
 
 **Author**: TW
 
-**Date**: 11/11/2020
+**Date**: 27/10/2020
 
-**Modification date**: 11/11/202
+**Modification date**: 27/10/202
 
 **Purpose**: the game can run and be played on different systems
 
-**Overview**: Frist the player will boot up their system (windows, mac or linux) and then open the game. If the code can compile and run on the system, the game starting screen will appear on a window else alternative: the code fails to run, and a system error will appear on their screen.
+**Overview**: Frist the player will boot up their system (Windows, Mac or Linux) and then open the game. If the code can compile and run on the system, the game starting screen will appear on a window else alternative: the code fails to run, and a system error will appear on their screen.
 
 **Cross reference:** US_01
 
@@ -173,7 +183,7 @@ We showed the progress of our game development. This was the UML diagram and gam
 
 | Actor actions                                  | System actions                                               |
 | ---------------------------------------------- | ------------------------------------------------------------ |
-| 1. The player will start up their system       | 2. the system will boot up and show desktop                  |
+| 1. The player will start up their system       | 2. the system will boot up and show the desktop              |
 | 3. The player will click and run the game file | 4. System will start to run the code                         |
 | 6. Player then interacts with the game         | 5. If the code can be run the game window will pop up on the players system |
 
@@ -186,7 +196,7 @@ We showed the progress of our game development. This was the UML diagram and gam
 - The players system will not boot up
 - The game window will pop up but the player cannot interact with it and the player will then close the game window
 
-
+\
 
 ##### UC_02
 
@@ -194,9 +204,9 @@ We showed the progress of our game development. This was the UML diagram and gam
 
 **Author**: TW
 
-**Date**: 16/11/2020
+**Date**: 27/10/2020
 
-**Modification date**: 16/11/202
+**Modification date**: 27/10/2020
 
 **Purpose**: A major part of the game is allowing the user to interact with the map and change it. This means destroying the generated blocks and picking it up as a resource. 
 
@@ -213,22 +223,22 @@ We showed the progress of our game development. This was the UML diagram and gam
 
 **Normal flow of events:** 
 
-| Actor actions                                       | System actions                                          |
-| --------------------------------------------------- | ------------------------------------------------------- |
-| 1. The player will begin to attack the block (mine) | 2. The map generated block will take damage             |
-| 3. The player will keep attacking the player        | 4. The map generated takes damage until it reaches zero |
-| 7. Player can then repeat cycle with new blocks     | 5. The block will disappear                             |
-|                                                     | 6. The block type will appear in the players’ inventory |
+| Actor actions                                       | System actions                                               |
+| --------------------------------------------------- | ------------------------------------------------------------ |
+| 1. The player will begin to attack the block (mine) | 2. The map generated block will take damage                  |
+| 3. The player will keep attacking the block         | 4. The map generated block takes damage until it reaches zero |
+| 7. Player can then repeat cycle with new blocks     | 5. The block will disappear                                  |
+|                                                     | 6. The block type will appear in the players’ inventory      |
 
 **Alternative flow of events:**
 
-- The player destroys a block they are standing on. This will mean they will fall when it is destroyed until they encounter another block. They still gather the resource 
+- The player destroys a block they are standing on. This will mean they will fall when it is destroyed until they encounter another block. They still gather the resource.
 
 **Exceptional flow of events:**
 
-- The player will stop attacking the block halfway, meaning the block is left with half health. 
+- The player will stop attacking the block halfway, meaning the block is left with half health and still present on the map. 
 
-
+\
 
 ##### UC_03
 
@@ -236,13 +246,13 @@ We showed the progress of our game development. This was the UML diagram and gam
 
 **Author**: TW
 
-**Date**: 16/11/2020
+**Date**: 27/10/2020
 
-**Modification date**: 16/11/202
+**Modification date**: 27/10/2020
 
 **Purpose**: A major part of the game is allowing the user to interact with the map and change it. This means placing blocks onto the map and taking it out of the players’ inventory 
 
-**Overview**:  First the player will decide they want to place a certain block. Then the game will check of they have the resource to place. If they have, a block will appear on the game in the postion they wanted to place
+**Overview**:  First the player will decide they want to place a certain block. Then the game will check if they have the resource to place. If they do, a block will appear on the game in the position they wanted to place
 
 **Cross reference:** US_06
 
@@ -265,13 +275,14 @@ We showed the progress of our game development. This was the UML diagram and gam
 
 **Alternative flow of events:**
 
-There are none
+- The player does not check there inventory, so whatever block is assigned will be placed
+
 
 **Exceptional flow of events:**
 
 - The player does not have any of the block type in their inventory, meaning no block will be placed
 
-
+\
 
 ##### UC_04
 
@@ -279,13 +290,13 @@ There are none
 
 **Author**: TW
 
-**Date**: 16/11/2020
+**Date**:  27/10/2020
 
-**Modification date**: 16/11/202
+**Modification date**:  27/10/2020
 
 **Purpose**: As the player gathers resources in the game, they will be able to create items such as a pickaxe. They will use these items to interact with enemies and the map.  
 
-**Overview**:  First the player will decide they want to craft a certain item. Then the gaem will check they have the required resources for the item. If so, the item is crafted and the resources are taken from the players inventory. The item is also added to the inventory.
+**Overview**:  First the player will decide they want to craft a certain item. Then the game will check they have the required resources for the item. If so, the item is crafted and the resources are taken from the players inventory. The item is also added to the inventory.
 
 **Cross reference:**  US_07
 
@@ -312,7 +323,7 @@ There are none
 
 - The player will attempt to craft an item where they do not have the resources. A message will be displayed stating insufficient resources
 
-
+\
 
 **UC_05**
 
@@ -320,9 +331,9 @@ There are none
 
 **Author**: TJ 
 
-**Date**: 11/14/2020 
+**Date**:  27/10/2020
 
-**Modification date**: 11/14/2020 
+**Modification date**:  27/10/2020
 
 **Purpose**: the player can control the character to move up, down, left and right 
 
@@ -355,7 +366,7 @@ There are none
 
 - The system does not update or show the player’s position in time 
 
-
+\
 
 **UC_06**
 
@@ -363,9 +374,9 @@ There are none
 
 **Author:** TW
 
-**Date:** 15/11/2020
+**Date:**  27/10/2020
 
-**Modification date:** 15/11/202
+**Modification date:**  27/10/2020
 
 **Purpose:** the game can run and be played on different systems
 
@@ -381,7 +392,7 @@ There are none
 
 | Actor actions                                            | System actions                                               |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| 1. The player will start the game                        | 2. The system will set sanity to zero 10%                    |
+| 1. The player will start the game                        | 2. The system will set sanity to zero percent                |
 | 3. Players begin to play the game                        | 5. System will constantly loop checking if the sanity level is at threshold for certain information |
 | 4. As they play the sanity percentage will increase      | 6. If sanity is high enough, system will display information coming from pebble (1min cycle) |
 | 7. Player sees information and keeps playing with advice | 9. System will constantly loop checking if the sanity level is at threshold for certain information |
@@ -396,9 +407,9 @@ There are none
 
 - The player sanity does not increase meaning that no information is given throughout the game. 
 
+\pagebreak
 
-
-## Use cases testing
+### Use cases testing
 
 - [ ] **UC_01**
 - [ ] **UC_02**
@@ -414,21 +425,27 @@ There are none
 - Information can be seen coming from pebble, not random on the screen
 - At higher sanity levels you don’t have lower tier information given with the said tear
 
- 
 
- ##  Software design documentation
 
-During this week we had a meeting to dicuss how the different parts of the game wil interact with each other and create a UML diagram. Before the meetig a couple of members of the group had though out potential class interactions which was used as a starting point for the discussion. 
+ \pagebreak
+
+
+
+###  Software design documentation
+
+During this week we had a meeting to discuss how the different parts of the game will interact with each other and create a UML diagram. Before the meeting a couple of members of the group had though out potential class interactions which was used as a starting point for the discussion. 
 
 ![](./week_2_artifacts/Blank diagram.png)
 
 
 
-From this discuusion the final intial UML was structured. As stated before this took aobut 2 hours and CRC cards were not used. The use of each member genrating CRC cards would have likely reduced the time to create the UML diagram, as well as creating a better understanding of the diagram. 
+From this discussion the final initial UML was structured. As stated before this took about 2 hours and CRC cards were not used. The use of each member generating CRC cards would have likely reduced the time to create the UML diagram, as well as creating a better understanding of the diagram. 
 
 ![](./week_2_artifacts/ClassDiagram.png)
 
-## User interface design
+\pagebreak
+
+### User interface design
 
 | Design implement                                             | Version |
 | ------------------------------------------------------------ | ------- |

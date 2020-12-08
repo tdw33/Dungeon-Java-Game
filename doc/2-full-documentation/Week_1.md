@@ -1,16 +1,30 @@
-# Week 1
+---
+title: "Documentation"
+author: 
+- He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, 
+- Tom Wells, Vlad Postmangiu Luchian, Yandong Guo
+toc: true
+toc_depth: 2
+number_sections: true
+fontsize: 11pt
+geometry: margin=1.5in
+fd_print: kable
+urlcolor: blue
+---
 
+\pagebreak
 
+# Week 1: 16th- 22nd October
 
 ## **Process**
 
 
 
-## Weekly overview 
+### Weekly overview 
 
 This was the start of the project, meaning there was no coding. Instead, we planned: what game we wanted to create based on the initial customer specification; the programming language; control flow and communication (meetings), and the agile approach to the project. The week consisted of 2 meetings. The first meeting was to introduce ourselves and brainstorm ideas for the game, as well as plan the agile approach (Scrum) for the week. The second meeting was a sprint review followed by preparing the customer presentation. In between these two meetings we had daily stand-ups that were carried out on Microsoft teams.
 
-![](./week_1_artifacts/week1_backlog.png)
+![](./week_1_artifacts/week1_backlog.png){ width=50% }
 
 Since the Scrum approach was chosen to be used in this project, we assigned a product lead and Scrum master. The product lead was responsible for setting out the sprint backlog from the product backlog created from the brainstorm meeting, while the Scrum master assured daily stand-up posts were being completed. All the sprint information was stored on GitHub for ease of access and updating the tasks.
 
@@ -18,52 +32,56 @@ From this initial sprint, we were able to analyse the use of teams for daily sta
 
 
 
-## Meeting minutes
 
-### Brainstorming and sprint planning meeting
+\pagebreak
+### Meeting minutes
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo
+**Brainstorming and sprint planning meeting**
+
+Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
 
 Minutes:
 
-- Everyone in the group introduced themselves and discussed their programming background.
+- Everyone in the group introduced themselves and discussed their programming background
 
-- We decided what programming language we thought would be best for the project.
+- We decided what programming language we thought would be best for the project
 
 - Each member presented their idea for the game based on the customer criteria given:
 
-  - Top down view with the aim to escape the dungeon by doing tasks.
-  - Text type game where the user will pick answers that dedicate their journey through the dungeon.
-  - Side scroller game where the player can interact with the map as seen in Minecraft.
+  - Top down view with the aim to escape the dungeon by doing tasks
+  - Text type game where the user will pick answers that dedicate their journey through the dungeon
+  - Side scroller game where the player can interact with the map as seen in Minecraft
 
 - From the presentations we brainstormed a final game idea:
 
-  - The player can generate tools from gathering resources from the map (blocks).
-  - These tools will perish meaning the player will keep gathering resources throughout the game.
+  - The player can generate tools from gathering resources from the map (blocks)
+  - These tools will perish meaning the player will keep gathering resources throughout the game
   
-  - The player can be assigned tasks to complete so they can escape the dungeon. 
-  - There could be a bot which can either help you or you race against it to escape.
+  - The player can be assigned tasks to complete so they can escape the dungeon 
+  - There could be a bot which can either help you or you race against it to escape
   
-  - The game will have a time constraint so the user can be ware how good they are doing.
-  - The user can battle bosses which can be in a top down view.
+  - The game will have a time constraint so the user can be ware how good they are doing
+  - The user can battle bosses which can be in a top down view
   
 - We established initial tools to use in this project. This was GitHub to contain the sprint documentation and share code between use. Then teams for communication within the project as well as daily stand-ups.
 
 - The first sprint everyone was assigned the same tasks as it was all researched based. These include find a cross-platform Java library, research version control and how GitHub works, game development research, Java research. The end of the sprint was the Friday.
 
-### sprint review and presentation creation
+**sprint review and presentation creation**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo
+Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
 
 - From the assigned sprint tasks we were able to complete many of them for different individuals. 
 - As many were understanding concept tasks, not all could be considered done. E.G for GitHub, some team members were still not comfortable with it.
 - We created a presentation for the customer meeting next week. This contained our original idea for the game for the customer to decide if it fills the starting criteria to develop from.
 
-This is a link to the presentation: https://computingservices-my.sharepoint.com/:p:/g/personal/vpl22_bath_ac_uk/EXuDPu9iA85BjODgRgP3Y6wBMNTvxc8W3fzBx68dvrNY4A?e=TCF88V
+This is a link to the first presentation for the customer meeting 23rd October: [link](https://computingservices-my.sharepoint.com/:p:/g/personal/vpl22_bath_ac_uk/EXuDPu9iA85BjODgRgP3Y6wBMNTvxc8W3fzBx68dvrNY4A?e=TCF88V)
 
 
 
-## backlog
+
+\pagebreak
+### backlog
 
 **Product backlog:**
 
@@ -87,18 +105,22 @@ This is a link to the presentation: https://computingservices-my.sharepoint.com/
 
 **sprint backlog**
 
-- Find cross platofrm library
+- Find cross platform library
 - Understand GitHub for version control
 - Java research 
 - Game development research 
 
-## Exception handling
+
+
+\pagebreak
+
+### Exception handling
 
 At this early stage there were no issues within the project. 
 
 
-
-## product contents
+\pagebreak
+## **product contents**
 
 
 
@@ -115,23 +137,24 @@ In this week we had no customer meeting but instead the customer debrief:
 
 This was vague meaning we had plenty of choice of where we wanted to go with the game. One key part was the game being able to be played on multiple devices. This made Java a good choice for game development as it can be used for android gaming. The use of a bot in our mining dungeon game had multiple possibilities such as: mining for the player, hold items for the player, provide hints and tips, and fight for the player. In order to track progress, we could implement a progress bar, time limit, kill number, equipment gained (precious ores). The game can have multiple ways of how it can change the difficulty. We can include achievement system, creative or survival mode, altitude challenge, mining challenge and adjust time constraint.
 
+\pagebreak
 ### User stories
 
 | ID    | Version | Priority | Story                                                        |
 | ----- | ------- | -------- | ------------------------------------------------------------ |
-| US_01 | 1       | 1        | **AS A**   Player  **I WANT**   to be able to  play a dungeon game on different platforms  **SO THAT**   I have choices  for playing the game |
-| US_02 | 1       | 4        | **AS A**   Player  **I WANT**   to have a bot  that that will play for me  **SO THAT**   It can help me  with playing through the game |
-| US_03 | 1       | 5        | **AS A**   Player  **I WANT**   to be able to compete  with a bot  **SO THAT**   I can have a goal  when playing |
-| US_04 | 1       | 6        | **AS A**   **Player**  **I WANT**   to be able to  see my progress  **SO THAT**   So that I know  if I am doing well at the game as I play |
-| US_05 | 1       | 7        | **AS A**   Player  **I WANT**   to have different  choices between games modes  **SO THAT**   I have new scenarios  to play |
-| US_06 | 1       | 2        | **AS A** Player **I WANT** to move around and interact with the blocks on the map **SO THAT** I can gather resources, place resources, and make new paths |
-| US_07 | 1       | 3        | **AS A** Player **I WANT** to use resources to craft items **SO THAT** I can use them throughout the game to make tasks easier |
+| US_01 | 1       | 1        | **AS A**   player  **I WANT**   to be able to  play a dungeon game on different platforms  **SO THAT**   I have choices  for playing the game |
+| US_02 | 1       | 4        | **AS A**   player  **I WANT**   to have a bot  that that will play for me  **SO THAT**   It can help me  with playing through the game |
+| US_03 | 1       | 5        | **AS A**   player  **I WANT**   to be able to compete  with a bot  **SO THAT**   I can have a goal  when playing |
+| US_04 | 1       | 6        | **AS A**   player  **I WANT**   to be able to  see my progress  **SO THAT**   So that I know  if I am doing well at the game as I play |
+| US_05 | 1       | 7        | **AS A**   player  **I WANT**   to have different  choices between games modes  **SO THAT**   I have new scenarios  to play |
+| US_06 | 1       | 2        | **AS A** player **I WANT** to move around and interact with the blocks on the map **SO THAT** I can gather resources, place resources, and make new paths |
+| US_07 | 1       | 3        | **AS A** player **I WANT** to use resources to craft items **SO THAT** I can use them throughout the game to make tasks easier |
 
 
-
+\pagebreak
 ### User stories tests
 
-| User story ID | Test                                                         | Comments                                                     | completed |
+| User story ID | Test acceptance                                              | comments                                                     | completed |
 | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------- |
 | US_01         | Run code on different systems and see if code compiles       |                                                              | NO        |
 | US_02         | A bot character is generated on the game screen  The bot aids the user with text aids | The bot will have to be able to follow the player around the map, meaning it will need similar movement animations to the main character | NO        |
@@ -142,26 +165,27 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 | US_07         | There is an option to craft items from the inventory screen. If the player has the required resources, they can craft the item and the resources are taken from their inventory | You can implement many ways to show what can be crafted with the resources provided. | NO        |
 
 
-
+\pagebreak
 ### Use cases
 
-At this stage of the process we had not considered to implement use cases in our developement aproach. This was due to us not having our game idea confirmed by the customer, as well as not being aware of the process since the lecture material was not release yet. Instead we had user stories as shown in the user story section, which is a similar to a less dressed version of the use cases. 
+At this stage of the process we had not considered to implement use cases in our development approach. This was due to us not having our game idea confirmed by the customer, as well as not being aware of the process since the lecture material was not release yet. Instead we had user stories as shown in the user story section, which is a similar to a less dressed version of the use cases. 
 
+\pagebreak
 ###  Use cases Tests
 
-As we had no use case there were no test to conduct. 
+As we had no use case there were no tests to conduct. 
 
 
-
+\pagebreak
 ### Software design Documentation
 
 At this stage, no thought has been given into the software design and classes as the mining game has not been confirmed by the customer. 
 
 
-
+\pagebreak
 ### User interface design
 
-This is a baisic framwork of how the potential game will look like to the user. 
+This is a basic framework of how the potential game will look like to the user. 
 
 | Design implement                                             | Version |
 | ------------------------------------------------------------ | ------- |
