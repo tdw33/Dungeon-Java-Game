@@ -13,8 +13,18 @@ import dev.teamcyan.dungeoncrafter.classes.GameModel;
 public class DifficultyScreen extends BaseScreen {
 
     boolean mouseDown = true;
+
+    /**
+     * The amount of time that will be given to play the game when easy mode is chosen
+     */
     private static final float EASY_TIME = 1500;
+    /**
+     * The amount of time that will be given to play the game when medium mode is chosen
+     */
     private static final float MED_TIME = 750;
+    /**
+     * The amount of time that will be given to play the game when hard mode is chosen
+     */
     private static final float HARD_TIME = 300;
 
     // The size and position of the four buttons
@@ -52,6 +62,11 @@ public class DifficultyScreen extends BaseScreen {
     Texture backButtonInactive;
     Texture menuBackground;
 
+    /**
+     * Initialize all the textures present in the screen
+     * @param parent instance of the DungeonCrafter class
+     * @param model instance of the current GameModel class
+     */
     public DifficultyScreen(DungeonCrafter parent, GameModel model) {
         super(parent, model);
         this.game = parent;
@@ -67,6 +82,10 @@ public class DifficultyScreen extends BaseScreen {
 
     }
 
+    /**
+     * Visualize the textures of the screen
+     * @param delta amount of time that passed since last call
+     */
     public void draw(float delta) {
         Gdx.gl.glClearColor(0.15f, 0.15f, 0.3f, 1);
         //colour range from 0-1 using decimals (must add f after to convert to float)
@@ -147,10 +166,97 @@ public class DifficultyScreen extends BaseScreen {
         batch.end();
     }
 
+    /**
+     * Implement for keyboard inputs. Called immediately on key presses.
+     * @param keycode the code of the key that was clicked. One of Input.Keys.
+     * @return boolean whether the input was processed
+     */
     @Override
-    public void resize(int width, int height) {
-
+    public boolean keyDown(int keycode) {
+        return false;
     }
+
+    /**
+     * Implement for keyboard inputs. Called immediately on key releases.
+     * @param keycode the code of the key that was clicked. One of Input.Keys.
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean keyUp(int keycode) {
+        return false;
+    }
+
+    /**
+     * Implement for keyboard inputs. Called when a key was typed.
+     * @param character the character that was typed
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
+    }
+
+    /**
+     * Implement for screen clicks or touches. Called immediately on screen press.
+     * @param screenX x-coordinate of the click. Origin is in the upper left corner.
+     * @param screenY y-coordinate of the click. Origin is in the upper left corner.
+     * @param pointer the pointer for the event.
+     * @param button the button for the event.
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    /**
+     * Trigger click event for choosing difficulty
+     * Implement for more screen clicks or touches. Called immediately on screen release.
+     * @param screenX x-coordinate of the click. Origin is in the upper left corner.
+     * @param screenY y-coordinate of the click. Origin is in the upper left corner.
+     * @param pointer the pointer for the event.
+     * @param button the button for the event.
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        mouseDown = false;
+        return false;
+    }
+
+    /**
+     * Implement for screen clicks or touches. Called when mouse or finger was dragged.
+     * @param screenX x-coordinate of the event. Origin is in the upper left corner.
+     * @param screenY y-coordinate of the event. Origin is in the upper left corner.
+     * @param pointer the pointer for the event.
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    /**
+     * Called when the mouse was moved without any buttons being pressed. Will not be called on iOS.
+     * @param screenX x-coordinate of the event. Origin is in the upper left corner.
+     * @param screenY y-coordinate of the event. Origin is in the upper left corner.
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    /**
+     * Called when the mouse wheel was scrolled.
+     * @param amount the amount the wheel was scrolled
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
+    }
+
 
     @Override
     public void pause() {
@@ -162,54 +268,12 @@ public class DifficultyScreen extends BaseScreen {
 
     }
 
+    /**
+     * Flush all stateful data.
+     */
     @Override
     public void hide() {
 
     }
 
-    @Override
-    public void dispose() {
-    }
-
-    @Override
-    public boolean keyDown(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        //mouseDown = true;
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        mouseDown = false;
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
-    }
 }

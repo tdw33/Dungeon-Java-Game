@@ -17,18 +17,22 @@ import dev.teamcyan.dungeoncrafter.classes.GameModel;
 
 
 /**
- * Displays current state of the game inventory.
+ * Screen that displays current state of the game inventory.
  */
 public class InventoryScreen extends BaseScreen{
 
     public static final int IMAGE_DIM = 80;
     public static final int IMAGE_X = 130;
-    long timerDelay;
     private Label dirt;
     private Label iron;
     private Label gold;
     private Label stone;
 
+    /**
+     * Setup all the parts of the screen
+     * @param parent instance of the DungeonCrafter class
+     * @param model instance of the current GameModel class
+     */
     public InventoryScreen(DungeonCrafter parent, final GameModel model) {
         super(parent, model);
         //background
@@ -290,13 +294,20 @@ public class InventoryScreen extends BaseScreen{
 
     }
 
+    /**
+     * implement for initial setups.
+     */
     @Override
     public void init() {
         leavingInv = true;
         //super.timer.stop();
     }
 
-    //Number of blocks
+    /**
+     * Implement for continuous updates of the screen.
+     * Amount of material needs to be updated continuously, because it changes throughout the game.
+     * @param delta amount of time that passed since last call
+     */
     @Override
     public void draw(float delta) {
 
@@ -308,69 +319,111 @@ public class InventoryScreen extends BaseScreen{
 
     }
 
-    public void pause() {
-
+    /**
+     * Implement for keyboard inputs. Called immediately on key presses.
+     * @param keycode the code of the key that was clicked. One of Input.Keys.
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean keyDown(int keycode) {
+        return false;
     }
-    public void resume() {
+
+    /**
+     * Implement for keyboard inputs. Called immediately on key releases.
+     * @param keycode the code of the key that was clicked. One of Input.Keys.
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean keyUp(int keycode) {
+        return false;
+    }
+
+    /**
+     * Implement for keyboard inputs. Called when a key was typed.
+     * @param character the character that was typed
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
+    }
+
+    /**
+     * Implement for screen clicks or touches. Called immediately on screen press.
+     * @param screenX x-coordinate of the click. Origin is in the upper left corner.
+     * @param screenY y-coordinate of the click. Origin is in the upper left corner.
+     * @param pointer the pointer for the event.
+     * @param button the button for the event.
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    /**
+     * Implement for screen clicks or touches. Called immediately on screen release.
+     * @param screenX x-coordinate of the click. Origin is in the upper left corner.
+     * @param screenY y-coordinate of the click. Origin is in the upper left corner.
+     * @param pointer the pointer for the event.
+     * @param button the button for the event.
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return false;
+    }
+
+    /**
+     * Implement for screen clicks or touches. Called when mouse or finger was dragged.
+     * @param screenX x-coordinate of the event. Origin is in the upper left corner.
+     * @param screenY y-coordinate of the event. Origin is in the upper left corner.
+     * @param pointer the pointer for the event.
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return false;
+    }
+
+    /**
+     * Called when the mouse was moved without any buttons being pressed. Will not be called on iOS.
+     * @param screenX x-coordinate of the event. Origin is in the upper left corner.
+     * @param screenY y-coordinate of the event. Origin is in the upper left corner.
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    /**
+     * Called when the mouse wheel was scrolled.
+     * @param amount the amount the wheel was scrolled
+     * @return boolean whether the input was processed
+     */
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
+    }
+
+
+    @Override
+    public void pause() {
 
     }
 
     @Override
-    public void dispose() {
-    }
+    public void resume() {
 
+    }
 
     /**
      * Flush all stateful data.
      */
     @Override
     public void hide() {
-        //super.hide();
-    }
 
-    private void updateSelection(String selected) {
-    }
-
-    @Override
-    public boolean keyDown(int keycode) {
-
-        return false;
-    }
-
-
-    @Override
-    public boolean keyUp(int keycode) {
-
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
     }
 }

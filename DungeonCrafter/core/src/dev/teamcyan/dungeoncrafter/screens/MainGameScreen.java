@@ -28,9 +28,21 @@ import java.util.List;
  */
 public class MainGameScreen extends BaseScreen {
 
+  /**
+   * Batch that updates camera-sensitive parts of the screen
+   */
   SpriteBatch batch = new SpriteBatch();
+  /**
+   * Batch that updates camera-insensitive parts of the screen
+   */
   SpriteBatch hud = new SpriteBatch();
+  /**
+   * ShapeRenderer that creates camera-insensitive parts of the screen
+   */
   private ShapeRenderer shapeRenderer;
+  /**
+   * ShapeRenderer that creates camera-sensitive parts of the screen
+   */
   private ShapeRenderer cameraShapeRenderer;
 
   boolean movingRight = false;
@@ -46,10 +58,16 @@ public class MainGameScreen extends BaseScreen {
   boolean keyE = false;
   boolean keyW = false;
 
+  /**
+   * Current text in pebble's speech bubble
+   */
   private TextureData curSpeech;
+
   private GameElement.State prevState;
 
-  // Countdown timer labeling
+  /**
+   * Label for difficulty dependant game countdown
+   */
   private Label timerLabel;
   private Label.LabelStyle timerStyle;
 
@@ -77,7 +95,7 @@ public class MainGameScreen extends BaseScreen {
 
 
   /**
-   * Constructor - 
+   * Constructor - Setup the camera-insensitive parts of the screen (hud)
    * Inherit the game and the model from the parent class
    * @param parent Controller
    * @param model GameModel
@@ -154,16 +172,15 @@ public class MainGameScreen extends BaseScreen {
 
 
   /**
-   *Initialise the Game Menu Screen
+   * Setup the game audio
    * */
   @Override
   public void init() {
     totTime = super.controller.totTime;
     super.controller.audioManager.startMusic(super.controller.audioManager.ambients, 20);
     super.controller.audioManager.stopMusic(super.controller.audioManager.menuSound);
-// Create countdown variable for overlay
+    // Create countdown variable for overlay
 
-    System.out.println(leavingInv);
     if(!leavingInv) {
       timeLeft = totTime;
       timer.scheduleTask(new Timer.Task() {
@@ -180,9 +197,13 @@ public class MainGameScreen extends BaseScreen {
         }
       }, 0, (float) 0.1, (int) totTime * 10);
     }
-    }
+  }
 
 
+  /**
+   * All the game updates origin from here.
+   * @param delta amount of time that passed since last call
+   */
   @Override
   public void draw(float delta) {
 
@@ -223,9 +244,7 @@ public class MainGameScreen extends BaseScreen {
     if(model.getEnemies().get(17).getHealth() == 0)
       controller.changeScreen(CreditsScreen.class);
 
-    /**
-     * if Digging Left is pressed
-     **/
+    //if Digging Left is pressed
     if(keyA) {
       isBroken = model.getMap().interactBlockLeft(
           new Pos(
@@ -233,9 +252,8 @@ public class MainGameScreen extends BaseScreen {
             model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
 
-    /**
-     * if Digging Right  is pressed
-     **/
+    // if Digging Right  is pressed
+
     if(keyD) {
       isBroken = model.getMap().interactBlockRight(
           new Pos(
@@ -244,9 +262,7 @@ public class MainGameScreen extends BaseScreen {
     }
 
 
-    /**
-     * if Digging Center  is pressed
-     **/
+    //if Digging Center  is pressed
     if(keyS) {
       if (curCell != null) {
         controller.audioManager.breakBlock("gravel"); // curCell.getTile().getTextureRegion().getTexture().toString()
@@ -257,9 +273,7 @@ public class MainGameScreen extends BaseScreen {
             model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
 
-    /**
-     * if Digging up  is pressed
-     **/
+    //if Digging up  is pressed
     if(keyW) {
       if (curCell != null) {
         controller.audioManager.breakBlock("gravel"); // curCell.getTile().getTextureRegion().getTexture().toString()
@@ -274,9 +288,7 @@ public class MainGameScreen extends BaseScreen {
       controller.audioManager.breakBlock("gravel");
     }
 
-    /**
-     * if Place left is pressed
-     **/
+    //if Place left is pressed
     if(keyQ) {
       model.getMap().setBlockLeft(
           new Pos( 
@@ -284,9 +296,7 @@ public class MainGameScreen extends BaseScreen {
             model.getPlayer().getPosition().getY() + model.getPlayer().getRegion().getRegionHeight()/2));
     }
 
-    /**
-     * if Place right is pressed
-     **/
+    //if Place right is pressed
     if(keyE) {
       model.getMap().setBlockRight(
           new Pos( 
@@ -429,6 +439,11 @@ public class MainGameScreen extends BaseScreen {
 
   }
 
+  /**
+   * update the camera on window resizes
+   * @param width width of newly resized window
+   * @param height width of newly resized window
+   */
   @Override
   public void resize(int width, int height) {
     model.getCamera().viewportWidth = width;
@@ -447,11 +462,17 @@ public class MainGameScreen extends BaseScreen {
 
   }
 
+  /**
+   * Flush all stateful data.
+   */
   @Override
   public void hide() {
 
   }
 
+  /**
+   * Safely dispose all data if necessary
+   */
   @Override
   public void dispose() {
     batch.dispose();
@@ -463,6 +484,11 @@ public class MainGameScreen extends BaseScreen {
 
   }
 
+   /**
+   * Implement for keyboard inputs. Called immediately on key presses.
+   * @param keycode the code of the key that was clicked. One of Input.Keys.
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean keyDown(int keycode) {
     super.controller.keyListener.keyDownListener(keycode);
@@ -511,6 +537,11 @@ public class MainGameScreen extends BaseScreen {
     return false;
   }
 
+  /**
+   * Implement for keyboard inputs. Called immediately on key releases.
+   * @param keycode the code of the key that was clicked. One of Input.Keys.
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean keyUp(int keycode) {
     super.controller.keyListener.keyUpListener(keycode);
@@ -554,32 +585,71 @@ public class MainGameScreen extends BaseScreen {
     return false;
   }
 
+  /**
+   * Implement for keyboard inputs. Called when a key was typed.
+   * @param character the character that was typed
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean keyTyped(char character) {
     return false;
   }
 
+  /**
+   * Implement for screen clicks or touches. Called immediately on screen press.
+   * @param screenX x-coordinate of the click. Origin is in the upper left corner.
+   * @param screenY y-coordinate of the click. Origin is in the upper left corner.
+   * @param pointer the pointer for the event.
+   * @param button the button for the event.
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean touchDown(int screenX, int screenY, int pointer, int button) {
     return false;
   }
 
+  /**
+   * Implement for screen clicks or touches. Called immediately on screen release.
+   * @param screenX x-coordinate of the click. Origin is in the upper left corner.
+   * @param screenY y-coordinate of the click. Origin is in the upper left corner.
+   * @param pointer the pointer for the event.
+   * @param button the button for the event.
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean touchUp(int screenX, int screenY, int pointer, int button) {
     return false;
   }
 
+  /**
+   * Implement for screen clicks or touches. Called when mouse or finger was dragged.
+   * @param screenX x-coordinate of the event. Origin is in the upper left corner.
+   * @param screenY y-coordinate of the event. Origin is in the upper left corner.
+   * @param pointer the pointer for the event.
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean touchDragged(int screenX, int screenY, int pointer) {
     return false;
   }
 
+  /**
+   * Called when the mouse was moved without any buttons being pressed. Will not be called on iOS.
+   * @param screenX x-coordinate of the event. Origin is in the upper left corner.
+   * @param screenY y-coordinate of the event. Origin is in the upper left corner.
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean mouseMoved(int screenX, int screenY) {
     super.controller.keyListener.mouseMoved(screenX, screenY);
     return false;
   }
 
+  /**
+   * Called when the mouse wheel was scrolled.
+   * @param amount the amount the wheel was scrolled
+   * @return boolean whether the input was processed
+   */
   @Override
   public boolean scrolled(int amount) {
     return false;
