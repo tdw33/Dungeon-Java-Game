@@ -214,7 +214,7 @@ The customer seemed to be satisfied with the progress shown. No requirements wer
 
 #### **New and updated use cases:**  
 
-**UC_04**
+**UC_18**
 
 **Use case**: Player crafts armour from the inventory  \
 **Author**: TJ  \
@@ -246,7 +246,7 @@ The customer seemed to be satisfied with the progress shown. No requirements wer
 
 \
 
-**UC_18**
+**UC_19**
 
 **Use case**: Enemy has a health bar that will go down when attacked  \
 **Author**: TJ \
@@ -313,7 +313,7 @@ Class: Armor (see UC_18)
   - crafts items                                  
 - Collaborators
   - Character
-- Inventory
+  - Inventory
 
 \pagebreak
 
