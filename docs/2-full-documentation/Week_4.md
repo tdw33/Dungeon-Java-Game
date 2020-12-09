@@ -50,7 +50,7 @@ Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, T
 
 Collision and gravity had been implemented with the character (a block) and user input shown above. 
 
-![](../week4-presentation/GravityAndCollision.gif)  
+![](../1-presentations/week4-presentation/GravityAndCollision.gif)  
 
 A new main character sprite has been chosen instead of the previous one because there are more potential actions and the sprite can be modified more flexibly.
 
@@ -58,26 +58,26 @@ A new main character sprite has been chosen instead of the previous one because 
 
 The main character’s walking animation had been created with a tool (pickaxe) in hand.
 
-![](../week4-presentation/gifs/walking.gif)  
+![](../1-presentations/week4-presentation/gifs/walking.gif)  
 
 The map had been linked with the game, providing interaction from selecting an option (new game) and generating a map. A boss map was created.
 
-![](../week4-presentation/gifs/map.gif)  
+![](../1-presentations/week4-presentation/gifs/map.gif)  
 
 The team also decided on a game name: Into the Dark, which fits with the sanity feature of the game. Several menu background images were found that correspond to the theme of the game. 
 
-![](../week4-presentation/gifs/01.png)
+![](../1-presentations/week4-presentation/gifs/01.png)
 
-![](../week4-presentation/gifs/05.png)
+![](../1-presentations/week4-presentation/gifs/05.png)
 
-![](../week4-presentation/gifs/06.png)
+![](../1-presentations/week4-presentation/gifs/06.png)
 
-![](../week4-presentation/gifs/07.png)
+![](../1-presentations/week4-presentation/gifs/07.png)
 
 
 As the customer required, a more detailed storyline was generated with episodes that gradually unwrap plots that give the main character certain items or abilities with Pebble as the guide to tell the story and give instructions. 
 
-![](../week4-presentation/gifs/story.png)  
+![](../1-presentations/week4-presentation/gifs/story.png)  
 
 Sound effects and game background music had been further selected for implementation.
 
