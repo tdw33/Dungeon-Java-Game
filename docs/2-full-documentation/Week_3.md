@@ -58,19 +58,19 @@ Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, T
 
 - A map could be generated that had a black background with edges, different obstacles and materials. 
 
-![ ](../week3-presentation/gifs/mapexample.gif)  
+![ ](../1-presentations/week3-presentation/gifs/mapexample.gif)  
 
 - User input can be shown as current position that constantly changes according to the user's control. 
 
-![ ](../week3-presentation/imgs/gifedit.gif)    
+![ ](../1-presentations/week3-presentation/imgs/gifedit.gif)    
 
 - Camera view was implemented to always have the character in the centre of the screen. 
 
-![ ](../week3-presentation/gifs/InitialGameRecording.gif)  
+![ ](../1-presentations/week3-presentation/gifs/InitialGameRecording.gif)  
 
 - A menu was created with basic functions such as new game, load game, settings and exit.   
 
-![ ](../week3-presentation/imgs/mainmenu.gif)  
+![ ](../1-presentations/week3-presentation/imgs/mainmenu.gif)  
 
 We were not able to achieve the gravity this week and the collision was still not properly implemented, so would both need work in the next sprint week. One problem which meant we did not achieve what we wanted was the coursework deadlines happening at the same time. This is further discussed in the exception handling section.
 
