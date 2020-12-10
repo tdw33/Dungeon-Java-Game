@@ -86,7 +86,7 @@ The model logic is spread over several classes, but all the information will be 
 The map, the player, the sidekick pebble and enemies origin here. 
 Therefore, if you want to add enemies to the game, change positions of any character, etc. this is the class to go to and make according changes.
 
-#### GMap - level Map
+##### GMap - level Map
 
 The structure of the [GMap](../../DungeonCrafter/core/src/dev/teamcyan/dungeoncrafter/classes/GMap.java) is based on a layered approach. There is a foreground layer, a background layer. 
 
@@ -107,7 +107,7 @@ You can find the GMap and some other tests and examples in [./core/assets/tile](
 
 ---
 
-#### Further Modules and extension
+#### Further Modules and extensions
 ##### GMap Generator
 
 
