@@ -98,7 +98,7 @@ Note:
 
 - The tiles are not embedded into the map to keep them lightweight. Rather, they are linked at run time using libGDXs capabilities
 
-- We recommend you use [Tiled Map Editor](https://www.mapeditor.org/) if you want to create you own levels.
+- We recommend you use [Tiled Map Editor](https://www.mapeditor.org/) if you want to create your own levels.
   
   - probably the best way to do so would be to copy one of our maps and then modify it
 
@@ -111,11 +111,11 @@ You can find the GMap and some other tests and examples in [./core/assets/tile](
 ##### GMap Generator
 
 
-The game's [GMap](../../DungeonCrafter/core/src/dev/teamcyan/dungeoncrafter/classes/GMap.java) implementation was thought in such a manner to allow for further extension with a GMap Generator. But as all projects, we were constrained by time and resources and this has saddly remained a nice //TODO
+The game's [GMap](../../DungeonCrafter/core/src/dev/teamcyan/dungeoncrafter/classes/GMap.java) implementation was thought in such a manner to allow for further extension with a GMap Generator. But as all projects, we were constrained by time and resources and this has sadly remained a nice //TODO
 
-- The current GMap implementations was thoguht around the ease of integration with a proceduraly generated map
+- The current GMap implementations was thought around the ease of integration with a proceduraly generated map
 
-- Using a lightweight wraper to the [libGDX TiledMap](https://github.com/libgdx/libgdx/wiki/Tile-maps) this can be done  efficiently and with no high resource needs
+- Using a lightweight wrapper to the [libGDX TiledMap](https://github.com/libgdx/libgdx/wiki/Tile-maps) this can be done  efficiently and with no high resource needs
 
 - Research has led to a few conclusions which should be considered when implementing the map generator
 
