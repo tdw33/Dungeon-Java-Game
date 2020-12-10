@@ -128,3 +128,40 @@ The game's [GMap](../../DungeonCrafter/core/src/dev/teamcyan/dungeoncrafter/clas
   - a great implementation would take into account the level's difficulty.
 
   - due to the use of the native libGDX, the map can be generated during the run time of the program, so in theory it should be able to create an inifinte map. The format in which the map is saved is lightweight as well `.tmx`
+
+##### Audio Management
+
+For a nicer gaming experience, Into the dark includes audio. The audio is managed by the [AudioManager](../../DungeonCrafter/core/src/dev/teamcyan/dungeoncrafter/classes/AudioManager.java) class. It differs between background music and game play sound effects.
+- Add new music:
+    1. Add sound file to [DungeonCrafter/core/assets/sounds](../../DungeonCrafter/core/assets/sounds) directory
+    2. Add new [Music](https://libgdx.badlogicgames.com/ci/nightlies/docs/api/com/badlogic/gdx/audio/Music.html) variable to class like this: `public Music newMusic;`
+    3. Initialize it with music file from assets in the Constructor like this: `this.newMusic = Gdx.audio.newMusic(Gdx.files.internal("sounds/newMusic.*"));`
+    4. Play music by calling the controller's audioManager instance like this: `controller.audioManager.startMusic(controller.audioManager.newMusic, intentedVolume);`
+    5. Stop music by calling the controller's audioManager instance like this: `controller.audioManager.stopMusic(controller.audioManager.newMusic);`
+
+- Adding new sound effects:
+    1. Add sound file to [DungeonCrafter/core/assets/sounds](../../DungeonCrafter/core/assets/sounds) directory
+    2. Add new [Sound](https://libgdx.badlogicgames.com/ci/nightlies/docs/api/com/badlogic/gdx/audio/Sound.html) variable to class like this: `public Sound newSound;`
+    3. Initialize it with sound file from assets in the Constructor like this: `this.newSound = Gdx.audio.newSound(Gdx.files.internal("sounds/newSound.*"));`
+    4. Add new logic to `startMusicStr()` like this: `if(toPlay == "__uniqueSoundIdentifier__"){newSound.play();}`
+    5. Play sound effect by calling the controller's audioManager instance like this: `controller.audioManager.startMusicStr("__uniqueSoundIdentifier__");`
+    
+##### Physics
+
+Into the dark's physics are implemented from scratch.
+The same laws are applied to all characters, but movements are dependent on different conditions.
+Therefore, every character class (e.g. GEPlayer, GEPebble, GEEnemy, etc.) has its own position setters.
+In detail, x-coordinates and y-coordinates are set separately by the methods `setX()` and `setY()`.
+To understand or even change the physics, you have to have some understanding of velocity, acceleration, gravity (as a form of acceleration) and resistance.
+In addition, have in mind that those concepts have to be adopted from a continuous form to a discrete implementation.
+If you have that understanding, you will be able to understand the code and make adaptions in your favor.
+
+Some easy but fun changes include:
+- Change of gravitational force: Change the GRAVITY constant in [GameElement](../../DungeonCrafter/core/src/dev/teamcyan/dungeoncrafter/classes/GameElement.java) from 9.81 [m/s^2] to something different.
+For less gravitational force, decrease the value. For more gravitational force, increase it.
+- Change of jumping height: Change the JUMPACCELERATION constant in [GameElement](../../DungeonCrafter/core/src/dev/teamcyan/dungeoncrafter/classes/GameElement.java) from 230 to something different.
+For lower jumps, decrease the value. For higher jumps, increase it.
+- Change of character's deceleration ability: Change the RESISTANCE constant in [GameElement](../../DungeonCrafter/core/src/dev/teamcyan/dungeoncrafter/classes/GameElement.java) from 0.2 to something different.
+For weaker deceleration, decrease the value. For stronger deceleration, increase it.
+- Change of character's acceleration ability: Change the ACCELERATION constant in [GameElement](../../DungeonCrafter/core/src/dev/teamcyan/dungeoncrafter/classes/GameElement.java) from 5.0 to something different.
+For weaker acceleration, decrease the value. For stronger acceleration, increase it.
