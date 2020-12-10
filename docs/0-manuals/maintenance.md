@@ -2,7 +2,7 @@
 
 Into the dark is a Java programme based on the libGDX framework.
 
-## <a name="prerequisites">Prerequisites</a>
+## Prerequisites
 
 - Java Development Kit 8+ (Must be JDK)
 - libGDX
@@ -18,7 +18,7 @@ Follow your preferred cloning process of a git repository. This is the link to t
 
 ## Project organization
 
-Make sure to satisfy all the [prerequisites](#prerequisites) before moving on.
+Make sure to satisfy all the prerequisites before moving on.
 
 Javadoc can be found [here](https://github.bath.ac.uk/pages/Team-Cyan/Dungeon/).
 
