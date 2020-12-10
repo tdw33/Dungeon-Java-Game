@@ -17,7 +17,7 @@ In order to compile the code, JRE 8 is required, this can be downloaded from the
 
 \bcenter
 
-![](./img/Java-Logo.png){ width=50% }
+![](./images/Java-Logo.png){ width=50% }
 
 \ecenter
 
@@ -30,7 +30,7 @@ In order to copy the code to your personal machine, GIT is required, GIT can be 
 
 \bcenter
 
-![](./img/logo2.png){ width=50% }
+![](./images/logo2.png){ width=50% }
 
 \ecenter
 
@@ -40,7 +40,7 @@ To copy the project files from the GIT repository to your local machine run 'git
 
 \bcenter
 
-![](./img/clone.png)
+![](./images/clone.png)
 
 \ecenter
 
@@ -53,7 +53,7 @@ The IntelliJ IDE can be downloaded from the link provided
 
 \bcenter
 
-![](./img/logo.png){ width=50% }
+![](./images/logo.png){ width=50% }
 
 \ecenter
 
@@ -65,7 +65,7 @@ Select open file or project within IntelliJ and navigate to the file 'build.grad
 
 \bcenter
 
-![](./img/open.png)
+![](./images/open.png)
 
 \ecenter
 
@@ -75,7 +75,7 @@ Once the project has opened navigate to and open the 'DesktopLauncher' file with
 
 \bcenter
 
-![](./img/DesktopLauncher.png)
+![](./images/DesktopLauncher.png)
 
 \ecenter
 
@@ -85,7 +85,7 @@ Once the file is open within IntelliJ, a run configuration need to be created to
 
 \bcenter
 
-![](./img/addconfig.png)
+![](./images/addconfig.png)
 
 \ecenter
 
@@ -104,7 +104,7 @@ Click 'Apply' or 'Ok' on the bottom right of the configuraton window
 
 \bcenter
 
-![](./img/configurations.png)
+![](./images/configurations.png)
 
 \ecenter
 
@@ -114,7 +114,7 @@ Once this has been completed, the add configurations button will be replaced wit
 
 \bcenter
 
-![](./img/runbutton.png)
+![](./images/runbutton.png)
 
 \ecenter
 
