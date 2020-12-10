@@ -17,7 +17,7 @@ date: 08-12-2020
 
 ## Documentation:
 
-- for a view of our process please have a look at  `./doc` in here you can find:
+- for a view of our process please have a look at  `./docs` in here you can find:
   - our full documentation
   - the weekly client presentations 
   - further documentation produced during the process
