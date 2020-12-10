@@ -167,26 +167,26 @@ public class AudioManager {
         this.breakStone.stop();
         if(blockString.contains("brick")) {
             //this.breakStone.play();
-            System.out.println("brick broken");
+            //System.out.println("brick broken");
         }
         if(blockString.contains("clay")){
             //this.breakStone.play();
-            System.out.println("clay broken");
+            //System.out.println("clay broken");
         }
 
         if(blockString.contains("dirt")){
             breakStone.play();
-            System.out.println("dirt broken");
+            //System.out.println("dirt broken");
 
         }
         if(blockString.contains("gravel")) {
             this.breakStone.play();
-            System.out.println("gravel broken");
+            //System.out.println("gravel broken");
         }
 
         if(blockString.contains("stone")) {
             //this.breakStone.play();
-            System.out.println("stone broken");
+            //System.out.println("stone broken");
         }
     }
 }

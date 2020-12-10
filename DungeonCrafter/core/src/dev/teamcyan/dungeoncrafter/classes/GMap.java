@@ -131,7 +131,6 @@ public class GMap extends GameElement {
         if(tileGetHealth(tPos, layer) > 0 ) {
           int tHealth = tileGetHealth(tPos, layer);
           tHealth -= attack;
-          System.out.println(tHealth);
           tileSetHealth(tPos, layer, tHealth);
         } else {
           tileDestroy(tPos, layer);

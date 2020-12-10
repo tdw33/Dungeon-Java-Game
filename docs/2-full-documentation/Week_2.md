@@ -26,7 +26,9 @@ Attached here is the presentation created for the customer meeting on the 30th N
 
 **Customer meeting debrief and sprint planning:**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+
+**Minutes:**
 
 We discussed how the customer meeting went and how it affected the game. In the meeting the customer said they were happy with the idea of doing an interactive game like Minecraft in a dungeon themed setting. We presented a broad overview of the game so there was plenty to look into as potential final ideas, meaning the customer still has plenty of choice in how the game will look and feel. One important part was clarification of cross platform relating to Windows, Linux and MacOS instead of referring to mobile. So, our focus will be ensuring the game runs on those operating systems with android as a potential bonus. 
 
@@ -38,7 +40,9 @@ Now the initial game idea was confirmed, and we have established our coding lang
 
 **Miro board**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+
+**Minutes:**
 
 In this meeting we used our thoughts on classes to generate the architecture of the game as well as a UML diagram. First, we looked at the game flow which will be how the menu and game will function together, which can be seen below. The important part of this architecture is the ability to save the game and how this will function in different scenarios, So, it shows the flow with saving the game and then continuing the game from this save state. Upon dying the user will be able to start from the last save state. From the initiating a new game from the staring menu screen, a new seed will be generated. This will allow the user to have more unique experiences in future playthrough of our game. 
 
@@ -52,7 +56,9 @@ In the next part we designed an UML off the initial idea for the class system as
 
 **Sprint review and presentation creation**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+
+**Minutes:**
 
 From this second sprint we were all able to generate a basic character and have basic movement using LibGdx and Java. The naming class we established and an initial UML board was generated. These can be seen below with the UML shown above. No one had any major problems, so the sprint was considered successful.
 
@@ -154,7 +160,7 @@ We showed the progress of our game development. This was the UML diagram and gam
 
 We started to think of use cases this week and setup some initial cases that will cover the basic mechanics of the game. 
 
-##### UC_01
+##### UC_01 \
 
 **Use case**: Player starts game on different systems
 
@@ -198,7 +204,7 @@ We started to think of use cases this week and setup some initial cases that wil
 
 \
 
-##### UC_02
+##### UC_02 \
 
 **Use case**: Player destroys a block on the map
 
@@ -240,7 +246,7 @@ We started to think of use cases this week and setup some initial cases that wil
 
 \
 
-##### UC_03
+##### UC_03 \
 
 **Use case**: Player places a block on the map
 
@@ -284,7 +290,7 @@ We started to think of use cases this week and setup some initial cases that wil
 
 \
 
-##### UC_04
+##### UC_04 \
 
 **Use case**: Player crafts an item from the inventory
 
@@ -325,7 +331,7 @@ There are none
 
 \
 
-**UC_05**
+**UC_05** \
 
 **Use case**: Player controls the movement of the character 
 
@@ -368,7 +374,7 @@ There are none
 
 \
 
-**UC_06**
+**UC_06** \
 
 **Use case**: As the players sanity goes up his sidekick will offer advice
 

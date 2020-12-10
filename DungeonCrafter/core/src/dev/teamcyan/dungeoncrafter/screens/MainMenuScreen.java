@@ -135,7 +135,7 @@ public class MainMenuScreen extends BaseScreen {
             batch.draw(settingsButtonActive,
                     SETTINGS_BUTTON_X,SETTINGS_BUTTON_Y, SETTINGS_BUTTON_WIDTH, SETTINGS_BUTTON_HEIGHT);
                 if(Gdx.input.isTouched()){
-                    this.dispose();
+                    //this.dispose();
                     controller.changeScreen(SettingsScreen.class);}
 
         } else {

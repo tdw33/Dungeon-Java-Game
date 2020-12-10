@@ -241,9 +241,6 @@ public class MainGameScreen extends BaseScreen {
 
     boolean isBroken = false;
 
-    if(model.getEnemies().get(17).getHealth() == 0)
-      controller.changeScreen(CreditsScreen.class);
-
     //if Digging Left is pressed
     if(keyA) {
       isBroken = model.getMap().interactBlockLeft(

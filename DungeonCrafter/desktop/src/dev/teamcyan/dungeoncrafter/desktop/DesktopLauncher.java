@@ -9,10 +9,10 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
 
-		config.title = "TC - Dungeon Crafter";
+		config.title = "TC - Into The Dark";
 		config.width = DungeonCrafter.WIDTH;
 		config.height = DungeonCrafter.HEIGHT;
-		config.resizable = true;
+		config.resizable = false;
 
 		config.foregroundFPS = 60;          //fps for when game is being played
 

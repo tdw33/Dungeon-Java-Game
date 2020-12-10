@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.utils.Array;
+import dev.teamcyan.dungeoncrafter.DungeonCrafter;
+import dev.teamcyan.dungeoncrafter.screens.CreditsScreen;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -16,6 +19,7 @@ import java.util.TimerTask;
  * The final boss class. Subclass of GEEnemy
  */
 public class GEBoss extends GEEnemy{
+    private DungeonCrafter controller;
     public static final float ACCELERATION = (float) 2.0;
     public Velocity velocity;
     private TextureRegion region;
@@ -39,8 +43,9 @@ public class GEBoss extends GEEnemy{
      * @param model
      * @param position
      */
-    public GEBoss (GameModel model, Pos position){
+    public GEBoss (GameModel model, DungeonCrafter controller, Pos position){
         super(model, position);
+        this.controller = controller;
         this.getype = GEType.PLAYER;
         this.velocity = new Velocity(0,0);
         this.position = position;
@@ -88,10 +93,10 @@ public class GEBoss extends GEEnemy{
         float delta = Gdx.graphics.getDeltaTime();
         float newXVelocity;
 
-        double distance = Math.sqrt(Math.pow((playerPosition.getX() - this.position.getX()), 2) + Math.pow((playerPosition.getY() - this.position.getY()), 2));
+        double distance = this.getDistance(playerPosition);// = Math.sqrt(Math.pow((playerPosition.getX() - this.position.getX()), 2) + Math.pow((playerPosition.getY() - this.position.getY()), 2));
         if (this.velocity.getY() > 1) {
             newXVelocity = this.velocity.getX();
-        } else if (distance > 40) {
+        } else if (distance > 40 && distance < 1000) {
             if (playerPosition.getX() > this.position.getX()) {
                 float newV = this.velocity.getX() + this.ACCELERATION * delta;
                 newXVelocity = newV > layer.getTileWidth() ? this.velocity.getX() : newV;
@@ -209,6 +214,32 @@ public class GEBoss extends GEEnemy{
         }
 
         previousState = currentState;
+    }
+
+    /**
+     * Setter for decrementing Health
+     * @param damage
+     */
+    public void decrementHealth(int damage) {
+        this.health -= damage;
+        if (this.health == 0) {
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    isAlive = false;
+                    controller.changeScreen(CreditsScreen.class);
+                }
+            }, 1000);
+        }
+    }
+
+    /**
+     * Getter for health
+     * @return
+     */
+    public int getHealth() {
+        return this.health;
     }
 
     /**

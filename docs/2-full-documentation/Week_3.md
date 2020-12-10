@@ -16,12 +16,17 @@ The presentation created for the customer meeting on the 6th November is linked 
 ### Meeting Minutes
 
 **Customer meeting debrief and sprint planning:**\
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+
+**Minutes:**
 
 A sprint planning meeting was held right after the customer meeting, in which the team added tasks to sprint backlog according to the user requirements and additional features that could be added to the game. These informal discussions of features were later turned into the use case as shown in this weeks documentation. The customer expressed a preference toward a high-resolution art style for the game so a task to find sprites that would fit the style was created and assigned. The customer also wanted to see a variety of backgrounds and scenes while playing the game. Therefore, map generation was added to this week's sprint tasks. In addition to the customer's suggestions, the team also decided to work on menu screens since they are a fundamental part of a game. Another component of a game is sounds so some member were assigned to find background music and short sound effects that fit with the game theme. In terms of character movement, since a map will be generated which will influence where the character can go, gravity and collision are needed to make the movements seem more real (e.g. the character jumps down - gravity; cannot pass the edge of the map - collision). \
 
 **MVC model - Controller, Map and Elements:**\
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+
+**Minutes:**
+
 MVC:
 
 - User uses controller->Controller manipulates model->Model updates view->View sees user
@@ -46,31 +51,51 @@ Elements
 - Every element is on the map, view just takes info from the map
 - Action 1 hit-> takes element from the environment and reduces the health
 
-Questions:
+Questions: \
 - Main view has to be re-rendered when the player gets to the edge of the screen - controller or model?
 - Each class has a method called view?
 - How to implement main map controller?  
 
 
 
-**Sprint review and presentation creation**:
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+**Sprint review and presentation creation**: \
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+
+**Minutes:**
+
+Below is a list of all the new implantations. It is recommended you follow the link in weekly overview to see the GIF version.
 
 - A map could be generated that had a black background with edges, different obstacles and materials. 
 
-![ ](../1-presentations/week3-presentation/gifs/mapexample.gif)  
+\bcenter
+
+![](./week_3_artifacts/mapexample.gif){ width=50% }
+
+\ecenter
 
 - User input can be shown as current position that constantly changes according to the user's control. 
 
-![ ](../1-presentations/week3-presentation/imgs/gifedit.gif)    
+\bcenter
+
+![](./week_3_artifacts/gifedit.gif){ width=50% }  
+
+\ecenter
 
 - Camera view was implemented to always have the character in the centre of the screen. 
 
-![ ](../1-presentations/week3-presentation/gifs/InitialGameRecording.gif)  
+\bcenter
+
+![](./week_3_artifacts/InitialGameRecording.gif){ width =50% }
+
+\ecenter
 
 - A menu was created with basic functions such as new game, load game, settings and exit.   
 
-![ ](../1-presentations/week3-presentation/imgs/mainmenu.gif)  
+\bcenter
+
+![](./week_3_artifacts/mainmenu.gif)
+
+\ecenter
 
 We were not able to achieve the gravity this week and the collision was still not properly implemented, so would both need work in the next sprint week. One problem which meant we did not achieve what we wanted was the coursework deadlines happening at the same time. This is further discussed in the exception handling section.
 
@@ -126,7 +151,7 @@ Many members had course deadlines this week so the team had to balance between k
 
 \pagebreak
 
-## **product contents**
+## **Product contents**
 
 ### Customer interview
 
@@ -179,7 +204,7 @@ The customer suggested having a way to interact with the game by controlling the
 | UC_05       | Player controls the movement of the character  | YES     |
 | UC_06       | As the players sanity goes up his sidekick will offer advice | NO     |
 
-#### New Use cases:  
+#### New Use cases:  \
 
 **UC_07**
 
@@ -283,7 +308,8 @@ As the game becomes more complicated we decided it would be better to display th
 - There should be background music played at the menu screen and during the game. Background music can change along with the character’s state such as sanity levels and become more intense during events like a boss fight [1]
 - Sounds should be triggered when certain actions are performed (e.g. menu click, fight, mining) [1]
 
-Inventory:
+**Inventory:** \
+
 - The player can access an inventory screen which has options for equipment [1]
 - In the equipment tab there will be options for view, craft, and delete [1]
 

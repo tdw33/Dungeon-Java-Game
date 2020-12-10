@@ -2,7 +2,7 @@
 
 # **Week 4: 6th - 12th November**
 
-## Process
+## **Process**
 
 ### Weekly Overview
 More progress was made on making the character’s movements seem more real by adding gravity and collision. The sounds are starting to be implemented as well for the menu screen. Character and enemy sprites as well as walking animation that fit with the style of the game were found. Moreover, game name and general storyline were established so that further game development can have a template or structure to refer to when it comes to making scenes, environments and characters. 
@@ -17,13 +17,17 @@ The presentation created for the customer meeting on the 13th November can be fo
 ### Meeting Minutes
 **Customer meeting debrief and sprint planning:**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+
+**minutes:** 
 
 As with previous weeks, the team had a meeting to organize customer requirement mentioned in the customer meeting and plan the sprint accordingly. After seeing the progress of the game development which was having basic elements such as generating a map, character movement, user input and a main menu, the customer was satisfied of the initial state of the game. Nevertheless, the customer mentioned having a more detailed storyline. In the last sprints, we only had a general idea that the main character is in a world that requires crafting items and fighting monsters to survive along with a Bot called Pebble which is a small stone. As time passes by, the character’s sanity changes which influences the process of the game. The customer was interested in this idea and wanted to see the game divided into episodes with a more detailed storyline and the character can gain various abilities or items as the storyline progresses. Therefore, the team needs to work on adding more content to the story such as character motivation and expand the background story. The following game development can be based on this storyline to create certain features. In addition to customer’s suggestion, the team decided to have tasks that addressed the combination of previously developed features such as gravity, map and user input. Moreover, the sprint included finding character sprites and related animation. \
 
 **Sprint re-planning and progress check** 
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo  \
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo  \
+
+**minutes:**
 
 - Documentation: can combine the different markdown files into one pdf file in the end
 - Sprites for character had been found that conform to user’s preferred high resolution, considered actions that the main character need such as attacking, walking and mining
@@ -46,44 +50,67 @@ Rock enemy sprite was found. The sprites can be changed in size as the game need
 
 **Sprint review and presentation creation**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+Below are all the new implementations we had this week. It is recommended that you follow the presentation link in the weekly overview to see the GIF version.
 
-Collision and gravity had been implemented with the character (a block) and user input shown above. 
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
 
-![](../1-presentations/week4-presentation/GravityAndCollision.gif)  
+**Minutes:**
+
+Collision and gravity had been implemented with the character (a block) and user input shown below. 
+
+![](./week_4_artifacts/GravityAndCollision.gif)
+
+
 
 A new main character sprite has been chosen instead of the previous one because there are more potential actions and the sprite can be modified more flexibly.
 
-![](./week_4_artifacts/characterSpriteUpdate.png)   
+\bcenter
+
+![](./week_4_artifacts/characterSpriteUpdate.png){ width=50% }   
+
+\ecenter
 
 The main character’s walking animation had been created with a tool (pickaxe) in hand.
 
-![](../1-presentations/week4-presentation/gifs/walking.gif)  
+\bcenter
+
+![](./week_4_artifacts/walking.gif)
+
+\ecenter
 
 The map had been linked with the game, providing interaction from selecting an option (new game) and generating a map. A boss map was created.
 
-![](../1-presentations/week4-presentation/gifs/map.gif)  
+\bcenter
+
+![](./week_4_artifacts/map.gif){ width=50% }
+
+\ecenter 
 
 The team also decided on a game name: Into the Dark, which fits with the sanity feature of the game. Several menu background images were found that correspond to the theme of the game. 
 
-![](../1-presentations/week4-presentation/gifs/01.png)
+\bcenter
 
-![](../1-presentations/week4-presentation/gifs/05.png)
+![](./week_4_artifacts/01.png){ width=50% }
 
-![](../1-presentations/week4-presentation/gifs/06.png)
 
-![](../1-presentations/week4-presentation/gifs/07.png)
 
+![](./week_4_artifacts/05.png){ width=50% }
+
+![](./week_4_artifacts/06.png){ width=50% }
+
+![](./week_4_artifacts/07.png){ width=50% }
+
+\ecenter
 
 As the customer required, a more detailed storyline was generated with episodes that gradually unwrap plots that give the main character certain items or abilities with Pebble as the guide to tell the story and give instructions. 
 
-![](../1-presentations/week4-presentation/gifs/story.png)  
+![](./week_4_artifacts/story.png)
 
 Sound effects and game background music had been further selected for implementation.
 
 \pagebreak
 
-### backlog  
+### Backlog  
 
 **Product backlog:** 
 
@@ -136,7 +163,7 @@ Some members have other coursework to finish so not much progress was made after
 
 \pagebreak
 
-## product contents
+## **Product contents**
 
 ### Customer interview
 The customer mentioned that more details of the game background story should be added. Episodes can be developed that advance the game progress with more main character capabilities introduced so that there are layers to the storyline. The rest of the comments were positive about the features that have been implemented . 
@@ -191,9 +218,7 @@ The customer mentioned that more details of the game background story should be 
 | UC_07       | have high-resolution items, characters and environment | NO     |
 | UC_08       | Play in different environments | NO     |
 
-#### **New Use cases:**
-
-#### \
+#### **New Use cases:** \
 
 **UC_09**
 

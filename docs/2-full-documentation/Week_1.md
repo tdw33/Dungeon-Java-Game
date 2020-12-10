@@ -1,20 +1,6 @@
----
-title: "Documentation"
-author: 
-- He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, 
-- Tom Wells, Vlad Postmangiu Luchian, Yandong Guo
-toc: true
-toc_depth: 2
-number_sections: true
-fontsize: 11pt
-geometry: margin=1.5in
-fd_print: kable
-urlcolor: blue
----
-
 \pagebreak
 
-# Week 1: 16th- 22nd October
+# Week 1: 16th- 2nd October
 
 ## **Process**
 
@@ -24,7 +10,11 @@ urlcolor: blue
 
 This was the start of the project, meaning there was no coding. Instead, we planned: what game we wanted to create based on the initial customer specification; the programming language; control flow and communication (meetings), and the agile approach to the project. The week consisted of 2 meetings. The first meeting was to introduce ourselves and brainstorm ideas for the game, as well as plan the agile approach (Scrum) for the week. The second meeting was a sprint review followed by preparing the customer presentation. In between these two meetings we had daily stand-ups that were carried out on Microsoft teams.
 
+\bcenter
+
 ![](./week_1_artifacts/week1_backlog.png){ width=50% }
+
+\ecenter
 
 Since the Scrum approach was chosen to be used in this project, we assigned a product lead and Scrum master. The product lead was responsible for setting out the sprint backlog from the product backlog created from the brainstorm meeting, while the Scrum master assured daily stand-up posts were being completed. All the sprint information was stored on GitHub for ease of access and updating the tasks.
 
@@ -38,9 +28,9 @@ From this initial sprint, we were able to analyse the use of teams for daily sta
 
 **Brainstorming and sprint planning meeting**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
 
-Minutes:
+**Minutes:**
 
 - Everyone in the group introduced themselves and discussed their programming background
 
@@ -81,7 +71,7 @@ This is a link to the first presentation for the customer meeting 23rd October: 
 
 
 \pagebreak
-### backlog
+### Backlog
 
 **Product backlog:**
 
@@ -120,7 +110,7 @@ At this early stage there were no issues within the project.
 
 
 \pagebreak
-## **product contents**
+## **Product contents**
 
 
 

@@ -55,13 +55,13 @@ public class GEEnemy extends GameElement{
         for (int i = 0; i < 13; i++) {
             frames.add(new TextureRegion(enemySpriteSheet, i*64, 1097, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
         }
-        this.enemyShootL = new Animation(0.35f, frames);
+        this.enemyShootL = new Animation(0.25f, frames);
         frames.clear();
 
         for (int i = 0; i < 13; i++) {
             frames.add(new TextureRegion(enemySpriteSheet, i*64, 1225, CHAR_PIXEL_WIDTH, CHAR_PIXEL_HEIGHT-12));
         }
-        this.enemyShootR = new Animation(0.35f, frames);
+        this.enemyShootR = new Animation(0.25f, frames);
         frames.clear();
 
         for (int i = 0; i < 9; i++) {

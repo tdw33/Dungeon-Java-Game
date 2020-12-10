@@ -89,7 +89,7 @@ public abstract class BaseScreen implements Screen, InputProcessor {
      * @param height width of newly resized window
      */
     @Override public void resize(int width, int height) {
-        ui.getViewport().update(DungeonCrafter.WIDTH, DungeonCrafter.HEIGHT);
+        //ui.getViewport().update(DungeonCrafter.WIDTH, DungeonCrafter.HEIGHT);
     }
 
     /**

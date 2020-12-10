@@ -2,7 +2,7 @@
 
 ## **Week 6 documentation: 20th-26th November** 
 
-## Process
+## **Process**
 
 ### Weekly Overview
 In Week 5, the team reconsidered what could be achieved in a limited amount of time left for this project and adjusted user stories and use cases to make sure that the most basic customer requirements get fulfilled first before spending time on other features. Therefore, this week the team focused on improving the existing features of the game such as enemy attack, destroy and place blocks, anti-gravity and map. Moreover, sprint tasks that connect different components of the game were accomplished such as Pebble speech and inventory screen, which allow players to see tutorial, storyline and collect materials for crafting after destroying blocks. Use cases were generated based on the previous user stories and use cases to have a more specific implementation. 
@@ -19,7 +19,9 @@ The presentation created for the customer meeting on the 13th November can be fo
 ### Meeting Minutes
 **Customer meeting debrief and sprint planning**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+
+**Minutes:**
 
 In the debrief, the team decided to have more features from the storyline implemented such as Pebble speech based on what the customer suggested. The grappling hook idea was interesting but the team did not think there is enough time left to do that and it can be hard to be implemented so the idea was recorded but not put into the product backlog. It would be attempted if other features have been developed to a satisfying level. 
 
@@ -29,7 +31,9 @@ After discussing the customer requirements, the team continued talking about how
 
 **Sprint planning**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo  \
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo  \
+
+**Minutes:**
 
 - Markdown can be converted to a pdf file, just need to format style sheet
 - Has an example horizontal map, needs to get the block into correct sizes
@@ -45,7 +49,9 @@ Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, T
 
 **Sprint review and presentation creation**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+
+**Minutes:**
 
 Documentation can be converted from Markdown to PDF so a PDF file will be created after all the sprint documentations are uploaded and revised to a satisfying level without worrying about formatting the documentation according to the requirement in the end.
 
@@ -53,11 +59,13 @@ Documentation can be converted from Markdown to PDF so a PDF file will be create
 
 Difficulty level is added to the main menu screen so that the players can choose from three levels of difficulties. Moreover, an in-game menu was added which displays the inventory screen: it has three types of materials along with how many the player currently has. 
 
+\bcenter
+
 ![](./week_6_artifacts/diffScreen.png){ width=50% }
 
-![](./week_6_artifacts/Inventory.png)
+![](./week_6_artifacts/Inventory.png){ width=50% }
 
-\pagebreak
+\ecenter
 
 Pebble speech is shown by a speech bubble above its head.
 
@@ -146,7 +154,7 @@ There were no exceptions to be handled for this week.
 
 \pagebreak
 
-## Product content
+## **Product content**
 
 ### Customer meeting
 The customer indicated a liking for the sanity implementation which zooms in the screen as the countdown timer decreases. According to the customer, this feature creates a claustrophobic feeling which has a stronger psychological effect. However, the customer mentioned that the relationship between where the player is, what the player can do and the storyline seems disconnected. An additional feature that the customer proposed was having a grappling iron that can be thrown to the next platform to aid in movement.

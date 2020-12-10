@@ -2,7 +2,7 @@
 
 # Week 8 Documentation: 4th- 8th December
 
-## Process
+## **Process**
 
 ### Weekly overview 
 
@@ -18,22 +18,37 @@ We carried on the same style of sprint as last week and although we were not imp
 
 **Customer meeting debrief and sprint planning**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+
+**Minutes:**
 
 After the customer meeting, the team held a meeting to discuss game features bugs that need to be worked on: 
 
-- Have the end credits pop up onto the screen when the boss is killed
+- Have the end credits pop up onto the screen when the boss is killed, timer runs out and player dies
 - After the end credits you are taken to the starting screen
 - Fix some bugs within the game:
   - The archers will face the way they are shooting
   - The enemies will only follow the player when the player is in a certain radius of the player
-  - 
 
 **Sprint review and final game development meeting**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
 
-**have not had this yet**
+**Minutes**:
+
+We went over bugs that were fixed:
+
+- Archer facing wrong way to player when shooting
+- Enemy spawn
+- Pebble repapering when too far from player
+- Enemy following player in certain radius 
+
+Then we covered new implementations:
+
+- New map with more antigravity and different block layout 
+- The credits are triggered upon boss is killed, timer runs out and player dies
+
+After this we agreed the final version of the game for the project and discussed the documentation.
 
 \pagebreak
 
@@ -111,7 +126,7 @@ Due to a major part of the unit being the documentation, we had to accept what o
 
 \pagebreak
 
-## Product content
+## **Product content**
 
 ### customer meeting
 

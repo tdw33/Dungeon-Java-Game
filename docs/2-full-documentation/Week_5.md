@@ -2,7 +2,7 @@
 
 # **Week 5 documentation: 13th-19th November** 
 
-## Process
+## **Process**
 
 ### Weekly overview
 
@@ -20,7 +20,9 @@ The presentation created for the customer meeting on the 13th November can be fo
 
 **Customer meeting debrief and sprint planning:** 
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+
+**Minutes:**
 
 Following the costumer meeting we agreed that it would be much appreciated by the customer if we definitely  included varying gravity in the game. So , we talked about implementing reverse gravity in the game in order to elevate the payer to new heights.  
 
@@ -30,7 +32,9 @@ For the sprint we decided to focus on getting some core components of the game d
 
  **First sprint review and second sprint plan**:
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+
+**Minutes:**
 
 At the start of the meeting we went over what has been achieved by each member of the group. This ended up being a mix of finishing what we aimed to do and not. After this, we discussed our concerns on what could be achieved by the end of this game development process. It was clear we had not thought enough previously on what is achievable by us as a group and that we can split task more effectively. The new revised changes were:
 
@@ -44,13 +48,17 @@ With all this we made our second sprint goals. These were to continue projectile
 
 **Second sprint review and presentation creation**
 
-Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+
+**Minutes:**
 
 As this was a big week and many of the previous sprint tasks were not completed, so we were excited to see the progress be put all together. All the previous sprint goals were achieved. One major change was the refactoring of the code, so now it is clearer, and any future developments should not cause as many bugs when being merged.
 
-Below are all the features achieved, but make sure to check the presentation link in the weekly overview to see the GIF version
+Below are all the features achieved, but make sure to check the presentation link in the weekly overview to see the GIF version.
 
 \
+
+\bcenter
 
 **Game animations**
 
@@ -60,9 +68,9 @@ Below are all the features achieved, but make sure to check the presentation lin
 
 **Enemy projectile**
 
-![](./week_5_artifacts/arrow.gif)
+![](./week_5_artifacts/arrow.gif){ width=50% }
 
-\pagebreak
+
 
 **Mining and placing**
 
@@ -86,7 +94,7 @@ Below are all the features achieved, but make sure to check the presentation lin
 
 ![](./week_5_artifacts/tree.png)
 
-
+\ecenter
 
 Following our sprint review, we created the presentation for the customer. This followed the same template with reminding the customer of last week’s presentation, then showing updated and finally telling them our future work. This was done on Markdown so that we could show GIFs, meaning the customer could visually see the changes. 
 
@@ -155,7 +163,7 @@ There were no problems with this sprint or week.
 
 \pagebreak
 
-## Product content 
+## **Product content** 
 
 ### Customer meeting 
 

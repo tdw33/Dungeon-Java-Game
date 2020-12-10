@@ -14,7 +14,7 @@ public class GameElement{
   public static final float ACCELERATION = (float) 5.0;
   public final static int CHAR_PIXEL_WIDTH = 64;
   public final static int CHAR_PIXEL_HEIGHT = 64;
-  public enum State {RUNNINGL, RUNNINGR, JUMPING, STANDING, FALLING, MININGL, MININGR, MININGD, ATTACKL, ATTACKR };
+  public enum State {RUNNINGL, RUNNINGR, JUMPING, STANDING, FALLING, MININGL, MININGR, MININGD, MININGU, ATTACKL, ATTACKR };
 
   protected String uid;
   protected Pos position;

@@ -154,6 +154,7 @@ public class GEPebble extends GameElement
         float delta = Gdx.graphics.getDeltaTime();
 
         float newYVelocity = this.velocity.getY() - delta * gravity;
+        if(newYVelocity >=8){newYVelocity=8;}  //Limit the speed of the antigravity
 
         float newYPosition = this.position.getY() + newYVelocity;
         TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));

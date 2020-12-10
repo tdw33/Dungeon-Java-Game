@@ -409,7 +409,7 @@ public class GEPlayer extends GameElement
           controller.changeScreen(GameOverScreen.class);
           model.deactivate();
         }
-      }, 2000);
+      }, 1500);
 
 
     }
@@ -493,6 +493,7 @@ public class GEPlayer extends GameElement
     float delta = Gdx.graphics.getDeltaTime();
 
     float newYVelocity = this.velocity.getY() - delta * gravity;
+    if(newYVelocity >=8){newYVelocity=8;}  //Limit the speed of the antigravity
 
     float newYPosition = this.position.getY() + newYVelocity;// - Math.floor(newYVelocity);
     TiledMapTileLayer.Cell leftBottom = layer.getCell((int) Math.ceil(this.position.getX() / layer.getTileWidth()), (int) Math.floor(newYPosition / layer.getTileHeight()));
@@ -559,6 +560,9 @@ public class GEPlayer extends GameElement
     }else if(keyListener.activeKeys.contains(Input.Keys.S)) {
 
       this.currentState = GameElement.State.MININGD;
+    }else if(keyListener.activeKeys.contains(Input.Keys.W)) {
+
+      this.currentState = GameElement.State.MININGU;
     }else if(keyListener.activeKeys.contains(Input.Keys.LEFT) &&
        !keyListener.activeKeys.contains(Input.Keys.UP) &&
        !keyListener.activeKeys.contains(Input.Keys.DOWN)){
@@ -621,7 +625,7 @@ public class GEPlayer extends GameElement
         } else{
           region = goldCharMineR.getKeyFrame(stateTimer, true);
         }
-    } else if (this.currentState == State.MININGD){
+    } else if (this.currentState == State.MININGD || this.currentState == State.MININGU){
       if(this.health <= 100){
         region = charMineD.getKeyFrame(stateTimer, true);
       } else if (this.health <= 200) {
@@ -655,7 +659,11 @@ public class GEPlayer extends GameElement
       if (this.attackTimer > 0.9) {
         for (GEEnemy e : model.getEnemies()) {
           if (e.isAlive() && this.getDistance(e.getPosition()) < 50 && e.getPosition().getX() < position.getX()){
-            e.decrementHealth(20);
+            if (e.getClass() == GEBoss.class) {
+              e.decrementHealth(10);
+            } else {
+              e.decrementHealth(20);
+            }
           }
         }
         this.attackTimer = 0;
