@@ -24,7 +24,7 @@ The presentation created for the customer meeting on the 13th November can be fo
 
 **Minutes:**
 
-Following the costumer meeting we agreed that it would be much appreciated by the customer if we definitely  included varying gravity in the game. So , we talked about implementing reverse gravity in the game in order to elevate the payer to new heights.  
+Following the customer meeting we agreed that it would be much appreciated by the customer if we definitely  included varying gravity in the game. So, we talked about implementing reverse gravity in the game in order to elevate the payer to new heights.  
 
 For the sprint we decided to focus on getting some core components of the game down:  character sprite implemented, dig and placing blocks, pebble movement, sound, enemy projectiles, and menu screen. At the same time, the documentation was continued to be worked on. The sprint goal was to finish week 4 and 5.
 
@@ -42,7 +42,7 @@ At the start of the meeting we went over what has been achieved by each member o
 - The inventory will not have a crafting element, but just options to upgrade full armour set. This is based on if the payer has enough of a certain block (e.g. gold)
 -  One enemy type that will have a projectile. The enemies can have different armour and damage ratings
 
-With all this we made our second sprint goals. These were to continue projectiles, digging and placing blocks, documentation. Then new targets were refactoring code and countdown timer. 
+With all this, we made our second sprint goals. These were to continue projectiles, digging and placing blocks, documentation. Then new targets were refactoring code and countdown timer. 
 
 \
 
@@ -111,7 +111,7 @@ This product backlog was revised this week as we discussed what is achievable in
 - **There will be tasks to complete in order for the player to escape**
 - The player will fight a boss in the final game scene to escape the dungeon 
 - There is an antigravity block allowing the player to rise until he is out of the vertical axis or collides with block
-- **Random generation of block map (side on view)**
+- **Random generation of block map (side-on view)**
 
  **Sprint backlog:**
 
@@ -121,8 +121,8 @@ This product backlog was revised this week as we discussed what is achievable in
 - Documentation
 - A player is spawned on the map
 - The player can interact with the blocks of the map (destroy and create)
-- The player can collect blocks as resources which is stored in an inventory
-- The players resources can be used to upgrade armour and weapon sets
+- The player can collect blocks as resources which are stored in an inventory
+- The player's resources can be used to upgrade armour and weapon sets
 - The player will have a sidekick (bot) which will help the player by offering advice
 - Code refactoring 
 - Enemy projectiles
@@ -130,7 +130,7 @@ This product backlog was revised this week as we discussed what is achievable in
 
  **Completed:**
 
-- Find cross platform library
+- Find cross-platform library
 - Research on how GitHub version control works 
 - Java research 
 - Game development research 
@@ -194,7 +194,7 @@ This followed the previous weeks. The customer was happy with the progress again
 
 | User story ID | Test                                                         | Comments                                                     | completed |
 | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------- |
-| US_01         | Run code on different systems and see if code compiles       | Web based systems on Windows, Mac and Linux                  | YES       |
+| US_01         | Run code on different systems and see if code compiles       | Web-based systems on Windows, Mac and Linux                  | YES       |
 | US_02         | A bot character is generated on the game screen  The bot aids the user with text aids | The bot will have to be able to follow the player around the map, meaning it will need similar movement animations to the main character | NO        |
 | US_04         | There is a visual queue on the screen that will track specific progression. | There are multiple types of progress – elevation, time ore collection | NO        |
 | US_05         | Within the menu screen the player sets the game mode and the characteristics of the game change | These characteristics could be unlimited health, unlimited resources and no enemies | NO        |
@@ -239,7 +239,7 @@ This followed the previous weeks. The customer was happy with the progress again
 **Modification date**: 13/11/2020 \
 **Purpose**: The player needs a challenge in the game. One part is battling enemies so they need to be able to identify and attack the player.\
 **Overview**: The player will come in range of the enemy where it will begin to fire projectiles targeted at the player. Either the player will die or the move out of the firing range. Then the enemy will stop shooting.\
-**Cross reference**: US_13 \
+**Cross-reference**: US_13 \
 **Actors**: Player, enemy\
 
 **Precondition**:
@@ -252,7 +252,7 @@ This followed the previous weeks. The customer was happy with the progress again
 | Actors actions                                               | System actions (enemy)                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 1. Player will walk until they are in range of enemy         | 2. The enemy will pick up the player in the attack range     |
-| 4. The player will take damage form the projectile           | 3. The enemy will begin to fire projectiles targeted at the player (projectile animation) |
+| 4. The player will take damage from the projectile           | 3. The enemy will begin to fire projectiles targeted at the player (projectile animation) |
 | 5. The player ends up dying and goes through death animation | 6. The enemy no longer sees player in range so will stop firing projectiles |
 
  **Alternative flow of events:**
@@ -272,9 +272,9 @@ This followed the previous weeks. The customer was happy with the progress again
 **Author**: TW \
 **Date**: 13/11/2020 \
 **Modification date**: 13/11/2020 \
-**Purpose**: The player needs a challenge in the game. One part is battling enemies so they need to be able to identify and attack the player. In this case this is a more powerful enemy. \
+**Purpose**: The player needs a challenge in the game. One part is battling enemies so they need to be able to identify and attack the player. In this case, this is a more powerful enemy. \
 **Overview**: The player will come in range of the enemy where it will begin to follow and attack the player through melee. Either the player will die or the move out of attack range. Then the boss will stop following. \
-**Cross reference**: US_13  \
+**Cross-reference**: US_13  \
 **Actors**: Player, boss \
 
 **Precondition**:
@@ -287,7 +287,7 @@ This followed the previous weeks. The customer was happy with the progress again
 | Actors actions                                               | System actions (boss)                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 1. Player will walk until they are in range of boss          | 2. The boss will pick up the player in the attack range      |
-| 4. The player will take damage form the attack               | 3. The enemy will begin to follow and attack the player (melee animation) |
+| 4. The player will take damage from the attack               | 3. The enemy will begin to follow and attack the player (melee animation) |
 | 5. The player ends up dying and goes through death animation | 6. The enemy no longer sees player in range so will stop following and attacking |
 
  **Alternative flow of events:**
@@ -309,7 +309,7 @@ This followed the previous weeks. The customer was happy with the progress again
 **Modification date**: 13/11/2020 \
 **Purpose**: The player needs to move up the dungeon to progress. This antigravity method will allow quick upward movement in the game. \
 **Overview**: This block will allow the plater to quickly elevate in the map, adding more depth to the game and feel. \
-**Cross reference**: US_12 \
+**Cross-reference**: US_12 \
 **Actors**: Player\
 
 **Precondition**:
@@ -335,7 +335,7 @@ This followed the previous weeks. The customer was happy with the progress again
 
  **Exceptional flow of events:**
 
-- The player will place block above them as they go upwards which will cause them to stop in that direction
+- The player will place a block above them as they go upwards which will cause them to stop in that direction
 
 \pagebreak
 
@@ -380,7 +380,7 @@ This followed the previous weeks. The customer was happy with the progress again
 Responsibilities:
 
 - reverse the gravity on that block
-- allows the character to fell this affect
+- allows the character to fell this effect
 
 Collaborators:
 
@@ -426,7 +426,7 @@ Collaborators:
 
 - There will be a starting menu screen with the game settings, load game, continue and new game [2]
 - In the settings tab there will be choices for audio, visuals, and controls [1]
-- The player can go to an in game menu with save game and achievements [1]
+- The player can go to an in-game menu with save game and achievements [1]
 
 **Sounds:**
 
@@ -436,7 +436,7 @@ Collaborators:
 **Inventory:**
 
 - The player can access an inventory screen which has options for equipment [1]
-- On this screen the player can see amount of each block, craft option for armour and which block is being placed[2]
+- On this screen the player can see the amount of each block, craft option for armour and which block is being placed[2]
 
 **Game flow:**
 
@@ -445,5 +445,5 @@ Collaborators:
 
 **Pebble:**
 
-- Dialog box at the bottom of the screen at the beginning of each episode (instructions and story-telling from Pebble), which can be skipped [1]
+- Dialogue box at the bottom of the screen at the beginning of each episode (instructions and story-telling from Pebble), which can be skipped [1]
 
