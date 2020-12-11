@@ -5,7 +5,7 @@ header-includes:
 - \newcommand{\ecenter}{\end{center}}
 ---
 
-# Installation guide
+# Installation guide - Developer
 
 This guide demonstrates how to get DungeonCrafter set up for development within the IntelliJ IDE. The guide explains the prerequisites required along with how to configure IntelliJ to run the LibGDX project.
 

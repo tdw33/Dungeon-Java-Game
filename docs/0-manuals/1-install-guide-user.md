@@ -1,4 +1,5 @@
-# Installation Manual
+
+# Installation Manual - User
 
 
 Cross platform compatibility was at the heart of this project. To achieve this we used Java and LibGDX.
