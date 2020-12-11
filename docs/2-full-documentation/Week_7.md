@@ -7,7 +7,7 @@
 ### Weekly Overview
 During last week, the team decided to stick to minimum requirements that could be achieved in the last few weeks of this project considering the need to work on product documentation during the final week. Basic functions that are core to the game were further developed such as enemy attack, block interaction, map and anti-gravity movement. As a result, the game appeared as a whole rather than components that can be shown to the customer. 
 
-This week the team had a clearer goal on what needs to be achieved by the end of the term and continued working on essential features such as creating a final map with different types of blocks and enemies in addition to fixing bugs. Enemy health and death animation for all characters were added. The inventory was made to count number of blocks collected by the player. More sounds were implemented for different scenarios. Documentation was generated up to last week for the preparation of final organization into pdf file which was tested last week. From these aspects we can see that the sprint went successfully and many tasks were finished on time. The game starts to grow into a more finalized product.  
+This week the team had a clearer goal on what needs to be achieved by the end of the term and continued working on essential features such as creating a final map with different types of blocks and enemies in addition to fixing bugs. Enemy health and death animation for all characters were added. The inventory was made to count the number of blocks collected by the player. More sounds were implemented for different scenarios. Documentation was generated up to last week for the preparation of final organization into pdf file which has been tested and functions correctly. From these aspects we can see that the sprint went successfully and many tasks were finished on time. The game starts to grow into a more finalized product.
 
 The presentation created for the customer meeting on the 4th December can be found here, which will have GIFs for some of the artefacts shown here:    [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/1-presentations/week7-presentation/presentation.md)
 
@@ -16,7 +16,7 @@ The presentation created for the customer meeting on the 4th December can be fou
 ### Meeting Minutes
 **Customer meeting debrief and sprint planning**
 
-**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+**Attendance:** He Jiang, Julius Martinetz, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
 
 **Minutes:**
 
@@ -30,7 +30,7 @@ After the customer meeting, the team held a meeting to discuss game features tha
 
 **Sprint planning**
 
-**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \  
+**Attendance:** He Jiang, Julius Martinetz, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \  
 
 **Minutes:**
 
@@ -55,7 +55,7 @@ After the customer meeting, the team held a meeting to discuss game features tha
 
 **Sprint review and presentation creation**
 
-**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
+**Attendance:** He Jiang, Julius Martinetz, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo 
 
 **Minutes**
 
@@ -147,7 +147,7 @@ There were no exceptions to be handled for this week.
 ## **Product content**
 
 ### Customer meeting
-The customer seemed to be satisfied with the progress shown. No requirements were mentioned during the meeting. The main point raised was having all the features we showed joined onto one to form the game. We agreed with this, which is why the major end result of the sprint week was to have the features running in one version of the game. This would then be shown to the customer in the next meeting with a little playthrough
+The customer seemed to be satisfied with the progress shown. No requirements were mentioned during the meeting. The main point raised was having all the features we showed successfully combined to form the game. We agreed with this, which is why the major end result of the sprint week was to have the features running in one version of the game. This would then be shown to the customer in the next meeting with a little playthrough
 
 \pagebreak
 
