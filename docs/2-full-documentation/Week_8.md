@@ -6,11 +6,11 @@
 
 ### Weekly overview 
 
-This was the final week of the Software Engineering unit, meaning  we decided to focus most the week on documentation. This is why the dates are from 4th-7th December, as we wanted to have our final version of the game finished on Monday. The game was able to fulfil most of our user stories and use cases to its basic level, which we adjusted back in week 5. 
+This was the final week of the Software Engineering unit, as a result we decided to focus most of time this week on documentation. This is why the dates are from 4th-7th December, as we wanted to have our final version of the game finished on Monday. The game was able to fulfil most of our user stories and use cases to the basic level, which was adjusted back in week 5. 
 
-We had one meeting on the Friday after the customer meeting to discuss what needed implementing and what bugs needed to be looked at in the last few days. We only had one think to implement and the rest was just fixing bugs and tweaking already implemented features. Then on Monday we had our final meeting to check the game and agree that was our final version. While this was going on  we did break up the team to start tackling the different parts of the documentation.
+We had one team meeting on the Friday after the customer meeting to discuss what needed implementing and what bugs needed to be looked at in the last few days. We only had one key area to implement and the rest was fixing bugs and tweaking already implemented features. On Monday we had our final meeting to check the game and agree that the team was happy with the final version. While this was going on the team was broken up to aid in tackling different parts of the documentation.
 
-We carried on the same style of sprint as last week and although we were not implanting a lot this week, we still looked over the documentation to assess if we were able to fulfil user stories and use cases. This helped decide what bugs to fix in this sprint. This was a small sprint so not too much was learnt from the process. Instead we appreciated the time to develop features within a game, and the importance of having up to date use cases and user stories to optimize your time. 
+We carried on the same style of sprint as last week and although we were not implementing a lot this week, we still looked over the documentation to assess if we were able to fulfil user stories and use cases. This helped decide what bugs to fix in this sprint. This was a small sprint so not too much was learnt from the process. Instead we allocated the time to develop features within a game, and the importance of having up to date use cases and user stories to optimize our time. 
 
 \ pagebreak
 
@@ -18,7 +18,7 @@ We carried on the same style of sprint as last week and although we were not imp
 
 **Customer meeting debrief and sprint planning**
 
-**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+**Attendance:** He Jiang, Julius Martinetz, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
 
 **Minutes:**
 
@@ -32,15 +32,15 @@ After the customer meeting, the team held a meeting to discuss game features bug
 
 **Sprint review and final game development meeting**
 
-**Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
+**Attendance:** He Jiang, Julius Martinetz, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
 
 **Minutes**:
 
 We went over bugs that were fixed:
 
 - Archer facing wrong way to player when shooting
-- Enemy spawn
-- Pebble repapering when too far from player
+- Enemy spawn points
+- Pebble reappearing when too far from player
 - Enemy following player in certain radius 
 
 Then we covered new implementations:
