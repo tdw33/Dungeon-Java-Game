@@ -4,7 +4,7 @@
 
 ## Welcome to Into the Dark
 
-You’re awoken by the echoes of crumbling rocks and dripping water. As your vision adjusts to the dim lighting your eyes trace the outline of a large underground cave with seemingly unexplored caverns scattered into the distance. The path directly in front of you is blocked by large immovable boulders, and while you have no memory of how you’ve ended up in this place you’re well aware you need to leave as soon as possible. Fortunately, your mission won’t need to be completed alone, a new found mineral based friend has been waiting by your side for you to emerge from your slumber. Pebble, your assistant is here to offer advice on how to navigate this foreign environment. He’s seen travellers become lost in this labyrinth before and knows humans can only stay in this area for a limited amount of time before their sanity fully debleats. Pebble is aware of the traps and pitfalls you will encounter while working your way though the cave and will provide guidance as you make your attempt to escape. Pebble has been cast aside by his rock community for being too small and now dedicates his time to help rescue humans from the rock lair as an act of defiance.
+You’re awoken by the echoes of crumbling rocks and dripping water. As your vision adjusts to the dim lighting your eyes trace the outline of a large underground cave with seemingly unexplored caverns scattered into the distance. The path directly in front of you is blocked by large immovable boulders, and while you have no memory of how you’ve ended up in this place you’re well aware you need to leave as soon as possible. Fortunately, your mission won’t need to be completed alone, a newfound mineral-based friend has been waiting by your side for you to emerge from your slumber. Pebble, your assistant is here to offer advice on how to navigate this foreign environment. He’s seen travellers become lost in this labyrinth before and knows humans can only stay in this area for a limited amount of time before their sanity fully debleats. Pebble is aware of the traps and pitfalls you will encounter while working your way through the cave and will provide guidance as you make your attempt to escape. Pebble has been cast aside by his rock community for being too small and now dedicates his time to help rescue humans from the rock lair as an act of defiance.
 
 
 
@@ -30,11 +30,11 @@ To exit the application, select the ‘Exit’ button.
 
 
 
-## In game menu screens:
+## In-game menu screens:
 
 ### Inventory
 
-Want to improve your health to fight those enemies or place with different blocks? All this can be done in the inventory. Simply click the inventory button in game. This will take you to inventory menu where you can see the amount of each block you have as well picking which block you want to place. You will also see options to upgrade your armour and when you have enough iron or gold; 30 to be exact. Remember the more amour you have the longer you can fight enemies
+Want to improve your health to fight those enemies or place with different blocks? All this can be done in the inventory. Simply click the inventory button in-game. This will take you to inventory menu where you can see the amount of each block you have as well picking which block you want to place. You will also see options to upgrade your armour and when you have enough iron or gold; 30 to be exact. Remember the more amour you have the longer you can fight enemies
 
 ![](./images/inventory-screen.png)
 
@@ -48,7 +48,7 @@ Upon completing the game the credits screen will activate, this will provide inf
 
 ## Pebble Speech:
 
-Throughout the game Pebble can give you advice on how to complete the game. Listen carefully you might learn something new!
+Throughout the game, Pebble can give you advice on how to complete the game. Listen carefully you might learn something new!
 
 ![](./images/pebble-speech.png)
 
@@ -106,7 +106,7 @@ Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-
 
 ## Placing block:
 
-Through out the game you will need to place blocks to reach areas. All you need to do is press ‘Q’ to place a block to the left or ‘E’ to place right. From here it up to you to imagine how you can place the blocks together. Remember, you can always change the block by going to the inventory screen. Make sure to check the GIF to see placing.
+Throughout the game, you will need to place blocks to reach areas. All you need to do is press ‘Q’ to place a block to the left or ‘E’ to place right. From here it up to you to imagine how you can place the blocks together. Remember, you can always change the block by going to the inventory screen. Make sure to check the GIF to see placing.
 
 Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/place_left.gif) to see place left
 
@@ -132,7 +132,7 @@ Taking a few arrows will hurt so to improve your health you can upgrade your arm
 
 ## Archers:
 
-The rock people have archers throughout the dungeon so look out. These will track and shoot arrows at you and if you are close, they will chase you. So, it is up to you what you do: run away, fight, or build around them. Make sure to look at the GIF to see the full shooting animation.
+The rock people have archers throughout the dungeon so lookout. These will track and shoot arrows at you and if you are close, they will chase you. So, it is up to you what you do: run away, fight, or build around them. Make sure to look at the GIF to see the full shooting animation.
 
 **![](./gifs/enemy_shoot.gif)**
 
