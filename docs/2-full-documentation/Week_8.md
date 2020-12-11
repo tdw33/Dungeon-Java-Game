@@ -50,6 +50,32 @@ Then we covered new implementations:
 
 After this we agreed the final version of the game for the project and discussed the documentation.
 
+Below are a list of links to GIFs of all the final features:
+
+\bcenter
+
+[**Walking**](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/walk_right.gif)
+
+[**jump**](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/jump.gif)
+
+[**Duck**](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/duck.gif)
+
+[**Mine**](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/mine_left.gif)
+
+[**Place block**](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/place_left.gif)
+
+[**Enemy shoot**](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/enemy_shoot.gif)
+
+[**Attack**](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/attack_enemy.gif)
+
+[**Death**](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/death.gif)
+
+[**Anti-gravity**](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/anti_grav.gif)
+
+
+
+\ecenter
+
 \pagebreak
 
 ### Backlog

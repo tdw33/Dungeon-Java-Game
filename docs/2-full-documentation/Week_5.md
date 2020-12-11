@@ -12,7 +12,7 @@ From last week we attempted to have shorter sprints so that we could review what
 
 As a group, we became concerned about what we set out to achieve and the time to do it. Therefore, the user stories and use cases were adjusted to their basic level. An example being the inventory being just full armour and weapon upgrade instead of having a crafting table to create different types of armour. These revised changes would give the basics of the game we wanted to promise to our customer. It was also apparent we were not putting in enough thought to prioritise our backlog and what needed achieving. Future weeks will focus on analysing what needs doing first and then focus on the added touches to features. To achieve this we would assess the the previous use cases and user stories, instead of previous weeks where we informally talked about what has been done and needs completing next in the sprint planning meeting. 
 
-The presentation created for the customer meeting on the 13th November can be found here, which will have GIFs for some of the artefacts shown here:  [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/develop/doc/week5-presentation/presentation.md)
+The presentation created for the customer meeting on the 13th November can be found here, which will have GIFs for some of the artefacts shown here:  [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/1-presentations/week5-presentation/presentation.md)
 
 \pagebreak
 

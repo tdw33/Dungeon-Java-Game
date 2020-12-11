@@ -9,7 +9,7 @@ More progress was made on making the character’s movements seem more real by a
 
 What we learned: On top of the daily stand-ups we began to show visual progress within Microsoft Teams or direct them to pull an update from a branch to check if its functional and show progress. This on top of daily-stand-ups, helped give everyone a better idea what was going on throughout the week. The sprint was conducted in much the same format before, with us setting up the week following the customer meeting. Here we informally talked about the features that need implementing to progress the game, and after the meeting had finished they were written up into user stories and use cases.
 
-The presentation created for the customer meeting on the 13th November can be found here, which will have GIFs for some of the artefacts shown here: [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/doc/week4-presentation/presentation.md)
+The presentation created for the customer meeting on the 13th November can be found here, which will have GIFs for some of the artefacts shown here: [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/1-presentations/week4-presentation/presentation.md)
 
 \pagebreak
 

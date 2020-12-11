@@ -9,7 +9,7 @@ During last week, the team decided to stick to minimum requirements that could b
 
 This week the team had a clearer goal on what needs to be achieved by the end of the term and continued working on essential features such as creating a final map with different types of blocks and enemies in addition to fixing bugs. Enemy health and death animation for all characters were added. The inventory was made to count number of blocks collected by the player. More sounds were implemented for different scenarios. Documentation was generated up to last week for the preparation of final organization into pdf file which was tested last week. From these aspects we can see that the sprint went successfully and many tasks were finished on time. The game starts to grow into a more finalized product.  
 
-The presentation created for the customer meeting on the 4th December can be found here, which will have GIFs for some of the artefacts shown here:    [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/week7-presentation/doc/week7-presentation/presentation.md)
+The presentation created for the customer meeting on the 4th December can be found here, which will have GIFs for some of the artefacts shown here:    [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/1-presentations/week7-presentation/presentation.md)
 
 \pagebreak
 

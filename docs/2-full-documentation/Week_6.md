@@ -11,7 +11,7 @@ Judging from last week, shorter sprints were not suited to the current situation
 
 
 
-The presentation created for the customer meeting on the 13th November can be found here, which will have GIFs for some of the artefacts shown here:   [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/develop/doc/week6-presentation/presentation.md)
+The presentation created for the customer meeting on the 13th November can be found here, which will have GIFs for some of the artefacts shown here:   [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/tree/master/docs/1-presentations/week6-presentation)
 
 \pagebreak
 

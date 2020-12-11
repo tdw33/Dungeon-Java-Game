@@ -5,11 +5,11 @@
 ## **Process**
 
 ### Weekly Overview
-As UML class diagram was developed last week, game development followed the order and relationship between different classes, which made the the process more structured. Moreover, team members experimented with the coding platform and created a character (a block) that can move. For this week, the team continued to use Miro board to create a MVC model based on the different classes generated in the UML diagram which further defines how the three main components of the game interact with each other: controller, map and elements. The sprint tasks were done according to the model: a map was created, players can see their input as they control the character. Camera view was implemented that always had the character in the centre of the screen as it moved around. 
+As an UML class diagram was developed last week, game development followed the order and relationship between different classes, which made the process more structured. Moreover, team members experimented with the coding platform and created a character (a block) that can move. For this week, the team continued to use the Miro board to create an MVC model based on the different classes generated in the UML diagram which further defines how the three main components of the game interact with each other: controller, map, and elements. The sprint tasks were done according to the model: a map was created, players can see their input as they control the character. A camera view was implemented that always had the character in the centre of the screen as it moved around. 
 
 Lessons learned: The class diagram needs to be based on use cases. Internal user stories need to be created when developing game features so that user requirements will be fulfilled and the whole process should be documented for future reference. Moreover, it may be better to set a small rather than a hard-to-reach goal since each sprint is only one week long. It is also helpful to move the tasks which had been done on GitHub in time so that the sprint progress is up-to-date. The team may function better when taking course load into consideration while assigning tasks so that distribution of the development tasks can be more reasonable and effective. 
 
-The presentation created for the customer meeting on the 6th November is linked here, which will have GIFs for some of the artefacts in this weeks documentation:  [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/develop/doc/week3-presentation/presentation3.md)
+The presentation created for the customer meeting on the 6th November is linked here, which will have GIFs for some of the artifacts in this weeks documentation:  [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/1-presentations/week3-presentation/presentation3.md)
 
 \pagebreak
 
@@ -20,7 +20,7 @@ The presentation created for the customer meeting on the 6th November is linked 
 
 **Minutes:**
 
-A sprint planning meeting was held right after the customer meeting, in which the team added tasks to sprint backlog according to the user requirements and additional features that could be added to the game. These informal discussions of features were later turned into the use case as shown in this weeks documentation. The customer expressed a preference toward a high-resolution art style for the game so a task to find sprites that would fit the style was created and assigned. The customer also wanted to see a variety of backgrounds and scenes while playing the game. Therefore, map generation was added to this week's sprint tasks. In addition to the customer's suggestions, the team also decided to work on menu screens since they are a fundamental part of a game. Another component of a game is sounds so some member were assigned to find background music and short sound effects that fit with the game theme. In terms of character movement, since a map will be generated which will influence where the character can go, gravity and collision are needed to make the movements seem more real (e.g. the character jumps down - gravity; cannot pass the edge of the map - collision). \
+A sprint planning meeting was held right after the customer meeting, in which the team added tasks to the sprint backlog according to the user requirements and additional features that could be added to the game. These informal discussions of features were later turned into the use case as shown in this week's documentation. The customer expressed a preference toward a high-resolution art style for the game so a task to find sprites that would fit the style was created and assigned. The customer also wanted to see a variety of backgrounds and scenes while playing the game. Therefore, map generation was added to this week's sprint tasks. In addition to the customer's suggestions, the team also decided to work on menu screens since they are a fundamental part of a game. Another component of a game is sounds so a member was assigned to find background music and short sound effects that fit with the game theme. In terms of character movement, since a map will be generated which will influence where the character can go, gravity and collision are needed to make the movements seem more real (e.g. the character jumps down - gravity; cannot pass the edge of the map - collision). \
 
 **MVC model - Controller, Map and Elements:**\
 **Attendance:** He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, Tom Wells, Vlad Postmangiu Luchian, Yandong Guo \
@@ -147,7 +147,7 @@ We were not able to achieve the gravity this week and the collision was still no
 \pagebreak
 
 ### Exception Handling
-Many members had course deadlines this week so the team had to balance between keeping up with the progress of game development and finishing individual coursework. Sprint planning meeting was delayed until after a deadline that several members had for their coursework. Heading forward to the final week with multiple deadlines, we will have to think what is achievable by each member. 
+Many members had course deadlines this week so the team had to balance between keeping up with the progress of game development and finishing individual coursework. The sprint planning meeting was delayed until after a deadline that several members had for their coursework. Heading forward to the final week with multiple deadlines, we will have to think about what is achievable by each member. 
 
 \pagebreak
 
@@ -155,7 +155,7 @@ Many members had course deadlines this week so the team had to balance between k
 
 ### Customer interview
 
-The customer suggested having a way to interact with the game by controlling the character so that the main character needs to be able to move according to user’s input. After the team presented a general idea of the background story and some possible features for the game, the customer expressed an interest in the sanity level feature again (same as the last customer meeting). After looking at several proposed art styles for the game, the customer had indicated that the one with higher resolution could show better layers of the ground and material types. Related to that, the customer also wanted to play in different backgrounds so a wider variety of scenes need to be constructed with relatively high resolution.
+The customer suggested having a way to interact with the game by controlling the character so that the main character needs to be able to move according to the user’s input. After the team presented a general idea of the background story and some possible features for the game, the customer expressed an interest in the sanity level feature again (same as the last customer meeting). After looking at several proposed art styles for the game, the customer had indicated that the one with higher resolution could show better layers of the ground and material types. Related to that, the customer also wanted to play in different backgrounds so a wider variety of scenes need to be constructed with relatively high resolution.
 
 \pagebreak
 

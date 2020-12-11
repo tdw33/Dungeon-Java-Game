@@ -65,7 +65,7 @@ Attendance: He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, T
 - As many were understanding concept tasks, not all could be considered done. E.G for GitHub, some team members were still not comfortable with it.
 - We created a presentation for the customer meeting next week. This contained our original idea for the game for the customer to decide if it fills the starting criteria to develop from.
 
-This is a link to the first presentation for the customer meeting 23rd October: [link](https://computingservices-my.sharepoint.com/:p:/g/personal/vpl22_bath_ac_uk/EXuDPu9iA85BjODgRgP3Y6wBMNTvxc8W3fzBx68dvrNY4A?e=TCF88V)
+This is a link to the first presentation for the customer meeting on 23rd October: [link](https://computingservices-my.sharepoint.com/:p:/g/personal/vpl22_bath_ac_uk/EXuDPu9iA85BjODgRgP3Y6wBMNTvxc8W3fzBx68dvrNY4A?e=TCF88V)
 
 
 
@@ -75,27 +75,26 @@ This is a link to the first presentation for the customer meeting 23rd October: 
 
 **Product backlog:**
 
-- Find cross platform library
+- Find cross-platform library
 - Understand GitHub for version control
 - Java research
 - Game development research 
-
-- Generation of block map (side on view)
+- Generation of block map (side-on view)
 - The blocks of the map can be interacted with by the player
 - A player is spawned on the map
 - The player can interact with the blocks (destroy and create)
 - The player can collect these resources in an inventory 
-- The players resources can be used to craft items (pickaxe, sword, and light)
+- The player's resources can be used to craft items (pickaxe, sword, and light)
 - The crafted tools will break over time
-- The player will have a sidekick (bot) which will either help or race against the player
+- The player will have a sidekick (bot) that will either help or race against the player
 - There will be a timer shown to the player on the screen which runs down as they go through the game
 - There will be tasks to complete in order for the player to escape
-- The player can go through a door and the screen will change to top down view 
-- In the top down view, the player will fight bosses
+- The player can go through a door and the screen will change to a top-down view 
+- In the top-down view, the player will fight bosses
 
 **sprint backlog**
 
-- Find cross platform library
+- Find cross-platform library
 - Understand GitHub for version control
 - Java research 
 - Game development research 
@@ -144,7 +143,7 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 \pagebreak
 ### User stories tests
 
-| User story ID | Test acceptance                                              | comments                                                     | completed |
+| User story ID | Test acceptance                                              | comments                                                     | Completed |
 | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------- |
 | US_01         | Run code on different systems and see if code compiles       |                                                              | NO        |
 | US_02         | A bot character is generated on the game screen  The bot aids the user with text aids | The bot will have to be able to follow the player around the map, meaning it will need similar movement animations to the main character | NO        |
@@ -158,7 +157,7 @@ This was vague meaning we had plenty of choice of where we wanted to go with the
 \pagebreak
 ### Use cases
 
-At this stage of the process we had not considered to implement use cases in our development approach. This was due to us not having our game idea confirmed by the customer, as well as not being aware of the process since the lecture material was not release yet. Instead we had user stories as shown in the user story section, which is a similar to a less dressed version of the use cases. 
+At this stage of the process, we had not considered implementing use cases in our development approach. This was due to us not having our game idea confirmed by the customer, as well as not being aware of the process since the lecture material was not released yet. Instead, we had user stories as shown in the user story section, which is similar to a less dressed version of the use cases. 
 
 \pagebreak
 ###  Use cases Tests

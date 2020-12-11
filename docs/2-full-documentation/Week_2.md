@@ -6,19 +6,19 @@
 
 ### Weekly overview 
 
-With the customer happy with our initial game idea for a Minecraft inspired dungeon game, we were able to start planning out the game and wrote some basic code. This meant the product backlog continued to be filled out with ideas that we had, and the initial game architecture was looked at: menu system and game function. To achieve this planned architecture we used Miro board, which was also used to sort out the class UML. This was also based on our product backlog, but we did not use CRC cards which could of made the process simpler. The week had 3 meetings: customer debrief with sprint plan; game architecture; and sprint review with presentation creation. For the coding side everyone was assigned to generate a basic square that could move left, right, up, and down.
+With the customer happy with our initial game idea for a Minecraft inspired dungeon game, we were able to start planning out the game and wrote some basic code. This meant the product backlog continued to be filled out with ideas that we had, and the initial game architecture was looked at menu system and game function. To achieve this planned architecture we used the Miro board, which was also used to sort out the class UML. This was also based on our product backlog, but we did not use CRC cards which could have made the process simpler. The week had 3 meetings: customer debrief with sprint plan; game architecture; and sprint review with presentation creation. For the coding side, everyone was assigned to generate a basic square that could move left, right, up, and down.
 
 ![](./week_2_artifacts/miro.png)
 
-The Scrum technique was continued for this week with the Scrum master and product lead roles being switched around, so each member of the group can experience them. In between these first and last meeting we had daily stand-ups that were carried out on Microsoft teams. From the last sprint we made sure to tag the team within the post, so everyone will get a notification and reminder to post an update.
+The Scrum technique was continued for this week with the Scrum master and product lead roles being switched around, so each member of the group can experience them. In between the first and last meetings we had daily stand-ups that were carried out on Microsoft teams. From the last sprint, we made sure to tag the team within the post, so everyone will get a notification and reminder to post an update.
 
 ![](./week_2_artifacts/standUp.png)
 
-This sprint was conducted in much the same way as the last one as we thought it was generating good results in the last sprint. The only problem was we still assigned everybody the coding task which is not efficient. However, there were 3 different systems (mac, windows Linux) used my different members of the team and the task would help in getting people comfortable with LibGDX. Heading into the next sprint we will make sure to spread the tasks more efficiently so that a grater progression of the game can be achieved. 
+This sprint was conducted in much the same way as the last one as we thought it was generating good results in the last sprint. The only problem was we still assigned everybody the coding task which is not efficient. However, there were 3 different systems (mac, windows Linux) used by different members of the team and the task would help in getting people comfortable with LibGDX. Heading into the next sprint we will make sure to spread the tasks more efficiently so that a greater progression of the game can be achieved. 
 
-We assigned the sprint tasks from looking at the product backlog and the existing user stories we had. Since US_01 was a great priority we assigned everybody to coding the character with movement as explained before. 
+We assigned the sprint tasks by looking at the product backlog and the existing user stories we had. Since US_01 was a great priority we assigned everybody to code the character with movement as explained before. 
 
-Attached here is the presentation created for the customer meeting on the 30th November, which will include the GIF version of the some of the pictures in this weeks report: [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/develop/doc/week2-presentation/presentation.md)
+Attached here is the presentation created for the customer meeting on the 30th November, which will include the GIF version of some of the pictures in this weeks report:  [Presentation](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/1-presentations/week2-presentation/presentation.md)
 
 \pagebreak
 
@@ -30,9 +30,11 @@ Attached here is the presentation created for the customer meeting on the 30th N
 
 **Minutes:**
 
-We discussed how the customer meeting went and how it affected the game. In the meeting the customer said they were happy with the idea of doing an interactive game like Minecraft in a dungeon themed setting. We presented a broad overview of the game so there was plenty to look into as potential final ideas, meaning the customer still has plenty of choice in how the game will look and feel. One important part was clarification of cross platform relating to Windows, Linux and MacOS instead of referring to mobile. So, our focus will be ensuring the game runs on those operating systems with android as a potential bonus. 
+We discussed how the customer meeting went and how it affected the game. In the meeting, the customer said they were happy with the idea of doing an interactive game like Minecraft in a dungeon themed setting. We presented a broad overview of the game so there was plenty to look into as potential final ideas, meaning the customer still has plenty of choice in how the game will look and feel. One important part was the clarification of cross-platform relating to Windows, Linux, and MacOS instead of referring to mobile. So, our focus will be ensuring the game runs on those operating systems with android as a potential bonus. 
 
-Now the initial game idea was confirmed, and we have established our coding language with framework (Java with Libgdx), we initiated coding with this sprint. As no one had used Libgdx before everyone was assigned to create a basic character (square) and give it basic movement (up, down, left and right). On top of this everyone was assigned finding a naming system, designing classes and UML diagram.
+
+
+Now the initial game idea was confirmed, and we have established our coding language with a framework (Java with Libgdx), we initiated coding with this sprint. As no one had used Libgdx before everyone was assigned to create a basic character (square) and give it basic movement (up, down, left, and right). On top of this everyone was assigned finding a naming system, designing classes, and UML diagram.
 
 ![](./week_2_artifacts/sprintBoard2.png)
 
@@ -44,13 +46,11 @@ Now the initial game idea was confirmed, and we have established our coding lang
 
 **Minutes:**
 
-In this meeting we used our thoughts on classes to generate the architecture of the game as well as a UML diagram. First, we looked at the game flow which will be how the menu and game will function together, which can be seen below. The important part of this architecture is the ability to save the game and how this will function in different scenarios, So, it shows the flow with saving the game and then continuing the game from this save state. Upon dying the user will be able to start from the last save state. From the initiating a new game from the staring menu screen, a new seed will be generated. This will allow the user to have more unique experiences in future playthrough of our game. 
+In this meeting, we used our thoughts on classes to generate the architecture of the game as well as a UML diagram. First, we looked at the game flow which will be how the menu and game will function together, which can be seen below. The important part of this architecture is the ability to save the game and how this will function in different scenarios, So, it shows the flow with saving the game and then continuing the game from this save state. Upon dying the user will be able to start from the last save state. From initiating a new game from the staring menu screen, a new seed will be generated. This will allow the user to have more unique experiences in a future playthrough of our game. 
 
 ![](./week_2_artifacts/GameFlow.png)
 
-In the next part we designed an UML off the initial idea for the class system as shown below as well as our product backlog. Everything will stem from the Game element, as our map is fully interactive. This means each block will in theory die when the player destroys it. like and enemy and main character.  The process of designing this UML diagram did not use CRC cards as we were not aware of that. Instead we all interacted with the Miro board and discussed our ideas until we had the classes mapped out. This was probably not as efficient as using CRC cards and is further discusses in the software design section.
-
-![](./week_2_artifacts/ClassDiagram.png)
+In the next part, we designed an UML off the initial idea for the class system as shown below as well as our product backlog. Everything will stem from the Game element, as our map is fully interactive. This means each block will in theory die when the player destroys it like an enemy and main character.  The process of designing this UML diagram did not use CRC cards as we were not aware of that. Instead, we all interacted with the Miro board and discussed our ideas until we had the classes mapped out. This was probably not as efficient as using CRC cards and is further discusses in the software design section.![](./week_2_artifacts/ClassDiagram.png)
 
 
 
@@ -60,13 +60,13 @@ In the next part we designed an UML off the initial idea for the class system as
 
 **Minutes:**
 
-From this second sprint we were all able to generate a basic character and have basic movement using LibGdx and Java. The naming class we established and an initial UML board was generated. These can be seen below with the UML shown above. No one had any major problems, so the sprint was considered successful.
+From this second sprint, we were all able to generate a basic character and have basic movement using LibGdx and Java. The naming class we established and an initial UML board was generated. These can be seen below with the UML shown above. No one had any major problems, so the sprint was considered successful.
 
 ![](./week_2_artifacts/codeconventions.png)
 
 ![](./week_2_artifacts/movement.gif)
 
-We then created the presentation for the customer at the end of the week. Instead of using PowerPoint we used Markdown. This was so we could show GIFs as well as keep all the documentation on GitHub with the code, meaning everyone could easily access it. The presentation is linked in the weekly overview section. To create it we met in teams, with one member sharing their screen as we discussed what to put in. We decided to use the same template every week following this one: last time, updates, and future.
+We then created the presentation for the customer at the end of the week. Instead of using PowerPoint, we used Markdown. This was so we could show GIFs as well as keep all the documentation on GitHub with the code, meaning everyone could easily access it. The presentation is linked in the weekly overview section. To create it we met in teams, with one member sharing their screen as we discussed what to put in. We decided to use the same template every week following this one: last time, updates, and future.
 
 \pagebreak
 
@@ -77,19 +77,18 @@ We then created the presentation for the customer at the end of the week. Instea
 - Create a character (square) and give it basic movement (up, down, left, right)
 - Find a common naming system 
 - Design classes and create a UML diagram
-
-- Generation of block map (side on view)
+- Generation of block map (side-on view)
 - The blocks of the map can be interacted with by the player
 - A player is spawned on the map
 - The player can interact with the blocks (destroy and create)
 - The player can collect these resources in an inventory 
-- The players resources can be used to craft items (pickaxe, sword, and light)
+- The player's resources can be used to craft items (pickaxe, sword, and light)
 - The crafted tools will break over time
-- The player will have a sidekick (bot) which will either help or race against the player
+- The player will have a sidekick (bot) that will either help or race against the player
 - There will be a timer shown to the player on the screen which runs down as they go through the game
 - There will be tasks to complete in order for the player to escape
-- The player can go through a door and the screen will change to top down view 
-- In the top down view, the player will fight bosses
+- The player can go through a door and the screen will change to a top-down view 
+- In the top-down view, the player will fight bosses
 
 **Sprint backlog:**
 
@@ -100,7 +99,7 @@ We then created the presentation for the customer at the end of the week. Instea
 
 **Completed:**
 
-- Find cross platform library
+- Find cross-platform library
 - Research on how GitHub version control works 
 - Java research 
 - Game development research 
@@ -119,11 +118,11 @@ There were no problems with this sprint or week.
 
 ### Customer meeting 
 
-At the start of the week we had our first customer meeting which was presenting our initial idea for the game. The customer was happy with the premise of a mining based game where the user is able to interact with the map, whether it be destroying or building. We did not present a rigid plot. Instead we simply suggested the idea of the player falling down a hole where they awake and see a small figure approach (name: Pebble). Pebble explains the world they are now in and that he can help the player escape back above the surface. We suggested that Pebble could be the imagination of the main player, which could lead to many story plots. The feature we suggested was sanity which could change throughout the game. As the player gets more insane Pebble will help the player out more. This game mechanic can be used to help the player when they are stuck. The customer liked the idea of this and how we can implement this, and suggested we looked into Senua’s sacrifice. Finally, we showed some potential art styles for the game. The customer expressed interest in the high resolution with earth tones
+At the start of the week, we had our first customer meeting which was presenting our initial idea for the game. The customer was happy with the premise of a mining-based game where the user is able to interact with the map, whether it be destroying or building. We did not present a rigid plot. Instead, we simply suggested the idea of the player falling down a hole where they awake and see a small figure approach (name: Pebble). Pebble explains the world they are now in and that he can help the player escape back above the surface. We suggested that Pebble could be the imagination of the main player, which could lead to many story plots. The feature we suggested was sanity which could change throughout the game. As the player gets more insane Pebble will help the player out more. This game mechanic can be used to help the player when they are stuck. The customer liked the idea of this and how we can implement this and suggested we looked into Senua’s sacrifice. Finally, we showed some potential art styles for the game. The customer expressed interest in the high resolution with earth tones
 
 
 
-We showed the progress of our game development. This was the UML diagram and game architecture. As the customer is very well versed in software engineering he suggested we look into Research Model view, and adapt out UML. We also showed the basic character moving around the screen to show visual game progress.  All of these are shown in previous examples. 
+We showed the progress of our game development. This was the UML diagram and game architecture. As the customer is very well versed in software engineering he suggested we look into Research Model view, and adapt out UML. We also showed the basic character moving around the screen to show visual game progress. All of these are shown in previous examples. 
 
 \pagebreak
 
@@ -398,9 +397,9 @@ There are none
 
 | Actor actions                                            | System actions                                               |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
-| 1. The player will start the game                        | 2. The system will set sanity to zero percent                |
+| 1. The player will start the game                        | 2. The system will set sanity to 100 percent                 |
 | 3. Players begin to play the game                        | 5. System will constantly loop checking if the sanity level is at threshold for certain information |
-| 4. As they play the sanity percentage will increase      | 6. If sanity is high enough, system will display information coming from pebble (1min cycle) |
+| 4. As they play the sanity percentage will decrease      | 6. If sanity is low enough, system will display information coming from pebble (1min cycle) |
 | 7. Player sees information and keeps playing with advice | 9. System will constantly loop checking if the sanity level is at threshold for certain information |
 | 8. Player sanity will decrease with progress             | 10. If sanity is below the threshold, then the information is no longer displayed. |
 
@@ -423,9 +422,9 @@ There are none
 - [ ] **UC_04**
 - [x] **UC_05:**
 - The player will press one of the directional keys which will move the character in that desired direction. 
-- The character will move by the specified amount of pixels in the sytem 
+- The character will move by the specified amount of pixels in the system 
 - [ ] **UC_06:**
-- The sanity level will rise with the condition set 
+- The sanity level will decrease with the condition set 
 - When the sanity level hits the threshold information function is triggered
 - When the information function is triggered, Pebble will display information 
 - Information can be seen coming from pebble, not random on the screen
