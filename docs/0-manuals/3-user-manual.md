@@ -94,13 +94,13 @@ Mining can be carried out in any direction to mine down press ‘S’ to mine le
 
 Digging up and down will break three blocks at a time. Digging left and right will break two blocks at a time. Make sure to check the GIF to see the mining.
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/mine_left.gif) to see mining left
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/mine_right.gif) to see mining left
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/mine_right.gif) to see mining right
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/mine_left.gif) to see mining right
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/mine_up.gif) to see mining up
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/mine_up.gif) to see mining up
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/mine_down.gif) to see mining down
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/mine_down.gif) to see mining down
 
 
 
@@ -108,9 +108,9 @@ Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-
 
 Throughout the game, you will need to place blocks to reach areas. All you need to do is press ‘Q’ to place a block to the left or ‘E’ to place right. From here it up to you to imagine how you can place the blocks together. Remember, you can always change the block by going to the inventory screen. Make sure to check the GIF to see placing.
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/place_left.gif) to see place left
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/place_left.gif) to see place left
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/place_right.gif) to see place right
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/place_right.gif) to see place right
 
 
 
@@ -136,7 +136,7 @@ The rock people have archers throughout the dungeon so lookout. These will track
 
 **![](./gifs/enemy_shoot.gif)**
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/enemy_shoot.gif) to see archer shooting
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/enemy_shoot.gif) to see archer shooting
 
 
 
@@ -148,7 +148,7 @@ To battle the enemies throughout the map you will attack them with your pickaxe,
 
 ![](./gifs/attack_enemy.gif)
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/attack_enemy.gif) to see the attack animation
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/attack_enemy.gif) to see the attack animation
 
 ## Anti-gravity block:
 
@@ -156,7 +156,7 @@ You will notice a light grey coloured block in various place within the map. The
 
 ![](./gifs/anti_grav.gif)
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/anti_grav.gif) to see anti-gravity animation
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/anti_grav.gif) to see anti-gravity animation
 
 ## Boss:
 
@@ -168,4 +168,4 @@ Located in the dungeon there will be room where the king of all the rock people 
 
 If you are unlucky enough to lose all your health to arrows or the battle hammer, you will die, and the game run will end. The credits will pop up and at the end you will have an option to go back to the main menu so you can play again or close the program. We know which choice is better. Check the GIF to see the death animation.
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/death.gif) to see the death animation 
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/death.gif) to see the death animation 
