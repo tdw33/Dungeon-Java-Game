@@ -41,7 +41,7 @@ After discussing the customer requirements, the team continued talking about how
 - Change background colour
 - Enemy attack should have a refined animation: arrow projectiles that aim for the main character, and shows the character’s health decreases
 - Anti-gravity: can have sections of the map which allow the character to get to a higher position quickly
-- Pebble dialog box that gives players instructions
+- Pebble dialogue box that gives players instructions
 - Inventory screen is needed so that the players can see how many resources have been gathered
 - In-game buttons are needed to give access to the main menu and inventory
 
@@ -95,7 +95,7 @@ Enemy attack projectiles make the arrow fly towards the character and character'
 
 - There will be tasks to complete in order for the player to escape
 - The player will fight a boss in the final game scene to escape the dungeon 
-- Random generation of block map (side on view)
+- Random generation of block map (side-on view)
 
 - Have a map that includes blocks made out of different materials such as iron and gold
 
@@ -114,7 +114,7 @@ Enemy attack projectiles make the arrow fly towards the character and character'
 
 **Completed:**
 
-- Find cross platform library
+- Find cross-platform library
 - Research on how GitHub version control works 
 - Java research 
 - Game development research 
@@ -262,7 +262,7 @@ The customer indicated a liking for the sanity implementation which zooms in the
 **Author**: TJ  \
 **Date**: 20/11/2020   \
 **Modification date**: 20/11/2020 \
-**Purpose**: Give player a sense of the character’s health status during a fight \
+**Purpose**: Give the player a sense of the character’s health status during a fight \
 **Overview**: The character will take damage from an enemy and the health bar reduces in length \
 **Cross reference**: US_08 \
 **Actors**: player \ 
@@ -282,7 +282,7 @@ The customer indicated a liking for the sanity implementation which zooms in the
 
 **Exceptional flow of events:**
 - The attack fails to reduce the character’s health
-- The changes in health bar react slowly so the character has taken more damage than shown and will be dead which appears sudden to the player
+- The changes in health bar react slowly so the character has taken more damage than shown and will be dead which appears suddenly to the player
 
 \
 
@@ -370,7 +370,7 @@ Class: Inventory (see UC_04, UC_15)
 - There will be a starting menu screen with the game settings, load game, continue and new game [2]
 - In the settings tab there will be choices for audio, visuals, and controls [1]
 - The player can go to an in game menu with save game and achievements [1]  
-- **When player is in the game, two buttons are shown on the top of the screen (inventory and menu) [1]**
+- **When the player is in the game, two buttons are shown on the top of the screen (inventory and menu) [1]**
 
 **Sounds:**
 
@@ -380,7 +380,7 @@ Class: Inventory (see UC_04, UC_15)
 **Inventory:**
 
 - The player can access an inventory screen which has options for equipment [1]
-- On this screen the player can see amount of each block, craft option for armour and which block is being placed[2]
+- On this screen the player can see the amount of each block, craft option for armour and which block is being placed[2]
 - **Different types of materials gathered from a variety of blocks are shown, each with a number that indicates how many have been collected [1]**
 
 **Game flow:**
