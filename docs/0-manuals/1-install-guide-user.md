@@ -17,7 +17,7 @@ is the SSO for our application releases - please alway use the latest version
 
 - !!! It is very important to use JRE 8 [!Link to the official repository!](https://www.oracle.com/java/technologies/javase-jre8-downloads.html)
 
----
+
 
 ## Linux and MacOS
 
@@ -27,7 +27,7 @@ is the SSO for our application releases - please alway use the latest version
 4. Run `export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)` to set your JRE to 88
 5. Run ` java -jar ./DungeonCrafter-v1.0.jar` to play the game
 
----
+
 ## Windows
 1. Download and install JRE 1.8 for your Distro
 2. Download the latest `DungeonCrafter-v1.0.jar`  

@@ -1,4 +1,14 @@
 ---
+title: "Product Documentation 1"
+author: 
+- He Jiang, Julius Martinez, Lewis Williams, Samuel Love, Tianyu Ji, 
+- Tom Wells, Vlad Postmangiu Luchian, Yandong Guo
+toc: true
+toc_depth: 2
+number_sections: true
+fontsize: 11pt
+geometry: margin=1.5in
+fd_print: kable
 urlcolor: blue
 header-includes:
 - \newcommand{\bcenter}{\begin{center}}
@@ -11,7 +21,7 @@ This guide demonstrates how to get DungeonCrafter set up for development within 
 
 
 
-## **Installing JRE8:**
+## Installing JRE8:
 
 In order to compile the code, JRE 8 is required, this can be downloaded from the link [here](https://www.oracle.com/java/technologies/javase-jre8-downloads.html)
 
@@ -23,7 +33,7 @@ In order to compile the code, JRE 8 is required, this can be downloaded from the
 
 
 
-## **Installing GIT:**
+## Installing GIT:
 
 In order to copy the code to your personal machine, GIT is required, GIT can be downloaded from the link 
 [here](https://git-scm.com/downloads), alternatively you may install it using your preferred package manager on Linux.
@@ -46,7 +56,7 @@ To copy the project files from the GIT repository to your local machine run 'git
 
 
 
-## **Installing IntelliJ:**
+## Installing IntelliJ:
 
 The IntelliJ IDE can be downloaded from the link provided
 [here](https://www.jetbrains.com/idea/download/)
@@ -59,7 +69,7 @@ The IntelliJ IDE can be downloaded from the link provided
 
 
 
-## **Configuring IntelliJ:**
+## Configuring IntelliJ:
 
 Select open file or project within IntelliJ and navigate to the file 'build.gradle' within the folder DungeonCrafter.
 
