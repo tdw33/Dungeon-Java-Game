@@ -21,7 +21,7 @@ The presentation created for the customer meeting on the 13th November can be fo
 
 **minutes:** 
 
-As with previous weeks, the team had a meeting to organize customer requirement mentioned in the customer meeting and plan the sprint accordingly. After seeing the progress of the game development which was having basic elements such as generating a map, character movement, user input and a main menu, the customer was satisfied of the initial state of the game. Nevertheless, the customer mentioned having a more detailed storyline. In the last sprints, we only had a general idea that the main character is in a world that requires crafting items and fighting monsters to survive along with a Bot called Pebble which is a small stone. As time passes by, the character’s sanity changes which influences the process of the game. The customer was interested in this idea and wanted to see the game divided into episodes with a more detailed storyline and the character can gain various abilities or items as the storyline progresses. Therefore, the team needs to work on adding more content to the story such as character motivation and expand the background story. The following game development can be based on this storyline to create certain features. In addition to customer’s suggestion, the team decided to have tasks that addressed the combination of previously developed features such as gravity, map and user input. Moreover, the sprint included finding character sprites and related animation. \
+As with previous weeks, the team had a meeting to organize customer requirement mentioned in the customer meeting and plan the sprint accordingly. After seeing the progress of the game development which was having basic elements such as generating a map, character movement, user input and a main menu, the customer was satisfied with the initial state of the game. Nevertheless, the customer mentioned having a more detailed storyline. In the last sprints, we only had a general idea that the main character is in a world that requires crafting items and fighting monsters to survive along with a Bot called Pebble which is a small stone. As time passes by, the character’s sanity changes which influences the process of the game. The customer was interested in this idea and wanted to see the game divided into episodes with a more detailed storyline and the character can gain various abilities or items as the storyline progresses. Therefore, the team needs to work on adding more content to the story such as character motivation and expand the background story. The following game development can be based on this storyline to create certain features. In addition to customer’s suggestion, the team decided to have tasks that addressed the combination of previously developed features such as gravity, map and user input. Moreover, the sprint included finding character sprites and related animation. \
 
 **Sprint re-planning and progress check** 
 
@@ -30,15 +30,15 @@ As with previous weeks, the team had a meeting to organize customer requirement 
 **minutes:**
 
 - Documentation: can combine the different markdown files into one pdf file in the end
-- Sprites for character had been found that conform to user’s preferred high resolution, considered actions that the main character need such as attacking, walking and mining
+- Sprites for character had been found that conform to user’s preferred high resolution, considered actions that the main character needs such as attacking, walking and mining
 Rock enemy sprite was found. The sprites can be changed in size as the game needs, such as reducing or increasing the rock enemy sprite size  
 
 ![](./week_4_artifacts/main%20character%20sprite.png)  
 ![](./week_4_artifacts/enemy%20sprite.png)     
 
 - Found background music for different environments and scenes (e.g. boss fight)
-- Implement sounds in reaction to input/an event, have background music playing when at main menu and when playing the game
-- Add more details to storyline, and find a name for the game
+- Implement sounds in reaction to input/an event, have background music playing when at the main menu and when playing the game
+- Add more details to  the storyline, and find a name for the game
 - Found some potential main menu background design images
 - A testing map can be created with different types of objects (e.g. trees, rocks...)
 - Think about crafting in the game, can find more sprites
@@ -121,7 +121,7 @@ Sound effects and game background music had been further selected for implementa
 - The player can collect these resources in an inventory 
 - The players resources can be used to craft items (pickaxe, sword, and light)
 - The crafted tools will break over time
-- The player will have a sidekick (bot) which will either help or race against the player
+- The player's will have a sidekick (bot) which will either help or race against the player
 - There will be a timer shown to the player on the screen which runs down as they go through the game
 - There will be tasks to complete in order for the player to escape
 - The player can go through a door and the screen will change to top down view 
@@ -166,7 +166,7 @@ Some members have other coursework to finish so not much progress was made after
 ## **Product contents**
 
 ### Customer interview
-The customer mentioned that more details of the game background story should be added. Episodes can be developed that advance the game progress with more main character capabilities introduced so that there are layers to the storyline. The rest of the comments were positive about the features that have been implemented . 
+The customer mentioned that more details of the game background story should be added. Episodes can be developed that advance the game progress with more main character capabilities introduced so that there are layers to the storyline. The rest of the comments were positive about the features that have been implemented. 
 
 \pagebreak
 
@@ -420,7 +420,7 @@ Collaborators:
 
 Responsibilities:
 
-- Make the character stop when reaching obstacle or the edge of the map
+- Make the character stop when reaching an obstacle or the edge of the map
 
 Collaborators:
 
