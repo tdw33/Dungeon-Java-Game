@@ -296,13 +296,13 @@ The customer mentioned that more details of the game background story should be 
 
 **Normal flow of event**:
 
-| Actor actions                                  | System actions                                               |
-| ---------------------------------------------- | ------------------------------------------------------------ |
-| 1. Play until a certain point in the story       | 2. Pebble talks (pop-up dialog box), gives instructions of mining and crafting items                   |
-| 3. Follow the tutorial       | 4. Update the character status and the environment                   |
+| Actor actions                              | System actions                                               |
+| ------------------------------------------ | ------------------------------------------------------------ |
+| 1. Play until a certain point in the story | 2. Pebble talks (pop-up dialogue box), gives instructions of mining and crafting items |
+| 3. Follow the tutorial                     | 4. Update the character status and the environment           |
 
 **Alternative flow of events:**
-- The player may not want to see the tutorial due to familiarity with the game (e.g. second time playing). The dialog box can have a skip button so that the player does not need to see the tutorial again.
+- The player may not want to see the tutorial due to familiarity with the game (e.g. second time playing). The dialogue box can have a skip button so that the player does not need to see the tutorial again.
 
 **Exceptional flow of events:**
 - The system does not provide tutorial when the player gets to a certain point. 
