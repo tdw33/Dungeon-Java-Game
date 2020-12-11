@@ -72,13 +72,13 @@ Be mindful of your remaining time! Once you start a new game the timer will imme
 
 Movement in Into the Dark is performed using the arrow keys, hold the left or right arrow keys to move side to side, press the up arrow key to jump and hold the down arrow key to crouch.
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/walk_left.gif) to see walk left
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/walk_right.gif) to see walk left
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/walk_right.gif) to see walk right
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/walk_left.gif) to see walk right
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/duck.gif) to see crouch 
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/duck.gif) to see crouch 
 
-Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/user-manual/doc/6-user-manual/gifs/jump.gif) to see jump
+Click [here](https://github.bath.ac.uk/Team-Cyan/Dungeon/blob/master/docs/0-manuals/gifs/jump.gif) to see jump
 
 
 
